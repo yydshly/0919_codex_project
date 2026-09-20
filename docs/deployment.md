@@ -6,6 +6,7 @@
 
 - [演示总入口](https://yydshly.github.io/0919_codex_project/)
 - [001 · Video Shotcraft](https://yydshly.github.io/0919_codex_project/001-video-shotcraft/)
+- [002 · BrightBean Studio](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/) · [接入引导图](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/#guide)
 
 同一仓库的多个演示使用 `NNN-slug/` 子路径，编号与研究目录对应。
 
@@ -28,7 +29,7 @@
 
 本地更新后同样运行 `npm run build:web`，将静态文件一并提交。CI 会从源码重新构建，MP4 使用仓库中已实测的预渲染版本；网页不会在线渲染或自动更新视频。
 
-新增子项目时，需要更新总入口并为对应项目添加构建步骤；现有工作流自动构建 Shotcraft 与 BrightBean 研究页。BrightBean 源码位于 `projects/002-brightbean-studio/site/`，输出至 `web/002-brightbean-studio/`，无第三方前端依赖；新增页面尚未推送或验证公网部署。浏览器路由优先使用 hash 路由，以免子页面刷新返回 404。
+新增子项目时，需要更新总入口并为对应项目添加构建步骤；现有工作流自动构建 Shotcraft 与 BrightBean 研究页。BrightBean 源码位于 `projects/002-brightbean-studio/site/`，输出至 `web/002-brightbean-studio/`，无第三方前端依赖；已于 2026-09-20 发布并验证页面、图像、文档与交互。浏览器路由优先使用 hash 路由，以免子页面刷新返回 404。
 
 GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端。
 

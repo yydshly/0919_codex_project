@@ -27,7 +27,7 @@
 
 ## 交互研究网页
 
-[打开本地研究页](http://127.0.0.1:5184/002-brightbean-studio/) · [网页源码](site/index.html) · [网站总入口源码](../../web/index.html)
+[打开在线研究页](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/) · [在线接入引导图](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/#guide) · [本地预览](http://127.0.0.1:5184/002-brightbean-studio/) · [网页源码](site/index.html)
 
 网页包含能力与接入引导图、平台能力筛选、中文搜索、逐个平台的接入说明、五步发布流程、架构解读、适用场景与证据边界。无第三方前端依赖，不需要 API 密钥，所有交互均在本地浏览器完成。
 
@@ -40,7 +40,7 @@ python projects/002-brightbean-studio/scripts/build_web.py
 python -m http.server 5184 --bind 127.0.0.1 --directory web
 ```
 
-发布文件输出至 `web/002-brightbean-studio/`，已加入现有 GitHub Pages 构建流程。部署状态与访问验证记录见 [研究记录](notes/README.md)，通过验证的公网地址统一保存在 `project.json` 的 `demo` 字段。
+发布文件输出至 `web/002-brightbean-studio/`，已通过 GitHub Pages 发布。2026-09-20 验证线上页面、引导图、研究文档与交互可用；记录见 [研究记录](notes/README.md)。公网地址统一保存在 `project.json` 的 `demo` 字段。
 
 ## 核心能力
 
