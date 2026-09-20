@@ -58,3 +58,9 @@
 对照此前 [TalkCraft 研究](https://yydshly.github.io/0914_codex_project/003-video-talkcraft/) 和 [Vibe Motion 研究](https://yydshly.github.io/0914_codex_project/004-vibe-motion/)，文字、卡片、数字、转场与逐帧渲染明显重叠；侧重点分别是产品宣传、口播同步和更广泛的 2D / 3D 工程。完整对比见 [研究结论](../README.md#研究结论与范围)。
 
 对我们按「补充素材库，新增能力有限，独立研究优先级较低」收录。保留镜头源码、页面切片与运镜方法、调参及失败经验；后续以自己的产品短片与实际制作耗时验证价值，不把示例运行视为效率或质量优势的证据。
+
+## 2026-09-20 · 公网部署验证
+
+通过 [GitHub Pages 工作流](https://github.com/yydshly/0919_codex_project/actions/runs/35480301714) 完成首次发布。总入口、子页面和 MP4 返回 HTTP 200。公网浏览器从总入口进入演示后，发牌镜头与缩略图的 61 个图像节点全部加载成功，帧号正常推进，理解与价值页及对照表可访问。
+
+本次文案更新后重新通过 TypeScript / Vite 构建与索引检查，并检查 1440px、390px 页面布局；手机研究页无横向溢出，对照表在自身容器内滚动。已更新封面与移动端截图。

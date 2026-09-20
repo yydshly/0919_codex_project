@@ -14,7 +14,7 @@
 | 上游代码许可 | Apache-2.0，副本见 [LICENSE](public/licenses/video-shotcraft-LICENSE.txt) |
 | 展示技术 | React 19.2.7、Remotion / Player 4.0.484、TypeScript、Vite 6.4.1 |
 | 本次环境 | Windows、Node.js 22.15.0、npm 10.9.2、Python 3.10 |
-| 展示形式 | 本地交互展台；发布文件汇总至 `web/001-video-shotcraft/` |
+| 展示形式 | GitHub Pages 交互展台；发布文件汇总至 `web/001-video-shotcraft/` |
 
 ## 能力展示
 
@@ -43,7 +43,7 @@
 
 [观看 / 下载实际渲染的串片](public/media/showcase.mp4) · [六镜头抽帧检查图](assets/reel-contact-sheet.png) · [移动端截图](assets/mobile.png)
 
-启动后访问 [本地展台](http://127.0.0.1:5181/)。该地址仅在本机服务运行时有效；未发布到公网，`project.json` 中的 `demo` 保持为空。
+[打开在线展台](https://yydshly.github.io/0919_codex_project/001-video-shotcraft/) · [演示总入口](https://yydshly.github.io/0919_codex_project/)。已通过 GitHub Pages 发布；本地启动后也可访问 [本地展台](http://127.0.0.1:5181/)。
 
 ## 本地运行
 

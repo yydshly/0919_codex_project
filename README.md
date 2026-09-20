@@ -11,7 +11,7 @@
 <!-- PROJECT_INDEX:START -->
 | 编号 | 项目 | 摘要 | 状态 | 标签 | 源库 | 演示 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 001 | [Video Shotcraft · Remotion 动效素材合集](projects/001-video-shotcraft/README.md) | 基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。 | 已复现 | Remotion、素材复用、动效、交互展示 | [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | — |
+| 001 | [Video Shotcraft · Remotion 动效素材合集](projects/001-video-shotcraft/README.md) | 基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。 | 已复现 | Remotion、素材复用、动效、交互展示 | [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | [演示](https://yydshly.github.io/0919_codex_project/001-video-shotcraft/) |
 <!-- PROJECT_INDEX:END -->
 
 ## 项目图览
