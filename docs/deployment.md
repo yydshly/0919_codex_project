@@ -44,3 +44,5 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 源码：`projects/004-blinko/site/`；构建：`python projects/004-blinko/scripts/build_web.py`；输出：`web/004-blinko/`。工作流会构建此页。
 
 页面使用本次部署的真实截图作为封面和引导图，整理笔记软件定位、与 ReflectFlow 的重叠、RAG 原理与验证范围。GitHub Pages 仅提供研究和部署效果展示；完整 Blinko 服务仍在本机运行，没有向公网开放数据库或登录服务。
+
+2026-09-20 已成功部署并验证 [004 在线研究页](https://yydshly.github.io/0919_codex_project/004-blinko/) 和真实截图（HTTP 200）；元信息的 `demo` 已填写。

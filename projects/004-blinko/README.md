@@ -2,7 +2,7 @@
 
 **Blinko 就是一款支持 Markdown 的笔记记录软件。** 它可以保存文字、链接、待办和附件，再围绕已有记录提供整理、检索、总结、润色及 AI 问答。它的主要价值在于把记录和后续处理串成完整的使用流程。
 
-[返回总索引](../../README.md) · [上游仓库](https://github.com/blinkospace/blinko) · [官方文档](https://docs.blinko.space/)
+[返回总索引](../../README.md) · [上游仓库](https://github.com/blinkospace/blinko) · [官方文档](https://docs.blinko.space/) · [Web 部署效果与研究](https://yydshly.github.io/0919_codex_project/004-blinko/)
 
 ## 项目信息
 
@@ -70,6 +70,8 @@ AI 功能需要自行配置模型服务。普通笔记运行不需要模型 API 
 本研究集的 Web 页面展示产品理解、真实部署截图及验证范围。源码位于 `site/`，在仓库根目录执行 `python projects/004-blinko/scripts/build_web.py` 后输出到 `web/004-blinko/`，随现有 GitHub Pages 工作流发布。
 
 GitHub Pages 托管的是静态研究展示页。完整 Blinko 应用需要运行后端和数据库，本次实例运行在本机，不通过 Pages 暴露账户或笔记服务。
+
+2026-09-20 已发布并验证：页面与原始截图均返回 HTTP 200，Pages 构建和部署成功。
 
 ## 本地运行
 
