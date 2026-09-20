@@ -31,7 +31,7 @@
 
 可自建的内容编辑、审核、定时发布、互动与统计后台，提供 REST/MCP；支持 Facebook、Instagram、Threads、LinkedIn、TikTok、YouTube、Pinterest、Bluesky、Mastodon、DEV\.to 和 Google 商家资料（11 平台、13 种接入）。多数通过开发者应用凭证加账号授权接入；Bluesky 用应用密码，DEV\.to 用个人 API key，Mastodon 由程序自动注册 OAuth 应用。
 
-[![BrightBean Studio · 多平台内容发布与运营后台 项目截图](projects/002-brightbean-studio/assets/cover.png)](projects/002-brightbean-studio/README.md)
+[![BrightBean Studio · 多平台内容发布与运营后台 项目截图](projects/002-brightbean-studio/assets/connection-guide.png)](projects/002-brightbean-studio/README.md)
 
 ### 003 · [大模型教材与群体模拟 · Foundations &amp; Agent-Kernel](projects/003-llm-foundations-agent-kernel/README.md)
 
