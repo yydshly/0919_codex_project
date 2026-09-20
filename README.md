@@ -37,7 +37,7 @@
 
 Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词、微调、模型编辑和 RAG；Agent-Kernel：用 AI 模拟多角色交互的开发框架，用于群体行为观察、模拟实验与协作评测。
 
-[![大模型教材与群体模拟 · Foundations &amp; Agent-Kernel 项目截图](projects/003-llm-foundations-agent-kernel/assets/cover.png)](projects/003-llm-foundations-agent-kernel/README.md)
+[![大模型教材与群体模拟 · Foundations &amp; Agent-Kernel 项目截图](projects/003-llm-foundations-agent-kernel/assets/capability-overview.png)](projects/003-llm-foundations-agent-kernel/README.md)
 <!-- PROJECT_GALLERY:END -->
 
 ## 仓库结构

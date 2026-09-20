@@ -12,7 +12,7 @@
     "能力对比"
   ],
   "demo": "https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/",
-  "cover": "assets/cover.png",
+  "cover": "assets/capability-overview.png",
   "related_sources": [
     "https://github.com/ZJU-LLMs/Agent-Kernel"
   ]
