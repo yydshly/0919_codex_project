@@ -18,6 +18,8 @@ def main():
         shutil.copy2(cover, DESTINATION / "cover.png")
     for name in ("capability-overview.svg", "capability-overview.png"):
         shutil.copy2(PROJECT / "assets" / name, DESTINATION / name)
+    shutil.copytree(PROJECT / "assets" / "showcase", DESTINATION / "showcase", dirs_exist_ok=True)
+    shutil.copy2(PROJECT / "assets" / "showcase-sources.md", DESTINATION / "showcase-sources.md")
     directions = (PROJECT / "product-directions.md").read_text(encoding="utf-8")
     (DESTINATION / "product-directions.md").write_text(
         directions.replace("[返回研究说明](README.md)", "[返回研究网页](index.html#directions)"),

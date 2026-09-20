@@ -34,9 +34,10 @@
 4. 日常提效、知识库、群体研究和多 AI 分工的需求对照。
 5. 单图能力总览及 PNG / SVG 下载。
 6. 多角色产品方向、优先验证场景与评价标准。
-7. 固定版本来源、论文入口与研究范围。
+7. 官方效果实录：校园、Universe 25、OpenHospital 与 Society-Panel，含原图、演示入口和产品借鉴分析。
+8. 固定版本来源、论文入口与研究范围。
 
-页面中的角色行为是自行编写的概念示例，不是 Agent-Kernel 的实际输出。无模型调用、第三方追踪或前端依赖。
+五步教学示意中的角色行为是自行编写的概念示例；[官方效果实录](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/#showcase)则引用上游画面并标明来源。无模型调用、第三方追踪或前端依赖。
 
 ## 能力与原理
 
@@ -79,7 +80,7 @@ python -m http.server 5185 --bind 127.0.0.1 --directory web
 
 ## 来源与许可
 
-本研究只保存自行撰写的文字、界面与教学示意，未复制上游教材 PDF、框架源码或媒体。后续若引入上游资源，应单独记录范围并遵守对应许可。
+本研究保存自行撰写的解读、界面和教学示意，未复制上游教材 PDF 或框架源码。官方效果栏目外链引用三张仓库截图，并保存医院官方视频的一个画面用于产品形态分析。媒体权利归原作者，不将框架代码许可扩展解释为媒体许可；逐项记录见 [图片来源](assets/showcase-sources.md)。
 
 技术参考：[Transformer](https://arxiv.org/abs/1706.03762)、[上下文学习](https://arxiv.org/abs/2005.14165)、[LoRA](https://arxiv.org/abs/2106.09685)、[RAG](https://arxiv.org/abs/2005.11401)、[Agent-Kernel 单机示例](https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/examples/standalone_test/README.md)。
 

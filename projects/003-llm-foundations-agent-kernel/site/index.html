@@ -17,6 +17,7 @@
     <a href="#foundations"><span>02</span>教材：学到什么</a>
     <a href="#kernel"><span>03</span>框架：怎样运转</a>
     <a href="#value"><span>04</span>与我的需求有什么关系</a>
+    <a href="#showcase"><span>看</span>官方效果实录</a>
     <a href="#directions"><span>用</span>多角色的产品方向</a>
     <a href="#sources"><span>05</span>来源与研究边界</a>
   </nav>
@@ -117,6 +118,40 @@
     <div class="starting-grid"><article><span class="category">如果你想先学会用 AI</span><h3>从一个真实任务开始</h3><p>先读第 3 章，尝试补充目标、示例和输出标准。涉及自己的文档时，再读第 6 章。比较修改前后的正确性与遗漏。</p></article><article><span class="category">如果你想做群体模拟</span><h3>先跑通一个小场景</h3><p>准备 Python 环境和模型接口，从官方单机示例入手。角色、行为和规则需要配置或开发；运行成本取决于模型调用与模拟规模。</p><a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/main/examples/standalone_test/README.md" target="_blank" rel="noopener noreferrer">官方单机示例 ↗</a></article></div>
   </section>
 
+  <section id="showcase" class="section">
+    <div class="section-kicker">OFFICIAL SHOWCASE / 官方效果实录</div>
+    <h2>用这个框架，产品可以长什么样？</h2>
+    <p class="section-intro">从官方已展示的校园、群体实验、医院和控制台，认识不同的产品形态。以下是官方截图或视频画面；产品方向是我们的延伸判断，不代表已有商业产品或经过验证的业务效果。</p>
+    <div class="showcase-grid">
+      <article class="showcase-card">
+        <div class="showcase-heading"><span class="mini-index">01 / 虚拟世界</span><h3>赛博 ZJU · 让群体活动变得可见</h3></div>
+        <figure><a class="showcase-image" href="https://raw.githubusercontent.com/ZJU-LLMs/Agent-Kernel/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/assets/zju.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看：赛博 ZJU · 让群体活动变得可见"><img src="https://raw.githubusercontent.com/ZJU-LLMs/Agent-Kernel/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/assets/zju.png" alt="俯视像素校园中的建筑、道路与多个角色。" loading="lazy" decoding="async"></a><figcaption>官方仓库截图 · 点击图片放大</figcaption></figure>
+        <div class="showcase-body"><dl><div><dt>已展示什么</dt><dd>在同一张校园地图中呈现角色与活动空间，把抽象的多 AI 互动变成可观察的世界。</dd></div><div><dt>可借鉴的产品</dt><dd>虚拟校园、园区或游戏小镇：让用户查看不同角色在哪里、如何相遇和互动。</dd></div><div><dt>还需要开发</dt><dd>地图美术、角色动画、可交互界面和场景规则，需要随产品设计实现。</dd></div></dl>
+        <a class="text-link" href="https://www.bilibili.com/video/BV1xamQBuEgS/" target="_blank" rel="noopener noreferrer">观看校园演示 ↗</a></div>
+      </article>
+      <article class="showcase-card">
+        <div class="showcase-heading"><span class="mini-index">02 / 群体实验</span><h3>Universe 25 · 观察群体怎样变化</h3></div>
+        <figure><a class="showcase-image" href="https://raw.githubusercontent.com/ZJU-LLMs/Agent-Kernel/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/assets/rat.jpg" target="_blank" rel="noopener noreferrer" aria-label="放大查看：Universe 25 · 观察群体怎样变化"><img src="https://raw.githubusercontent.com/ZJU-LLMs/Agent-Kernel/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/assets/rat.jpg" alt="老鼠群体模拟场景，包含角色状态气泡和人口计数。" loading="lazy" decoding="async"></a><figcaption>官方仓库截图 · 点击图片放大</figcaption></figure>
+        <div class="showcase-body"><dl><div><dt>已展示什么</dt><dd>场景中可见多个个体、状态气泡与人口计数，用具象界面呈现群体过程。</dd></div><div><dt>可借鉴的产品</dt><dd>群体行为实验沙盘、生态与社会模拟教学：比较条件变化下的互动过程。</dd></div><div><dt>还需要开发</dt><dd>需要自行设计实验变量、指标和对照。截图中的计数是展示画面，不能当作本项目的实测结论。</dd></div></dl>
+        <a class="text-link" href="https://www.bilibili.com/video/BV1dz2DBDERB/" target="_blank" rel="noopener noreferrer">观看群体实验演示 ↗</a></div>
+      </article>
+      <article class="showcase-card">
+        <div class="showcase-heading"><span class="mini-index">03 / 服务流程</span><h3>OpenHospital · 多角色共同完成任务</h3></div>
+        <figure><a class="showcase-image" href="showcase/openhospital-official-video.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看：OpenHospital · 多角色共同完成任务"><img src="showcase/openhospital-official-video.png" alt="OpenHospital 视频中的像素医院，包含房间、走廊、设备和人物。" loading="lazy" decoding="async"></a><figcaption>官方视频画面 · 约 00:13 · 点击图片放大</figcaption></figure>
+        <div class="showcase-body"><dl><div><dt>已展示什么</dt><dd>医院示例将医患等角色放进服务场景；示例文档另提供轨迹回放、日志与评测说明。</dd></div><div><dt>可借鉴的产品</dt><dd>服务流程沙盘、协作训练与 AI 助手测试：可进一步改造成门店、酒店等服务场景。</dd></div><div><dt>还需要开发</dt><dd>医院前端、回放与指标属于具体示例。其他行业需要重新定义任务、业务规则、数据与评价标准。</dd></div></dl>
+        <a class="text-link" href="https://www.bilibili.com/video/BV1LJwZzkEeg/" target="_blank" rel="noopener noreferrer">观看医院演示 ↗</a></div>
+      </article>
+      <article class="showcase-card">
+        <div class="showcase-heading"><span class="mini-index">04 / 实验控制台</span><h3>Society-Panel · 运行、干预与观察</h3></div>
+        <figure><a class="showcase-image" href="https://raw.githubusercontent.com/ZJU-LLMs/Agent-Kernel/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/society-panel/assets/dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="放大查看：Society-Panel · 运行、干预与观察"><img src="https://raw.githubusercontent.com/ZJU-LLMs/Agent-Kernel/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/society-panel/assets/dashboard.png" alt="Society-Panel 仪表盘，包含运行控制、God Mode Console 与事件日志区域。" loading="lazy" decoding="async"></a><figcaption>官方面板截图 · 点击图片放大</figcaption></figure>
+        <div class="showcase-body"><dl><div><dt>已展示什么</dt><dd>可见启动与停止、干预命令和事件日志入口。截图处于停止状态，日志为空，并非一次运行结果。</dd></div><div><dt>可借鉴的产品</dt><dd>实验管理后台：配置场景、控制运行、发出干预、查看事件，为培训或测试产品提供管理入口。</dd></div><div><dt>还需要开发</dt><dd>官方面板目前面向分布式版；面向用户的评分报告、业务图表与场景可视化仍需另行开发。</dd></div></dl>
+        <a class="text-link" href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/society-panel/README.md" target="_blank" rel="noopener noreferrer">查看面板说明 ↗</a></div>
+      </article>
+    </div>
+    <div class="boundary"><strong>框架协调互动，产品定义体验。</strong><p>Agent-Kernel 提供角色、环境和行动的组织能力。地图、动画、交互界面、业务规则和报告，需要结合具体场景实现；安装框架不会自动获得这四套完整产品。</p></div>
+    <p class="footnote">图片来源：Agent-Kernel 官方仓库（固定版本 c14b6e5）与官方链接的 OpenHospital 演示视频（毛玉仁老师，约 00:13）。仅引用单帧用于产品形态解读，没有转载视频。<a href="showcase-sources.md">查看逐项来源记录</a> · <a href="#directions">继续看产品方向与验证思路 ↓</a></p>
+  </section>
+
   <section id="directions" class="section">
     <div class="section-kicker">PRODUCT DIRECTIONS / 我们的理解</div><h2>多角色交互，怎样变成有用的产品？</h2>
     <p class="section-intro">让角色拥有不同信息、目标和资源，在互动中相互影响。产品价值来自可演练、可比较、可复盘的过程；以下是需要进一步开发和验证的方向。</p>
@@ -136,7 +171,7 @@
     <div class="section-kicker">05 / SOURCES & SCOPE</div><h2>可追溯的来源，清楚的边界</h2>
     <p class="section-intro">本页是独立撰写的能力整理。已核对官方说明与论文；未部署上游框架、连接模型或复现社会模拟实验。</p>
     <div class="source-grid"><a href="https://github.com/ZJU-LLMs/Foundations-of-LLMs/tree/1109bfa8e1c5b83fd25f66435601eef2a5905d5b" target="_blank" rel="noopener noreferrer"><span>01 / 教材仓库</span><strong>Foundations-of-LLMs ↗</strong><small>研究版本 1109bfa · 教材与目录</small></a><a href="https://github.com/ZJU-LLMs/Agent-Kernel/tree/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7" target="_blank" rel="noopener noreferrer"><span>02 / 框架仓库</span><strong>Agent-Kernel ↗</strong><small>研究版本 c14b6e5 · 架构与示例</small></a><a href="https://arxiv.org/abs/2512.01610" target="_blank" rel="noopener noreferrer"><span>03 / 框架论文</span><strong>Agent-Kernel 设计说明 ↗</strong><small>arXiv:2512.01610</small></a></div>
-    <details><summary>查看研究范围与许可信息</summary><p>本项目保存自行撰写的解读与教学示意，没有复制上游教材 PDF、框架源码或媒体。教材仓库标注 CC BY-NC-ND 4.0，Agent-Kernel 标注 Apache-2.0；需要使用上游内容时请查阅各自许可。</p><p><a href="https://github.com/ZJU-LLMs/Foundations-of-LLMs/blob/1109bfa8e1c5b83fd25f66435601eef2a5905d5b/LICENSE.md" target="_blank" rel="noopener noreferrer">教材许可 ↗</a> · <a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/LICENSE" target="_blank" rel="noopener noreferrer">框架许可 ↗</a></p><p>“适合什么需求”和“建议阅读顺序”是本研究的判断；角色去食堂的五步过程是为解释架构编写的概念示例，不承诺具体上游场景已经实现这些细节。</p></details>
+    <details><summary>查看研究范围与许可信息</summary><p>本项目保存自行撰写的解读与教学示意，没有复制上游教材 PDF 或框架源码。官方效果栏目引用了上游截图与医院演示视频单帧，各项均提供来源；媒体权利归原作者，框架代码许可不作为全部媒体的许可声明。教材仓库标注 CC BY-NC-ND 4.0，Agent-Kernel 标注 Apache-2.0；需要使用上游内容时请查阅各自许可。</p><p><a href="https://github.com/ZJU-LLMs/Foundations-of-LLMs/blob/1109bfa8e1c5b83fd25f66435601eef2a5905d5b/LICENSE.md" target="_blank" rel="noopener noreferrer">教材许可 ↗</a> · <a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/LICENSE" target="_blank" rel="noopener noreferrer">框架许可 ↗</a></p><p>“适合什么需求”和“建议阅读顺序”是本研究的判断；角色去食堂的五步过程是为解释架构编写的概念示例，不承诺具体上游场景已经实现这些细节。</p></details>
   </section>
   <footer><span>003 / 大模型教材与群体模拟</span><a href="#overview">回到顶部 ↑</a></footer>
 </main>
