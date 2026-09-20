@@ -1,0 +1,17 @@
+{
+  "id": "004",
+  "slug": "blinko",
+  "name": "Blinko · Markdown 笔记记录软件",
+  "summary": "支持 Markdown 的笔记记录软件，可保存文字、链接、待办和附件，围绕记录提供整理、检索、总结与 AI 问答。与 ReflectFlow 在记录及基于记录的处理上有重叠；已本地部署并验证基础笔记功能，AI 尚未配置。",
+  "source": "https://github.com/blinkospace/blinko",
+  "status": "已复现",
+  "tags": [
+    "个人笔记",
+    "RAG",
+    "AI",
+    "自部署",
+    "TypeScript"
+  ],
+  "demo": "",
+  "cover": "assets/cover.png"
+}

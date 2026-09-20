@@ -38,3 +38,9 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 ## 003 · 大模型教材与群体模拟
 
 源码：`projects/003-llm-foundations-agent-kernel/site/`；构建：`python projects/003-llm-foundations-agent-kernel/scripts/build_web.py`；输出：`web/003-llm-foundations-agent-kernel/`。现有工作流已增加该构建步骤。2026-09-20 已发布并验证 [003 在线研究页](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/)、总览 PNG / SVG、产品方向文档与交互；元信息的 `demo` 已填写。
+
+## 004 · Blinko 笔记记录软件
+
+源码：`projects/004-blinko/site/`；构建：`python projects/004-blinko/scripts/build_web.py`；输出：`web/004-blinko/`。工作流会构建此页。
+
+页面使用本次部署的真实截图作为封面和引导图，整理笔记软件定位、与 ReflectFlow 的重叠、RAG 原理与验证范围。GitHub Pages 仅提供研究和部署效果展示；完整 Blinko 服务仍在本机运行，没有向公网开放数据库或登录服务。

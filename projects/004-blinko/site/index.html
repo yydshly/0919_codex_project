@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="__SUMMARY__">
+  <meta name="theme-color" content="#f7f7f3"><title>Blinko · Markdown 笔记记录软件｜开源研究 004</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar"><a class="brand" href="../">开源项目研究集 <span>/ 004</span></a><nav aria-label="页面导航"><a href="#guide">实际效果</a><a href="#understanding">能力理解</a><a href="#principle">技术原理</a><a href="https://github.com/blinkospace/blinko">上游仓库 ↗</a></nav></header>
+<main id="main">
+  <section class="hero">
+    <p class="eyebrow">BLINKO / SELF-HOSTED NOTES</p>
+    <h1>一款笔记记录软件。<br><span>把记录保存下来，再整理、找回和加工。</span></h1>
+    <p class="lead">支持 Markdown，收集文字、链接、待办和附件；围绕这些记录，提供标签管理、搜索，以及配置模型后的总结、润色和 AI 问答。</p>
+    <div class="status"><span><i></i> 本地 Web 已运行</span><span>基础笔记已验证</span><span>AI 模型尚未配置</span></div>
+    <div class="actions"><a class="primary" href="#guide">看实际部署效果 ↓</a><a href="research.md">阅读完整研究记录 ↗</a></div>
+  </section>
+
+  <section id="guide" class="section">
+    <div class="section-head"><div><p class="eyebrow">01 / RUNNING IN PRACTICE</p><h2>引导图，就用真实运行的界面。</h2></div><a href="cover.png" target="_blank" rel="noopener">打开原始截图 ↗</a></div>
+    <p class="section-intro">2026.09.20 截取自我们部署的 Blinko 1.8.8。画面包含上游欢迎示例与本地验证笔记。</p>
+    <figure class="deployment"><a href="cover.png" target="_blank" rel="noopener" aria-label="放大 Blinko 本地部署原始截图"><img src="cover.png" width="921" height="898" alt="本地运行的 Blinko：左侧有闪念、笔记、待办、归档和分层标签；顶部是 Markdown 编辑器；中间显示本地验证笔记、待办、代码与图片附件。"></a><figcaption><span>实际部署截图 · 未修改界面内容</span><span>点击图片查看原图</span></figcaption></figure>
+    <div class="guide-grid">
+      <article><b>01</b><h3>顶部：记录内容</h3><p>用 Markdown 编写文字、列表和代码，把想法快速存成一条笔记。</p></article>
+      <article><b>02</b><h3>左侧：组织记录</h3><p>按闪念、笔记、待办和归档切换，用分层标签整理内容。</p></article>
+      <article><b>03</b><h3>中间：查看资料</h3><p>卡片展示已保存的笔记，图片、代码和附件与文字放在一起。</p></article>
+      <article><b>04</b><h3>右上：找回信息</h3><p>通过关键词搜索已有记录。语义搜索需要额外配置 Embedding 模型。</p></article>
+    </div>
+    <p class="scope"><strong>这次部署验证了什么？</strong>登录、保存、读取、关键词搜索及附件显示。AI 推理、语义检索、自动整理与外部集成尚未验证。</p>
+  </section>
+
+  <section id="understanding" class="section">
+    <p class="eyebrow">02 / WHAT IT DOES</p><h2>记录是中心，AI 围绕记录工作。</h2>
+    <div class="flow" aria-label="记录、管理、找回、加工四个环节">
+      <article><span>输入</span><h3>记录</h3><p>文字 / 链接<br>待办 / 图片 / 文档</p></article>
+      <article><span>组织</span><h3>管理</h3><p>标签 / 引用<br>归档 / 回顾</p></article>
+      <article><span>检索</span><h3>找回</h3><p>关键词搜索<br>语义搜索</p></article>
+      <article><span>使用</span><h3>加工</h3><p>总结 / 润色 / 分类<br>基于笔记问答</p></article>
+    </div>
+    <div class="insights"><article><h3>“任意信息”有处理边界</h3><p>能够保存一个文件，不等于 AI 自动理解它。文档需要提取文字，图片需要视觉模型；可处理范围取决于解析器、模型和配置。</p></article><article><h3>“汇总”通常先做检索</h3><p>典型问答先找到相关笔记，再把选中的内容交给模型。它不会在每次提问时，把整个笔记库全部汇总一遍。</p></article></div>
+    <aside class="reflection"><div><p class="eyebrow">REFLECTFLOW / 产品观察</p><h3>在记录与处理这一层，有明显重叠。</h3></div><div><p>Blinko 可为 ReflectFlow 提供编辑器、标签、笔记卡片、检索和 AI 接入的实现参考。</p><p>本次没有审计 ReflectFlow 的完整流程。引导反思、长期追踪、行动与反馈闭环，是后续比较维度；这里不把两者认定为功能完全等同。</p></div></aside>
+  </section>
+
+  <section id="principle" class="section">
+    <p class="eyebrow">03 / HOW IT WORKS</p><h2>先找笔记，再让模型作答。</h2>
+    <p class="section-intro">RAG（检索增强生成）把笔记作为回答时的参考资料；它不会用你的笔记重新训练一个模型。</p>
+    <div class="pipelines"><article><span class="pipeline-label">保存时</span><p>笔记与附件 <i>→</i> 提取文字、分块 <i>→</i> 生成语义向量 <i>→</i> 建立索引</p></article><article><span class="pipeline-label">提问时</span><p>问题向量化 <i>→</i> 检索相近内容 <i>→</i> 读取相关笔记 <i>→</i> 模型生成回答</p></article></div>
+    <details><summary>展开底层技术与实现边界</summary><div class="details-body"><ul><li>界面：React / Vite；服务端：Bun / Express / tRPC。</li><li>业务数据：PostgreSQL / Prisma；向量索引：独立的 LibSQL 文件库。</li><li>模型编排：Mastra / AI SDK；工具调用用于搜索、新建和修改笔记等操作。</li><li>当前检索主流程采用余弦相似度、Top K 与分数阈值，没有看到实际调用重排序。</li><li>自部署决定数据保存的位置；配置云端模型时，参与处理的内容仍会发送给相应服务。</li></ul></div></details>
+  </section>
+
+  <section class="section delivery" id="deployment"><div><p class="eyebrow">04 / DEPLOYMENT SCOPE</p><h2>可在线查看的部署研究。</h2><p>本页面发布在 GitHub Pages，展示真实截图和研究结论。完整 Blinko Web 应用运行在我们的本地环境，需要后端与数据库；这张静态展示页不提供笔记登录或在线存储。</p></div><div class="delivery-links"><a href="https://github.com/yydshly/0919_codex_project/tree/main/projects/004-blinko">项目说明与运行脚本 ↗</a><a href="notes.md">查看复现与验证记录 ↗</a><a href="cover.png" download="blinko-actual-deployment.png">下载实际部署截图 ↓</a></div></section>
+  <footer><p>上游 <a href="https://github.com/blinkospace/blinko">blinkospace/blinko</a> · GPL-3.0 · 版本 1.8.8 · 提交 <a href="https://github.com/blinkospace/blinko/tree/b2586d03fddb796252f050a96922879bf4a41fad">b2586d0</a></p><p><a href="https://docs.blinko.space/">官方文档</a> · <a href="https://github.com/blinkospace/blinko/blob/b2586d03fddb796252f050a96922879bf4a41fad/server/aiServer/aiModelFactory.ts">检索实现</a> · <a href="../">返回全部项目</a></p></footer>
+</main>
+</body></html>

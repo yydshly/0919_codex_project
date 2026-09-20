@@ -26,6 +26,8 @@ jobs:
         run: python projects/002-brightbean-studio/scripts/build_web.py
       - name: Build LLM foundations and Agent-Kernel research page
         run: python projects/003-llm-foundations-agent-kernel/scripts/build_web.py
+      - name: Build Blinko deployment research page
+        run: python projects/004-blinko/scripts/build_web.py
       - uses: actions/setup-node@v6
         with:
           node-version: '22'

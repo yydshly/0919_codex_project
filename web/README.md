@@ -11,3 +11,5 @@
 本地访问：在仓库根目录执行 `python -m http.server 5183 --bind 127.0.0.1 --directory web`，打开 `http://127.0.0.1:5183/`。不要直接双击 HTML 文件，浏览器需要通过 HTTP 加载构建后的模块。
 
 003 · 大模型教材与群体模拟：新增两个仓库的能力对比研究页，含六个章节解读和五步行动教学示意。构建：`python projects/003-llm-foundations-agent-kernel/scripts/build_web.py`。本地预览：`http://127.0.0.1:5185/003-llm-foundations-agent-kernel/`。已发布并验证：[003 在线研究页](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/)。
+
+004 · Blinko：Markdown 笔记记录软件的部署研究页，包含真实运行截图、界面引导、能力理解、ReflectFlow 比较边界和 RAG 原理。构建：`python projects/004-blinko/scripts/build_web.py`。该页为静态展示，完整应用需运行后端与数据库。

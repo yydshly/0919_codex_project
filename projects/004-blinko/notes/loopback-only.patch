@@ -1,0 +1,14 @@
+diff --git a/server/index.ts b/server/index.ts
+index a279b86..8da0849 100644
+--- a/server/index.ts
++++ b/server/index.ts
+@@ -315,3 +315,3 @@ async function bootstrap() {
+     if (!server) {
+-      const server = app.listen(PORT, "0.0.0.0", () => {
++      const server = app.listen(PORT, process.env.HOST || "127.0.0.1", () => {
+         console.log(`🎉server start on port http://0.0.0.0:${PORT} - env: ${process.env.NODE_ENV || 'development'}`);
+@@ -333,3 +333,3 @@ async function bootstrap() {
+       if (!server) {
+-        const server = app.listen(PORT, "0.0.0.0", () => {
++        const server = app.listen(PORT, process.env.HOST || "127.0.0.1", () => {
+           console.log(`🎉server start on port http://0.0.0.0:${PORT} - env: ${process.env.NODE_ENV || 'development'}`);
