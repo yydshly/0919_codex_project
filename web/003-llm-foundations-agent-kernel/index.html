@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="看懂 Foundations-of-LLMs 与 Agent-Kernel：一本大模型教材，一套 AI 群体模拟框架。能力、原理、场景与实际价值的中文研究页。">
+  <meta name="theme-color" content="#101c30"><title>大模型教材与群体模拟 · 开源研究 003</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<aside class="sidebar">
+  <a class="brand" href="../"><span class="brand-mark">研</span><span>开源项目研究集<small>OPEN SOURCE NOTES</small></span></a>
+  <div class="issue">RESEARCH / 003</div><div class="side-title">从理解模型<br>到观察群体</div>
+  <nav aria-label="章节导航">
+    <a href="#overview" class="active"><span>01</span>两个项目，一眼看懂</a>
+    <a href="#capability-map"><span>图</span>一张图完整汇总</a>
+    <a href="#foundations"><span>02</span>教材：学到什么</a>
+    <a href="#kernel"><span>03</span>框架：怎样运转</a>
+    <a href="#value"><span>04</span>与我的需求有什么关系</a>
+    <a href="#directions"><span>用</span>多角色的产品方向</a>
+    <a href="#sources"><span>05</span>来源与研究边界</a>
+  </nav>
+  <div class="sidebar-bottom"><p>先理解能力，再决定投入。</p><span>整理于 2026.09.20</span><a href="../">← 返回全部项目</a></div>
+</aside>
+<main id="main">
+  <header class="topline"><span>ZJU-LLMs / 两个关联开源项目</span><span class="note-label">能力研究 · 中文解读</span></header>
+  <section id="overview" class="section opening">
+    <div class="section-kicker">01 / OVERVIEW</div>
+    <h1>一本书，教你理解 AI。<br>一套框架，让 AI 群体互动。</h1>
+    <p class="intro">Foundations-of-LLMs 帮你建立知识；Agent-Kernel 帮你搭建模拟。<br class="desktop">两者有关联，但交付的东西、使用方式和目的不同。</p>
+    <a class="map-jump" href="#capability-map">查看一张图完整汇总 ↓</a>
+    <div class="compare-grid">
+      <article class="project-card book-card">
+        <div class="card-top"><span class="category">学习资料 / BOOK</span><span class="card-number">A</span></div>
+        <h2>Foundations-of-LLMs</h2><p class="card-subtitle">《大模型基础》开源教材</p>
+        <div class="concept book-concept" aria-label="教材帮助连接原理、方法和应用"><span>理解原理</span><i>→</i><span>掌握方法</span><i>→</i><span>选择应用</span></div>
+        <p class="card-description">系统学习大模型如何工作，以及提示词、微调、检索增强等方法解决什么问题。</p>
+        <dl><div><dt>你得到</dt><dd>教材 PDF、章节资料、论文入口</dd></div><div><dt>怎么用</dt><dd>阅读、查阅，结合任务做练习</dd></div><div><dt>最直接的价值</dt><dd>知道 AI 做不好时，该改哪里</dd></div></dl>
+        <a class="text-link" href="https://github.com/ZJU-LLMs/Foundations-of-LLMs" target="_blank" rel="noopener noreferrer">查看教材仓库 <span>↗</span></a>
+      </article>
+      <article class="project-card kernel-card">
+        <div class="card-top"><span class="category">开发框架 / FRAMEWORK</span><span class="card-number">B</span></div>
+        <h2>Agent-Kernel</h2><p class="card-subtitle">大模型驱动的多智能体社会模拟</p>
+        <div class="concept kernel-concept" aria-label="多个 AI 角色在共同环境中互动"><span>AI 角色</span><i>↔</i><span>共同环境</span><i>↔</i><span>AI 角色</span></div>
+        <p class="card-description">创建有不同身份的 AI 个体，让它们在设定的环境中行动、交流，观察群体行为。</p>
+        <dl><div><dt>你得到</dt><dd>运行框架、示例、可选管理面板</dd></div><div><dt>怎么用</dt><dd>配置模型，开发场景，运行实验</dd></div><div><dt>最直接的价值</dt><dd>研究规则变化怎样影响群体互动</dd></div></dl>
+        <a class="text-link" href="https://github.com/ZJU-LLMs/Agent-Kernel" target="_blank" rel="noopener noreferrer">查看框架仓库 <span>↗</span></a>
+      </article>
+    </div>
+    <p class="relation"><strong>它们的关系</strong><span>教材首页推荐了 Agent-Kernel。读完教材不是运行框架的前置条件；下载教材也不会获得一个自动工作的 AI 系统。</span></p>
+  </section>
+
+  <section id="capability-map" class="section">
+    <div class="section-kicker">CAPABILITY MAP / 一图总览</div>
+    <div class="section-heading"><h2>两个库的完整能力总览</h2><a href="capability-overview.svg" target="_blank" rel="noopener">放大查看 ↗</a></div>
+    <p class="section-intro">教材六个核心模块，以及多 AI 框架的结构、价值、场景和结果呈现。点击图片查看高清原图。</p>
+    <figure class="overview-map"><a href="capability-overview.png" target="_blank" rel="noopener" aria-label="打开高清能力总览图"><img src="capability-overview.png" width="2000" height="2670" loading="lazy" alt="左侧整理大模型基础教材六章：语言模型基础、大语言模型、Prompt 工程、参数高效微调、模型编辑、RAG；右侧整理 Agent-Kernel 的五个核心模块、群体互动流程、实验价值、校园与医院等场景，以及运行面板、轨迹回放、实验数据和量化评测。" /></a><figcaption>官方功能与具体示例已区分；本图是能力整理，没有运行上游模拟或生成实测数据。</figcaption></figure>
+    <div class="map-downloads"><a href="capability-overview.png" download="大模型教材与群体模拟-能力总览.png">下载高清 PNG</a><a href="capability-overview.svg" download="大模型教材与群体模拟-能力总览.svg">下载矢量 SVG</a><span>2000 × 2670 · 可保存、放大与分享</span></div>
+    <p class="footnote">效果呈现依据：<a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/society-panel/README.md" target="_blank" rel="noopener noreferrer">Society-Panel 文档</a> · <a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/demo/OpenHospital/README.md" target="_blank" rel="noopener noreferrer">OpenHospital 文档</a>。后者的回放和指标属于具体医院示例，并非所有场景的默认功能。</p>
+  </section>
+
+  <section id="foundations" class="section">
+    <div class="section-kicker">02 / FOUNDATIONS</div><div class="section-heading"><h2>这本教材，能教会我什么？</h2><a href="https://github.com/ZJU-LLMs/Foundations-of-LLMs#本书目录" target="_blank" rel="noopener noreferrer">官方目录 ↗</a></div>
+    <p class="section-intro">它偏向原理与技术方法。想先改善日常使用，可以从提示词和检索增强开始。</p>
+    <div class="chapter-layout">
+      <div class="chapter-list" aria-label="选择教材章节">
+        <button type="button" data-chapter="0" aria-pressed="false"><span>01</span>语言模型基础<small>文字如何变成回答</small></button>
+        <button type="button" data-chapter="1" aria-pressed="false"><span>02</span>大语言模型<small>模型架构的区别</small></button>
+        <button type="button" data-chapter="2" aria-pressed="true"><span>03</span>Prompt 工程<small>先把任务交代清楚</small></button>
+        <button type="button" data-chapter="3" aria-pressed="false"><span>04</span>参数高效微调<small>用样例训练特定能力</small></button>
+        <button type="button" data-chapter="4" aria-pressed="false"><span>05</span>模型编辑<small>有针对性地更新知识</small></button>
+        <button type="button" data-chapter="5" aria-pressed="false"><span>06</span>检索增强生成<small>先找资料，再作答</small></button>
+      </div>
+      <article class="chapter-detail" id="chapter-detail" aria-live="polite" aria-atomic="true">
+        <span class="detail-eyebrow">CHAPTER 03 / 建议先读</span><h3>Prompt 工程</h3><p class="detail-lead">通过任务说明、背景、示例和输出约束，帮助模型理解你要什么。</p>
+        <div class="example"><span>放到实际工作中</span><p>让 AI 整理会议记录时，提供“决定 / 负责人 / 截止时间”的样例，并要求缺失项写“未提及”。</p></div>
+        <div class="mechanism"><span>它改变了什么</span><p>改变当前输入和上下文；通常不更新模型参数，也不等于永久学会你的习惯。</p></div>
+        <p class="takeaway">适合：写作、提取信息、分类、规范输出格式。</p>
+      </article>
+    </div>
+    <div class="method-strip"><h3>三种方法，解决不同问题</h3><div><strong>Prompt</strong><span>把要求说清楚</span></div><div><strong>RAG · 检索增强</strong><span>把相关资料找出来</span></div><div><strong>微调</strong><span>用训练调整任务表现</span></div></div>
+    <p class="footnote">阅读路线是面向实际应用的建议；具体方法可以组合使用。<a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener noreferrer">上下文学习</a> · <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">RAG 论文</a> · <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRA 论文</a></p>
+  </section>
+
+  <section id="kernel" class="section">
+    <div class="section-kicker">03 / AGENT-KERNEL</div><div class="section-heading"><h2>一群 AI，怎样在同一个世界里活动？</h2><a href="https://arxiv.org/abs/2512.01610" target="_blank" rel="noopener noreferrer">项目论文 ↗</a></div>
+    <p class="section-intro">大模型提供理解和决策能力；框架协调角色、环境与行动；你定义场景和规则。</p>
+    <div class="loop-panel">
+      <div class="loop-top"><h3>以“学生去食堂”为例</h3><span class="demo-badge">教学示意 · 未运行真实模型</span></div>
+      <div class="loop-steps" aria-label="探索一次行动的五个阶段">
+        <button type="button" data-step="0" aria-pressed="true"><b>1</b><strong>感知</strong><span>看到环境</span></button>
+        <button type="button" data-step="1" aria-pressed="false"><b>2</b><strong>决策</strong><span>选择行动</span></button>
+        <button type="button" data-step="2" aria-pressed="false"><b>3</b><strong>校验</strong><span>检查规则</span></button>
+        <button type="button" data-step="3" aria-pressed="false"><b>4</b><strong>执行</strong><span>更新环境</span></button>
+        <button type="button" data-step="4" aria-pressed="false"><b>5</b><strong>再互动</strong><span>影响其他角色</span></button>
+      </div>
+      <div class="step-content" id="step-content" aria-live="polite" aria-atomic="true"><span class="step-index">01</span><div><h4>学生获得当前环境信息</h4><p>例如：现在是午餐时间，食堂 A 排队较长，食堂 B 距离较远。可见信息由场景中的感知逻辑提供。</p></div><span class="responsibility">场景插件</span></div>
+      <div class="loop-return">环境变化 → 下一轮感知与决策</div>
+    </div>
+    <div class="kernel-details">
+      <article><span class="mini-index">A / 管理角色</span><h3>群体可以变化</h3><p>运行过程中增加或移除角色，调整身份和行为配置，用来表达人口与组织的变化。</p></article>
+      <article><span class="mini-index">B / 干预实验</span><h3>条件可以改变</h3><p>修改环境参数或插入事件，再观察角色之间的互动如何变化。</p></article>
+      <article><span class="mini-index">C / 复用结构</span><h3>核心与场景分开</h3><p>微内核处理调度、通信和行为校验；插件承载具体场景逻辑，便于在不同实验中复用。</p></article>
+    </div>
+    <div class="scenario-row"><h3>官方展示场景</h3><p><strong>校园生活</strong><span>人员活动与资源使用</span></p><p><strong>Universe 25</strong><span>群体与人口动态</span></p><p><strong>OpenHospital</strong><span>医院工作流程中的角色协作</span></p></div>
+    <div class="boundary"><strong>能展示交互，也能做实验。</strong><p>行为符合设定规则，不代表行为一定符合现实。这个网页只解释工作方式，没有调用 Agent-Kernel，也没有产生真实实验数据。</p></div>
+  </section>
+
+  <section id="value" class="section">
+    <div class="section-kicker">04 / YOUR USE CASE</div><h2>把它们放回你的实际需求</h2><p class="section-intro">下面是基于项目定位的适用性判断，帮助决定把时间花在哪里。</p>
+    <div class="table-wrap"><table><caption class="sr-only">两个项目在不同需求下的价值比较</caption><thead><tr><th scope="col">我想做什么</th><th scope="col">Foundations-of-LLMs</th><th scope="col">Agent-Kernel</th></tr></thead><tbody>
+      <tr><th scope="row">让 AI 更好地写作、整理资料</th><td><span class="fit book-fit">优先阅读</span>提示词章节可直接辅助实践</td><td><span class="fit neutral">直接价值较低</span>群体模拟并非这类任务的必要环节</td></tr>
+      <tr><th scope="row">开发个人或企业知识库问答</th><td><span class="fit book-fit">学习基础</span>理解检索增强与微调的区别</td><td><span class="fit neutral">通常不必引入</span>仍需另外实现资料检索与问答服务</td></tr>
+      <tr><th scope="row">研究群体行为、搭建虚拟社会</th><td><span class="fit neutral">补充背景</span>了解角色背后的模型与方法</td><td><span class="fit kernel-fit">重点研究</span>角色、环境、规则与实验管理相匹配</td></tr>
+      <tr><th scope="row">让多个 AI 分工完成工作</th><td><span class="fit neutral">理解方法</span>提供模型使用方面的基础知识</td><td><span class="fit neutral">需要额外开发</span>社会模拟框架不等于现成办公团队</td></tr>
+    </tbody></table></div>
+    <div class="starting-grid"><article><span class="category">如果你想先学会用 AI</span><h3>从一个真实任务开始</h3><p>先读第 3 章，尝试补充目标、示例和输出标准。涉及自己的文档时，再读第 6 章。比较修改前后的正确性与遗漏。</p></article><article><span class="category">如果你想做群体模拟</span><h3>先跑通一个小场景</h3><p>准备 Python 环境和模型接口，从官方单机示例入手。角色、行为和规则需要配置或开发；运行成本取决于模型调用与模拟规模。</p><a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/main/examples/standalone_test/README.md" target="_blank" rel="noopener noreferrer">官方单机示例 ↗</a></article></div>
+  </section>
+
+  <section id="directions" class="section">
+    <div class="section-kicker">PRODUCT DIRECTIONS / 我们的理解</div><h2>多角色交互，怎样变成有用的产品？</h2>
+    <p class="section-intro">让角色拥有不同信息、目标和资源，在互动中相互影响。产品价值来自可演练、可比较、可复盘的过程；以下是需要进一步开发和验证的方向。</p>
+    <div class="table-wrap"><table><caption class="sr-only">六种多角色产品方向及输出</caption><thead><tr><th scope="col">产品方向</th><th scope="col">角色怎样互动</th><th scope="col">用户得到什么</th></tr></thead><tbody>
+      <tr><th scope="row">沟通陪练<br><span class="fit kernel-fit">建议优先验证</span></th><td>真人与客户、采购、主管等 AI 角色沟通，发现诉求并处理分歧。</td><td>情境练习、对话回放、遗漏分析和有证据的改进建议。需要行业案例和评分标准。</td></tr>
+      <tr><th scope="row">AI 助手测试台<br><span class="fit kernel-fit">建议优先验证</span></th><td>虚拟用户提出请求，订单、库存、审批等角色或程序按规则响应。</td><td>失败案例、规则违反记录和版本对比。用业务状态与标准答案检查结果。</td></tr>
+      <tr><th scope="row">服务流程沙盘</th><td>顾客、员工、主管和供应商共同完成服务流程。</td><td>观察排队、交接冲突和资源瓶颈。需要实际业务数据校准。</td></tr>
+      <tr><th scope="row">协作与应急演练</th><td>各角色持有不同信息与职责，共同应对变化的事件。</td><td>信息遗漏、响应延误与复盘报告。情境和规则需要领域专家参与。</td></tr>
+      <tr><th scope="row">游戏 NPC 与剧情</th><td>有目标、关系和记忆的角色彼此互动，并回应玩家。</td><td>动态事件、人物关系和可变化剧情。重点控制一致性、延迟与成本。</td></tr>
+      <tr><th scope="row">方案与传播推演</th><td>模拟使用者、购买决策者、客服等角色，探索可能的疑问与冲突。</td><td>待验证的假设与潜在误解。不能替代真实用户研究或预测市场反应。</td></tr>
+    </tbody></table></div>
+    <div class="starting-grid"><article><span class="category">选择标准</span><h3>互动真实有必要，结果能够验证</h3><p>角色之间是否真的互相影响？结果能否通过规则、任务结果或真人表现验证？用户是否有反复培训、测试或演练的需求？</p></article><article><span class="category">从小场景开始</span><h3>明确规则交给程序，复杂交流交给 AI</h3><p>时间、库存、排队和权限由程序处理；模型参与语言、偏好与协商。先验证一个有明确目标的场景，再扩展规模。</p></article></div>
+    <p class="footnote">以上为产品研究判断，尚未验证业务效果与付费意愿。<a href="product-directions.md">阅读完整产品方向与验证思路</a>。</p>
+  </section>
+
+  <section id="sources" class="section sources">
+    <div class="section-kicker">05 / SOURCES & SCOPE</div><h2>可追溯的来源，清楚的边界</h2>
+    <p class="section-intro">本页是独立撰写的能力整理。已核对官方说明与论文；未部署上游框架、连接模型或复现社会模拟实验。</p>
+    <div class="source-grid"><a href="https://github.com/ZJU-LLMs/Foundations-of-LLMs/tree/1109bfa8e1c5b83fd25f66435601eef2a5905d5b" target="_blank" rel="noopener noreferrer"><span>01 / 教材仓库</span><strong>Foundations-of-LLMs ↗</strong><small>研究版本 1109bfa · 教材与目录</small></a><a href="https://github.com/ZJU-LLMs/Agent-Kernel/tree/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7" target="_blank" rel="noopener noreferrer"><span>02 / 框架仓库</span><strong>Agent-Kernel ↗</strong><small>研究版本 c14b6e5 · 架构与示例</small></a><a href="https://arxiv.org/abs/2512.01610" target="_blank" rel="noopener noreferrer"><span>03 / 框架论文</span><strong>Agent-Kernel 设计说明 ↗</strong><small>arXiv:2512.01610</small></a></div>
+    <details><summary>查看研究范围与许可信息</summary><p>本项目保存自行撰写的解读与教学示意，没有复制上游教材 PDF、框架源码或媒体。教材仓库标注 CC BY-NC-ND 4.0，Agent-Kernel 标注 Apache-2.0；需要使用上游内容时请查阅各自许可。</p><p><a href="https://github.com/ZJU-LLMs/Foundations-of-LLMs/blob/1109bfa8e1c5b83fd25f66435601eef2a5905d5b/LICENSE.md" target="_blank" rel="noopener noreferrer">教材许可 ↗</a> · <a href="https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/LICENSE" target="_blank" rel="noopener noreferrer">框架许可 ↗</a></p><p>“适合什么需求”和“建议阅读顺序”是本研究的判断；角色去食堂的五步过程是为解释架构编写的概念示例，不承诺具体上游场景已经实现这些细节。</p></details>
+  </section>
+  <footer><span>003 / 大模型教材与群体模拟</span><a href="#overview">回到顶部 ↑</a></footer>
+</main>
+</body></html>

@@ -53,6 +53,14 @@ def read_projects():
                 f"{directory.name}: name and summary are required")
         require(item["status"] in STATUSES, f"{directory.name}: invalid status")
         require(valid_url(item["source"]), f"{directory.name}: invalid source HTTPS URL")
+        related_sources = item.get("related_sources", [])
+        require(isinstance(related_sources, list)
+                and all(isinstance(source, str) and valid_url(source)
+                        for source in related_sources),
+                f"{directory.name}: related_sources must be a list of HTTPS URLs")
+        sources = [item["source"], *related_sources]
+        require(len(sources) == len(set(sources)),
+                f"{directory.name}: duplicate source URLs")
         require(not item["demo"] or valid_url(item["demo"]),
                 f"{directory.name}: invalid demo HTTPS URL")
         require(isinstance(item.get("tags"), list)
@@ -93,11 +101,14 @@ def render_readme(projects):
         name = md(item["name"])
         demo = f"[演示]({url(item['demo'])})" if item["demo"] else "—"
         tags = "、".join(md(tag) for tag in item["tags"]) or "—"
-        source = urlparse(item["source"])
-        source_name = unquote(source.path.rstrip("/").split("/")[-1]).removesuffix(".git") or source.hostname
+        source_links = []
+        for source_url in [item["source"], *item.get("related_sources", [])]:
+            source = urlparse(source_url)
+            source_name = unquote(source.path.rstrip("/").split("/")[-1]).removesuffix(".git") or source.hostname
+            source_links.append(f"[{md(source_name)}]({url(source_url)})")
         rows.append(f"| {item['id']} | [{name}]({directory}/README.md) | "
                     f"{md(item['summary'])} | {item['status']} | {tags} | "
-                    f"[{md(source_name)}]({url(item['source'])}) | {demo} |")
+                    f"{' · '.join(source_links)} | {demo} |")
         if item["cover"]:
             cards.append(f"### {item['id']} · [{name}]({directory}/README.md)\n\n"
                          f"{md(item['summary'])}\n\n"

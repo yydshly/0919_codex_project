@@ -34,3 +34,7 @@
 GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端。
 
 参考：[GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+
+## 003 · 大模型教材与群体模拟
+
+源码：`projects/003-llm-foundations-agent-kernel/site/`；构建：`python projects/003-llm-foundations-agent-kernel/scripts/build_web.py`；输出：`web/003-llm-foundations-agent-kernel/`。现有工作流已增加该构建步骤。2026-09-20 完成本地研究页，尚未推送或验证线上部署，元信息的 `demo` 留空。

@@ -1,0 +1,19 @@
+{
+  "id": "003",
+  "slug": "llm-foundations-agent-kernel",
+  "name": "大模型教材与群体模拟 · Foundations & Agent-Kernel",
+  "summary": "Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词、微调、模型编辑和 RAG；Agent-Kernel：用 AI 模拟多角色交互的开发框架，用于群体行为观察、模拟实验与协作评测。",
+  "source": "https://github.com/ZJU-LLMs/Foundations-of-LLMs",
+  "status": "已完成",
+  "tags": [
+    "大模型教材",
+    "多智能体",
+    "社会模拟",
+    "能力对比"
+  ],
+  "demo": "",
+  "cover": "assets/cover.png",
+  "related_sources": [
+    "https://github.com/ZJU-LLMs/Agent-Kernel"
+  ]
+}

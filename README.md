@@ -13,6 +13,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 001 | [Video Shotcraft · Remotion 动效素材合集](projects/001-video-shotcraft/README.md) | 基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。 | 已复现 | Remotion、素材复用、动效、交互展示 | [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | [演示](https://yydshly.github.io/0919_codex_project/001-video-shotcraft/) |
 | 002 | [BrightBean Studio · 多平台内容发布与运营后台](projects/002-brightbean-studio/README.md) | 可自建的内容编辑、审核、定时发布、互动与统计后台，提供 REST/MCP；支持 Facebook、Instagram、Threads、LinkedIn、TikTok、YouTube、Pinterest、Bluesky、Mastodon、DEV\.to 和 Google 商家资料（11 平台、13 种接入）。多数通过开发者应用凭证加账号授权接入；Bluesky 用应用密码，DEV\.to 用个人 API key，Mastodon 由程序自动注册 OAuth 应用。 | 已完成 | 社交媒体、定时发布、Django、MCP、源码研究 | [brightbean-studio](https://github.com/brightbeanxyz/brightbean-studio) | [演示](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/) |
+| 003 | [大模型教材与群体模拟 · Foundations &amp; Agent-Kernel](projects/003-llm-foundations-agent-kernel/README.md) | Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词、微调、模型编辑和 RAG；Agent-Kernel：用 AI 模拟多角色交互的开发框架，用于群体行为观察、模拟实验与协作评测。 | 已完成 | 大模型教材、多智能体、社会模拟、能力对比 | [Foundations-of-LLMs](https://github.com/ZJU-LLMs/Foundations-of-LLMs) · [Agent-Kernel](https://github.com/ZJU-LLMs/Agent-Kernel) | — |
 <!-- PROJECT_INDEX:END -->
 
 ## 项目图览
@@ -31,6 +32,12 @@
 可自建的内容编辑、审核、定时发布、互动与统计后台，提供 REST/MCP；支持 Facebook、Instagram、Threads、LinkedIn、TikTok、YouTube、Pinterest、Bluesky、Mastodon、DEV\.to 和 Google 商家资料（11 平台、13 种接入）。多数通过开发者应用凭证加账号授权接入；Bluesky 用应用密码，DEV\.to 用个人 API key，Mastodon 由程序自动注册 OAuth 应用。
 
 [![BrightBean Studio · 多平台内容发布与运营后台 项目截图](projects/002-brightbean-studio/assets/cover.png)](projects/002-brightbean-studio/README.md)
+
+### 003 · [大模型教材与群体模拟 · Foundations &amp; Agent-Kernel](projects/003-llm-foundations-agent-kernel/README.md)
+
+Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词、微调、模型编辑和 RAG；Agent-Kernel：用 AI 模拟多角色交互的开发框架，用于群体行为观察、模拟实验与协作评测。
+
+[![大模型教材与群体模拟 · Foundations &amp; Agent-Kernel 项目截图](projects/003-llm-foundations-agent-kernel/assets/cover.png)](projects/003-llm-foundations-agent-kernel/README.md)
 <!-- PROJECT_GALLERY:END -->
 
 ## 仓库结构

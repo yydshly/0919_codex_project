@@ -19,6 +19,7 @@
 | `name` | 展示名称 |
 | `summary` | 一句话用途与研究重点 |
 | `source` | 源库 HTTPS 链接；索引自动以 URL 中的库名作为链接文字，如 `video-shotcraft` |
+| `related_sources` | 可选的其他源库 HTTPS 链接数组；与 `source` 一起显示在索引的“源库”列，顺序保持不变，不允许重复 |
 | `status` | 待研究 / 研究中 / 已复现 / 已完成 / 已归档 |
 | `tags` | 技术或主题标签数组，可留空 |
 | `demo` | 已可访问的演示 HTTPS 链接；未部署时留空 |
