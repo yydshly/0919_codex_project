@@ -1,0 +1,11 @@
+{
+  "id": "001",
+  "slug": "video-shotcraft",
+  "name": "Video Shotcraft · Remotion 动效素材合集",
+  "summary": "基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。",
+  "source": "https://github.com/Vincentwei1021/video-shotcraft",
+  "status": "已复现",
+  "tags": ["Remotion", "素材复用", "动效", "交互展示"],
+  "demo": "",
+  "cover": "assets/cover.png"
+}

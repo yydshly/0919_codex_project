@@ -18,7 +18,7 @@
 | `slug` | 目录名称中的英文短名 |
 | `name` | 展示名称 |
 | `summary` | 一句话用途与研究重点 |
-| `source` | 上游仓库 HTTPS 链接 |
+| `source` | 源库 HTTPS 链接；索引自动以 URL 中的库名作为链接文字，如 `video-shotcraft` |
 | `status` | 待研究 / 研究中 / 已复现 / 已完成 / 已归档 |
 | `tags` | 技术或主题标签数组，可留空 |
 | `demo` | 已可访问的演示 HTTPS 链接；未部署时留空 |

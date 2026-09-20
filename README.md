@@ -6,10 +6,12 @@
 
 ## 项目索引
 
-编号按收录顺序递增，分配后保持不变。点击项目名称查看研究详情，点击上游查看原始仓库。
+编号按收录顺序递增，分配后保持不变。点击项目名称查看研究详情，点击源库名称查看原始仓库。
 
 <!-- PROJECT_INDEX:START -->
-暂无研究项目。首个项目将从 **001** 开始。
+| 编号 | 项目 | 摘要 | 状态 | 标签 | 源库 | 演示 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 001 | [Video Shotcraft · Remotion 动效素材合集](projects/001-video-shotcraft/README.md) | 基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。 | 已复现 | Remotion、素材复用、动效、交互展示 | [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | — |
 <!-- PROJECT_INDEX:END -->
 
 ## 项目图览
@@ -17,7 +19,11 @@
 每个子项目可以提供一张封面截图及简短描述，详细截图、操作步骤和结论收录在子项目 README 中。
 
 <!-- PROJECT_GALLERY:START -->
-添加项目封面后，这里会自动展示项目图片与摘要。
+### 001 · [Video Shotcraft · Remotion 动效素材合集](projects/001-video-shotcraft/README.md)
+
+基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。
+
+[![Video Shotcraft · Remotion 动效素材合集 项目截图](projects/001-video-shotcraft/assets/cover.png)](projects/001-video-shotcraft/README.md)
 <!-- PROJECT_GALLERY:END -->
 
 ## 仓库结构
@@ -32,7 +38,7 @@ projects/                    按编号组织的研究子项目
 templates/project/          新项目模板
 scripts/project.py          新增项目、同步首页与校验索引
 docs/                       收录规范与后续部署约定
-web/                        未来多个静态演示的发布目录
+web/                        已构建的静态演示与总入口
 ```
 
 ## 新增研究项目

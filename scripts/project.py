@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 import shutil
 import sys
-from urllib.parse import quote, urlparse
+from urllib.parse import quote, unquote, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -93,15 +93,17 @@ def render_readme(projects):
         name = md(item["name"])
         demo = f"[演示]({url(item['demo'])})" if item["demo"] else "—"
         tags = "、".join(md(tag) for tag in item["tags"]) or "—"
+        source = urlparse(item["source"])
+        source_name = unquote(source.path.rstrip("/").split("/")[-1]).removesuffix(".git") or source.hostname
         rows.append(f"| {item['id']} | [{name}]({directory}/README.md) | "
                     f"{md(item['summary'])} | {item['status']} | {tags} | "
-                    f"[上游]({url(item['source'])}) | {demo} |")
+                    f"[{md(source_name)}]({url(item['source'])}) | {demo} |")
         if item["cover"]:
             cards.append(f"### {item['id']} · [{name}]({directory}/README.md)\n\n"
                          f"{md(item['summary'])}\n\n"
                          f"[![{name} 项目截图]({url(directory + '/' + item['cover'])})]"
                          f"({directory}/README.md)")
-    index = ("| 编号 | 项目 | 摘要 | 状态 | 标签 | 上游 | 演示 |\n"
+    index = ("| 编号 | 项目 | 摘要 | 状态 | 标签 | 源库 | 演示 |\n"
              "| --- | --- | --- | --- | --- | --- | --- |\n" + "\n".join(rows)) if rows else (
                  "暂无研究项目。首个项目将从 **001** 开始。")
     gallery = "\n\n".join(cards) or "添加项目封面后，这里会自动展示项目图片与摘要。"
