@@ -22,13 +22,13 @@
 
 1. 推送到 `main` 或手动触发 **Deploy research demos**。
 2. 校验项目元信息与 README 索引。
-3. 使用 Node.js 22，在 Shotcraft 子项目执行 `npm ci` 和 `npm run build:web`。
+3. 构建 BrightBean 研究页：`python projects/002-brightbean-studio/scripts/build_web.py`；使用 Node.js 22，在 Shotcraft 子项目执行 `npm ci` 和 `npm run build:web`。
 4. 上传整个 `web/` 目录，由 GitHub Pages 发布。
 5. 验证总入口、子页面、静态资源和交互，检查部署任务结果。
 
 本地更新后同样运行 `npm run build:web`，将静态文件一并提交。CI 会从源码重新构建，MP4 使用仓库中已实测的预渲染版本；网页不会在线渲染或自动更新视频。
 
-新增子项目时，需要更新总入口并为对应项目添加构建步骤；现有工作流只自动构建 Shotcraft。浏览器路由优先使用 hash 路由，以免子页面刷新返回 404。
+新增子项目时，需要更新总入口并为对应项目添加构建步骤；现有工作流自动构建 Shotcraft 与 BrightBean 研究页。BrightBean 源码位于 `projects/002-brightbean-studio/site/`，输出至 `web/002-brightbean-studio/`，无第三方前端依赖；新增页面尚未推送或验证公网部署。浏览器路由优先使用 hash 路由，以免子页面刷新返回 404。
 
 GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端。
 

@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2360" viewBox="0 0 1800 2360" role="img" aria-labelledby="title desc">
+<title id="title">BrightBean Studio：能力、目标平台与接入方式引导图</title><desc id="desc">概括核心运营能力，列出十一平台十三种连接的功能矩阵、官方凭证入口、账号授权方式和主要限制。以自行部署为准。</desc>
+<style>text{font-family:"Microsoft YaHei","Noto Sans CJK SC","PingFang SC",sans-serif}a:hover text{text-decoration:underline}</style>
+<rect x="0" y="0" width="1800" height="2360" rx="0" fill="#f4f5ef"/>
+<text x="72" y="72" font-size="18" font-weight="600" fill="#235746" text-anchor="start">OPEN SOURCE RESEARCH / 002</text>
+<text x="1728" y="72" font-size="18" font-weight="400" fill="#68766b" text-anchor="end">2026.09.20 · 基于 f812ee4</text>
+<text x="72" y="141" font-size="51" font-weight="600" fill="#1b342d" text-anchor="start">BrightBean Studio 接入引导图</text>
+<text x="72" y="190" font-size="25" font-weight="400" fill="#68766b" text-anchor="start">先看能做什么，再选发布目标，最后找到凭证入口与授权路径。</text>
+<rect x="72" y="230" width="1656" height="210" rx="16" fill="#173e34"/>
+<text x="109" y="275" font-size="18" font-weight="400" fill="#aec4b1" text-anchor="start">01 / 你准备</text>
+<text x="109" y="326" font-size="30" font-weight="600" fill="#f3f5e9" text-anchor="start">文案 · 图片 · 视频</text>
+<text x="109" y="374" font-size="21" font-weight="400" fill="#bfd1bc" text-anchor="start">也可由外部 AI 辅助准备</text>
+<text x="447" y="337" font-size="42" font-weight="400" fill="#d8ef92" text-anchor="start">→</text>
+<text x="540" y="275" font-size="18" font-weight="400" fill="#aec4b1" text-anchor="start">02 / Studio 统一管理</text>
+<text x="540" y="325" font-size="29" font-weight="600" fill="#f3f5e9" text-anchor="start">编辑与素材  →  审核与排期  →  多平台发布</text>
+<text x="540" y="374" font-size="22" font-weight="400" fill="#bfd1bc" text-anchor="start">评论 / 私信管理 · 数据回收 · 团队协作 · REST / MCP</text>
+<text x="1343" y="337" font-size="42" font-weight="400" fill="#d8ef92" text-anchor="start">→</text>
+<text x="1430" y="275" font-size="18" font-weight="400" fill="#aec4b1" text-anchor="start">03 / 支持范围</text>
+<text x="1430" y="327" font-size="36" font-weight="600" fill="#d8ef92" text-anchor="start">11 个平台</text>
+<text x="1430" y="374" font-size="23" font-weight="400" fill="#bfd1bc" text-anchor="start">13 种接入方式</text>
+<text x="72" y="505" font-size="32" font-weight="600" fill="#1b342d" text-anchor="start">选择目标：支持哪些能力，凭证从哪里获取？</text>
+<text x="72" y="541" font-size="21" font-weight="400" fill="#68766b" text-anchor="start">以下按自行部署整理。应用凭证用于识别你的服务；账号授权决定它能替谁操作。</text>
+<rect x="72" y="575" width="1656" height="1156" rx="8" fill="#fffefa" stroke="#d9dfd2"/>
+<rect x="72" y="575" width="1656" height="64" rx="8" fill="#e5ebdb"/>
+<text x="99" y="615" font-size="23" font-weight="600" fill="#235746" text-anchor="start">目标平台 / 账号</text>
+<text x="444" y="615" font-size="21" font-weight="600" fill="#235746" text-anchor="middle">发布</text>
+<text x="507" y="615" font-size="21" font-weight="600" fill="#235746" text-anchor="middle">评论</text>
+<text x="570" y="615" font-size="21" font-weight="600" fill="#235746" text-anchor="middle">私信</text>
+<text x="633" y="615" font-size="21" font-weight="600" fill="#235746" text-anchor="middle">统计</text>
+<text x="720" y="615" font-size="23" font-weight="600" fill="#235746" text-anchor="start">凭证获取入口</text>
+<text x="1110" y="615" font-size="23" font-weight="600" fill="#235746" text-anchor="start">获取方式 → 连接目标账号</text>
+<text x="99" y="672" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Facebook</text>
+<text x="99" y="702" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">管理自己的 Page</text>
+<circle cx="444" cy="682" r="6" fill="#3f8054"/>
+<circle cx="507" cy="682" r="6" fill="#3f8054"/>
+<circle cx="570" cy="682" r="6" fill="#3f8054"/>
+<circle cx="633" cy="682" r="6" fill="#3f8054"/>
+<a href="https://developers.facebook.com/" target="_blank" rel="noreferrer">
+<text x="720" y="672" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Meta for Developers</text>
+<text x="720" y="702" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developers.facebook.com ↗</text>
+</a>
+<text x="1110" y="672" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">建 Meta 应用 → 取得 App ID / Secret</text>
+<text x="1110" y="702" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">配置权限与回调 → 管理员授权 Page</text>
+<path d="M73,723 L1727,723" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="723" width="1654" height="84" rx="0" fill="#f8f9f3"/>
+<text x="99" y="756" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Instagram</text>
+<text x="99" y="786" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">经 Facebook 连接</text>
+<circle cx="444" cy="766" r="6" fill="#3f8054"/>
+<circle cx="507" cy="766" r="6" fill="#3f8054"/>
+<circle cx="570" cy="766" r="6" fill="#3f8054"/>
+<circle cx="633" cy="766" r="6" fill="#3f8054"/>
+<a href="https://developers.facebook.com/" target="_blank" rel="noreferrer">
+<text x="720" y="756" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Meta for Developers</text>
+<text x="720" y="786" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developers.facebook.com ↗</text>
+</a>
+<text x="1110" y="756" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">使用 Facebook 应用凭证，配置 IG 权限</text>
+<text x="1110" y="786" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">专业账号关联 Page → 登录并授权</text>
+<path d="M73,807 L1727,807" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<text x="99" y="840" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Instagram Direct</text>
+<text x="99" y="870" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">直接连接专业账号</text>
+<circle cx="444" cy="850" r="6" fill="#3f8054"/>
+<circle cx="507" cy="850" r="6" fill="#3f8054"/>
+<circle cx="570" cy="850" r="6" fill="#3f8054"/>
+<circle cx="633" cy="850" r="6" fill="#3f8054"/>
+<a href="https://developers.facebook.com/" target="_blank" rel="noreferrer">
+<text x="720" y="840" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Meta / Instagram API</text>
+<text x="720" y="870" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developers.facebook.com ↗</text>
+</a>
+<text x="1110" y="840" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">取得 Instagram 专属 App ID / Secret</text>
+<text x="1110" y="870" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">专业账号直接授权；不要求关联 Page</text>
+<path d="M73,891 L1727,891" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="891" width="1654" height="84" rx="0" fill="#f8f9f3"/>
+<text x="99" y="924" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Threads</text>
+<text x="99" y="954" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">文字社交</text>
+<circle cx="444" cy="934" r="6" fill="#3f8054"/>
+<circle cx="507" cy="934" r="6" fill="#3f8054"/>
+<path d="M563,934 L577,934" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<circle cx="633" cy="934" r="6" fill="#3f8054"/>
+<a href="https://developers.facebook.com/" target="_blank" rel="noreferrer">
+<text x="720" y="924" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Meta / Threads API</text>
+<text x="720" y="954" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developers.facebook.com ↗</text>
+</a>
+<text x="1110" y="924" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">启用 Threads 用例，取得专属 ID / Secret</text>
+<text x="1110" y="954" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">单独配置回调 → 授权 Threads 账号</text>
+<path d="M73,975 L1727,975" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<text x="99" y="1008" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">LinkedIn · 个人</text>
+<text x="99" y="1038" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">个人发布与运营</text>
+<circle cx="444" cy="1018" r="6" fill="#3f8054"/>
+<text x="507" y="1026" font-size="34" font-weight="600" fill="#977535" text-anchor="middle">*</text>
+<path d="M563,1018 L577,1018" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<text x="633" y="1026" font-size="34" font-weight="600" fill="#977535" text-anchor="middle">*</text>
+<a href="https://developer.linkedin.com/" target="_blank" rel="noreferrer">
+<text x="720" y="1008" font-size="22" font-weight="500" fill="#235746" text-anchor="start">LinkedIn Developer</text>
+<text x="720" y="1038" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developer.linkedin.com ↗</text>
+</a>
+<text x="1110" y="1008" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">建应用 → 取得 Client ID / Secret</text>
+<text x="1110" y="1038" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">基础发布走登录 + 分享；评论/统计看权限*</text>
+<path d="M73,1059 L1727,1059" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="1059" width="1654" height="84" rx="0" fill="#f8f9f3"/>
+<text x="99" y="1092" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">LinkedIn · 公司</text>
+<text x="99" y="1122" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">公司主页运营</text>
+<circle cx="444" cy="1102" r="6" fill="#3f8054"/>
+<circle cx="507" cy="1102" r="6" fill="#3f8054"/>
+<path d="M563,1102 L577,1102" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<circle cx="633" cy="1102" r="6" fill="#3f8054"/>
+<a href="https://developer.linkedin.com/" target="_blank" rel="noreferrer">
+<text x="720" y="1092" font-size="22" font-weight="500" fill="#235746" text-anchor="start">LinkedIn Developer</text>
+<text x="720" y="1122" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developer.linkedin.com ↗</text>
+</a>
+<text x="1110" y="1092" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">关联公司 Page → 申请 Community Management</text>
+<text x="1110" y="1122" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">获批后取得凭证 → 有管理资格的用户授权</text>
+<path d="M73,1143 L1727,1143" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<text x="99" y="1176" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">TikTok</text>
+<text x="99" y="1206" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">海外短视频，不是抖音</text>
+<circle cx="444" cy="1186" r="6" fill="#3f8054"/>
+<path d="M500,1186 L514,1186" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M563,1186 L577,1186" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<circle cx="633" cy="1186" r="6" fill="#3f8054"/>
+<a href="https://developers.tiktok.com/" target="_blank" rel="noreferrer">
+<text x="720" y="1176" font-size="22" font-weight="500" fill="#235746" text-anchor="start">TikTok for Developers</text>
+<text x="720" y="1206" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developers.tiktok.com ↗</text>
+</a>
+<text x="1110" y="1176" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">建应用 + Login Kit + Content Posting API</text>
+<text x="1110" y="1206" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">取得 Client Key / Secret → 授权；公开发布需审核</text>
+<path d="M73,1227 L1727,1227" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="1227" width="1654" height="84" rx="0" fill="#f8f9f3"/>
+<text x="99" y="1260" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">YouTube</text>
+<text x="99" y="1290" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">自己的视频频道</text>
+<circle cx="444" cy="1270" r="6" fill="#3f8054"/>
+<circle cx="507" cy="1270" r="6" fill="#3f8054"/>
+<path d="M563,1270 L577,1270" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<circle cx="633" cy="1270" r="6" fill="#3f8054"/>
+<a href="https://console.cloud.google.com/" target="_blank" rel="noreferrer">
+<text x="720" y="1260" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Google Cloud Console</text>
+<text x="720" y="1290" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">console.cloud.google.com ↗</text>
+</a>
+<text x="1110" y="1260" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">建项目、启用 YouTube Data API，配置统计权限</text>
+<text x="1110" y="1290" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">创建 OAuth Client ID / Secret → 频道所有者授权</text>
+<path d="M73,1311 L1727,1311" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<text x="99" y="1344" font-size="21" font-weight="600" fill="#1b342d" text-anchor="start">Google Business Profile</text>
+<text x="99" y="1374" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">谷歌商家资料</text>
+<circle cx="444" cy="1354" r="6" fill="#3f8054"/>
+<path d="M500,1354 L514,1354" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M563,1354 L577,1354" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<circle cx="633" cy="1354" r="6" fill="#3f8054"/>
+<a href="https://console.cloud.google.com/" target="_blank" rel="noreferrer">
+<text x="720" y="1344" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Google Cloud Console</text>
+<text x="720" y="1374" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">console.cloud.google.com ↗</text>
+</a>
+<text x="1110" y="1344" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">申请 Business Profile API 访问并启用相关 API</text>
+<text x="1110" y="1374" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">OAuth 凭证 → 商家所有者 / 管理员授权</text>
+<path d="M73,1395 L1727,1395" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="1395" width="1654" height="84" rx="0" fill="#f8f9f3"/>
+<text x="99" y="1428" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Pinterest</text>
+<text x="99" y="1458" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">图片与视觉内容</text>
+<circle cx="444" cy="1438" r="6" fill="#3f8054"/>
+<path d="M500,1438 L514,1438" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M563,1438 L577,1438" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<circle cx="633" cy="1438" r="6" fill="#3f8054"/>
+<a href="https://developers.pinterest.com/" target="_blank" rel="noreferrer">
+<text x="720" y="1428" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Pinterest Developers</text>
+<text x="720" y="1458" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">developers.pinterest.com ↗</text>
+</a>
+<text x="1110" y="1428" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">建应用 → 取得 App ID / Secret</text>
+<text x="1110" y="1458" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">配置回调与权限 → 授权自己的账号</text>
+<path d="M73,1479 L1727,1479" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="1479" width="1654" height="84" rx="0" fill="#edf3e3"/>
+<path d="M73,1479 L1727,1479" fill="none" stroke="#91aa71" stroke-width="2"/>
+<text x="99" y="1512" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Bluesky</text>
+<text x="99" y="1542" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">不需预建开发者应用</text>
+<circle cx="444" cy="1522" r="6" fill="#3f8054"/>
+<circle cx="507" cy="1522" r="6" fill="#3f8054"/>
+<path d="M563,1522 L577,1522" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M626,1522 L640,1522" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<a href="https://bsky.app/" target="_blank" rel="noreferrer">
+<text x="720" y="1512" font-size="22" font-weight="500" fill="#235746" text-anchor="start">Bluesky 账号设置</text>
+<text x="720" y="1542" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">bsky.app ↗</text>
+</a>
+<text x="1110" y="1512" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">设置 → 隐私与安全 → App Passwords</text>
+<text x="1110" y="1542" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">创建应用密码 → 在 Studio 填账号标识与应用密码</text>
+<path d="M73,1563 L1727,1563" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="1563" width="1654" height="84" rx="0" fill="#edf3e3"/>
+<text x="99" y="1596" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">Mastodon</text>
+<text x="99" y="1626" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">不需预建开发者应用</text>
+<circle cx="444" cy="1606" r="6" fill="#3f8054"/>
+<circle cx="507" cy="1606" r="6" fill="#3f8054"/>
+<path d="M563,1606 L577,1606" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M626,1606 L640,1606" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<a href="https://docs.joinmastodon.org/methods/apps/" target="_blank" rel="noreferrer">
+<text x="720" y="1596" font-size="22" font-weight="500" fill="#235746" text-anchor="start">自己所在的 Mastodon 实例</text>
+<text x="720" y="1626" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">例如 mastodon.social ↗</text>
+</a>
+<text x="1110" y="1596" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">在 Studio 输入实例地址</text>
+<text x="1110" y="1626" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">Studio 自动注册 OAuth 应用 → 跳转登录授权</text>
+<path d="M73,1647 L1727,1647" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<rect x="73" y="1647" width="1654" height="84" rx="0" fill="#edf3e3"/>
+<text x="99" y="1680" font-size="24" font-weight="600" fill="#1b342d" text-anchor="start">DEV.to</text>
+<text x="99" y="1710" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">不需预建开发者应用</text>
+<circle cx="444" cy="1690" r="6" fill="#3f8054"/>
+<path d="M500,1690 L514,1690" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M563,1690 L577,1690" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<path d="M626,1690 L640,1690" fill="none" stroke="#a4aea0" stroke-width="2"/>
+<a href="https://dev.to/settings/extensions" target="_blank" rel="noreferrer">
+<text x="720" y="1680" font-size="22" font-weight="500" fill="#235746" text-anchor="start">DEV.to / Settings / Extensions</text>
+<text x="720" y="1710" font-size="18" font-weight="400" fill="#68766b" text-anchor="start">dev.to/settings/extensions ↗</text>
+</a>
+<text x="1110" y="1680" font-size="21" font-weight="400" fill="#1b342d" text-anchor="start">找到 DEV Community API Keys → 生成密钥</text>
+<text x="1110" y="1710" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">将个人 API key 填入 Studio 连接账号</text>
+<text x="72" y="1772" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">● 项目声明支持   — 未提供   * 依赖受限权限，不能按基础接入保证可用   ·   浅绿色三行无需预建开发者应用</text>
+<text x="72" y="1807" font-size="20" font-weight="400" fill="#8a6b36" text-anchor="start">LinkedIn 个人基础路径主要用于发布；官方文档注明 r_member_social 目前不接受新申请，评论等能力须核验。</text>
+<text x="72" y="1869" font-size="31" font-weight="600" fill="#1b342d" text-anchor="start">拿到凭证以后：接入顺序</text>
+<rect x="72" y="1900" width="384" height="133" rx="8" fill="#fffefa" stroke="#d9dfd2"/>
+<rect x="92" y="1921" width="30" height="30" rx="15" fill="#235746"/>
+<text x="107" y="1943" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">1</text>
+<text x="137" y="1944" font-size="25" font-weight="600" fill="#1b342d" text-anchor="start">准备账号与服务</text>
+<text x="92" y="1989" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">确认账号资格，部署 Studio</text>
+<text x="469" y="1973" font-size="25" font-weight="400" fill="#83986b" text-anchor="start">→</text>
+<rect x="496" y="1900" width="384" height="133" rx="8" fill="#fffefa" stroke="#d9dfd2"/>
+<rect x="516" y="1921" width="30" height="30" rx="15" fill="#235746"/>
+<text x="531" y="1943" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">2</text>
+<text x="561" y="1944" font-size="25" font-weight="600" fill="#1b342d" text-anchor="start">配置应用与回调</text>
+<text x="516" y="1989" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">后台或 .env 填凭证，申请权限</text>
+<text x="893" y="1973" font-size="25" font-weight="400" fill="#83986b" text-anchor="start">→</text>
+<rect x="920" y="1900" width="384" height="133" rx="8" fill="#fffefa" stroke="#d9dfd2"/>
+<rect x="940" y="1921" width="30" height="30" rx="15" fill="#235746"/>
+<text x="955" y="1943" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">3</text>
+<text x="985" y="1944" font-size="25" font-weight="600" fill="#1b342d" text-anchor="start">连接并授权账号</text>
+<text x="940" y="1989" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">OAuth 登录，或填应用密码 / key</text>
+<text x="1317" y="1973" font-size="25" font-weight="400" fill="#83986b" text-anchor="start">→</text>
+<rect x="1344" y="1900" width="384" height="133" rx="8" fill="#fffefa" stroke="#d9dfd2"/>
+<rect x="1364" y="1921" width="30" height="30" rx="15" fill="#235746"/>
+<text x="1379" y="1943" font-size="18" font-weight="600" fill="#fff" text-anchor="middle">4</text>
+<text x="1409" y="1944" font-size="25" font-weight="600" fill="#1b342d" text-anchor="start">验证一条真实内容</text>
+<text x="1364" y="1989" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">先草稿，再发布，再检查指标</text>
+<rect x="72" y="2070" width="1656" height="165" rx="10" fill="#e8edde"/>
+<text x="99" y="2114" font-size="25" font-weight="600" fill="#235746" text-anchor="start">接入前，记住这三点</text>
+<text x="99" y="2157" font-size="22" font-weight="600" fill="#1b342d" text-anchor="start">账号与凭证不同</text>
+<text x="99" y="2195" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">有账号不等于有 API 权限；先确认自己有管理资格。</text>
+<text x="701" y="2157" font-size="22" font-weight="600" fill="#1b342d" text-anchor="start">支持不等于免审核</text>
+<text x="701" y="2195" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">TikTok 公开发布、LinkedIn 等可能有额外门槛。</text>
+<text x="1275" y="2157" font-size="22" font-weight="600" fill="#1b342d" text-anchor="start">国内目标尚未接入</text>
+<text x="1275" y="2195" font-size="20" font-weight="400" fill="#68766b" text-anchor="start">抖音、小红书、B站、公众号等。</text>
+<path d="M72,2273 L1728,2273" fill="none" stroke="#dce2d5" stroke-width="1"/>
+<text x="72" y="2312" font-size="19" font-weight="400" fill="#68766b" text-anchor="start">来源：固定版本 README / providers + 平台官方文档。能力为项目声明，本次未授权账号或实测发布。</text>
+<a href="https://github.com/brightbeanxyz/brightbean-studio/blob/f812ee4e3c2c7186c7236a49f6eafb491137ac35/README.md#platform-credentials" target="_blank" rel="noreferrer">
+<text x="1728" y="2312" font-size="19" font-weight="500" fill="#235746" text-anchor="end">查看接入说明 ↗</text>
+</a></svg>

@@ -22,6 +22,8 @@ jobs:
           python-version: '3.10'
       - name: Validate research index
         run: python scripts/project.py check
+      - name: Build BrightBean research page
+        run: python projects/002-brightbean-studio/scripts/build_web.py
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
