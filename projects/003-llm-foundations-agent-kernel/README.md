@@ -2,7 +2,7 @@
 
 **Foundations-of-LLMs 是大模型相关文档与教材；Agent-Kernel 是用 AI 模拟多角色交互的开发框架。** 本项目把两个关联仓库放在一起研究，说明能力、原理、场景与实际价值。
 
-[返回总索引](../../README.md) · [教材仓库](https://github.com/ZJU-LLMs/Foundations-of-LLMs) · [框架仓库](https://github.com/ZJU-LLMs/Agent-Kernel) · [本地网页](http://127.0.0.1:5185/003-llm-foundations-agent-kernel/) · [网页源码](site/index.html)
+[返回总索引](../../README.md) · [教材仓库](https://github.com/ZJU-LLMs/Foundations-of-LLMs) · [框架仓库](https://github.com/ZJU-LLMs/Agent-Kernel) · [在线研究网页](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/) · [本地预览](http://127.0.0.1:5185/003-llm-foundations-agent-kernel/) · [网页源码](site/index.html)
 
 ## 研究版本与范围
 
@@ -20,7 +20,7 @@
 
 ## 交互研究网页
 
-**一图完整汇总：** [高清 PNG](assets/capability-overview.png) · [矢量 SVG](assets/capability-overview.svg) · [网页内查看](http://127.0.0.1:5185/003-llm-foundations-agent-kernel/#capability-map)。左侧包含教材六章核心主题；右侧包含框架结构、价值、场景与面板、回放、实验数据、评测四种结果呈现。
+**一图完整汇总：** [高清 PNG](assets/capability-overview.png) · [矢量 SVG](assets/capability-overview.svg) · [网页内查看](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/#capability-map)。左侧包含教材六章核心主题；右侧包含框架结构、价值、场景与面板、回放、实验数据、评测四种结果呈现。
 
 效果呈现核对了 [Society-Panel 文档](https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/society-panel/README.md) 和 [OpenHospital 文档](https://github.com/ZJU-LLMs/Agent-Kernel/blob/c14b6e59ab6df517238ae64e9a9b0ac1a7bb3be7/demo/OpenHospital/README.md)。Society-Panel 目前只支持分布式版；医院的轨迹回放和评测属于具体示例，不能扩展成所有场景都有同样界面与指标。
 
@@ -75,7 +75,7 @@ python projects/003-llm-foundations-agent-kernel/scripts/build_web.py
 python -m http.server 5185 --bind 127.0.0.1 --directory web
 ```
 
-打开 `http://127.0.0.1:5185/003-llm-foundations-agent-kernel/`。本页适配 GitHub Pages 子路径；构建输出为 `web/003-llm-foundations-agent-kernel/`，总入口和现有发布工作流已接入本项目。推送到主分支后由现有工作流发布；线上验证通过后，才填写 `project.json` 的 `demo`。
+打开 `http://127.0.0.1:5185/003-llm-foundations-agent-kernel/`。本页适配 GitHub Pages 子路径；构建输出为 `web/003-llm-foundations-agent-kernel/`，总入口和现有发布工作流已接入本项目。已通过 GitHub Pages 发布至 [在线研究页](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/)。2026-09-20 验证主页面、总览图、产品方向文档、章节与流程交互正常，`project.json` 的 `demo` 已记录正式地址。
 
 ## 来源与许可
 

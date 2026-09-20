@@ -11,7 +11,7 @@
     "社会模拟",
     "能力对比"
   ],
-  "demo": "",
+  "demo": "https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/",
   "cover": "assets/cover.png",
   "related_sources": [
     "https://github.com/ZJU-LLMs/Agent-Kernel"

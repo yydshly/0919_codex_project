@@ -37,4 +37,4 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 
 ## 003 · 大模型教材与群体模拟
 
-源码：`projects/003-llm-foundations-agent-kernel/site/`；构建：`python projects/003-llm-foundations-agent-kernel/scripts/build_web.py`；输出：`web/003-llm-foundations-agent-kernel/`。现有工作流已增加该构建步骤。2026-09-20 完成本地研究页，尚未推送或验证线上部署，元信息的 `demo` 留空。
+源码：`projects/003-llm-foundations-agent-kernel/site/`；构建：`python projects/003-llm-foundations-agent-kernel/scripts/build_web.py`；输出：`web/003-llm-foundations-agent-kernel/`。现有工作流已增加该构建步骤。2026-09-20 已发布并验证 [003 在线研究页](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/)、总览 PNG / SVG、产品方向文档与交互；元信息的 `demo` 已填写。
