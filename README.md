@@ -51,7 +51,7 @@ Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词�
 
 获取 YouTube 视频，经过字幕识别、翻译、烧录或转码等处理后，发布到 A 站（AcFun）或 B 站（bilibili）；支持单平台或双平台发布。
 
-[![Y2A-Auto · YouTube 视频处理与 A/B 站发布 项目截图](projects/005-y2a-auto/assets/capability-overview.svg)](projects/005-y2a-auto/README.md)
+[![Y2A-Auto · YouTube 视频处理与 A/B 站发布 项目截图](projects/005-y2a-auto/assets/y2a-auto-panorama.png)](projects/005-y2a-auto/README.md)
 <!-- PROJECT_GALLERY:END -->
 
 ## 仓库结构
