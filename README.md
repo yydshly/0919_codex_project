@@ -15,6 +15,7 @@
 | 002 | [BrightBean Studio · 多平台内容发布与运营后台](projects/002-brightbean-studio/README.md) | 可自建的内容编辑、审核、定时发布、互动与统计后台，提供 REST/MCP；支持 Facebook、Instagram、Threads、LinkedIn、TikTok、YouTube、Pinterest、Bluesky、Mastodon、DEV\.to 和 Google 商家资料（11 平台、13 种接入）。多数通过开发者应用凭证加账号授权接入；Bluesky 用应用密码，DEV\.to 用个人 API key，Mastodon 由程序自动注册 OAuth 应用。 | 已完成 | 社交媒体、定时发布、Django、MCP、源码研究 | [brightbean-studio](https://github.com/brightbeanxyz/brightbean-studio) | [演示](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/) |
 | 003 | [大模型教材与群体模拟 · Foundations &amp; Agent-Kernel](projects/003-llm-foundations-agent-kernel/README.md) | Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词、微调、模型编辑和 RAG；Agent-Kernel：用 AI 模拟多角色交互的开发框架，用于群体行为观察、模拟实验与协作评测。 | 已完成 | 大模型教材、多智能体、社会模拟、能力对比 | [Foundations-of-LLMs](https://github.com/ZJU-LLMs/Foundations-of-LLMs) · [Agent-Kernel](https://github.com/ZJU-LLMs/Agent-Kernel) | [演示](https://yydshly.github.io/0919_codex_project/003-llm-foundations-agent-kernel/) |
 | 004 | [Blinko · Markdown 笔记记录软件](projects/004-blinko/README.md) | 支持 Markdown 的笔记记录软件，可保存文字、链接、待办和附件，围绕记录提供整理、检索、总结与 AI 问答。与 ReflectFlow 在记录及基于记录的处理上有重叠；已本地部署并验证基础笔记功能，AI 尚未配置。 | 已复现 | 个人笔记、RAG、AI、自部署、TypeScript | [blinko](https://github.com/blinkospace/blinko) | [演示](https://yydshly.github.io/0919_codex_project/004-blinko/) |
+| 005 | [Y2A-Auto · YouTube 视频处理与 A/B 站发布](projects/005-y2a-auto/README.md) | 获取 YouTube 视频，经过字幕识别、翻译、烧录或转码等处理后，发布到 A 站（AcFun）或 B 站（bilibili）；支持单平台或双平台发布。 | 已完成 | 视频搬运、YouTube、AcFun、bilibili、ASR、字幕翻译、自动化、自部署、Python、Flask、Docker、yt-dlp | [Y2A-Auto](https://github.com/fqscfqj/Y2A-Auto) | [演示](https://yydshly.github.io/0919_codex_project/005-y2a-auto/) |
 <!-- PROJECT_INDEX:END -->
 
 ## 项目图览
@@ -45,6 +46,12 @@ Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词�
 支持 Markdown 的笔记记录软件，可保存文字、链接、待办和附件，围绕记录提供整理、检索、总结与 AI 问答。与 ReflectFlow 在记录及基于记录的处理上有重叠；已本地部署并验证基础笔记功能，AI 尚未配置。
 
 [![Blinko · Markdown 笔记记录软件 项目截图](projects/004-blinko/assets/cover.png)](projects/004-blinko/README.md)
+
+### 005 · [Y2A-Auto · YouTube 视频处理与 A/B 站发布](projects/005-y2a-auto/README.md)
+
+获取 YouTube 视频，经过字幕识别、翻译、烧录或转码等处理后，发布到 A 站（AcFun）或 B 站（bilibili）；支持单平台或双平台发布。
+
+[![Y2A-Auto · YouTube 视频处理与 A/B 站发布 项目截图](projects/005-y2a-auto/assets/capability-overview.svg)](projects/005-y2a-auto/README.md)
 <!-- PROJECT_GALLERY:END -->
 
 ## 仓库结构
