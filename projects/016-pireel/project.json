@@ -1,0 +1,19 @@
+{
+  "id": "016",
+  "slug": "pireel",
+  "name": "Pireel · AI 视频剪辑能力实验室",
+  "summary": "Pireel 把视频、图片、声音和动态图文组织成可修改的时间线并导出成片；页面说明依赖、原理、场景，并展示原版 45 秒剪成 28 秒的实测。",
+  "source": "https://github.com/pireel/pireel",
+  "related_sources": [
+    "https://github.com/pireel/pireel-agent"
+  ],
+  "status": "已复现",
+  "tags": [
+    "视频剪辑",
+    "MCP",
+    "动态图形",
+    "浏览器导出"
+  ],
+  "demo": "https://yydshly.github.io/0919_codex_project/016-pireel/",
+  "cover": "assets/pireel-overview-preview.png"
+}

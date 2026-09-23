@@ -1,0 +1,38 @@
+[
+  {
+    "keep": false,
+    "text": "大家好，今天我想介绍一个工具。稍等一下，我先想想从哪里说起。",
+    "title": "拖沓开场",
+    "id": "intro"
+  },
+  {
+    "keep": true,
+    "text": "这是一个叫 Blinko 的笔记工具。随手记录想法，也能用 Markdown 写清单和笔记。",
+    "title": "随手记录",
+    "id": "record"
+  },
+  {
+    "keep": true,
+    "text": "给笔记加上标签，零散的信息就能按主题整理。",
+    "title": "按主题整理",
+    "id": "tags"
+  },
+  {
+    "keep": true,
+    "text": "需要的时候，输入关键词，就能找回之前的记录。",
+    "title": "关键词找回",
+    "id": "search"
+  },
+  {
+    "keep": true,
+    "text": "记录，整理，找回。把它当成你的个人知识收集箱。",
+    "title": "明确结尾",
+    "id": "outro"
+  },
+  {
+    "keep": false,
+    "text": "好，今天大概就讲到这里。嗯，我再检查一下有没有遗漏。",
+    "title": "无效结尾",
+    "id": "tail"
+  }
+]
