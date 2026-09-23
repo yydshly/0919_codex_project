@@ -42,6 +42,8 @@ jobs:
         run: python projects/010-ziwei-doushu/scripts/build_web.py
       - name: Build VoxCPM2 research page
         run: python projects/017-voxcpm/scripts/build_web.py
+      - name: Build Shadowrocket Rules research page
+        run: python projects/013-shadowrocket-rules/scripts/build_web.py
       - uses: actions/setup-node@v6
         with:
           node-version: '22'

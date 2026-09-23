@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2200" viewBox="0 0 1600 2200" role="img" aria-labelledby="title desc">
+<title id="title">一张图读懂 Shadowrocket 规则库：能力、配置生效、广告拦截与适用边界</title>
+<desc id="desc">上游名单经仓库脚本整理生成配置，客户端导入并启用配置；另一条路径由系统 VPN 或 TUN 将应用流量接入客户端。规则引擎据此决定直连、代理或拒绝。广告名单主要用于拒绝，代理黑白名单用于选路。仓库节省名单维护工作，不提供节点或网关引擎，配置不能供所有 VPN 直接使用。</desc>
+<defs>
+<marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#7b8ca8"/></marker>
+<marker id="policy-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#235fe4"/></marker>
+</defs>
+<style>text{font-family:'Microsoft YaHei','Noto Sans CJK SC',sans-serif}.mono{font-family:Consolas,'Courier New',monospace}</style>
+<rect width="1600" height="2200" fill="#f4f7fc"/>
+
+<text x="60" y="59" font-size="20" fill="#235fe4" font-weight="700" text-anchor="start">开源项目研究  /  013</text>
+<text x="60" y="125" font-size="46" fill="#17253e" font-weight="700" text-anchor="start">一张图读懂：Shadowrocket 规则库</text>
+<text x="60" y="164" font-size="21" fill="#52647e" font-weight="400" text-anchor="start">Shadowrocket-ADBlock-Rules-Forever  ·  能力 / 配置生效 / 流量接入 / 使用价值</text>
+<rect x="60" y="194" width="1480" height="93" rx="14" fill="#e7efff" stroke="#d4e2fc"/>
+<text x="85" y="232" font-size="29" fill="#204f9d" font-weight="700" text-anchor="start">本质：维护好的名单 + 规则转换脚本 + 持续生成的配置文件</text>
+<text x="85" y="267" font-size="24" fill="#52647e" font-weight="400" text-anchor="start">仓库提供处理依据；Shadowrocket 接收流量并执行；代理节点提供网络出口。</text>
+<text x="60" y="337" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start" class="mono">01</text>
+<text x="114" y="337" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">配置怎么来：仓库负责整理和生成</text>
+<rect x="60" y="366" width="370" height="188" rx="14" fill="#fff" stroke="#dce4ef"/>
+<text x="86" y="407" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">上游名单</text>
+<text x="86" y="450" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">广告 / 部分跟踪域名</text>
+<text x="86" y="484" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">代理与直连站点、人工例外</text>
+<text x="86" y="518" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">如 EasyList、GFWList</text>
+<path d="M440 461H483" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="500" y="366" width="438" height="188" rx="14" fill="#fff" stroke="#dce4ef"/>
+<text x="525" y="407" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">Python 脚本与模板</text>
+<text x="525" y="450" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">拉取 → 提取域名/IP → 去重</text>
+<text x="525" y="484" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">合并人工规则，组合不同策略</text>
+<text x="525" y="518" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">自动构建 / 懒人配置另行同步</text>
+<path d="M949 461H991" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1008" y="366" width="532" height="188" rx="14" fill="#edf3ff" stroke="#a9c3f5"/>
+<text x="1034" y="407" font-size="28" fill="#235fe4" font-weight="700" text-anchor="start">.conf 配置文件</text>
+<text x="1034" y="450" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">分流：黑名单 / 白名单 / 国内外划分</text>
+<text x="1034" y="484" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">拦截：广告 REJECT 规则</text>
+<text x="1034" y="518" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">其他：回国、直连去广告、策略组</text>
+<path d="M1275 554V593H905V765" fill="none" stroke="#235fe4" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#policy-arrow)"/>
+<rect x="956" y="571" width="486" height="44" rx="0" fill="#f4f7fc" stroke="#f4f7fc"/>
+<text x="964" y="600" font-size="22" fill="#235fe4" font-weight="600" text-anchor="start">导入 / 更新并启用 → 加载为策略</text>
+<text x="60" y="649" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start" class="mono">02</text>
+<text x="114" y="649" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">配置怎么生效：两条输入，汇合到引擎</text>
+<rect x="60" y="678" width="1480" height="386" rx="14" fill="#fff" stroke="#dce4ef"/>
+<path d="M905 678V765" fill="none" stroke="#235fe4" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#policy-arrow)"/>
+<text x="88" y="718" font-size="20" fill="#52647e" font-weight="400" text-anchor="start">实线 = 网络请求的处理方向</text>
+<text x="448" y="718" font-size="20" fill="#235fe4" font-weight="400" text-anchor="start">虚线 = 配置加载关系</text>
+<rect x="90" y="808" width="232" height="130" rx="14" fill="#f2f5fa" stroke="#dce4ef"/>
+<text x="206" y="850" font-size="25" fill="#17253e" font-weight="700" text-anchor="middle">App / 浏览器</text>
+<text x="206" y="890" font-size="23" fill="#52647e" font-weight="400" text-anchor="middle">发出网络请求</text>
+<path d="M327 873H377" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="390" y="808" width="293" height="130" rx="14" fill="#f2f5fa" stroke="#dce4ef"/>
+<text x="536" y="850" font-size="25" fill="#17253e" font-weight="700" text-anchor="middle">系统网络接入</text>
+<text x="536" y="890" font-size="22" fill="#52647e" font-weight="400" text-anchor="middle">iOS VPN / TUN 架构</text>
+<path d="M689 873H734" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="748" y="775" width="314" height="186" rx="14" fill="#e9f1ff" stroke="#8eb2f5"/>
+<text x="905" y="824" font-size="29" fill="#235fe4" font-weight="700" text-anchor="middle">Shadowrocket</text>
+<text x="905" y="861" font-size="23" fill="#17253e" font-weight="700" text-anchor="middle">规则匹配与执行引擎</text>
+<text x="905" y="900" font-size="20" fill="#52647e" font-weight="400" text-anchor="middle">域名 / IP / 地区 / 优先级</text>
+<text x="905" y="936" font-size="21" fill="#52647e" font-weight="400" text-anchor="middle">未命中 → 默认策略</text>
+<path d="M1067 871H1114" fill="none" stroke="#7b8ca8" stroke-width="3"/>
+<path d="M1114 871V761H1167" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M1114 871H1167" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M1114 871V981H1167" fill="none" stroke="#7b8ca8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1180" y="724" width="332" height="83" rx="10" fill="#e9f6ef" stroke="#e9f6ef"/>
+<text x="1203" y="757" font-size="24" fill="#14725e" font-weight="700" text-anchor="start">DIRECT · 直连</text>
+<text x="1203" y="788" font-size="21" fill="#52647e" font-weight="400" text-anchor="start">本机 → 目标服务</text>
+<rect x="1180" y="834" width="332" height="83" rx="10" fill="#edf3ff" stroke="#edf3ff"/>
+<text x="1203" y="867" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start">PROXY · 代理</text>
+<text x="1203" y="898" font-size="21" fill="#52647e" font-weight="400" text-anchor="start">本机 → 自备节点 → 目标</text>
+<rect x="1180" y="944" width="332" height="83" rx="10" fill="#fff0f3" stroke="#fff0f3"/>
+<text x="1203" y="977" font-size="24" fill="#b63855" font-weight="700" text-anchor="start">REJECT · 拒绝</text>
+<text x="1203" y="1008" font-size="21" fill="#52647e" font-weight="400" text-anchor="start">阻止匹配的连接或请求</text>
+<text x="91" y="1023" font-size="24" fill="#17253e" font-weight="700" text-anchor="start">加载配置 ≠ 接入流量：配置告诉引擎怎么处理；系统机制把流量交给客户端。</text>
+<text x="62" y="1102" font-size="20" fill="#52647e" font-weight="400" text-anchor="start">接入层为架构示意：Apple NetworkExtension 提供此类 VPN/TUN 能力；本库不含客户端接入或转发引擎源码。</text>
+<text x="62" y="1132" font-size="20" fill="#52647e" font-weight="400" text-anchor="start">本库不提供函数 Hook 或 BPF 程序；图中不据此断言 Shadowrocket 内部具体类、协议栈和转发实现。</text>
+<rect x="60" y="1170" width="710" height="315" rx="14" fill="#fff" stroke="#dce4ef"/>
+<text x="85" y="1214" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start" class="mono">03</text>
+<text x="139" y="1214" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">广告如何拦截</text>
+<text x="86" y="1257" font-size="24" fill="#b63855" font-weight="700" text-anchor="start">广告域名/IP 命中名单 → REJECT</text>
+<rect x="86" y="1277" width="658" height="47" rx="6" fill="#f1f4f9" stroke="#f1f4f9"/>
+<text x="103" y="1308" font-size="22" fill="#17253e" font-weight="400" text-anchor="start" class="mono">DOMAIN-SUFFIX,ads.example.test,REJECT</text>
+<text x="86" y="1363" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">广告资源获取被阻止 → 广告可能不再显示</text>
+<text x="86" y="1399" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">例外规则减少误拦截，具体结果取决于优先级。</text>
+<text x="86" y="1435" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">基础域名/IP 拦截不要求解密 HTTPS 正文。</text>
+<text x="87" y="1461" font-size="18" fill="#52647e" font-weight="400" text-anchor="start">示例域名仅用于教学，不进行真实访问。</text>
+<rect x="800" y="1170" width="740" height="315" rx="14" fill="#fff" stroke="#dce4ef"/>
+<text x="826" y="1214" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start" class="mono">04</text>
+<text x="880" y="1214" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">三种名单，含义不同</text>
+<text x="826" y="1259" font-size="24" fill="#b63855" font-weight="700" text-anchor="start">广告黑名单</text>
+<text x="1004" y="1259" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">命中 → 拒绝请求</text>
+<text x="826" y="1324" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start">代理黑名单</text>
+<text x="1004" y="1324" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">命中 → 代理；其余通常直连</text>
+<text x="826" y="1389" font-size="24" fill="#14725e" font-weight="700" text-anchor="start">直连白名单</text>
+<text x="1004" y="1389" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">命中 → 直连；其余通常代理</text>
+<text x="826" y="1457" font-size="22" fill="#17253e" font-weight="600" text-anchor="start">“黑名单”不总是禁止访问；分流名单用来选路。</text>
+<rect x="60" y="1515" width="710" height="365" rx="14" fill="#fff" stroke="#dce4ef"/>
+<text x="85" y="1560" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start" class="mono">05</text>
+<text x="139" y="1560" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">适用场景与生效步骤</text>
+<text x="86" y="1606" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">已有小火箭：国内外服务分流，减少手动切换。</text>
+<text x="86" y="1643" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">只想去广告：选择“直连 + 去广告”。</text>
+<text x="86" y="1680" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">多个节点：策略组按服务选择出口。</text>
+<text x="86" y="1717" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">人在海外：回国规则配合已有的国内出口。</text>
+<path d="M86 1748H743" fill="none" stroke="#7b8ca8" stroke-width="3"/>
+<text x="86" y="1788" font-size="23" fill="#235fe4" font-weight="600" text-anchor="start">选配置 → 导入客户端 → 启用 → 检查常用服务</text>
+<text x="86" y="1828" font-size="21" fill="#52647e" font-weight="400" text-anchor="start">代理模式需可用节点；直连去广告可不依赖节点。</text>
+<text x="86" y="1860" font-size="21" fill="#52647e" font-weight="400" text-anchor="start">仓库更新后，客户端仍需刷新配置。</text>
+<rect x="800" y="1515" width="740" height="365" rx="14" fill="#fff" stroke="#dce4ef"/>
+<text x="826" y="1560" font-size="24" fill="#235fe4" font-weight="700" text-anchor="start" class="mono">06</text>
+<text x="880" y="1560" font-size="28" fill="#17253e" font-weight="700" text-anchor="start">通用性与技术边界</text>
+<text x="826" y="1606" font-size="25" fill="#235fe4" font-weight="700" text-anchor="start">名单可参考，配置不对所有 VPN 通用。</text>
+<text x="826" y="1652" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">换客户端 / 网关：转换格式，核对支持能力，</text>
+<text x="826" y="1690" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">再检查 DNS、例外规则和匹配优先级。</text>
+<text x="826" y="1728" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">同域广告、视频内嵌广告不保证准确拦截。</text>
+<text x="826" y="1766" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">无法完整替代浏览器元素隐藏与复杂过滤。</text>
+<text x="826" y="1804" font-size="22" fill="#52647e" font-weight="400" text-anchor="start">它不提供代理节点、VPN 协议或完整网关。</text>
+<rect x="60" y="1912" width="1480" height="128" rx="14" fill="#101c32" stroke="#101c32"/>
+<text x="88" y="1956" font-size="28" fill="#f1f6ff" font-weight="700" text-anchor="start">真正的价值：把零散名单维护成可用配置，节省人工整理和更新的成本。</text>
+<text x="88" y="2006" font-size="24" fill="#bfcee5" font-weight="400" text-anchor="start">记住分工：仓库管规则    ·    客户端接入并执行    ·    节点提供出口    ·    配置需要持续更新</text>
+<text x="60" y="2081" font-size="19" fill="#52647e" font-weight="400" text-anchor="start">依据：上游 README、ad.py、build_confs.py、配置模板，以及 Apple NetworkExtension 官方文档。</text>
+<a href="https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever">
+<text x="60" y="2116" font-size="19" fill="#235fe4" font-weight="400" text-anchor="start">github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever</text>
+</a><a href="https://developer.apple.com/documentation/networkextension/nepackettunnelprovider">
+<text x="60" y="2147" font-size="19" fill="#235fe4" font-weight="400" text-anchor="start">Apple：NEPacketTunnelProvider 接口文档 ↗</text>
+</a>
+<text x="60" y="2180" font-size="18" fill="#52647e" font-weight="400" text-anchor="start">整理日期 2026-09-22  ·  基于源码与公开资料的技术说明，未作 iOS 真机拦截测试  ·  CC BY-SA 4.0</text>
+</svg>

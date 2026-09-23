@@ -1,0 +1,17 @@
+{
+  "id": "013",
+  "slug": "shadowrocket-rules",
+  "name": "Shadowrocket Rules · 分流与广告过滤",
+  "summary": "把广告名单、代理黑名单与直连白名单整理成 Shadowrocket 配置：按域名或 IP 决定直连、代理、拒绝，并持续生成更新；价值在于减少手工维护，其他客户端需适配格式。",
+  "source": "https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever",
+  "status": "已完成",
+  "tags": [
+    "Shadowrocket",
+    "网络分流",
+    "广告过滤",
+    "Python",
+    "源码研究"
+  ],
+  "demo": "https://yydshly.github.io/0919_codex_project/013-shadowrocket-rules/",
+  "cover": "assets/cover.png"
+}

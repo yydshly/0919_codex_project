@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Shadowrocket Rules · 能力与技术说明</title>
+  <meta name="description" content="一页读懂 Shadowrocket 规则库：广告名单、代理黑名单与直连白名单如何生成 .conf 配置，客户端如何加载并完成直连、代理或拦截，以及它的实际价值。">
+  <meta name="theme-color" content="#101c32">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23101c32'/%3E%3Cpath d='M10 28V12h9m-9 8h20m-11-8h11m-11 16h11' fill='none' stroke='%238fbaff' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css"><script defer src="./app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳转到正文</a>
+<aside class="sidebar">
+  <a class="collection" href="../"><span class="mark" aria-hidden="true">R /</span><span>开源项目研究集<small>RESEARCH LIBRARY</small></span></a>
+  <div class="side-project"><span class="eyebrow">研究档案 / 013</span><strong>Shadowrocket<br>Rules</strong><span class="side-sub">分流与广告过滤</span></div>
+  <nav aria-label="章节导航">
+    <a href="#overview" class="active" aria-current="location"><span>01</span> 能力总览</a>
+    <a href="#understanding-map"><span>图</span> 一图读懂全貌</a>
+    <a href="#modes"><span>02</span> 配置与使用场景</a>
+    <a href="#mechanism"><span>03</span> 请求如何被处理</a>
+    <a href="#pipeline"><span>04</span> 规则如何生成</a>
+    <a href="#limits"><span>05</span> 效果与技术边界</a>
+    <a href="#value"><span>06</span> 对我的实际意义</a>
+    <a href="#sources"><span>07</span> 源码与研究依据</a>
+  </nav>
+  <div class="side-bottom"><span>源码研究 · 2026.09.22</span><p>静态说明与教学示意<br>未在 iOS 真机验证拦截效果</p><a href="https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever" target="_blank" rel="noreferrer">查看上游仓库 ↗</a></div>
+</aside>
+<div class="page">
+  <header class="topbar"><span>项目研究 / <b>网络工具</b></span><a href="#sources">查看研究依据 <span aria-hidden="true">↗</span></a></header>
+  <main id="main">
+    <section id="overview" class="intro">
+      <div class="eyebrow"><span class="pill">TECHNICAL BRIEF</span> SHADOWROCKET-ADBLOCK-RULES-FOREVER</div>
+      <h1>用一份配置，说明<br>请求该怎么处理。</h1>
+      <p class="lead">这个库把<strong>广告名单、代理黑名单与直连白名单</strong>整理成 Shadowrocket 的 <strong>.conf 配置</strong>。客户端加载后，按目标域名或 IP 决定直连、走代理，或拒绝请求。它的主要价值是持续整理名单，减少手工维护。</p>
+      <div class="scope-line"><span>交付物：<b>.conf 规则文件</b></span><span>执行端：<b>Shadowrocket</b></span><span>代理出口：<b>需自行提供</b></span></div>
+      <div class="overview-grid">
+        <article class="cap"><span class="cap-code">01 / ROUTING</span><h2>用黑白名单分流</h2><p>代理黑名单通常命中走代理；直连白名单通常命中直连。未命中的请求按所选配置的默认策略处理。</p><span class="tag">决定 DIRECT 或 PROXY</span></article>
+        <article class="cap"><span class="cap-code">02 / BLOCKING</span><h2>用广告名单拦截</h2><p>广告域名或 IP 命中拒绝规则时，由 Shadowrocket 阻止请求；它与“代理黑名单”是两种不同用途的名单。</p><span class="tag">决定 REJECT</span></article>
+        <article class="cap"><span class="cap-code">03 / MAINTENANCE</span><h2>生成并更新配置</h2><p>脚本汇总上游名单、去重并合并人工例外，再按模板生成不同模式的配置；客户端需自行更新并启用。</p><span class="tag">降低规则维护成本</span></article>
+      </div>
+      <div class="note"><span class="note-label">先分清三件事</span><p><b>规则决定怎么走，客户端负责执行，节点提供出口。</b> 单独下载这个仓库不会获得代理服务，也不会自动改变设备上的网络设置。</p></div>
+    </section>
+
+    <section id="understanding-map">
+      <div class="section-heading"><span class="section-no">图</span><div><h2>一张图，串起我们的理解</h2><p>配置提供策略，系统接入流量，客户端引擎执行。沿两条路径看清职责与生效过程。</p></div></div>
+      <figure class="understanding-map">
+        <a href="./capability-overview.svg" target="_blank" rel="noreferrer" aria-label="打开可放大的完整能力原理图"><img src="./capability-overview.svg" width="1600" height="2200" alt="Shadowrocket 规则库总览：上游名单经脚本生成配置，客户端加载并启用；系统 VPN/TUN 接入应用流量，规则引擎匹配后直连、代理或拒绝。广告黑名单用于拒绝，分流黑白名单用于选路。图中同时说明生效步骤、使用价值、通用性与局限。" loading="lazy"></a>
+        <figcaption>点击图片可打开原图放大查看。实线表示网络请求的处理方向，虚线表示配置加载关系。</figcaption>
+      </figure>
+      <div class="map-downloads"><a href="./capability-overview.png" download="shadowrocket-rules-overview.png">保存高清 PNG</a><a href="./capability-overview.svg" download="shadowrocket-rules-overview.svg">保存可缩放 SVG</a></div>
+    </section>
+
+    <section id="modes">
+      <div class="section-heading"><span class="section-no">02</span><div><h2>按自己的场景选择配置</h2><p>差别首先在于：没有明确命中规则的请求，默认怎么处理。</p></div></div>
+      <div class="table-wrap"><table><caption class="sr-only">配置模式与适用场景</caption><thead><tr><th scope="col">配置模式</th><th scope="col">基本策略</th><th scope="col">适合的需求</th><th scope="col">代表文件</th></tr></thead><tbody>
+      <tr><th scope="row">黑名单 + 去广告</th><td>名单内走代理，其余通常直连</td><td>只让明确需要的站点走代理</td><td><a data-config="sr_top500_banlist_ad.conf">sr_top500_banlist_ad.conf ↗</a></td></tr>
+      <tr><th scope="row">白名单 + 去广告</th><td>已知直连站点与中国 IP 直连，其余代理</td><td>希望未知站点默认走代理</td><td><a data-config="sr_top500_whitelist_ad.conf">sr_top500_whitelist_ad.conf ↗</a></td></tr>
+      <tr><th scope="row">国内外划分 + 去广告</th><td>先处理例外和广告，再按 GEOIP 分流</td><td>国内服务与海外服务混合使用</td><td><a data-config="sr_cnip_ad.conf">sr_cnip_ad.conf ↗</a></td></tr>
+      <tr><th scope="row">全局直连 + 去广告</th><td>过滤广告，其余直连</td><td>只需要基础广告拦截</td><td><a data-config="sr_direct_banad.conf">sr_direct_banad.conf ↗</a></td></tr>
+      <tr><th scope="row">全局代理 + 去广告</th><td>过滤广告，其余主要走代理；局域网例外</td><td>希望统一通过代理出口</td><td><a data-config="sr_proxy_banad.conf">sr_proxy_banad.conf ↗</a></td></tr>
+      <tr><th scope="row">回国 + 去广告</th><td>中国网站走代理，国外网站直连</td><td>在海外使用已有的国内出口节点</td><td><a data-config="sr_backcn_ad.conf">sr_backcn_ad.conf ↗</a></td></tr>
+      <tr><th scope="row">仅广告规则</th><td>只提供广告规则片段</td><td>与已有配置合并使用</td><td><a data-config="sr_ad_only.conf">sr_ad_only.conf ↗</a></td></tr>
+      <tr><th scope="row">懒人配置 · 策略组</th><td>按服务分组，选择节点或自动测延迟</td><td>多节点与不同服务的出口管理</td><td><a data-config="lazy_group.conf">lazy_group.conf ↗</a></td></tr>
+      </tbody></table></div>
+      <p class="footnote">表格概括默认行为，手工规则、旁路设置和实际配置优先级会影响结果。回国分流本身不保证解除服务的地区限制。文件链接用于查看配置，不会自动安装。</p>
+      <details><summary>已经在用另一份配置，还能使用这个库吗？</summary><div class="detail-body"><p>两份完整配置可以保留并切换，但不会自动把规则叠加。若已有分流设置，只想补广告过滤，可以把“仅广告规则”按客户端支持的方式合入现有配置；同一目标命中多条规则时，要核对匹配顺序和例外。节点订阅提供出口，规则配置决定何时使用该出口。</p></div></details>
+    </section>
+
+    <section id="mechanism">
+      <div class="section-heading"><span class="section-no">03</span><div><h2>一个请求，三个处理结果</h2><p>切换示例，观察匹配条件和默认策略如何影响结果。</p></div></div>
+      <div class="simulator">
+        <div class="sim-controls"><span class="eyebrow">规则匹配示意</span><label for="mode">分流模式</label><select id="mode"><option value="geo">国内外划分 + 去广告</option><option value="black">黑名单 + 去广告</option><option value="white">白名单 + 去广告</option><option value="direct">全局直连 + 去广告</option><option value="back">回国 + 去广告</option></select><label for="request">请求类型</label><select id="request"><option value="ad">已收录的广告域名</option><option value="cn">普通中国 IP 服务</option><option value="listed">已收录的海外代理站点</option><option value="unknown">未收录的海外站点</option></select><p>固定教学样本，无真实网络请求。未实现完整匹配引擎、DNS、例外优先级和所有配置细节。</p></div>
+        <div class="sim-display" aria-live="polite" aria-atomic="true"><div class="request-head"><span>REQUEST</span><code id="request-domain">ads.example.test</code><span class="mock-label">示例地址</span></div><div class="decision-route"><div class="route-node">请求进入<br><b>Shadowrocket</b></div><span aria-hidden="true">→</span><div class="route-node match-node">检查配置<br><b id="match-type">域名名单</b></div><span aria-hidden="true">→</span><div class="route-node result-node" id="result-node"><span id="result-label">拦截</span><b id="result-code">REJECT</b></div></div><div class="rule-line"><span>对应规则示意</span><code id="rule-code">DOMAIN-SUFFIX,ads.example.test,REJECT</code></div><p id="result-reason">广告域名已在拦截名单中，因此拒绝该请求。不会向广告服务器获取内容。</p></div>
+      </div>
+      <div class="definition-grid"><article><code>DOMAIN-SUFFIX</code><p>按域名后缀匹配，可覆盖该域名及其子域名。</p></article><article><code>IP-CIDR / GEOIP</code><p>按 IP 网段或地区分类匹配，不等于按网站语言分类。</p></article><article><code>FINAL</code><p>前面没有命中时的兜底策略，决定未知请求如何处理。</p></article></div>
+      <details><summary>展开：国内外划分模板的实际顺序</summary><div class="detail-body"><pre><code>手工代理规则与特定例外
+手工拒绝规则
+自动生成的广告拒绝规则
+GEOIP,CN,DIRECT
+FINAL,proxy</code></pre><p>模板把部分代理例外放在广告名单之前。因此，“所有广告一定先被拦截”并不准确。上方示意器特意使用无冲突样本，只解释基本策略。</p><a data-source="factory/template/sr_cnip_ad.txt">查看原始模板 ↗</a></div></details>
+    </section>
+
+    <section id="pipeline">
+      <div class="section-heading"><span class="section-no">04</span><div><h2>规则的生成流水线</h2><p>Python 在构建端处理名单，Shadowrocket 在设备端执行配置。</p></div></div>
+      <div class="pipeline"><article><span>01</span><h3>获取名单</h3><p>广告源、GFWList 等分流数据</p><code>ad.py / gfwlist.py</code></article><article><span>02</span><h3>提取与清洗</h3><p>筛选域名和 IP，处理例外、去重</p><code>resultant/*.list</code></article><article><span>03</span><h3>合并模板</h3><p>加入手工规则，设定直连与代理策略</p><code>build_confs.py</code></article><article><span>04</span><h3>发布配置</h3><p>生成 .conf，设备下载并启用</p><code>release / 客户端</code></article></div>
+      <div class="two-col"><article class="technical-card"><h3>广告规则并非完整移植</h3><p><code>ad.py</code> 从 EasyList、EasyList China、乘风和 Peter Lowe 等源中提取整域拦截项；跳过含 <code>##</code> 的元素隐藏规则和含 <code>$</code> 的条件规则，也排除部分复杂 URL 模式。</p><p>所以它保留的是可转成域名 / IP 拒绝规则的部分，无法复刻浏览器广告拦截器的全部行为。</p><a data-source="factory/ad.py">核对解析逻辑 ↗</a></article><article class="technical-card"><h3>三份手工名单补充例外</h3><p><code>manual_proxy.txt</code>、<code>manual_direct.txt</code>、<code>manual_reject.txt</code> 分别表达人工维护的代理、直连和拒绝策略。不同模板选择不同组合，不能假设每个配置都包含相同例外。</p><p>懒人配置是另一条同步路径：自动流程从 LOWERTOP/Shadowrocket 获取对应文件。</p><a data-source="factory/build_confs.py">核对模板组装 ↗</a></article></div>
+      <div class="note"><span class="note-label">更新是两件事</span><p>仓库生成新配置后，设备仍需下载、更新并启用。README 写的是每日北京时间 8:00；所核对构建工作流的定时表达式为 <code>0 23 * * *</code>，按 UTC 换算是北京时间 7:00，且实际调度可能延迟。应以工作流与文件时间为准。</p></div>
+    </section>
+
+    <section id="limits">
+      <div class="section-heading"><span class="section-no">05</span><div><h2>能拦截请求，不等于能移除所有广告</h2><p>效果取决于广告如何分发、名单是否覆盖，以及是否与正常内容共用地址。</p></div></div>
+      <div class="boundary-grid"><article><span class="boundary-label good">较适合</span><h3>独立广告域名</h3><p>正文来自业务域名，广告来自单独域名。拦截广告请求后，正文仍可能正常加载。</p></article><article><span class="boundary-label caution">难以区分</span><h3>广告与内容同源</h3><p>同一个域名同时分发正文和广告。整域拒绝可能一起阻断正常内容，产生误拦截。</p></article><article><span class="boundary-label caution">不保证有效</span><h3>视频流与页面布局</h3><p>不能保证清除 YouTube 或其他视频广告；不负责删除网页广告容器，可能留下空白。</p></article></div>
+      <details><summary>HTTPS 解密：基础域名拦截是否需要证书？</summary><div class="detail-body"><p>域名 / IP 级拒绝规则本身不要求读取 HTTPS 正文。仓库还包含 URL Rewrite 与 MITM 配置，例如 google.cn 跳转；这属于另一层功能。HTTPS 重写需要客户端具备相应解密条件，不能把导入规则等同于必须启用 HTTPS 解密。</p><p>模板中的 MITM 主机名包含 <code>*.googlevideo.com</code>，仅凭这一项也不能推断已经实现完整 YouTube 去广告。</p><a data-source="factory/template/sr_foot.txt">查看重写与 MITM 模板 ↗</a></div></details>
+      <details><summary>速度、隐私与实时性：哪些结论不能直接推出？</summary><div class="detail-body"><p>减少无用请求或不必要的代理绕路，可能改善体验；实际速度仍由网络、DNS、节点与服务端共同决定。阻断部分跟踪域名不等于匿名。仓库自动重建不等于每一条上游名单都更新及时，也不等于每一条规则都经过真机验证。</p><p>README 对匹配树与缓存的说明是作者描述；本研究未审计 Shadowrocket 引擎，不将其“O(1)”说法视为所有规则类型的严格复杂度证明。</p></div></details>
+    </section>
+
+    <section id="value">
+      <div class="section-heading"><span class="section-no">06</span><div><h2>对你最有价值的是：少维护，少切换</h2><p>先判断自己是否使用 Shadowrocket，再决定需要分流还是仅广告过滤。</p></div></div>
+      <div class="value-list"><article><span>A</span><div><h3>已经使用小火箭</h3><p>可作为基础配置起点。先保留现有配置，选择符合需求的模式，再检查常用网站和 App；出现异常时结合日志定位误拦截或分流问题。</p></div><b>直接适用</b></article><article><span>B</span><div><h3>只想减少手机广告</h3><p>关注“全局直连 + 去广告”。该模式不依赖代理节点，但需要客户端执行规则；对视频、信息流和同域广告保持合理预期。</p></div><b>部分适用</b></article><article><span>C</span><div><h3>主要在 Windows 上工作</h3><p>先确认实际客户端支持的配置格式。这个研究网页可以直接阅读，但 Shadowrocket 配置不能被当成通用的 Windows 网络设置。</p></div><b>需适配客户端</b></article><article><span>D</span><div><h3>关注可复用的技术设计</h3><p>可借鉴“多源数据 → 清洗 → 人工例外 → 模板 → 自动发布”的维护方式，用于其他名单、策略和配置生成项目。</p></div><b>工程参考</b></article></div>
+    </section>
+
+    <section id="sources">
+      <div class="section-heading"><span class="section-no">07</span><div><h2>结论可以追溯到源码</h2><p>研究日期：2026-09-22。以下代码链接固定到核对版本，避免后续更新改变依据。</p></div></div>
+      <div class="source-grid"><a data-source="readme.md"><span>项目说明</span><b>能力、配置与 FAQ ↗</b></a><a data-source="factory/ad.py"><span>广告提取</span><b>ad.py ↗</b></a><a data-source="factory/build_confs.py"><span>配置组装</span><b>build_confs.py ↗</b></a><a data-source="factory/template/sr_cnip_ad.txt"><span>匹配顺序</span><b>sr_cnip_ad.txt ↗</b></a><a data-source=".github/workflows/main.yml"><span>构建调度</span><b>main.yml ↗</b></a><a data-release="lazy_group.conf"><span>策略分组</span><b>lazy_group.conf ↗</b></a></div>
+      <div class="verification"><p><b>已核对：</b>项目说明、生成脚本、模板、构建工作流与发布配置。</p><p><b>未验证：</b>iOS 真机广告过滤、实际代理连通性、速度与耗电。网页示意器不运行上游软件，不读取你的网络流量。</p><p><b>版本：</b>build <code>ff8ecea54bb7</code> / release <code>1df281947ae9</code>。上游许可：<a data-release="LICENSE">CC BY-SA 4.0</a>。本页整理并改写技术说明，保留来源；衍生说明采用相同许可。</p></div>
+    </section>
+    <footer><span>013 / SHADOWROCKET RULES</span><a href="../">返回研究集 ↑</a></footer>
+  </main>
+</div>
+</body>
+</html>

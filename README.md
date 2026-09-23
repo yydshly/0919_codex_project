@@ -23,6 +23,7 @@
 | 008 | [VideoCaptioner · 字幕与配音工作台](projects/008-videocaptioner/README.md) | 把视频或录音中的讲话识别成带时间的字幕，再断句、纠错、翻译、配音并合成视频。原理是把现成语音模型、语言模型、TTS 服务与 FFmpeg 串成流程，负责时间轴对应、校验和输出；可选本地识别，完整离线需另配模型与服务。 | 已完成 | 视频字幕、语音识别、LLM、翻译、配音、Python、局部实测 | [VideoCaptioner](https://github.com/WEIFENG2333/VideoCaptioner) | [演示](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) |
 | 009 | [JoyAI-Video-Edit · 视频内容改写与效果展示](projects/009-joyai-video-edit/README.md) | 以原视频、文字指令和可选参考图为输入，替换视频中的人物形象、换装、转换风格、增删画面内容并更换背景；梳理分块扩散生成原理、GPU 部署条件与创意验证价值，展示官方前后对比及两张引导图。 | 已完成 | 视频内容改写、人物形象替换、风格与背景转换、扩散模型、官方案例展示 | [JoyAI-Video-Edit](https://github.com/jd-opensource/JoyAI-Video-Edit) | [演示](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/) |
 | 010 | [紫微斗数 · 源库实测与结论](projects/010-ziwei-doushu/README.md) | 以前端排盘展示为主：浏览器端可按规则生成命盘，但缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限。 | 已完成 | 紫微斗数、真实运行、价值评估 | [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) | [演示](https://yydshly.github.io/0919_codex_project/010-ziwei-doushu/) |
+| 013 | [Shadowrocket Rules · 分流与广告过滤](projects/013-shadowrocket-rules/README.md) | 把广告名单、代理黑名单与直连白名单整理成 Shadowrocket 配置：按域名或 IP 决定直连、代理、拒绝，并持续生成更新；价值在于减少手工维护，其他客户端需适配格式。 | 已完成 | Shadowrocket、网络分流、广告过滤、Python、源码研究 | [Shadowrocket-ADBlock-Rules-Forever](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever) | [演示](https://yydshly.github.io/0919_codex_project/013-shadowrocket-rules/) |
 | 017 | [VoxCPM2 · 本地语音生成模型研究](projects/017-voxcpm/README.md) | 可自部署的语音生成模型，支持多语言配音、声音设计与参考录音克隆。以连续声音特征、自回归语言建模和局部流匹配生成语音；依赖 Python、PyTorch 与模型权重，GPU 可加速。对我们是按需接入的配音组件与语音模型实现参考；暂不需要为它单独建设产品。 | 已完成 | 语音合成、声音克隆、本地部署、PyTorch、模型研究 | [VoxCPM](https://github.com/OpenBMB/VoxCPM) | [演示](https://yydshly.github.io/0919_codex_project/017-voxcpm/) |
 <!-- PROJECT_INDEX:END -->
 
@@ -101,6 +102,12 @@ Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词�
 以前端排盘展示为主：浏览器端可按规则生成命盘，但缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限。
 
 [![紫微斗数 · 源库实测与结论 项目截图](projects/010-ziwei-doushu/assets/upstream-chart.png)](projects/010-ziwei-doushu/README.md)
+
+### 013 · [Shadowrocket Rules · 分流与广告过滤](projects/013-shadowrocket-rules/README.md)
+
+把广告名单、代理黑名单与直连白名单整理成 Shadowrocket 配置：按域名或 IP 决定直连、代理、拒绝，并持续生成更新；价值在于减少手工维护，其他客户端需适配格式。
+
+[![Shadowrocket Rules · 分流与广告过滤 项目截图](projects/013-shadowrocket-rules/assets/cover.png)](projects/013-shadowrocket-rules/README.md)
 
 ### 017 · [VoxCPM2 · 本地语音生成模型研究](projects/017-voxcpm/README.md)
 
