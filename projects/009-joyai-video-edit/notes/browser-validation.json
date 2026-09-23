@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-22",
+  "cases": [
+    {
+      "case": 1,
+      "play": true,
+      "sync": true,
+      "seek": true,
+      "speed": true,
+      "wipe": true
+    },
+    {
+      "case": 2,
+      "play": true,
+      "sync": true,
+      "seek": true,
+      "speed": true,
+      "wipe": true
+    },
+    {
+      "case": 3,
+      "play": true,
+      "sync": true,
+      "seek": true,
+      "speed": true,
+      "wipe": true
+    },
+    {
+      "case": 4,
+      "play": true,
+      "sync": true,
+      "seek": true,
+      "speed": true,
+      "wipe": true
+    },
+    {
+      "case": 5,
+      "play": true,
+      "sync": true,
+      "seek": true,
+      "speed": true,
+      "wipe": true
+    }
+  ],
+  "responsiveWidths": [
+    390,
+    768,
+    1024,
+    1480
+  ],
+  "rapidSwitch": true,
+  "replay": true,
+  "deepLink": true,
+  "mediaFailure": true,
+  "consoleErrors": []
+}

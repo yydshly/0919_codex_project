@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-22",
+  "screenshots": 5,
+  "lightboxAndFocus": true,
+  "referenceVideoPlayback": true,
+  "referenceVideoSeek": true,
+  "multiEditJump": true,
+  "originalPlaybackRegression": true,
+  "responsiveWidths": [
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "failedMediaRecovery": true,
+  "consoleErrors": []
+}

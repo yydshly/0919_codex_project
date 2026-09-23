@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2730" viewBox="0 0 1800 2730" role="img" aria-labelledby="title desc">
+<title id="title">JoyAI-Video-Edit 能力、输入输出、实现原理与使用边界总览</title>
+<desc id="desc">视频内容改写模型：原视频、文字指令与可选参考图片输入，经多模态条件编码、因果视频压缩、扩散生成和解码，输出编辑后视频。可处理人物、动物、场景和整体风格；本研究展示官方素材，未运行模型。</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#527a99" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif} .mono{font-family:Consolas,monospace}</style>
+<rect x="0" y="0" width="1800" height="2730" rx="0" fill="#eef3f7"/>
+<rect x="0" y="0" width="1800" height="240" rx="0" fill="#102b42"/>
+<text x="65" y="48" font-size="22" fill="#b6cbdc" font-weight="400" text-anchor="start">OPEN-SOURCE RESEARCH  /  009  /  2026.09.22</text>
+<text x="65" y="116" font-size="56" fill="#ffffff" font-weight="700" text-anchor="start">JoyAI-Video-Edit</text>
+<text x="65" y="170" font-size="36" fill="#ffffff" font-weight="600" text-anchor="start">视频内容改写：能力、输入输出与实现原理</text>
+<text x="65" y="216" font-size="26" fill="#d4e3ed" font-weight="400" text-anchor="start">在已有画面的基础上，按指令生成修改后的视频；人物、动物、物体与环境都可以是编辑目标。</text>
+<rect x="1450" y="65" width="285" height="60" rx="12" fill="#c8edb1"/>
+<text x="1592" y="104" font-size="28" fill="#102b42" font-weight="700" text-anchor="middle">不只是人物变装</text>
+<rect x="48" y="262" width="1704" height="330" rx="16" fill="#ffffff"/>
+<rect x="76" y="287" width="44" height="38" rx="8" fill="#145da0"/>
+<text x="98" y="314" font-size="24" fill="#ffffff" font-weight="600" text-anchor="middle">01</text>
+<text x="137" y="316" font-size="31" fill="#132b40" font-weight="700" text-anchor="start">输入什么 → 得到什么</text>
+<text x="1720" y="313" font-size="21" fill="#4d6578" font-weight="400" text-anchor="end">模型可自行部署在电脑或服务器；也可使用官方在线体验</text>
+<rect x="78" y="350" width="512" height="211" rx="12" fill="#eaf4fb"/>
+<text x="104" y="388" font-size="28" fill="#145da0" font-weight="700" text-anchor="start">输入：视频 + 要求 + 可选图片</text>
+<text x="104" y="433" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">原视频：上传片段，或持续输入的摄像头画面</text>
+<text x="104" y="475" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">文字指令：明确要改什么、希望保留什么</text>
+<text x="104" y="517" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">参考图片（可选）：指定服装或目标外观</text>
+<line x1="607" y1="454" x2="661" y2="454" stroke="#145da0" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="677" y="350" width="421" height="211" rx="12" fill="#edf5ee"/>
+<text x="887" y="398" font-size="30" fill="#087f83" font-weight="700" text-anchor="middle">按条件生成新画面</text>
+<text x="709" y="446" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">理解修改意图 → 分块编辑 → 解码</text>
+<text x="709" y="486" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">尽量保留未要求修改的内容与运动</text>
+<text x="709" y="526" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">不是固定滤镜菜单；可组合描述要求</text>
+<line x1="1115" y1="454" x2="1169" y2="454" stroke="#145da0" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1185" y="350" width="537" height="211" rx="12" fill="#eaf4fb"/>
+<text x="1211" y="388" font-size="28" fill="#145da0" font-weight="700" text-anchor="start">输出：编辑后的视频 / 连续画面</text>
+<text x="1211" y="433" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">例如：人仍在走路，但衣服换成参考款式</text>
+<text x="1211" y="475" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">源视频决定内容基础，指令决定修改方向</text>
+<text x="1211" y="517" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">模型会重新生成像素，不保证其他部分完全不变</text>
+<rect x="48" y="614" width="1704" height="499" rx="16" fill="#ffffff"/>
+<rect x="76" y="639" width="44" height="38" rx="8" fill="#145da0"/>
+<text x="98" y="666" font-size="24" fill="#ffffff" font-weight="600" text-anchor="middle">02</text>
+<text x="137" y="668" font-size="31" fill="#132b40" font-weight="700" text-anchor="start">能改哪些对象？能产生哪些效果？</text>
+<text x="1720" y="665" font-size="21" fill="#4d6578" font-weight="400" text-anchor="end">“已展示”指作者公开素材，不代表本机复现</text>
+<text x="92" y="721" font-size="23" fill="#4d6578" font-weight="600" text-anchor="start">编辑对象</text>
+<text x="318" y="721" font-size="23" fill="#4d6578" font-weight="600" text-anchor="start">操作与效果</text>
+<text x="760" y="721" font-size="23" fill="#4d6578" font-weight="600" text-anchor="start">具体例子</text>
+<text x="1370" y="721" font-size="23" fill="#4d6578" font-weight="600" text-anchor="start">证据边界</text>
+<line x1="80" y1="738" x2="1720" y2="738" stroke="#cbd8e2" stroke-width="2"/>
+<rect x="80" y="747" width="1640" height="49" rx="5" fill="#f4f7fa"/>
+<text x="92" y="779" font-size="23" fill="#132b40" font-weight="600" text-anchor="start">人物 / 多人</text>
+<text x="318" y="779" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">换装、配饰、形象替换、卡通化</text>
+<text x="760" y="779" font-size="22" fill="#132b40" font-weight="400" text-anchor="start">羽绒服 / 擎天柱 / 高达 / 多人卡通</text>
+<text x="1370" y="779" font-size="23" fill="#087f83" font-weight="400" text-anchor="start">官方视频 / 截图</text>
+<text x="92" y="828" font-size="23" fill="#132b40" font-weight="600" text-anchor="start">动物</text>
+<text x="318" y="828" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">改外观、增加配饰、移除主体</text>
+<text x="760" y="828" font-size="22" fill="#132b40" font-weight="400" text-anchor="start">白色毛发 + 彩帽 + 粉墨镜 / 移除两侧猫</text>
+<text x="1370" y="828" font-size="23" fill="#087f83" font-weight="400" text-anchor="start">官方视频已展示</text>
+<rect x="80" y="845" width="1640" height="49" rx="5" fill="#f4f7fa"/>
+<text x="92" y="877" font-size="23" fill="#132b40" font-weight="600" text-anchor="start">背景 / 场景</text>
+<text x="318" y="877" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">场景替换、环境外观改变</text>
+<text x="760" y="877" font-size="22" fill="#132b40" font-weight="400" text-anchor="start">办公室 → 宫殿 / 室内 → 城堡贵族风格</text>
+<text x="1370" y="877" font-size="23" fill="#087f83" font-weight="400" text-anchor="start">官方视频 / 截图</text>
+<text x="92" y="926" font-size="23" fill="#132b40" font-weight="600" text-anchor="start">整体画面</text>
+<text x="318" y="926" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">风格转换、全局外观编辑</text>
+<text x="760" y="926" font-size="22" fill="#132b40" font-weight="400" text-anchor="start">水彩晕染 / 手绘赛璐璐动画</text>
+<text x="1370" y="926" font-size="23" fill="#087f83" font-weight="400" text-anchor="start">官方视频 / 截图</text>
+<rect x="80" y="943" width="1640" height="49" rx="5" fill="#f4f7fa"/>
+<text x="92" y="975" font-size="23" fill="#132b40" font-weight="600" text-anchor="start">一般物体</text>
+<text x="318" y="975" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">添加、替换、移除、外观修改</text>
+<text x="760" y="975" font-size="22" fill="#132b40" font-weight="400" text-anchor="start">杯子改色 / 汽车换色等可作为测试任务</text>
+<text x="1370" y="975" font-size="23" fill="#95620f" font-weight="400" text-anchor="start">属能力范围；此例未测</text>
+<text x="92" y="1010" font-size="22" fill="#4d6578" font-weight="400" text-anchor="start">补充：官方还声明支持运动变化；我们尚未验证其修改幅度、可控性与稳定性。</text>
+<rect x="80" y="1023" width="1640" height="61" rx="9" fill="#fff2d9"/>
+<text x="102" y="1062" font-size="24" fill="#132b40" font-weight="400" text-anchor="start">一条指令可以组合多个目标：“换成粉色古装 + 背景改成宫殿 + 尽量保留面部与动作”。目标越复杂，越需要实测。</text>
+<rect x="48" y="1135" width="1704" height="489" rx="16" fill="#ffffff"/>
+<rect x="76" y="1160" width="44" height="38" rx="8" fill="#145da0"/>
+<text x="98" y="1187" font-size="24" fill="#ffffff" font-weight="600" text-anchor="middle">03</text>
+<text x="137" y="1189" font-size="31" fill="#132b40" font-weight="700" text-anchor="start">底层如何工作？</text>
+<text x="1720" y="1186" font-size="21" fill="#4d6578" font-weight="400" text-anchor="end">MLLM 理解目标 · VAE 压缩与还原 · DiT 生成修改结果</text>
+<rect x="80" y="1224" width="474" height="137" rx="12" fill="#eaf4fb"/>
+<text x="104" y="1261" font-size="27" fill="#145da0" font-weight="700" text-anchor="start">A  理解目标：多模态语言模型</text>
+<text x="104" y="1304" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">首帧 + 文字指令 → 条件表示</text>
+<text x="104" y="1339" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">部署依赖 MiMo-VL，提供语义与编辑意图</text>
+<rect x="80" y="1390" width="474" height="137" rx="12" fill="#eaf4fb"/>
+<text x="104" y="1427" font-size="27" fill="#145da0" font-weight="700" text-anchor="start">B  压缩画面：因果视频 VAE</text>
+<text x="104" y="1470" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">当前源视频片段 + 可选参考图 → 潜在表示</text>
+<text x="104" y="1505" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">在紧凑特征空间处理，降低像素计算负担</text>
+<path d="M 555 1290 H 600 V 1345 H 649" fill="none" stroke="#527a99" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 555 1459 H 600 V 1400 H 649" fill="none" stroke="#527a99" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="668" y="1247" width="557" height="215" rx="14" fill="#e7f3ec"/>
+<text x="696" y="1289" font-size="27" fill="#087f83" font-weight="700" text-anchor="start">C  生成修改：16B 扩散 Transformer</text>
+<text x="696" y="1338" font-size="25" fill="#4d6578" font-weight="400" text-anchor="start">结合指令、源视频、参考图与生成历史</text>
+<text x="696" y="1381" font-size="25" fill="#4d6578" font-weight="400" text-anchor="start">在潜在空间去噪，生成当前片段的新内容</text>
+<text x="696" y="1424" font-size="25" fill="#4d6578" font-weight="400" text-anchor="start">蒸馏后仅用两步去噪，再交给解码器</text>
+<line x1="1237" y1="1358" x2="1300" y2="1358" stroke="#145da0" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1315" y="1247" width="404" height="215" rx="12" fill="#eaf4fb"/>
+<text x="1339" y="1289" font-size="29" fill="#145da0" font-weight="700" text-anchor="start">D  解码并输出</text>
+<text x="1339" y="1338" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">VAE 将潜在表示还原为视频帧</text>
+<text x="1339" y="1381" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">输出当前编辑结果</text>
+<text x="1339" y="1424" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">继续接收与处理下一片段</text>
+<rect x="691" y="1491" width="1006" height="57" rx="10" fill="#eef2f6"/>
+<text x="718" y="1528" font-size="24" fill="#132b40" font-weight="400" text-anchor="start">历史缓存：保留首块 + 最近片段，帮助下一段延续外观与动作</text>
+<path d="M 1499 1464 V 1484" fill="none" stroke="#527a99" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M 691 1520 H 644 V 1440 H 660" fill="none" stroke="#527a99" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="92" y="1590" font-size="25" fill="#132b40" font-weight="400" text-anchor="start">“自回归”＝参考先前结果继续生成；“扩散”＝每段内部通过去噪生成。无需看完整段视频后再开始输出。</text>
+<rect x="48" y="1646" width="1704" height="296" rx="16" fill="#ffffff"/>
+<rect x="76" y="1671" width="44" height="38" rx="8" fill="#145da0"/>
+<text x="98" y="1698" font-size="24" fill="#ffffff" font-weight="600" text-anchor="middle">04</text>
+<text x="137" y="1700" font-size="31" fill="#132b40" font-weight="700" text-anchor="start">为什么可以持续、实时地编辑？</text>
+<text x="1720" y="1697" font-size="21" fill="#4d6578" font-weight="400" text-anchor="end">实时 = 跟得上输入速度；不等于没有延迟</text>
+<rect x="80" y="1730" width="524" height="123" rx="10" fill="#f2f6f9"/>
+<text x="102" y="1769" font-size="28" fill="#145da0" font-weight="600" text-anchor="start">按小片段处理</text>
+<text x="102" y="1808" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">通常按 8 帧分块，跨块只看过去</text>
+<text x="102" y="1840" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">不需要预先知道视频总长度</text>
+<rect x="638" y="1730" width="524" height="123" rx="10" fill="#f2f6f9"/>
+<text x="660" y="1769" font-size="28" fill="#145da0" font-weight="600" text-anchor="start">减少每次计算</text>
+<text x="660" y="1808" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">两步去噪 + FP8 低精度计算</text>
+<text x="660" y="1840" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">算子融合 / 计算图 / VAE 加速</text>
+<rect x="1196" y="1730" width="524" height="123" rx="10" fill="#f2f6f9"/>
+<text x="1218" y="1769" font-size="28" fill="#145da0" font-weight="600" text-anchor="start">限制历史开销</text>
+<text x="1218" y="1808" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">固定窗口复用 KV 缓存</text>
+<text x="1218" y="1840" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">历史显存不随视频时长无限增长</text>
+<text x="92" y="1904" font-size="24" fill="#132b40" font-weight="400" text-anchor="start">训练时：源视频锚定蒸馏 + 长序列优化，用于降低源内容偏离、闪烁和累积漂移；这些问题并非被完全消除。</text>
+<rect x="48" y="1964" width="1704" height="381" rx="16" fill="#ffffff"/>
+<rect x="76" y="1989" width="44" height="38" rx="8" fill="#145da0"/>
+<text x="98" y="2016" font-size="24" fill="#ffffff" font-weight="600" text-anchor="middle">05</text>
+<text x="137" y="2018" font-size="31" fill="#132b40" font-weight="700" text-anchor="start">真正运行需要什么？对你有什么价值？</text>
+<text x="91" y="2062" font-size="26" fill="#145da0" font-weight="700" text-anchor="start">运行门槛 · 下列均为官方配置 / 性能</text>
+<text x="940" y="2062" font-size="26" fill="#087f83" font-weight="700" text-anchor="start">值得投入的方向 · 先用自己的素材验证</text>
+<line x1="891" y1="2050" x2="891" y2="2306" stroke="#cbd8e2" stroke-width="2"/>
+<text x="92" y="2110" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">RTX 5090 · 32 GB</text>
+<text x="472" y="2110" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">840 × 480</text>
+<text x="697" y="2110" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">24 FPS</text>
+<text x="92" y="2157" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">RTX PRO 6000 · Blackwell</text>
+<text x="472" y="2157" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">1248 × 720</text>
+<text x="697" y="2157" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">16 FPS</text>
+<text x="92" y="2204" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">NVIDIA B200</text>
+<text x="472" y="2204" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">1248 × 720</text>
+<text x="697" y="2204" font-size="23" fill="#132b40" font-weight="400" text-anchor="start">约 30 FPS</text>
+<text x="92" y="2260" font-size="22" fill="#4d6578" font-weight="400" text-anchor="start">必要权重约 51 GB；还需 Python / PyTorch / CUDA 与算子编译。</text>
+<text x="92" y="2295" font-size="22" fill="#4d6578" font-weight="400" text-anchor="start">网页客户端 ⇄ FastAPI / WebSocket 服务 ⇄ GPU 模型推理。</text>
+<text x="943" y="2111" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">内容创作：同一素材尝试多种风格与视觉方案</text>
+<text x="943" y="2155" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">电商创意：服装搭配与素材预览，正式交付需验细节</text>
+<text x="943" y="2199" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">互动体验：摄像头特效、展厅互动、造型变换</text>
+<text x="943" y="2243" font-size="24" fill="#4d6578" font-weight="400" text-anchor="start">产品原型：把模型服务接入自己的视频工作流</text>
+<text x="943" y="2304" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">若主要需求是字幕、配音或拼接，本库直接价值有限。</text>
+<rect x="48" y="2367" width="1704" height="256" rx="16" fill="#ffffff"/>
+<rect x="76" y="2392" width="44" height="38" rx="8" fill="#145da0"/>
+<text x="98" y="2419" font-size="24" fill="#ffffff" font-weight="600" text-anchor="middle">06</text>
+<text x="137" y="2421" font-size="31" fill="#132b40" font-weight="700" text-anchor="start">能力边界与我们当前完成的工作</text>
+<rect x="80" y="2450" width="791" height="143" rx="10" fill="#fff2d9"/>
+<text x="101" y="2487" font-size="27" fill="#94600d" font-weight="700" text-anchor="start">不能据此保证</text>
+<text x="101" y="2525" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">Logo、文字、复杂花纹、身份和运动都能精确保留；</text>
+<text x="101" y="2554" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">复杂遮挡 / 快速动作 / 任意长时段始终稳定。</text>
+<text x="101" y="2583" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">它不是完整剪辑台，也不是尺码试穿或物理仿真系统。</text>
+<rect x="901" y="2450" width="820" height="143" rx="10" fill="#e8f5ed"/>
+<text x="924" y="2487" font-size="27" fill="#087f83" font-weight="700" text-anchor="start">已完成：官方素材展示；尚未本地运行模型</text>
+<text x="924" y="2525" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">5 组动态对比 + 5 张实时截图 + 30 秒参考图换装视频。</text>
+<text x="924" y="2554" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">网页在本地 ≠ 模型在本地；播放速度 ≠ 推理速度。</text>
+<text x="924" y="2583" font-size="23" fill="#4d6578" font-weight="400" text-anchor="start">完整训练与数据流水线仍待发布；部署指南以官方为准。</text>
+<text x="62" y="2661" font-size="21" fill="#4d6578" font-weight="400" text-anchor="start">资料：官方 README / DEPLOYMENT.md / 推理代码；论文 arXiv:2608.03974。模型与素材：JD / Joy Future Academy。</text>
+<text x="62" y="2700" font-size="21" fill="#4d6578" font-weight="400" text-anchor="start">研究整理：2026-09-22 · 上游提交 d88456a · 上游许可 Apache-2.0 · 本图为能力归纳，不是独立效果或性能评测。</text>
+</svg>

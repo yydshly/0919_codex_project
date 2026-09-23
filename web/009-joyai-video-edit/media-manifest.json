@@ -1,0 +1,106 @@
+{
+  "upstream_commit": "d88456a8d3609994d15954947a3e1e9fb3444552",
+  "notice": "Official GIF previews transcoded to MP4; no local model inference. No audio in source GIFs.",
+  "assets": [
+    {
+      "name": "case01_source",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case01_source.gif",
+      "sha256": "fae3ef90894809e1fd4308f43cb112229003710d39f9b7c68034d673a0edaf36",
+      "preview": "media/case01_source.mp4",
+      "bytes": 140678,
+      "duration": 4.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case01_edited",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case01_edited.gif",
+      "sha256": "06f76892533c64de2e445a17406d2b8616e874d7ce3a095230eccde6f5f1d84f",
+      "preview": "media/case01_edited.mp4",
+      "bytes": 141542,
+      "duration": 4.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case02_source",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case02_source.gif",
+      "sha256": "d7bc357e221931033131d7adfeec1d19984c36c34515fa3afdeab20871d660a9",
+      "preview": "media/case02_source.mp4",
+      "bytes": 93282,
+      "duration": 6.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case02_edited",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case02_edited.gif",
+      "sha256": "489963f7a611c6507e554ec92fd393c773d84d5a74e32132df639e5711665700",
+      "preview": "media/case02_edited.mp4",
+      "bytes": 143705,
+      "duration": 6.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case03_source",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case03_source.gif",
+      "sha256": "c3f2e333be20a806143e27dabf1e449c8b681c25d72f1b225807964869dbe3c3",
+      "preview": "media/case03_source.mp4",
+      "bytes": 235736,
+      "duration": 7.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case03_edited",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case03_edited.gif",
+      "sha256": "fe9cf0ed2183a77c9aaccb9363b6732eb08f69bbe641ede5d261175ffe587d11",
+      "preview": "media/case03_edited.mp4",
+      "bytes": 281496,
+      "duration": 7.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case04_source",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case04_source.gif",
+      "sha256": "c2fb21511f68e8a107a2405858fee5ecef659117caf235674c4ca4650f46b1f8",
+      "preview": "media/case04_source.mp4",
+      "bytes": 142166,
+      "duration": 8.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case04_edited",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case04_edited.gif",
+      "sha256": "c8d698f8b2577ec4a25e5212e40cff640f0cae1bc3d9279a0e3d67898392fdd4",
+      "preview": "media/case04_edited.mp4",
+      "bytes": 139384,
+      "duration": 8.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case05_source",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case05_source.gif",
+      "sha256": "a442557c52585fcef23bda2fa9eb9855e87b6fb9d31dcf49f2a38daf89de8870",
+      "preview": "media/case05_source.mp4",
+      "bytes": 272927,
+      "duration": 6.75,
+      "width": 300,
+      "height": 172
+    },
+    {
+      "name": "case05_edited",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/cases/case05_edited.gif",
+      "sha256": "e278c291df5de10e547115bc50f44864397aef30bd22385ab96094a8a3f3a5e3",
+      "preview": "media/case05_edited.mp4",
+      "bytes": 200839,
+      "duration": 6.75,
+      "width": 300,
+      "height": 172
+    }
+  ]
+}

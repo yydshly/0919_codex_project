@@ -1,0 +1,56 @@
+{
+  "upstream_commit": "d88456a8d3609994d15954947a3e1e9fb3444552",
+  "retrieved": "2026-09-22",
+  "notice": "Official examples, not locally reproduced inference. Screenshots do not establish temporal consistency. Reference video: 736x544, 30.25 seconds, H.264, no audio.",
+  "assets": [
+    {
+      "file": "live/live_cartoon_group.jpg",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/live_demo/live_cartoon_group.jpg",
+      "kind": "Official static screenshot, unchanged",
+      "bytes": 209773,
+      "sha256": "43851035648f559a72a55cac11d4b8ea693122a767b45ac0f3f833d1c9fe2a07"
+    },
+    {
+      "file": "live/live_cel_anime.jpg",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/live_demo/live_cel_anime.jpg",
+      "kind": "Official static screenshot, unchanged",
+      "bytes": 223370,
+      "sha256": "f3f1f3665fe1464330f3cb77fc23e6281cad25c9fcb83acfa248ba2232010540"
+    },
+    {
+      "file": "live/live_gundam.jpg",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/live_demo/live_gundam.jpg",
+      "kind": "Official static screenshot, unchanged",
+      "bytes": 183372,
+      "sha256": "978dc97f200433cedbfc3847b536137c12cf8cfae6e0a144cb5d4b0f9753bd0c"
+    },
+    {
+      "file": "live/live_hanfu_palace.jpg",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/live_demo/live_hanfu_palace.jpg",
+      "kind": "Official static screenshot, unchanged",
+      "bytes": 220946,
+      "sha256": "29c48947f3eca8248fbe2a8baa2bde86f3bc4577556400c5f688ba6a7faee42b"
+    },
+    {
+      "file": "live/live_optimus_prime.jpg",
+      "source": "https://raw.githubusercontent.com/jd-opensource/JoyAI-Video-Edit/d88456a8d3609994d15954947a3e1e9fb3444552/assets/live_demo/live_optimus_prime.jpg",
+      "kind": "Official static screenshot, unchanged",
+      "bytes": 199206,
+      "sha256": "4983240c70a826e181c15491769cf6918349854c92654cdb2920e57d1588382f"
+    },
+    {
+      "file": "live/reference-outfits.jpg",
+      "source": "https://github.com/user-attachments/assets/e887d087-af71-4de1-b5d3-bbfbd32922d8",
+      "kind": "First frame extracted from official video",
+      "bytes": 27934,
+      "sha256": "e6ffc3bed13f6c0983eb63b0d626b7c649d59207f4aa068686ae1aa1851ddd47"
+    },
+    {
+      "file": "live/reference-outfits.mp4",
+      "source": "https://github.com/user-attachments/assets/e887d087-af71-4de1-b5d3-bbfbd32922d8",
+      "kind": "Official video, unchanged",
+      "bytes": 2845042,
+      "sha256": "35f35027e5042e6e9b03c9ecedff28bb6fa01b285218e73cec3cf982ad0fbe42"
+    }
+  ]
+}

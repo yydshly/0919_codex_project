@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#11151b">
+  <meta name="description" content="JoyAI-Video-Edit 能力总览：基于原视频和文字指令，替换人物形象、变换风格、增删内容、修改背景；对照官方案例，了解实现原理、运行环境和应用价值。">
+  <title>JoyAI Video Edit · 视频编辑观察室</title>
+  <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="JoyAI 视频编辑观察室首页"><span class="mark">J<span>↗</span></span><span>JoyAI <b>Video Edit</b></span><span class="brand-divider"></span><span class="brand-note">视频编辑观察室</span></a>
+    <nav aria-label="站点导航"><a href="../">研究集</a><a href="#understanding">能力总览</a><a href="#how">工作原理</a><a href="https://github.com/jd-opensource/JoyAI-Video-Edit" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+  </header>
+  <main>
+    <div class="intro"><div><div class="eyebrow">RESEARCH 009 / VIDEO-TO-VIDEO</div><h1>保留原视频的运动，改写画面内容。</h1><p>通过文字指令与可选参考图，替换人物形象、转换风格、增删对象、换装或更换背景。</p></div><a class="external-button" href="https://huggingface.co/spaces/wxDai/joyai-video-edit" target="_blank" rel="noopener noreferrer">体验官方实时编辑 <span>↗</span></a></div>
+    <div class="notice"><span class="badge">官方样例</span><span>本页播放官方预览素材，不运行 AI 推理。无需显卡即可查看；自己的视频请前往官方体验。</span></div>
+    <nav class="effect-nav" aria-label="效果展示分类"><a href="#comparison">5 组视频对比</a><a href="#live-effects">机器人 / 卡通 / 古装</a><a href="#reference-demo">参考图换装视频</a><a href="#understanding">两张引导图 · 能力 / 原理 / 价值 ↓</a></nav>
+    <section id="comparison" class="workspace" aria-label="视频效果对照工作区">
+      <aside class="case-panel"><div class="panel-heading"><h2>编辑案例</h2><span>05</span></div><div id="case-list" class="case-list" aria-label="选择编辑案例"></div><div class="side-note">看改变，也看保留。<br>留意动作、面部、边缘与背景<br>在连续画面中的一致性。</div></aside>
+      <div class="viewer-panel">
+        <div class="viewer-header"><div><span class="small-label" id="case-count">CASE 01 / 05</span><h2 id="case-title">城堡贵族风格</h2></div><div class="view-switch" role="group" aria-label="对比方式"><button id="side-mode" class="selected" aria-pressed="true">并排</button><button id="wipe-mode" aria-pressed="false">滑动对比</button></div></div>
+        <div id="stage" class="stage">
+          <div class="video-pane source-pane"><span class="video-label">原始画面 <span>SOURCE</span></span><video id="source-video" muted playsinline preload="metadata" aria-label="原始视频"></video></div>
+          <div class="video-pane edited-pane"><span class="video-label edited-label">编辑结果 <span>EDITED</span></span><video id="edited-video" muted playsinline preload="metadata" aria-label="编辑后视频"></video></div>
+          <div class="wipe-line" aria-hidden="true"><span>‹ ›</span></div>
+          <div id="media-status" class="media-status" role="status">正在加载官方预览…</div>
+        </div>
+        <div id="wipe-control" class="wipe-control" hidden><label for="wipe-range">原始画面 / 编辑结果</label><input id="wipe-range" type="range" min="0" max="100" value="50" aria-label="调整前后对比位置"></div>
+        <div class="transport"><button id="play" class="play-button" disabled>播放对比</button><button id="restart" class="icon-button" aria-label="从头播放" title="从头播放" disabled>↺</button><label class="sr-only" for="timeline">视频进度</label><input id="timeline" type="range" min="0" max="1000" value="0" disabled><span id="time" class="time">0:00 / 0:00</span><label class="sr-only" for="speed">播放速度</label><select id="speed" aria-label="播放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></div>
+        <div class="viewer-foot"><span>同步静音预览 · 可暂停观察细节</span><a id="original-link" target="_blank" rel="noopener noreferrer">查看官方原片 ↗</a></div>
+      </div>
+      <aside class="detail-panel"><div class="detail-block"><span class="small-label">EDIT INSTRUCTION</span><h2>编辑指令</h2><p id="prompt-cn" class="prompt-cn"></p><p id="prompt-en" class="prompt-en" lang="en"></p></div><div class="detail-block"><span class="small-label">LOOK CLOSER</span><h3>值得观察</h3><ul id="observations"></ul></div><div class="application"><span class="small-label">适用场景</span><p id="application"></p></div></aside>
+    </section>
+    <div class="evidence-note"><span>素材说明</span><p>5 组视频由官方 GIF 转为可暂停、可拖动的 MP4，保留预览尺寸与内容，无音轨。页面播放速度不是模型推理速度；完整质量请参考官方原片。</p></div>
+    <section id="live-effects" class="more-effects" aria-labelledby="more-effects-title">
+      <div class="section-heading"><div class="eyebrow">MORE WAYS TO EDIT</div><h2 id="more-effects-title">从真人到机器人，从日常到古装。</h2><p>下面是官方实时演示的静态截图，左侧为输入，右侧为结果。点击图片可放大查看；截图中的帧率与延迟不是本机测量值。</p></div>
+      <div class="effect-grid">
+        <article class="effect-card"><button class="effect-image" data-title="擎天柱形象" aria-label="放大擎天柱形象官方截图"><img src="live/live_optimus_prime.jpg" alt="左侧为坐在办公室的真人，右侧为擎天柱形象，背景保留" loading="lazy" width="1600" height="776"><span>官方截图 · 点击放大</span></button><div class="effect-copy"><span class="small-label">06 / 主体变换</span><h3>真人变成擎天柱</h3><p>将人物变成擎天柱，同时保留原来的背景。</p><p class="look-for">观察：头部和身体的机械化，以及座椅、室内背景的保留。</p></div></article>
+        <article class="effect-card"><button class="effect-image" data-title="高达形象" aria-label="放大高达形象官方截图"><img src="live/live_gundam.jpg" alt="左侧为举起手势的真人，右侧为对应姿态的高达形象" loading="lazy" width="1600" height="770"><span>官方截图 · 点击放大</span></button><div class="effect-copy"><span class="small-label">07 / 形象引导</span><h3>真人变成高达</h3><p>将人物替换成高达风格的机器人；官方将此例归入参考引导编辑。</p><p class="look-for">观察：手势、位置和构图如何对应。截图没有展示所用参考图。</p></div></article>
+        <article class="effect-card"><button class="effect-image" data-title="多人卡通化" aria-label="放大多人卡通化官方截图"><img src="live/live_cartoon_group.jpg" alt="三个人的合照经过编辑后同时变成卡通人物，办公室背景保留" loading="lazy" width="1600" height="777"><span>官方截图 · 点击放大</span></button><div class="effect-copy"><span class="small-label">08 / 多主体风格化</span><h3>多人一起变成卡通</h3><p>将画面中的所有人统一转成卡通风格。</p><p class="look-for">观察：三个主体是否都发生变化，人物之间的位置关系是否保留。</p></div></article>
+        <article class="effect-card"><button class="effect-image" data-title="手绘动画与配饰" aria-label="放大手绘动画与配饰官方截图"><img src="live/live_cel_anime.jpg" alt="人物加入红色帽子和黑色墨镜，同时变成手绘动画风格" loading="lazy" width="1600" height="773"><span>官方截图 · 点击放大</span></button><div class="effect-copy"><span class="small-label">09 / 配饰 + 风格组合</span><h3>加帽子、墨镜，再变成动画</h3><p>添加红色棒球帽和墨镜，同时转成手绘赛璐璐动画风格。</p><p class="look-for">观察：配饰增加与画风转换如何同时发生，而不只是整体调色。</p></div></article>
+        <article class="effect-card"><button class="effect-image" data-title="古装与宫殿" aria-label="放大古装与宫殿官方截图"><img src="live/live_hanfu_palace.jpg" alt="人物从办公室中的蓝色上衣，变为宫殿背景中的粉色立领长衫" loading="lazy" width="1600" height="776"><span>官方截图 · 点击放大</span></button><div class="effect-copy"><span class="small-label">10 / 换装 + 场景组合</span><h3>换上古装，走进宫殿</h3><p>换成粉色明代风格立领长衫，同时将办公室变为古代宫殿。</p><p class="look-for">观察：服饰和背景一起变化时，面部与手势是否仍能对应原图。</p></div></article>
+        <article class="effect-card combination-card"><span class="small-label">组合编辑 / 已有动态案例</span><h3>一条指令，修改多个细节。</h3><p>毛色变白、增加彩色帽子、墨镜变粉色：上方第三组视频展示了多个要求同时作用于一个画面的效果。</p><a class="external-button" id="jump-multi-edit" href="#case03">播放多处局部修改 <span>↑</span></a><p class="look-for">静态截图只能展示某一刻。若要判断运动中是否闪烁、是否保持一致，需要查看视频或使用官方实时体验。</p></article>
+      </div>
+      <p class="source-note">效果描述为截图内容的中文概述，非新增实测。<a href="https://github.com/jd-opensource/JoyAI-Video-Edit/tree/d88456a8d3609994d15954947a3e1e9fb3444552/assets/live_demo" target="_blank" rel="noopener noreferrer">查看官方截图来源 ↗</a></p>
+    </section>
+    <section id="reference-demo" class="reference-section" aria-labelledby="reference-title">
+      <div class="reference-copy"><div class="eyebrow">REFERENCE IMAGE → VIDEO</div><h2 id="reference-title">给一张服装图，让视频里的模特穿上。</h2><p>输入原视频、参考服装图片和换装指令，得到按照参考图编辑的视频。</p><div class="reference-legend"><p><strong>左上角</strong>原始模特视频</p><p><strong>右上角</strong>服装参考图片</p><p><strong>主画面</strong>编辑后的换装结果</p></div><p>指令概述：让视频中的模特穿上参考图片里的外套、裙子或上衣。</p><p class="look-for">留意服装轮廓、纹理与运动的对应。该视频是官方发布的效果合集，不是本站现场推理。</p><a href="https://github.com/user-attachments/assets/e887d087-af71-4de1-b5d3-bbfbd32922d8" target="_blank" rel="noopener noreferrer">查看官方视频原链接 ↗</a></div>
+      <div class="reference-player"><span class="badge">官方视频 · 30 秒 · 无音轨</span><video id="reference-video" controls muted playsinline preload="none" poster="live/reference-outfits.jpg" aria-label="官方参考图引导换装效果合集"><source src="live/reference-outfits.mp4" type="video/mp4">浏览器不支持视频播放，请使用旁边的官方视频链接。</video><button id="reference-load" class="play-button">加载并播放换装视频</button><p id="reference-status" role="status">点击播放，可暂停、拖动进度或全屏观察。</p></div>
+    </section>
+    <dialog id="effect-dialog" aria-labelledby="effect-dialog-title"><div class="dialog-heading"><h2 id="effect-dialog-title">官方效果截图</h2><button id="close-effect-dialog" aria-label="关闭放大截图" autofocus>关闭 ×</button></div><img id="effect-dialog-image" alt=""><p>官方静态截图 · 左侧为原始画面，右侧为编辑结果 · 按 Esc 关闭</p><a id="effect-dialog-original" target="_blank" rel="noopener noreferrer">打开原尺寸图片 ↗</a></dialog>
+    <section id="understanding" class="understanding-section" aria-labelledby="understanding-title">
+      <div class="section-heading"><div class="eyebrow">THE COMPLETE PICTURE</div><h2 id="understanding-title">它到底能改什么？从两张图开始。</h2><p>输入是原视频或摄像头画面，再给文字指令和可选参考图；输出是沿着原有动作与镜头生成的编辑后视频。下面把官方案例、技术路径和实际价值放在一起看。</p></div>
+      <div class="capability-grid" aria-label="能力与证据边界">
+        <article><span class="small-label">人物与主体</span><h3>替换形象、换装</h3><p>真人变机器人、多人卡通化，或参考服装图改变衣着。特定真人身份替换未由本站验证。</p><a href="#live-effects">看官方截图 ↗</a></article>
+        <article><span class="small-label">风格与场景</span><h3>换画风、换背景</h3><p>水彩、手绘动画、城堡或宫殿风格；也可组合改变人物服装与场景。</p><a href="#comparison">看视频对比 ↗</a></article>
+        <article><span class="small-label">画面内容</span><h3>添加、删除、局部改写</h3><p>增加帽子或墨镜，修改动物毛色，移除画面两侧的猫。移除人物属于相近任务推断，尚无本页官方动态样例。</p><a href="#comparison">看视频对比 ↗</a></article>
+        <article><span class="small-label">使用边界</span><h3>连续编辑，不是剪辑全家桶</h3><p>重点是对视频帧的视觉改写；字幕、配音、剪切、时间线编排不属于这套展示能力。</p><a href="#how">看实现路径 ↗</a></article>
+      </div>
+      <div class="guide-grid">
+        <figure class="guide-card guide-primary"><a href="joyai-capability-overview-v2.svg" target="_blank" rel="noopener noreferrer" aria-label="打开第二版完整引导图，可无损放大"><img src="joyai-capability-overview-v2.png" alt="JoyAI-Video-Edit 深色全景图：展示八类视频编辑能力、官方案例、输入输出、底层生成流程、硬件门槛和借鉴价值" loading="lazy" decoding="async"></a><figcaption><span class="guide-label">01 / 核心速览</span><h3>视频编辑台：先看能力，再看证据</h3><p>把“能改什么、案例长什么样、怎样持续生成、值不值得用”排成一条阅读路径。适合第一次快速建立完整认识。</p><a href="joyai-capability-overview-v2.svg" target="_blank" rel="noopener noreferrer">打开可放大版本 ↗</a></figcaption></figure>
+        <figure class="guide-card"><a href="joyai-capability-overview.svg" target="_blank" rel="noopener noreferrer" aria-label="打开第一版原理引导图，可无损放大"><img src="joyai-capability-overview.png" alt="JoyAI-Video-Edit 浅色资料图：梳理输入视频、文字和参考图、主体及背景编辑、模型模块、输出与应用方向" loading="lazy" decoding="async"></a><figcaption><span class="guide-label">02 / 结构补充</span><h3>资料地图：顺着输入到输出追原理</h3><p>适合回看条件输入、视频压缩、分块生成与缓存之间的关系，并核对部署条件和能力边界。</p><a href="joyai-capability-overview.svg" target="_blank" rel="noopener noreferrer">打开可放大版本 ↗</a></figcaption></figure>
+      </div>
+      <p class="source-note">两张图是对<a href="https://github.com/jd-opensource/JoyAI-Video-Edit" target="_blank" rel="noopener noreferrer">上游仓库</a>、<a href="https://arxiv.org/html/2608.03974v1" target="_blank" rel="noopener noreferrer">技术论文</a>和官方示例的研究整理；能力展示不代表本地模型实测，也不保证每种输入都能达到示例效果。</p>
+    </section>
+    <section id="how" class="how-section"><div class="section-heading"><div class="eyebrow">UNDER THE HOOD</div><h2>画面持续到来，编辑持续发生。</h2><p>分块生成、复用历史，让编辑不必等到整段视频结束。</p></div><div class="pipeline"><article><span class="step-number">01</span><h3>理解你要改什么</h3><p>多模态模型读取首帧与指令，提取画面内容和编辑意图。</p><span class="technical">MLLM · 条件编码</span></article><article><span class="step-number">02</span><h3>压缩连续画面</h3><p>视频编码器将当前片段转为紧凑表示，减少生成计算量。</p><span class="technical">CAUSAL VAE · 视频压缩</span></article><article><span class="step-number">03</span><h3>生成新的画面</h3><p>结合源画面、指令、参考图与历史，用两步去噪完成编辑。</p><span class="technical">16B DiT · 两步生成</span></article><article><span class="step-number">04</span><h3>还原并继续</h3><p>解码输出，同时保留首块与近期缓存，供下一段延续外观。</p><span class="technical">DECODE + KV CACHE</span></article></div><p class="source-note">结构示意，非实时运行监控。<a href="https://arxiv.org/html/2608.03974v1" target="_blank" rel="noopener noreferrer">阅读技术论文 ↗</a></p></section>
+    <section class="practical"><div class="practical-copy"><div class="eyebrow">FROM DEMO TO PRACTICE</div><h2>对我们的意义：<br>快速验证视频创意。</h2><p>可用于电商换装和场景预览、广告画风探索、短视频创意迭代或实时互动原型。值得借鉴的是“原视频保留运动 + 语言/参考图控制编辑 + 分块低延迟输出”的产品路径。</p><p>正式交付前，重点测试商品细节、人物一致性、遮挡、快速动作和长时稳定性。先用官方体验验证自己的素材，再决定是否投入本地显卡和模型部署。</p><p class="muted">本项目完成效果展示与资料研究，尚未在本机运行模型，也未独立复测官方性能。</p><a href="research.md">查看完整研究记录 ↗</a></div><div class="hardware"><div class="panel-heading"><h3>官方公布的部署表现</h3><span>单卡</span></div><div class="table-scroll"><table><thead><tr><th scope="col">显卡</th><th scope="col">输出分辨率</th><th scope="col">帧率</th></tr></thead><tbody><tr><th scope="row">RTX 5090 <span>32 GB</span></th><td>840 × 480</td><td>24 FPS</td></tr><tr><th scope="row">RTX PRO 6000 <span>Blackwell</span></th><td>1248 × 720</td><td>16 FPS</td></tr><tr><th scope="row">NVIDIA B200</th><td>1248 × 720</td><td>30 FPS</td></tr></tbody></table></div><p>本地推理依赖 Python、PyTorch、CUDA 12.8、模型权重约 51 GB，以及官方算子与服务部署脚本；浏览本展示页无需这些环境。“实时帧率”不等于零延迟。</p><a href="https://github.com/jd-opensource/JoyAI-Video-Edit/blob/main/DEPLOYMENT.md" target="_blank" rel="noopener noreferrer">官方部署指南 ↗</a></div></section>
+  </main>
+  <footer><span>009 / 开源项目研究集</span><p>素材与模型：JD · JoyAI-Video-Edit · <a href="UPSTREAM-LICENSE">Apache 2.0</a><br>素材版本 d88456a · 整理日期 2026-09-22</p><a href="https://github.com/jd-opensource/JoyAI-Video-Edit" target="_blank" rel="noopener noreferrer">上游项目 ↗</a></footer>
+  <noscript><p class="notice">交互对比需要 JavaScript。请访问 <a href="https://github.com/jd-opensource/JoyAI-Video-Edit#-showcase">官方示例</a> 查看视频。</p></noscript>
+</body>
+</html>

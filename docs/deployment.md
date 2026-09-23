@@ -62,3 +62,7 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 包含完整能力引导图、字幕交互预览、真实硬字幕样片、上游桌面截图、六步原理、底层依赖与能力边界。本地启动：`python projects/008-videocaptioner/scripts/preview_server.py`，访问 `http://127.0.0.1:5188/008-videocaptioner/`。
 
 2026-09-23 已发布并验证：[008 在线研究页](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) · [完整引导图](https://yydshly.github.io/0919_codex_project/008-videocaptioner/capability-map.svg) · [发布记录](../projects/008-videocaptioner/notes/publication.md)。线上视频支持 HTTP Range；静态站点不运行实时识别、翻译或配音服务。
+
+## 009 · JoyAI-Video-Edit 视频内容改写
+
+线上入口：[官方效果对照与两张引导图](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/)。源码在 `projects/009-joyai-video-edit/site/`，发布文件在 `web/009-joyai-video-edit/`；工作流运行 `python projects/009-joyai-video-edit/scripts/build_web.py`，静态构建无需联网、GPU 或模型权重。公网只播放固定版本的官方样例，不能上传素材做模型推理。本地运行模型的显卡、CUDA 和约 51 GB 权重要求见项目研究页与上游部署指南。
