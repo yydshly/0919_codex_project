@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d35">
+  <meta name="description" content="VoxCPM2 研究页：看懂它的语音合成、声音设计与克隆能力，连续潜在空间和流匹配原理，运行依赖、应用场景及对我们的实际意义。">
+  <title>VoxCPM2 · 能力、原理与使用判断</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23101d35'/%3E%3Cpath d='M13 35h5V25h5v22h5V16h5v32h5V22h5v19h5V29h5' fill='none' stroke='%2356d6cc' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../" aria-label="返回研究集首页"><span class="brand-mark" aria-hidden="true">∿</span><span>开源项目研究集 <b>/ 017</b></span></a>
+      <nav aria-label="本页导航"><a href="#abilities">能力</a><a href="#principle">原理</a><a href="#environment">环境</a><a href="#value">判断</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">OPENBMB / VOXCPM2 / RESEARCH 017</p>
+        <h1 id="page-title">让文字开口说话，<br><em>声音由你决定。</em></h1>
+        <p class="lead">VoxCPM2 是可自行部署的语音生成模型。它把文字合成为语音，也能按描述设计声音，或参考一段录音克隆音色。</p>
+        <div class="hero-actions"><a class="button primary" href="#overview">先看一张图 <span aria-hidden="true">↘</span></a><a class="button ghost" href="https://github.com/OpenBMB/VoxCPM" target="_blank" rel="noopener noreferrer">查看原始仓库 <span aria-hidden="true">↗</span></a></div>
+        <p class="hero-note">这是静态研究说明页；网页不运行模型，也不提供在线配音。</p>
+      </div>
+      <div class="hero-side" aria-label="VoxCPM2 的关键数据">
+        <div class="soundwave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="stat-grid"><div><strong>30</strong><span>种语言</span></div><div><strong>9</strong><span>种中文方言</span></div><div><strong>48<span>kHz</span></strong><span>最高输出采样率</span></div><div><strong>2B</strong><span>约 20 亿参数</span></div></div>
+        <p>从脚本到声音的最后一公里</p>
+      </div>
+    </section>
+
+    <section class="overview-section" id="overview" aria-labelledby="overview-title">
+      <div class="wrap overview-layout">
+        <div class="section-intro"><p class="eyebrow">OVERVIEW / 一图总览</p><h2 id="overview-title">能力、原理与运行条件<br>放在同一张图里。</h2><p>这张图沿用我们前面整理的汇总引导图。它适合快速定位问题；下方文字进一步解释使用边界和选择理由。</p><a class="text-link" href="./overview.png" target="_blank" rel="noopener noreferrer">打开原图放大查看 <span aria-hidden="true">↗</span></a></div>
+        <a class="poster" href="./overview.png" target="_blank" rel="noopener noreferrer" aria-label="打开 VoxCPM2 完整汇总引导图"><img src="./overview.png" alt="VoxCPM2 汇总图：文字配音、声音设计与克隆能力；LocEnc、TSLM、RALM、LocDiT 和 AudioVAE 的生成流程；Python、PyTorch、模型权重及运行边界" width="1086" height="1448" loading="lazy"><span>点击查看高清原图 ↗</span></a>
+      </div>
+    </section>
+
+    <section class="section wrap" id="abilities" aria-labelledby="abilities-title">
+      <div class="section-head"><div><p class="eyebrow">01 / CAPABILITIES</p><h2 id="abilities-title">它能做什么</h2></div><p>输入是文稿、可选的声音描述或参考录音；输出是一段合成语音。</p></div>
+      <div class="cap-grid">
+        <article class="cap-card"><span class="num">01</span><h3>文字配音</h3><p>把文章、讲稿和产品说明读出来；官方支持 30 种语言及 9 种中文方言。</p></article>
+        <article class="cap-card"><span class="num">02</span><h3>声音设计</h3><p>用文字描述音色、年龄感、情绪或语速，生成新的声音，无需录音。</p></article>
+        <article class="cap-card"><span class="num">03</span><h3>音色克隆</h3><p>参考录音提供目标音色，可配合风格指令改变表达；此模式不要求录音逐字稿。</p></article>
+        <article class="cap-card"><span class="num">04</span><h3>延续式克隆</h3><p>同时提供录音与准确逐字稿，让新语音更紧密地延续录音中的节奏和表达。</p></article>
+        <article class="cap-card"><span class="num">05</span><h3>流式音频输出</h3><p>逐块返回已生成的声音，适合在应用里边收边播放；也可批量生成音频。</p></article>
+        <article class="cap-card"><span class="num">06</span><h3>定制声音</h3><p>支持 LoRA 与全量微调，可针对特定说话人、风格或领域进一步适配。</p></article>
+      </div>
+      <p class="inline-note">在语音助手里，它负责把回答“说出来”。语音识别、对话理解和翻译，需要其他组件配合。</p>
+    </section>
+
+    <section class="section principle-section" id="principle" aria-labelledby="principle-title">
+      <div class="wrap"><div class="section-head"><div><p class="eyebrow">02 / HOW IT WORKS</p><h2 id="principle-title">底层怎样生成声音</h2></div><p>先规划说什么、怎么说，再逐块合成声音细节。</p></div>
+        <div class="pipeline" role="list" aria-label="VoxCPM2 语音生成的五步流程">
+          <div class="pipe-step" role="listitem"><span>输入</span><h3>文字 + 可选录音</h3><p>文稿决定内容；声音描述或参考录音提供风格与音色。</p></div>
+          <div class="pipe-step" role="listitem"><span>压缩</span><h3>AudioVAE · LocEnc</h3><p>把参考声音编码为连续特征，再将相邻帧组成较短的序列。</p></div>
+          <div class="pipe-step" role="listitem"><span>规划</span><h3>TSLM · FSQ</h3><p>语言模型提取语义与韵律，形成相对稳定的表达骨架。</p></div>
+          <div class="pipe-step" role="listitem"><span>细化</span><h3>RALM · LocDiT</h3><p>补充音色和声学细节，通过条件流匹配生成下一块特征。</p></div>
+          <div class="pipe-step" role="listitem"><span>输出</span><h3>AudioVAE 解码</h3><p>重复生成后还原为可播放的音频，最高输出 48 kHz。</p></div>
+        </div>
+        <div class="explainer"><strong>“Tokenizer-Free”是什么意思？</strong><p>它主要在连续声音特征空间中生成，不依赖外部离散语音 tokenizer。文字仍会分词，模型内部也有 FSQ 量化结构。自回归负责“一块接一块”，局部流匹配负责每一块的细节。</p></div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="environment" aria-labelledby="environment-title">
+      <div class="section-head"><div><p class="eyebrow">03 / REQUIREMENTS</p><h2 id="environment-title">运行前需要什么</h2></div><p>部署现成权重与训练自己的模型，是两种投入规模。</p></div>
+      <div class="requirements"><div class="requirements-main"><div class="require-row"><span>软件</span><p>推荐 Python 3.10–3.12、PyTorch ≥ 2.5，以及 torchaudio 等安装包依赖。</p></div><div class="require-row"><span>模型文件</span><p>需要下载 VoxCPM2 权重，并预留数 GB 磁盘空间。</p></div><div class="require-row"><span>运行设备</span><p>NVIDIA GPU 用 CUDA ≥ 12.0 加速；也支持 Apple MPS 或 CPU 推理，速度随设备变化。</p></div><div class="require-row"><span>显存参考</span><p>官方列出的 VoxCPM2 推理显存约 8 GB。具体占用取决于配置，应预留余量。</p></div><div class="require-row"><span>微调</span><p>需要录音与匹配文字。官方指定配置下，LoRA 约 20 GB、全量微调约 40 GB 显存。</p></div></div><aside class="install-card"><span>最短安装入口</span><code>pip install voxcpm</code><p>首次运行还需获取模型权重。我们尚未在本机下载和实测模型。</p><a href="https://voxcpm.readthedocs.io/en/latest/installation.html" target="_blank" rel="noopener noreferrer">阅读官方安装文档 ↗</a></aside></div>
+    </section>
+
+    <section class="section value-section" id="value" aria-labelledby="value-title">
+      <div class="wrap value-layout"><div><p class="eyebrow">04 / OUR TAKE</p><h2 id="value-title">对我们有什么意义</h2><p class="value-lead">把它作为可自部署的语音输出备选组件。现阶段先保留研究结论；出现真实配音需求时，再用自己的文稿和参考录音验证效果。</p><div class="value-callout"><strong>值得尝试的触发点</strong><p>需要固定个人或品牌音色、大量更新旁白、多语言配音，或让 AI 助手以指定声音回答。</p></div></div><div class="decision-list"><div><b>现在</b><p>不必为了收藏模型而单独建设产品或投入训练。</p></div><div><b>需要时</b><p>先做小样，比较读音、音色一致性、自然度、生成延迟和维护成本。</p></div><div><b>研究层面</b><p>连续声音特征、语义与声学分层、自回归加局部流匹配值得学习。</p></div></div></div>
+    </section>
+
+    <section class="boundary wrap" aria-labelledby="boundary-title"><div><p class="eyebrow">BOUNDARIES</p><h2 id="boundary-title">使用边界</h2></div><ul><li>长文稿建议分段生成并试听校对，避免语速漂移或杂音。</li><li>参考录音宜清晰，官方给出的实用范围为 5–30 秒。</li><li>流式音频输出不等于文字逐 token 到达时同步生成语音。</li><li>本页是文档与代码研究；没有实测声音质量、显存或速度。</li></ul></section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><p>资料来源：<a href="https://github.com/OpenBMB/VoxCPM" target="_blank" rel="noopener noreferrer">项目仓库</a> · <a href="https://voxcpm.readthedocs.io/en/latest/models/architecture.html" target="_blank" rel="noopener noreferrer">官方架构文档</a> · <a href="https://voxcpm.readthedocs.io/en/latest/usage_guide.html" target="_blank" rel="noopener noreferrer">使用指南</a> · <a href="https://arxiv.org/abs/2606.06928" target="_blank" rel="noopener noreferrer">技术报告</a></p><p>研究整理于 2026-09-23 · 以 VoxCPM2 为准</p></div></footer>
+</body>
+</html>

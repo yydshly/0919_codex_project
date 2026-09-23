@@ -7,6 +7,7 @@
 - [演示总入口](https://yydshly.github.io/0919_codex_project/)
 - [001 · Video Shotcraft](https://yydshly.github.io/0919_codex_project/001-video-shotcraft/)
 - [002 · BrightBean Studio](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/) · [接入引导图](https://yydshly.github.io/0919_codex_project/002-brightbean-studio/#guide)
+- [017 · VoxCPM2 语音生成模型研究页](https://yydshly.github.io/0919_codex_project/017-voxcpm/)
 
 同一仓库的多个演示使用 `NNN-slug/` 子路径，编号与研究目录对应。
 

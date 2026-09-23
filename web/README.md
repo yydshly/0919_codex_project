@@ -1,5 +1,9 @@
 # Web 演示目录
 
+## 017 · VoxCPM2
+
+[语音生成模型研究页](https://yydshly.github.io/0919_codex_project/017-voxcpm/)汇总多语言配音、声音设计与克隆能力，连续声音特征、自回归与局部流匹配的生成原理，Python / PyTorch / 权重等依赖，以及对我们的使用判断。页面与根 README 都沿用同一张[汇总引导图](../projects/017-voxcpm/assets/overview.png)。构建：`python projects/017-voxcpm/scripts/build_web.py`。GitHub Pages 仅托管静态说明，未部署 VoxCPM 推理服务。
+
 ## 008 · VideoCaptioner
 
 已发布：[字幕与配音研究页](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) · [完整引导图 SVG](https://yydshly.github.io/0919_codex_project/008-videocaptioner/capability-map.svg)。从输入、识别、断句、校正和翻译，到字幕、成片与配音输出，说明模型接入、Python / FFmpeg 等依赖、时间戳能力和使用价值。构建：`python projects/008-videocaptioner/scripts/build_web.py`。本次实测硬字幕合成，识别、翻译和配音尚未作质量验证。

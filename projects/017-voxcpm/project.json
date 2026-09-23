@@ -1,0 +1,11 @@
+{
+  "id": "017",
+  "slug": "voxcpm",
+  "name": "VoxCPM2 · 本地语音生成模型研究",
+  "summary": "可自部署的语音生成模型，支持多语言配音、声音设计与参考录音克隆。以连续声音特征、自回归语言建模和局部流匹配生成语音；依赖 Python、PyTorch 与模型权重，GPU 可加速。对我们是按需接入的配音组件与语音模型实现参考；暂不需要为它单独建设产品。",
+  "source": "https://github.com/OpenBMB/VoxCPM",
+  "status": "已完成",
+  "tags": ["语音合成", "声音克隆", "本地部署", "PyTorch", "模型研究"],
+  "demo": "https://yydshly.github.io/0919_codex_project/017-voxcpm/",
+  "cover": "assets/overview.png"
+}
