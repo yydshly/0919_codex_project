@@ -17,6 +17,7 @@
 | 004 | [Blinko · Markdown 笔记记录软件](projects/004-blinko/README.md) | 支持 Markdown 的笔记记录软件，可保存文字、链接、待办和附件，围绕记录提供整理、检索、总结与 AI 问答。与 ReflectFlow 在记录及基于记录的处理上有重叠；已本地部署并验证基础笔记功能，AI 尚未配置。 | 已复现 | 个人笔记、RAG、AI、自部署、TypeScript | [blinko](https://github.com/blinkospace/blinko) | [演示](https://yydshly.github.io/0919_codex_project/004-blinko/) |
 | 005 | [Y2A-Auto · YouTube 视频处理与 A/B 站发布](projects/005-y2a-auto/README.md) | 获取 YouTube 视频，经过字幕识别、翻译、烧录或转码等处理后，发布到 A 站（AcFun）或 B 站（bilibili）；支持单平台或双平台发布。 | 已完成 | 视频搬运、YouTube、AcFun、bilibili、ASR、字幕翻译、自动化、自部署、Python、Flask、Docker、yt-dlp | [Y2A-Auto](https://github.com/fqscfqj/Y2A-Auto) | [演示](https://yydshly.github.io/0919_codex_project/005-y2a-auto/) |
 | 006 | [Leak Check · 数据关联原理与邮件账号盘点探索](projects/006-leak-check/README.md) | 已有个人信息库的查询后端：按电话、邮箱等精确匹配，再提取共同标识，默认两轮查表、聚合脱敏；不实时搜索全网，也不附作者数据。我们据此明确数据来源才是瓶颈，转向用户授权后的历史邮件账号盘点。原库可供实现参考，拾迹为独立原型；其价值是减少翻信、找回遗忘平台，真实效果与后续适配待验证。 | 已完成 | 源码研究、关联检索、数据边界、邮件盘点、产品探索 | [leak-check](https://github.com/garinasset/leak-check) | [演示](https://yydshly.github.io/0919_codex_project/006-leak-check/) |
+| 007 | [Ebook Treasure Chest · 个人电子书链接目录](projects/007-ebook-treasure-chest/README.md) | 个人维护的书目与外部下载链接目录；仓库不含书籍正文。对我们的直接价值较低，保留分类文件生成静态搜索页的实现参考。 | 已完成 | 电子书、链接目录、静态搜索、Python、低优先级 | [ebook-treasure-chest](https://github.com/jbiaojerry/ebook-treasure-chest) | — |
 <!-- PROJECT_INDEX:END -->
 
 ## 项目图览

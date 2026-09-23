@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173e35">
+  <meta name="description" content="Ebook Treasure Chest：个人维护的电子书书目与外部下载链接目录，以及它对我们的实际意义。">
+  <title>007 · 个人电子书链接目录</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="masthead"><a href="../">← 项目研究集</a><span>研究编号 007 · 2026-09-23</span></header>
+  <main id="main">
+    <div class="eyebrow">EBOOK TREASURE CHEST / 研究结论</div>
+    <h1>一个个人维护的<br>电子书链接目录</h1>
+    <p class="intro">它把外部网站上的书名、作者、标签和下载地址整理起来，提供分类浏览与关键词搜索。书籍文件由第三方网盘提供，仓库保存的是目录和链接。</p>
+    <div class="verdict"><strong>我们怎么看</strong><p>对我们的直接价值较低。现成书目与我们关注的专业技术资料不够贴合；可以保留它“采集目录 → 生成搜索数据 → 发布静态页面”的做法作为小型资料索引参考。</p></div>
+    <nav class="toc" aria-label="本页内容"><a href="#stored">保存了什么</a><a href="#process">如何设计</a><a href="#meaning">对我们有什么意义</a><a href="#sources">核对依据</a></nav>
+
+    <section id="stored">
+      <span class="num">01 / CONTENTS</span><h2>它保存了什么？</h2>
+      <p>上游统计记录 1,000 个分类文件、24,071 条书目记录；一本书可能归入多个分类，因此这不是去重后的书籍总数。仓库文件树中未发现 EPUB、MOBI、AZW3 或 PDF 正文文件。</p>
+      <div class="rows"><div><strong>仓库里的目录</strong><span>书名、作者、分类标签、外部下载链接，以及供网页搜索的 JSON 数据。</span></div><div><strong>仓库里的程序</strong><span>采集网页、按标签生成表格、合并数据、更新搜索页的脚本。</span></div><div><strong>书籍文件</strong><span>链接指向第三方网盘，文件是否仍在、格式与质量需要实际核对。</span></div></div>
+      <p class="aside">收录方式主要依靠脚本采集；“个人维护”不表示维护者亲自读过或推荐每本书。格式字段由脚本默认填入，不代表逐本验证。</p>
+    </section>
+
+    <section id="process">
+      <span class="num">02 / DESIGN</span><h2>目录是如何做出来的？</h2>
+      <ol class="steps"><li><span>01</span><div><strong>采集外部网站</strong><p>Python 按书籍 ID 请求详情页和下载页，提取书名、作者、标签及网盘地址。</p></div></li><li><span>02</span><div><strong>按标签存放</strong><p>把一条书目写入一个或多个 Markdown 分类表格。</p></div></li><li><span>03</span><div><strong>生成搜索数据</strong><p>合并分类表格为 JSON，交给 GitHub Pages 上的静态网页。</p></div></li><li><span>04</span><div><strong>在浏览器中搜索</strong><p>网页一次加载目录，按书名、作者或分类匹配关键词；它不会在搜索时重新查遍互联网。</p></div></li></ol>
+      <p class="aside">自动更新主要追踪新增书籍 ID。源码静态核对发现，增量写入可能覆盖同标签旧记录，失败请求也可能被记作已处理；本次未运行上游采集程序。</p>
+    </section>
+
+    <section id="meaning">
+      <span class="num">03 / VALUE</span><h2>对我们的意义</h2>
+      <p>作为找书工具，它适合搜索已收录的文学、历史、科普、经管等书目。它不能保证找到某一本书；此前核对公开目录时，没有找到《架构师的自我修养》。</p>
+      <p>作为技术案例，值得借鉴的是轻量目录结构：用文件保存分类，生成统一索引，再用静态网页检索。如果我们建设自己的专业资料目录，需要围绕实际资料来源补上去重、链接检查与备份。现阶段无需围绕这个库投入部署和扩建。</p>
+    </section>
+
+    <section id="sources">
+      <span class="num">04 / EVIDENCE</span><h2>依据与范围</h2>
+      <p>结论基于上游提交 <code>93cf3ff</code> 的统计文件、采集脚本、数据转换代码、搜索脚本和工作流。我们没有下载书籍，也没有逐条检查下载地址。完整核对结果见项目文档。</p>
+      <div class="links"><a href="https://github.com/jbiaojerry/ebook-treasure-chest" target="_blank" rel="noopener noreferrer">上游仓库 ↗</a><a href="https://jbiaojerry.github.io/ebook-treasure-chest/" target="_blank" rel="noopener noreferrer">上游搜索页 ↗</a><a href="research.md">项目说明 ↗</a><a href="notes.md">源码核对笔记 ↗</a></div>
+    </section>
+  </main>
+  <footer><span>007 · Ebook Treasure Chest</span><a href="#main">回到顶部 ↑</a></footer>
+</body>
+</html>

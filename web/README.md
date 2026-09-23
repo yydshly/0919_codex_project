@@ -23,3 +23,7 @@
 发布范围为静态研究网页与拾迹原型。公网不运行邮箱连接后端，不提供真实个人信息查询；拾迹仅可体验示例与本地文件分析。新增邮箱适配及真实账号验证仍暂缓。
 
 2026-09-23 已发布并验证：[006 在线研究页](https://yydshly.github.io/0919_codex_project/006-leak-check/)。研究页、全景图、文档和静态原型已确认可访问；在线演示元信息已填写。[发布验证记录](../projects/006-leak-check/notes/publication.md)。
+
+## 007 · 电子书链接目录
+
+简明说明网页，解释个人维护的书目与外链目录、文件结构、采集流程和我们认为直接价值较低的原因。构建：`python projects/007-ebook-treasure-chest/scripts/build_web.py`。

@@ -1,0 +1,11 @@
+{
+  "id": "007",
+  "slug": "ebook-treasure-chest",
+  "name": "Ebook Treasure Chest · 个人电子书链接目录",
+  "summary": "个人维护的书目与外部下载链接目录；仓库不含书籍正文。对我们的直接价值较低，保留分类文件生成静态搜索页的实现参考。",
+  "source": "https://github.com/jbiaojerry/ebook-treasure-chest",
+  "status": "已完成",
+  "tags": ["电子书", "链接目录", "静态搜索", "Python", "低优先级"],
+  "demo": "",
+  "cover": ""
+}

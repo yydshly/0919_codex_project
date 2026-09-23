@@ -32,6 +32,8 @@ jobs:
         run: python projects/005-y2a-auto/scripts/build_web.py
       - name: Build Leak Check capability showcase
         run: python projects/006-leak-check/scripts/build_web.py
+      - name: Build Ebook Treasure Chest summary page
+        run: python projects/007-ebook-treasure-chest/scripts/build_web.py
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
