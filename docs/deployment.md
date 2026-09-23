@@ -54,3 +54,11 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 发布范围为静态研究网页与拾迹原型。公网不运行邮箱连接后端，不提供真实个人信息查询；拾迹仅可体验示例与本地文件分析。新增邮箱适配及真实账号验证仍暂缓。
 
 2026-09-23 已发布并验证：[006 在线研究页](https://yydshly.github.io/0919_codex_project/006-leak-check/)。研究页、全景图、文档和静态原型已确认可访问；在线演示元信息已填写。[发布验证记录](../projects/006-leak-check/notes/publication.md)。
+
+## 008 · VideoCaptioner 字幕与配音工作台
+
+源码：`projects/008-videocaptioner/site/`；构建：`python projects/008-videocaptioner/scripts/build_web.py`；输出：`web/008-videocaptioner/`。工作流已加入构建步骤。
+
+包含完整能力引导图、字幕交互预览、真实硬字幕样片、上游桌面截图、六步原理、底层依赖与能力边界。本地启动：`python projects/008-videocaptioner/scripts/preview_server.py`，访问 `http://127.0.0.1:5188/008-videocaptioner/`。
+
+2026-09-23 已发布并验证：[008 在线研究页](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) · [完整引导图](https://yydshly.github.io/0919_codex_project/008-videocaptioner/capability-map.svg) · [发布记录](../projects/008-videocaptioner/notes/publication.md)。线上视频支持 HTTP Range；静态站点不运行实时识别、翻译或配音服务。

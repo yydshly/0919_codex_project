@@ -1,5 +1,9 @@
 # Web 演示目录
 
+## 008 · VideoCaptioner
+
+已发布：[字幕与配音研究页](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) · [完整引导图 SVG](https://yydshly.github.io/0919_codex_project/008-videocaptioner/capability-map.svg)。从输入、识别、断句、校正和翻译，到字幕、成片与配音输出，说明模型接入、Python / FFmpeg 等依赖、时间戳能力和使用价值。构建：`python projects/008-videocaptioner/scripts/build_web.py`。本次实测硬字幕合成，识别、翻译和配音尚未作质量验证。
+
 多个静态演示的汇总位置。每个演示使用与研究项目相同的 `NNN-slug/` 子目录；总入口为 `index.html`。
 
 已发布：[演示总入口](https://yydshly.github.io/0919_codex_project/) · [001 · Video Shotcraft](https://yydshly.github.io/0919_codex_project/001-video-shotcraft/)。源码存放在对应研究子项目中，构建和发布方式参见[部署约定](../docs/deployment.md)。

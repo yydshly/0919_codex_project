@@ -54,6 +54,8 @@ python -m videocaptioner.cli synthesize projects/008-videocaptioner/site/media/i
 
 ## 尚未验证
 
+当前已发布的网页与验证结果见[发布记录](publication.md)。下方“本次没有执行 Git 提交、推送或公网部署”是 2026-09-22 原始本地研究阶段的记录。
+
 ### 综合全景图扩充
 
 能力图扩充为九部分、2600 × 5610 像素的 PNG 与同尺寸 SVG，覆盖输入、原理、输出、模型接入、底层依赖、直观效果、时间戳边界、运行条件和使用价值。依赖名称核对固定版本 pyproject.toml；DeepLX 适配、WAV / MP3 与逐句配音报告再次核对相关源码。
