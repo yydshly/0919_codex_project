@@ -31,7 +31,7 @@ def main():
         shutil.copy2(PROJECT / 'assets' / name, DESTINATION / name)
     readme = (PROJECT / 'README.md').read_text(encoding='utf-8')
     readme = readme.replace('(../../README.md)', '(../)').replace('(assets/cover.png)', '(cover.png)')
-    readme = readme.replace('(notes/README.md)', '(notes.md)').replace('(assets/UPSTREAM-LICENSE)', '(UPSTREAM-LICENSE)')
+    readme = readme.replace('(notes/README.md)', '(notes.md)').replace('(notes/publication.md)', '(publication.md)').replace('(assets/UPSTREAM-LICENSE)', '(UPSTREAM-LICENSE)')
     readme = readme.replace('(assets/media-manifest.json)', '(media-manifest.json)')
     readme = readme.replace('(assets/extra-media-manifest.json)', '(extra-media-manifest.json)')
     readme = readme.replace('(assets/joyai-capability-overview.svg)', '(joyai-capability-overview.svg)')
@@ -40,6 +40,7 @@ def main():
     readme = readme.replace('(assets/joyai-capability-overview-v2.png)', '(joyai-capability-overview-v2.png)')
     (DESTINATION / 'research.md').write_text(readme, encoding='utf-8', newline='\n')
     shutil.copy2(PROJECT / 'notes/README.md', DESTINATION / 'notes.md')
+    shutil.copy2(PROJECT / 'notes/publication.md', DESTINATION / 'publication.md')
     print(f'Built {DESTINATION.relative_to(ROOT)}: 5 video pairs, 5 official screenshots, 1 reference video.')
 
 

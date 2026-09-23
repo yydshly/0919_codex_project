@@ -66,3 +66,4 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 ## 009 · JoyAI-Video-Edit 视频内容改写
 
 线上入口：[官方效果对照与两张引导图](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/)。源码在 `projects/009-joyai-video-edit/site/`，发布文件在 `web/009-joyai-video-edit/`；工作流运行 `python projects/009-joyai-video-edit/scripts/build_web.py`，静态构建无需联网、GPU 或模型权重。公网只播放固定版本的官方样例，不能上传素材做模型推理。本地运行模型的显卡、CUDA 和约 51 GB 权重要求见项目研究页与上游部署指南。
+2026-09-23 已验证该页、两张引导图及 Pages 工作流上线成功；详情见[发布验证记录](../projects/009-joyai-video-edit/notes/publication.md)。

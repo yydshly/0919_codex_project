@@ -35,3 +35,4 @@
 ## 009 · JoyAI-Video-Edit 视频内容改写
 
 线上入口：[效果与两图引导](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/)。以原视频、文字和可选参考图为输入，展示人物形象替换、换装、风格转换、内容增删及背景变化。页面使用官方素材做前后对照，并说明 16B 扩散模型的分块生成原理、GPU 环境和我们可借鉴的产品路径。该静态网页不部署模型；本地构建：`python projects/009-joyai-video-edit/scripts/build_web.py`。
+2026-09-23 已验证 Pages 部署与两张引导图在线访问；详见[发布验证记录](../projects/009-joyai-video-edit/notes/publication.md)。
