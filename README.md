@@ -4,6 +4,8 @@
 
 > 收录不等于推荐；研究结论以各项目记录的版本、环境和验证结果为准。
 
+本期图解：[009 · JoyAI-Video-Edit 双图引导](#joyai-guide) · [在线效果对照](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/)
+
 ## 项目索引
 
 编号按收录顺序递增，分配后保持不变。点击项目名称查看研究详情，点击源库名称查看原始仓库。
@@ -21,6 +23,23 @@
 | 008 | [VideoCaptioner · 字幕与配音工作台](projects/008-videocaptioner/README.md) | 把视频或录音中的讲话识别成带时间的字幕，再断句、纠错、翻译、配音并合成视频。原理是把现成语音模型、语言模型、TTS 服务与 FFmpeg 串成流程，负责时间轴对应、校验和输出；可选本地识别，完整离线需另配模型与服务。 | 已完成 | 视频字幕、语音识别、LLM、翻译、配音、Python、局部实测 | [VideoCaptioner](https://github.com/WEIFENG2333/VideoCaptioner) | [演示](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) |
 | 009 | [JoyAI-Video-Edit · 视频内容改写与效果展示](projects/009-joyai-video-edit/README.md) | 以原视频、文字指令和可选参考图为输入，替换视频中的人物形象、换装、转换风格、增删画面内容并更换背景；梳理分块扩散生成原理、GPU 部署条件与创意验证价值，展示官方前后对比及两张引导图。 | 已完成 | 视频内容改写、人物形象替换、风格与背景转换、扩散模型、官方案例展示 | [JoyAI-Video-Edit](https://github.com/jd-opensource/JoyAI-Video-Edit) | [演示](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/) |
 <!-- PROJECT_INDEX:END -->
+
+<a id="joyai-guide"></a>
+## 009 · JoyAI-Video-Edit 双图引导
+
+这个库以**原视频或摄像头画面 + 文字指令 + 可选参考图**为输入，持续生成编辑后的视频。它可以改写人物形象与服装、整体风格、画面内容和背景；下面两张图把官方案例、实现原理、运行门槛与我们可借鉴的方向串在一起。图示依据[上游项目](https://github.com/jd-opensource/JoyAI-Video-Edit)的公开资料整理，**不是本机模型实测**。另见[交互效果展示](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/)和[完整研究记录](projects/009-joyai-video-edit/README.md)。
+
+### 先看深色图：能力、案例与应用价值
+
+从“输入什么、能改什么”开始，结合官方前后对照理解换装、人物形象替换、风格转换、内容增删及场景变化；下半部分汇总分块生成原理、显卡门槛和对内容创作、互动原型的参考价值。点击图片可打开可放大的 SVG。
+
+[![JoyAI-Video-Edit 深色能力全景图：输入输出、官方案例、八类编辑能力、生成原理、部署条件与应用价值](projects/009-joyai-video-edit/assets/joyai-capability-overview-v2.png)](projects/009-joyai-video-edit/assets/joyai-capability-overview-v2.svg)
+
+### 再看浅色图：输入、模型与输出的关系
+
+沿着“视频与指令 → 多模态理解和压缩 → 16B 扩散模型分块生成 → 编辑后画面”追踪底层路径，并区分官方已展示的效果、我们仍需验证的边界与实际部署条件。点击图片可打开可放大的 SVG。
+
+[![JoyAI-Video-Edit 浅色原理资料图：输入条件、可编辑对象、模型结构、持续生成机制、硬件与验证边界](projects/009-joyai-video-edit/assets/joyai-capability-overview.png)](projects/009-joyai-video-edit/assets/joyai-capability-overview.svg)
 
 ## 项目图览
 
