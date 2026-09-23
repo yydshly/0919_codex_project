@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111923"><meta name="description" content="VideoCaptioner 能把视频与录音中的讲话识别成带时间戳的字幕，再断句、纠错、翻译、配音并合成视频。了解本地 Whisper、在线服务、LLM、TTS、FFmpeg 等依赖、处理原理和能力边界。">
+  <title>VideoCaptioner · 字幕与配音工作台</title>
+  <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<aside class="rail"><a class="brand" href="../"><span class="brand-icon">CC</span><span>开源研究集<small>PROJECT NOTES</small></span></a><div class="rail-project"><span class="eyebrow">RESEARCH 008</span><strong>Video<br>Captioner<span class="mint">.</span></strong><p>字幕与配音工作台</p></div><nav aria-label="页面导航"><a class="active" href="#overview"><span>图</span>先理解它</a><a href="#studio"><span>01</span>效果工作台</a><a href="#pipeline"><span>02</span>处理原理</a><a href="#capabilities"><span>03</span>能力与条件</a><a href="#use-cases"><span>04</span>需求与时间戳</a><a href="#requirements"><span>05</span>依赖与配置</a><a href="#value"><span>06</span>对我们的价值</a><a href="#evidence"><span>07</span>验证与来源</a></nav><div class="rail-bottom"><span>源码研究 · 局部实测</span><a href="https://github.com/WEIFENG2333/VideoCaptioner" target="_blank" rel="noreferrer">访问上游仓库 ↗</a><small>基于 95842ec · 2026.09.22</small></div></aside>
+<main id="main">
+<header class="topbar"><span>工具研究 / 音视频本地化</span><a href="research.md">研究文档 ↗</a></header>
+<section id="overview" class="overview-section" aria-labelledby="overview-title">
+  <div class="understanding">
+    <span class="eyebrow">先记住这一句</span><h2>处理视频里的讲话、字幕和配音。</h2>
+    <p>输入视频、录音或已有字幕，它可以识别讲话、生成带时间戳的字幕，整理和翻译文字，再输出字幕文件、带字幕视频或新配音。视频主要承载画面，核心处理对象是讲话内容及其时间对应关系。</p>
+    <div class="mental-model">
+      <article><span>01</span><h3>声音 → 文字</h3><p>听懂视频或录音中的讲话，生成文字和时间戳。</p></article>
+      <article><span>02</span><h3>文字 → 文字</h3><p>断句、纠错、翻译，整理成单语或双语字幕。</p></article>
+      <article><span>03</span><h3>文字 → 声音</h3><p>按字幕生成新配音，适配时间，再输出音频或视频。</p></article>
+    </div>
+    <div class="building-blocks"><strong>它怎样实现？</strong><p>现成语音模型负责“听”，大语言模型或翻译服务负责“理解和改写”，语音合成服务负责“读”，FFmpeg 负责处理音视频。VideoCaptioner 负责把各步连接起来，维持字幕编号与时间轴对应，并处理结果校验、重试和输出。基础软件包只是连接工具；要在本地完成智能处理，还需要模型文件、运行程序及相应硬件。</p></div>
+    <p><strong>例如：</strong>给它一个英文讲解视频，可以得到中文字幕、中英双语视频；接入配音服务后，还可以生成中文配音版本。可以只用其中一个步骤。</p>
+    <p class="scope-line">定位：字幕制作与语音本地化工具。音乐制作、专业混音、自动剪辑和口型同步不属于这里已确认的通用能力。</p>
+    <div class="quick-links" aria-label="快速查看"><a href="#use-cases">我的问题能不能解决？ ↓</a><a href="#requirements">我的电脑能不能用？ ↓</a><a href="#studio">看实际字幕效果 ↓</a></div>
+  </div>
+  <div class="overview-heading"><div><span class="eyebrow">九个部分，一张完整参考图</span><h2 id="overview-title">从输入，到模型，再到最终结果。</h2><p>已有音视频 → 识别成文字 → 整理、翻译 → 输出字幕，或重新生成语音。</p></div><a href="capability-map.svg" target="_blank" rel="noreferrer">打开可放大全图 ↗</a></div>
+  <a class="overview-image" href="capability-map.png" target="_blank" rel="noreferrer" aria-label="打开高清能力全景图"><img src="capability-map.png" alt="VideoCaptioner 九部分全景图：输入、处理原理、三类输出、模型接入、底层依赖、直观效果、时间戳与声音边界、运行条件和对我们的意义" width="2600" height="5610"></a>
+  <div class="overview-downloads"><span>完整汇总能力、效果、底层库、时间戳边界、运行条件与用途。点击查看高清原图，或打开 SVG 放大阅读。</span><a href="capability-map.png" download>保存 PNG ↓</a><a href="capability-map.svg" download>保存矢量图 SVG ↓</a></div>
+</section>
+<section id="studio" class="studio-section">
+  <div class="section-intro"><div><div class="eyebrow">VIDEO → CAPTIONS → VOICE</div><h1>让视频里的话，<br class="mobile-break">更容易被理解。</h1><p>从语音识别到字幕翻译，再到配音与合成。先看效果，再理解它如何工作。</p></div><span class="version">VideoCaptioner<br><b>卡卡字幕助手</b></span></div>
+  <div class="workspace">
+    <div class="workspace-bar"><div class="file-label"><span class="file-icon">▶</span><div><strong>Python 入门 · 字幕样片</strong><small>00:38 · 10 条字幕 · 英语 / 简体中文</small></div></div><span class="tag verified">合成已实测</span></div>
+    <div class="workspace-grid">
+      <div class="monitor-column">
+        <div class="mode-switch" role="group" aria-label="播放模式"><button class="selected" data-mode="preview" aria-pressed="true">交互字幕预览</button><button data-mode="rendered" aria-pressed="false">实际烧录成片</button></div>
+        <div class="monitor" id="monitor"><video id="video" preload="metadata" playsinline poster="media/poster.png" aria-label="Python 入门字幕展示视频" src="media/input.mp4"></video><div id="caption" class="caption" aria-live="off"></div><span class="monitor-label" id="monitor-label">浏览器字幕布局预览</span></div>
+        <div class="transport"><button id="play" class="play" aria-label="播放样片">▶</button><span id="time">00:00 / 00:38</span><input id="seek" type="range" min="0" max="38" step="0.05" value="0" aria-label="视频播放进度"><button id="restart" aria-label="回到开头">↺</button><button id="fullscreen" aria-label="全屏播放">⛶</button></div>
+        <div class="preview-controls" id="preview-controls"><label>字幕布局<select id="layout"><option value="both">中英双语</option><option value="zh">仅中文</option><option value="en">仅英文</option><option value="none">关闭字幕</option></select></label><label>预览样式<select id="style"><option value="box">深色背景</option><option value="outline">白字描边</option><option value="accent">重点色</option></select></label><span id="mode-note">布局和样式仅改变网页预览。</span></div>
+        <p class="media-note" id="media-note">原创无声教学画面 + 上游字幕测试样例。字幕内容取自上游文件，未在本次调用模型翻译。</p>
+      </div>
+      <div class="transcript"><div class="transcript-head"><h2>字幕对照</h2><span>点击跳转时间</span></div><div id="segments" class="segments" aria-label="字幕列表"><p class="loading">正在载入字幕…</p></div><div class="download-row"><a href="media/source.srt" download>英文 SRT ↓</a><a href="media/bilingual.srt" download>双语 SRT ↓</a></div></div>
+    </div>
+  </div>
+  <div class="evidence-strip"><div><span class="status-dot"></span><strong>真实运行</strong><p>上游字幕烧录代码生成 MP4</p></div><div><span class="status-dot blue"></span><strong>上游样例</strong><p>10 条英文与双语字幕对照</p></div><div><span class="status-dot gray"></span><strong>尚未实测</strong><p>识别、模型校正与翻译质量</p></div></div>
+</section>
+<section id="pipeline"><div class="section-heading"><div><span class="eyebrow">02 / UNDER THE HOOD</span><h2>一句话，怎样变成一条好字幕？</h2></div><p>选择一个步骤，查看输入、方法与输出。</p></div><div id="step-tabs" class="steps" role="tablist" aria-label="处理步骤"></div><div id="step-panel" class="step-panel" role="tabpanel" tabindex="0"></div><div class="principle-note"><strong>真正的工程重点</strong><p>模型负责理解文本，程序负责时间轴、条目编号、格式、校验与重试。词级时间戳、模型质量和原始录音共同决定最终效果。</p></div></section>
+<section id="capabilities"><div class="section-heading"><div><span class="eyebrow">03 / CAPABILITIES</span><h2>可以直接用，也可以接入流程。</h2></div><p>桌面界面适合逐条检查；命令行适合自动化。</p></div><div class="capability-grid">
+<article><span class="cap-number">01 / ASR</span><h3>把语音变成字幕</h3><p>支持必剪、剪映、Whisper API 与本地 Whisper 路径。识别文字，同时保留字幕需要的时间信息。</p><div class="cap-foot">本地 / 云端可选<span>取决于引擎</span></div></article>
+<article><span class="cap-number">02 / REFINE</span><h3>断句、校正、翻译</h3><p>用语义拆分长句，修正识别文字，生成目标语言字幕。可以提供术语提示，启用反思式翻译。</p><div class="cap-foot">模型优化需配置服务<span>需人工复核</span></div></article>
+<article><span class="cap-number">03 / DUBBING</span><h3>按字幕时间轴配音</h3><p>接入 Edge TTS、SiliconFlow 和 Gemini 等语音服务。支持音色映射、时长适配，以及替换、混合或压低原声。</p><div class="cap-foot">本页不提供在线配音<span>源码已核对</span></div></article>
+<article><span class="cap-number">04 / EXPORT</span><h3>交付字幕或成片</h3><p>导出 SRT、ASS、TXT、JSON。软字幕作为轨道嵌入视频；硬字幕直接写入画面，可设置字体和样式。</p><div class="cap-foot">烧录样片可下载<span>本次已实测</span></div></article>
+</div><div class="app-gallery"><div><span class="eyebrow">THE DESKTOP APP</span><h3>真实桌面界面</h3><p>查看上游文档中的操作界面。截图对应上游文档版本，并非本机运行截图。</p><div class="gallery-buttons" role="group" aria-label="上游界面截图"><button data-shot="main" class="selected" aria-pressed="true">任务处理</button><button data-shot="subtitle" aria-pressed="false">字幕编辑</button><button data-shot="style" aria-pressed="false">字幕样式</button></div><a id="shot-link" href="media/upstream-main.png" target="_blank" rel="noreferrer">打开原图 ↗</a></div><img id="app-shot" src="media/upstream-main.png" alt="上游文档截图：VideoCaptioner 任务处理界面" loading="lazy"></div></section>
+<section id="use-cases" aria-labelledby="use-cases-title">
+<div class="section-heading"><div><span class="eyebrow">04 / 从需求判断</span><h2 id="use-cases-title">有视频、音频或字幕，可以用它做什么？</h2></div><p>源码与文档确认的能力；实际质量取决于录音和模型。</p></div>
+<div class="use-grid">
+<article><h3>没有字幕 → 自动生成</h3><p>视频或录音中的讲话转成文字和时间戳，输出字幕或纯文本；长音频可分块处理。</p></article>
+<article><h3>字幕不好读 → 整理与校对</h3><p>语义断句、限制句长、模型辅助纠错。可手动修改原文与译文、合并或删除字幕条目、重译选中条目。</p><small>删除字幕不会剪掉对应的视频画面。</small></article>
+<article><h3>看不懂外语 → 单语或双语</h3><p>翻译已有字幕，保留时间对应；显示原文、译文或双语，调整上下排列。术语提示可辅助统一用词。</p></article>
+<article><h3>显示不理想 → 设置字幕样式</h3><p>设置字体、字号、颜色、描边、阴影、背景与边距；分别设置双语样式。输出字幕轨道，或烧录进画面。</p><small>不等于能擦除视频中原有的硬字幕。</small></article>
+<article><h3>需要新声音 → 生成配音</h3><p>同语言换配音，或翻译后生成其他语言配音；选择音色，按标签分配说话人，输出音轨或配音视频。</p><small>声音克隆仅限支持的服务路径，需要参考音频与文本；说话人标签不等于自动识别人。</small></article>
+<article><h3>文件很多 → 批量与自动化</h3><p>批量转录、字幕处理或字幕全流程；命令行组合步骤。获取支持平台的视频，导出 SRT、ASS、TXT、JSON。</p><small>下载依赖平台访问条件；并非所有配音功能都有批量界面。</small></article>
+</div>
+<div class="timing-heading"><h3>时间戳问题，要分成两类看。</h3><p>时间轴是重要能力，但不是任何不同步问题都能自动修好。</p></div>
+<div class="timing-grid">
+<article class="supported"><span class="tag">能力范围内</span><h3>生成、保留与适配时间</h3><ul><li>识别讲话及其出现时间，精度取决于引擎和录音。</li><li>断句后映射回时间轴；校正和翻译保留字幕条目对应。</li><li>逐条生成配音，测量时长，通过语速调整等策略放回时间轴。</li></ul><p>例：一句字幕安排在第 10～13 秒，生成配音后尝试适配这段时间；不保证任意文本都能自然地塞进去。</p></article>
+<article class="needs-check"><span class="tag">需要另行判断</span><h3>修复错位与精确同步</h3><ul><li>字幕整体提前、延后或逐渐漂移：未确认有通用的一键自动修复。</li><li>逐字精准对齐、人物口型同步：不能直接承诺。</li><li>由剪辑、帧率或源文件差异造成的错位，需要具体排查。</li></ul><p>“有时间戳”意味着记录出现时间，不等于每个字都已精准对齐。</p></article>
+</div>
+<details class="knowledge-details"><summary>声音处理还有哪些边界？</summary><div><p>部分 Faster-Whisper-XXL 路径支持人声分离 / 降噪预处理，主要用于改善识别；不能当成已验证的通用人声、伴奏分轨导出功能。</p><p>配音可替换、混合或压低原声。“压低”在所核查实现中是降低原声音量，不代表去掉原讲话、完整保留背景音乐。</p><p>自动剪辑、画面生成、字幕 OCR、知识总结和自动发布，不属于本次确认的完整内置流程。</p></div></details>
+<div class="source-links"><a href="https://github.com/WEIFENG2333/VideoCaptioner/blob/95842ecb5618c0b6a548a336bdfb0eb859bdb501/videocaptioner/core/dubbing/pipeline.py" target="_blank" rel="noreferrer">配音与时间轴依据 ↗</a><a href="https://github.com/WEIFENG2333/VideoCaptioner/blob/95842ecb5618c0b6a548a336bdfb0eb859bdb501/videocaptioner/ui/view/subtitle_interface.py" target="_blank" rel="noreferrer">字幕编辑依据 ↗</a></div>
+</section>
+<section id="requirements" aria-labelledby="requirements-title">
+<div class="section-heading"><div><span class="eyebrow">05 / 依赖与运行条件</span><h2 id="requirements-title">入门不必先买显卡。</h2></div><p>本地模型越多，对硬件和配置的要求越高。</p></div>
+<div class="recommendation"><span class="tag">适合先尝试的方式</span><h3>本地处理文件，在线完成识别、翻译和配音。</h3><p>先用现有电脑跑通小样，确认质量与使用频率，再决定是否下载本地模型。在线模式不要求独立显卡，但需要网络；部分服务需要密钥并可能收费。视频合成仍占用本地计算与磁盘。</p></div>
+<div class="setup-options">
+<article><span class="cap-number">轻量起步</span><h3>主要使用在线服务</h3><p>无需下载本地识别模型。可先试必剪识别、必应 / 谷歌翻译等无需密钥入口；大模型优化与翻译另行配置服务。</p><small>免费入口也需要网络，可用性取决于服务。</small></article>
+<article><span class="cap-number">混合使用</span><h3>本地识别 + 在线语言服务</h3><p>下载 Faster-Whisper 或 whisper.cpp 的运行程序与模型。CPU 可运行，支持的引擎可通过 GPU 加速。</p><small>模型大小、量化方式与并发量决定实际负担。</small></article>
+<article><span class="cap-number">需要额外部署</span><h3>希望全部离线</h3><p>需自行提供兼容的大模型服务并验证接入。当前核查的配音主流程使用外部服务，没有开箱即用的完整本地 TTS 路径。</p><small>支持本地识别，不等于全流程离线。</small></article>
+</div>
+<div class="dependency-list" role="list" aria-label="按功能配置依赖">
+<div role="listitem"><h3>程序运行环境</h3><p>源码 / Python 安装需要 Python 3.10～3.12，以及界面、网络请求、缓存等软件包，通常随安装自动配置。桌面打包版可自带运行环境。</p></div>
+<div role="listitem"><h3>音视频处理工具</h3><p>FFmpeg / FFprobe 用于提取音轨、读取时长、字幕渲染和合成；支持的桌面打包版可内置。中文显示需要可用的中文字体。</p></div>
+<div role="listitem"><h3>语音识别</h3><p>选择本地引擎与模型文件，或在线识别服务。仅处理已有字幕时，不需要运行识别模型。</p></div>
+<div role="listitem"><h3>字幕智能处理</h3><p>LLM 断句、纠错和大模型翻译需要服务地址、密钥与模型名。Bing / Google 等普通翻译路径不要求配置大模型。</p></div>
+<div role="listitem"><h3>配音服务</h3><p>按需接入 Edge TTS、SiliconFlow 或 Gemini TTS。Edge TTS 无需密钥但需要网络；其他服务按要求配置账户和密钥。</p></div>
+<div role="listitem"><h3>下载与存储</h3><p>在线视频下载依赖 yt-dlp 及平台访问条件。磁盘需容纳原文件、临时音视频和输出结果；本地运行还要保存模型。</p></div>
+</div>
+<div class="hardware-note"><h3>内存要求怎么理解？</h3><p>官方入门文档建议普通使用 <strong>4GB 以上</strong>，本地 Whisper <strong>8GB 以上</strong>。这是入门参考，不是所有模型流畅运行的保证。长视频、4K、多个任务同时处理，会增加耗时和资源占用。</p><p>只编辑字幕负担较低；烧录字幕需要重新编码，耗时随视频长度、分辨率与编码设置变化。</p></div>
+<details class="knowledge-details"><summary>查看具体软件依赖与安装检查</summary><div><p>核查版本依赖包括：PyQt5、PyQt-Fluent-Widgets（界面）；requests、openai（服务连接）；diskcache、tenacity、json-repair、langdetect（缓存、重试与文本处理）；pydub、Pillow、fonttools（音频、图像与字体）；yt-dlp、edge-tts、modelscope（下载、配音与模型相关支持）；platformdirs、psutil、GPUtil，以及 Python 3.10 所需的 tomli。</p><p>包安装成功不代表模型、外部程序或服务已配置。可运行 <code>videocaptioner doctor</code> 检查环境；实际安装要求以所用版本为准。</p></div></details>
+<div class="boundary"><strong>目前验证到哪一步？</strong><p>本机已成功运行字幕烧录；识别、大模型翻译和配音尚未实际验证。本页是研究展示，不能上传文件处理，也不代表完整服务已经配置好。</p></div>
+<div class="source-links"><a href="https://github.com/WEIFENG2333/VideoCaptioner/blob/95842ecb5618c0b6a548a336bdfb0eb859bdb501/pyproject.toml" target="_blank" rel="noreferrer">软件依赖清单 ↗</a><a href="https://github.com/WEIFENG2333/VideoCaptioner/blob/95842ecb5618c0b6a548a336bdfb0eb859bdb501/docs/guide/getting-started.md" target="_blank" rel="noreferrer">官方系统要求 ↗</a><a href="https://github.com/WEIFENG2333/VideoCaptioner/blob/95842ecb5618c0b6a548a336bdfb0eb859bdb501/docs/guide/desktop-release.md" target="_blank" rel="noreferrer">桌面打包说明 ↗</a></div>
+</section>
+
+<section id="value"><div class="section-heading"><div><span class="eyebrow">06 / WHY IT MATTERS</span><h2>补上视频制作后的语言环节。</h2></div></div><div class="value-layout"><div class="value-copy"><span class="tag">面向我们的研究集</span><h3>最值得验证的增量：<br>字幕精修与配音。</h3><p>如果目标只是自动识别和翻译，它与 Y2A-Auto 有明显重叠。若希望仔细控制字幕阅读体验，或把自有视频做成多语言版本，它更值得进一步实测。</p><p class="muted">下列是根据各项目能力推导的衔接方式，尚未验证相互集成。</p></div><div class="connections"><a href="../001-video-shotcraft/"><span>01</span><div><h3>视频制作 → 语言本地化</h3><p>Shotcraft 等工具完成画面；这里补充字幕与配音。</p></div><b>↗</b></a><a href="../005-y2a-auto/"><span>05</span><div><h3>字幕处理 → 发布流程</h3><p>与 Y2A-Auto 对比处理质量，再决定是否替换某一步。</p></div><b>↗</b></a><a href="../004-blinko/"><span>04</span><div><h3>音视频 → 可整理的文字</h3><p>转录结果可作为笔记素材，后续整理和问答由笔记工具承担。</p></div><b>↗</b></a></div></div><div class="boundary"><strong>使用前要分清</strong><p>本页是研究展台，不能上传视频在线处理。VideoCaptioner 围绕已有音视频工作；免费服务入口依赖网络，LLM 功能需配置服务。本次样片只验证字幕合成，不代表识别、翻译与配音全流程质量。</p></div></section>
+<section id="evidence"><div class="section-heading"><div><span class="eyebrow">07 / EVIDENCE & SOURCES</span><h2>每一种展示，都有出处。</h2></div><a href="notes.md">查看验证记录 ↗</a></div><div class="evidence-table" role="table" aria-label="验证范围"><div class="table-row table-head" role="row"><span role="columnheader">展示内容</span><span role="columnheader">依据与本次范围</span><span role="columnheader">状态</span></div><div class="table-row" role="row"><span role="cell">字幕烧录成片</span><span role="cell">原创 38 秒无声画面，调用上游 synthesize 生成硬字幕视频。</span><span role="cell" class="mint">已运行</span></div><div class="table-row" role="row"><span role="cell">原文与译文</span><span role="cell">来自上游 tests/fixtures/subtitle，作为格式与布局样例。</span><span role="cell">上游样例</span></div><div class="table-row" role="row"><span role="cell">识别、校正、翻译、配音</span><span role="cell">依据主分支代码与文档整理，未测准确率、音质或费用。</span><span role="cell">源码研究</span></div><div class="table-row" role="row"><span role="cell">上游桌面截图</span><span role="cell">来自 docs/public，保留出处与 GPL-3.0 许可证。</span><span role="cell">官方文档</span></div></div><div class="source-links"><a href="https://github.com/WEIFENG2333/VideoCaptioner/tree/95842ecb5618c0b6a548a336bdfb0eb859bdb501" target="_blank" rel="noreferrer">固定源码版本 ↗</a><a href="https://github.com/WEIFENG2333/VideoCaptioner/blob/95842ecb5618c0b6a548a336bdfb0eb859bdb501/docs/cli.md" target="_blank" rel="noreferrer">CLI 使用文档 ↗</a><a href="media/captioned.mp4" download>下载实际烧录样片 ↓</a><a href="media/upstream-LICENSE.txt">上游许可证</a></div></section>
+<footer><span>008 · VideoCaptioner / 开源项目研究集</span><a href="../">返回研究集 ↑</a></footer>
+</main><div id="notice" class="notice" role="status" hidden></div>
+</body></html>

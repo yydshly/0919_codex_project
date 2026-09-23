@@ -1,0 +1,19 @@
+{
+  "id": "008",
+  "slug": "videocaptioner",
+  "name": "VideoCaptioner · 字幕与配音工作台",
+  "summary": "把视频或录音中的讲话识别成带时间的字幕，再断句、纠错、翻译、配音并合成视频。原理是把现成语音模型、语言模型、TTS 服务与 FFmpeg 串成流程，负责时间轴对应、校验和输出；可选本地识别，完整离线需另配模型与服务。",
+  "source": "https://github.com/WEIFENG2333/VideoCaptioner",
+  "status": "已完成",
+  "tags": [
+    "视频字幕",
+    "语音识别",
+    "LLM",
+    "翻译",
+    "配音",
+    "Python",
+    "局部实测"
+  ],
+  "demo": "https://yydshly.github.io/0919_codex_project/008-videocaptioner/",
+  "cover": "assets/capability-map.png"
+}

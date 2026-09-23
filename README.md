@@ -18,6 +18,7 @@
 | 005 | [Y2A-Auto · YouTube 视频处理与 A/B 站发布](projects/005-y2a-auto/README.md) | 获取 YouTube 视频，经过字幕识别、翻译、烧录或转码等处理后，发布到 A 站（AcFun）或 B 站（bilibili）；支持单平台或双平台发布。 | 已完成 | 视频搬运、YouTube、AcFun、bilibili、ASR、字幕翻译、自动化、自部署、Python、Flask、Docker、yt-dlp | [Y2A-Auto](https://github.com/fqscfqj/Y2A-Auto) | [演示](https://yydshly.github.io/0919_codex_project/005-y2a-auto/) |
 | 006 | [Leak Check · 数据关联原理与邮件账号盘点探索](projects/006-leak-check/README.md) | 已有个人信息库的查询后端：按电话、邮箱等精确匹配，再提取共同标识，默认两轮查表、聚合脱敏；不实时搜索全网，也不附作者数据。我们据此明确数据来源才是瓶颈，转向用户授权后的历史邮件账号盘点。原库可供实现参考，拾迹为独立原型；其价值是减少翻信、找回遗忘平台，真实效果与后续适配待验证。 | 已完成 | 源码研究、关联检索、数据边界、邮件盘点、产品探索 | [leak-check](https://github.com/garinasset/leak-check) | [演示](https://yydshly.github.io/0919_codex_project/006-leak-check/) |
 | 007 | [Ebook Treasure Chest · 个人电子书链接目录](projects/007-ebook-treasure-chest/README.md) | 个人维护的书目与外部下载链接目录；仓库不含书籍正文。对我们的直接价值较低，保留分类文件生成静态搜索页的实现参考。 | 已完成 | 电子书、链接目录、静态搜索、Python、低优先级 | [ebook-treasure-chest](https://github.com/jbiaojerry/ebook-treasure-chest) | — |
+| 008 | [VideoCaptioner · 字幕与配音工作台](projects/008-videocaptioner/README.md) | 把视频或录音中的讲话识别成带时间的字幕，再断句、纠错、翻译、配音并合成视频。原理是把现成语音模型、语言模型、TTS 服务与 FFmpeg 串成流程，负责时间轴对应、校验和输出；可选本地识别，完整离线需另配模型与服务。 | 已完成 | 视频字幕、语音识别、LLM、翻译、配音、Python、局部实测 | [VideoCaptioner](https://github.com/WEIFENG2333/VideoCaptioner) | [演示](https://yydshly.github.io/0919_codex_project/008-videocaptioner/) |
 <!-- PROJECT_INDEX:END -->
 
 ## 项目图览
@@ -60,6 +61,12 @@ Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词�
 已有个人信息库的查询后端：按电话、邮箱等精确匹配，再提取共同标识，默认两轮查表、聚合脱敏；不实时搜索全网，也不附作者数据。我们据此明确数据来源才是瓶颈，转向用户授权后的历史邮件账号盘点。原库可供实现参考，拾迹为独立原型；其价值是减少翻信、找回遗忘平台，真实效果与后续适配待验证。
 
 [![Leak Check · 数据关联原理与邮件账号盘点探索 项目截图](projects/006-leak-check/assets/understanding-map.png)](projects/006-leak-check/README.md)
+
+### 008 · [VideoCaptioner · 字幕与配音工作台](projects/008-videocaptioner/README.md)
+
+把视频或录音中的讲话识别成带时间的字幕，再断句、纠错、翻译、配音并合成视频。原理是把现成语音模型、语言模型、TTS 服务与 FFmpeg 串成流程，负责时间轴对应、校验和输出；可选本地识别，完整离线需另配模型与服务。
+
+[![VideoCaptioner · 字幕与配音工作台 项目截图](projects/008-videocaptioner/assets/capability-map.png)](projects/008-videocaptioner/README.md)
 <!-- PROJECT_GALLERY:END -->
 
 ## 仓库结构

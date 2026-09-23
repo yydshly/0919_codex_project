@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "start": 0.0,
+    "end": 3.0,
+    "zh": "大家好，欢迎观看本次视频教程。",
+    "en": "Hello everyone, welcome to this video tutorial."
+  },
+  {
+    "id": 2,
+    "start": 3.0,
+    "end": 6.0,
+    "zh": "今天我们将学习Python编程。",
+    "en": "Today we will learn about Python programming."
+  },
+  {
+    "id": 3,
+    "start": 6.5,
+    "end": 10.0,
+    "zh": "Python是一种强大且易于学习的编程语言。",
+    "en": "Python is a powerful and easy to learn programming language."
+  },
+  {
+    "id": 4,
+    "start": 10.5,
+    "end": 14.0,
+    "zh": "它具有高效的高级数据结构，并且对面向对象编程有简单的处理方式。",
+    "en": "It has efficient high-level data structures and a simple approach to object-oriented programming."
+  },
+  {
+    "id": 5,
+    "start": 14.5,
+    "end": 18.0,
+    "zh": "让我们从基础开始。首先，我们需要安装Python。",
+    "en": "Let's start with the basics. First, we need to install Python."
+  },
+  {
+    "id": 6,
+    "start": 18.5,
+    "end": 22.0,
+    "zh": "您可以从官方网站python.org下载。",
+    "en": "You can download it from the official website python.org."
+  },
+  {
+    "id": 7,
+    "start": 22.5,
+    "end": 26.0,
+    "zh": "安装后，您可以从命令行运行Python。",
+    "en": "After installation, you can run Python from the command line."
+  },
+  {
+    "id": 8,
+    "start": 26.5,
+    "end": 30.0,
+    "zh": "现在让我们编写第一个程序：打印‘你好，世界’。",
+    "en": "Now let's write our first program: print hello world."
+  },
+  {
+    "id": 9,
+    "start": 30.5,
+    "end": 34.0,
+    "zh": "语法非常简单：只需键入print和引号中的字符串。",
+    "en": "The syntax is very simple: just type print and the string in quotes."
+  },
+  {
+    "id": 10,
+    "start": 34.5,
+    "end": 38.0,
+    "zh": "今天的课就到这里。下次见！",
+    "en": "That's it for today's lesson. See you next time!"
+  }
+]

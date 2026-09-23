@@ -1,0 +1,410 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="5610" viewBox="0 0 2600 5610" role="img" aria-labelledby="title desc">
+<title id="title">VideoCaptioner 能力、效果与依赖全景图</title>
+<desc id="desc">九部分完整参考：输入、处理原理、输出、模型接入、底层依赖、直观效果、时间戳与声音边界、运行条件，以及对我们的意义。</desc>
+<rect x="0" y="0" width="2600" height="5610" rx="0" fill="#f3f6fa" stroke="#f3f6fa" stroke-width="2"/>
+<rect x="0" y="0" width="2600" height="237" rx="0" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="65" y="56" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#9adbc7">008 / 开源项目研究集</text>
+<text x="65" y="138" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="62" font-weight="700" fill="#ffffff">VideoCaptioner：能力、效果与依赖全景图</text>
+<text x="65" y="205" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" font-weight="400" fill="#d8e5ef">核心是讲话、字幕与配音：声音 → 文字；文字 → 文字；文字 → 声音。</text>
+<rect x="64" y="280" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="305" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">01</text>
+<text x="128" y="310" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">输入：你可以从不同材料开始</text>
+<text x="1120" y="311" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">视频不是唯一入口；已有字幕可以直接处理或配音</text>
+<rect x="64" y="346" width="800" height="253" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="371" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="388" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">本地文件</text>
+<text x="89" y="443" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">视频 / 录音</text>
+<text x="89" y="484" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="495" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">视频如 MP4、MKV；音频如 MP3、WAV。</text>
+<text x="89" y="538" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="549" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">视频先提取音轨；画面保留供最后合成。</text>
+<rect x="900" y="346" width="800" height="253" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="371" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="946" y="388" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">在线素材</text>
+<text x="925" y="443" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">视频链接</text>
+<text x="925" y="484" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="496" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">通过 yt-dlp 下载 YouTube、B站等视频。</text>
+<text x="925" y="538" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="550" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">平台可用性取决于网络、权限与下载支持。</text>
+<rect x="1736" y="346" width="800" height="253" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="371" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="1782" y="388" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">文字素材</text>
+<text x="1761" y="444" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">已有字幕 + 可选配置</text>
+<text x="1761" y="484" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="496" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">字幕：SRT / ASS / VTT / JSON。</text>
+<text x="1761" y="538" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="550" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">可附目标语言、术语提示、音色、字幕样式。</text>
+<rect x="64" y="644" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="669" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">02</text>
+<text x="128" y="675" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">中间处理：把“听到的内容”变成“可用的字幕”</text>
+<text x="1120" y="674" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">这些步骤可按需求选用，不必每次跑完整流程</text>
+<rect x="64" y="711" width="586" height="416" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="736" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="751" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">1 / ASR</text>
+<text x="89" y="808" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">语音识别</text>
+<text x="89" y="849" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="861" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">引擎把音轨转为文字。</text>
+<text x="89" y="901" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="912" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">返回句级或词级时间戳。</text>
+<text x="89" y="953" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="963" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">长音频可分块；部分引擎支持语音活动检</text>
+<text x="108" y="1006" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">测。</text>
+<text x="89" y="1048" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="1059" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">结果：原语言字幕。</text>
+<rect x="694" y="711" width="586" height="416" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="718" y="736" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="740" y="751" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">2 / SPLIT</text>
+<text x="719" y="808" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">语义断句</text>
+<text x="719" y="849" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="738" y="859" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">LLM 按语义和长度拆句。</text>
+<text x="719" y="901" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="738" y="911" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">检查内容变化和过长片段，反馈修正。</text>
+<text x="719" y="953" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="738" y="964" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">匹配回时间轴；有规则处理与回退路径。</text>
+<rect x="1324" y="711" width="586" height="416" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1348" y="736" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="1370" y="751" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">3 / OPTIMIZE</text>
+<text x="1349" y="809" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">文字校正</text>
+<text x="1349" y="849" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="1368" y="860" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">LLM 修正识别错误、标点及格式。</text>
+<text x="1349" y="901" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="1368" y="912" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">按批次处理，保留字幕编号。</text>
+<text x="1349" y="953" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="1368" y="965" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">失败批次可保留原文；专业术语仍需核对。</text>
+<rect x="1954" y="711" width="586" height="416" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1978" y="736" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="2000" y="751" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">4 / TRANSLATE</text>
+<text x="1979" y="809" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">字幕翻译</text>
+<text x="1979" y="849" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="1998" y="860" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">翻译成目标语言，可带术语提示。</text>
+<text x="1979" y="901" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="1998" y="913" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">大模型可按批次理解上下文。</text>
+<text x="1979" y="953" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#4b6075">·</text>
+<text x="1998" y="964" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">反思模式：初译 → 分析 → 改写，并检查</text>
+<text x="1998" y="1007" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="400" fill="#4b6075">结果结构。</text>
+<polyline points="656,907 686,907" fill="none" stroke="#167b62" stroke-width="4"/>
+<polygon points="686,907 674.0646566911669,914.3176212050292 674.0646566911669,899.6823787949708" fill="#167b62"/>
+<polyline points="1286,907 1316,907" fill="none" stroke="#167b62" stroke-width="4"/>
+<polygon points="1316,907 1304.0646566911669,914.3176212050292 1304.0646566911669,899.6823787949708" fill="#167b62"/>
+<polyline points="1916,907 1946,907" fill="none" stroke="#167b62" stroke-width="4"/>
+<polygon points="1946,907 1934.0646566911669,914.3176212050292 1934.0646566911669,899.6823787949708" fill="#167b62"/>
+<rect x="64" y="1150" width="2476" height="67" rx="10" fill="#e4eee9" stroke="#e4eee9" stroke-width="2"/>
+<text x="86" y="1194" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#167b62">按需进入：已有字幕可跳过识别；只要字幕可跳过配音与视频合成；已有人声也不必重新生成声音。</text>
+<rect x="64" y="1263" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="1288" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">03</text>
+<text x="128" y="1294" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">输出：同一份字幕，可以走三条交付路径</text>
+<text x="1120" y="1294" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">配音从文字生成新声音；不等于直接转换原声</text>
+<rect x="64" y="1330" width="800" height="465" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="1355" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="1372" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">A / 文字交付</text>
+<text x="89" y="1428" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">字幕文件 / 文本</text>
+<text x="89" y="1468" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="1480" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">SRT：通用时间轴字幕。</text>
+<text x="89" y="1522" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="1535" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">ASS：带样式字幕；TXT：纯文字。</text>
+<text x="89" y="1576" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="1588" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">JSON：结构化数据，便于后续程序处理。</text>
+<text x="89" y="1630" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="1643" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">可选原文、译文、中英等双语布局。</text>
+<text x="89" y="1684" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="1696" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">用途：字幕编辑、阅读学习、知识整理。</text>
+<rect x="900" y="1330" width="800" height="465" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="1355" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="946" y="1372" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">B / 画面交付</text>
+<text x="925" y="1428" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">带字幕的视频</text>
+<text x="925" y="1468" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="1480" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">原视频 + 字幕 → 本机 FFmpeg 等工具处理。</text>
+<text x="925" y="1522" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="1534" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">软字幕：嵌入字幕轨道，由播放器显示。</text>
+<text x="925" y="1576" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="1589" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">硬字幕：把文字直接写进视频画面。</text>
+<text x="925" y="1630" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="1642" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">可设置字体、颜色、描边、圆角背景和双语顺序。</text>
+<text x="925" y="1684" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="1696" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">输出：带字幕视频，例如 MP4。</text>
+<rect x="1736" y="1330" width="800" height="465" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="1355" width="6" height="30" rx="3" fill="#7551a6" stroke="#7551a6" stroke-width="2"/>
+<text x="1782" y="1372" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#7551a6">C / 声音交付</text>
+<text x="1761" y="1427" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">配音音轨 / 配音视频</text>
+<text x="1761" y="1468" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="1480" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">字幕 → TTS 发声 → 测时长、调语速 → 按时间轴拼接。</text>
+<text x="1761" y="1522" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="1534" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">可选用 LLM 缩短过长台词；按说话人标签分配音色。</text>
+<text x="1761" y="1576" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="1588" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">支持替换、混合或压低原声；不等于分离背景音乐。</text>
+<text x="1761" y="1630" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="1641" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">输出：WAV / MP3、配音视频、逐句时长 / 语速 / 警告</text>
+<text x="1780" y="1685" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#4b6075">报告。</text>
+<rect x="64" y="1840" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="1865" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">04</text>
+<text x="128" y="1870" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">模型怎么接：本地模型和外部服务可以混合使用</text>
+<text x="1120" y="1870" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">软件安装在本机 ≠ 全流程都在本机运行</text>
+<rect x="64" y="1907" width="2476" height="654" rx="12" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="64" y="1907" width="2476" height="62" rx="10" fill="#e2e9f1" stroke="#e2e9f1" stroke-width="2"/>
+<text x="86" y="1946" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">环节</text>
+<text x="316" y="1947" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">本地运行 / 自建接入</text>
+<text x="1046" y="1946" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">外部服务 / 云端接口</text>
+<text x="1841" y="1946" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">使用条件与关键区别</text>
+<polyline points="64,1969 2540,1969" fill="none" stroke="#d3dce6" stroke-width="2"/>
+<text x="86" y="2011" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">语音识别</text>
+<text x="316" y="2010" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Whisper 现成模型</text>
+<text x="316" y="2048" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Faster-Whisper / whisper.cpp</text>
+<text x="1046" y="2011" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Whisper API；必剪 / 剪映识别服务</text>
+<text x="1841" y="2011" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">本地需模型、程序与硬件；云端需联网。</text>
+<text x="1841" y="2050" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">必剪 / 剪映文档注明主要支持中英文。</text>
+<polyline points="64,2091 2540,2091" fill="none" stroke="#d3dce6" stroke-width="2"/>
+<text x="86" y="2133" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">断句 / 校正</text>
+<text x="316" y="2133" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">可指向自建 OpenAI 兼容服务*</text>
+<text x="316" y="2172" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">不是直接加载一个模型权重文件。</text>
+<text x="1046" y="2133" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">通过 OpenAI 兼容接口调用大模型</text>
+<text x="1046" y="2171" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">例如 DeepSeek 或兼容服务商。</text>
+<text x="1841" y="2132" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">配置 API 地址、Key、模型名。</text>
+<text x="1841" y="2171" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">具体模型由接入服务提供。</text>
+<polyline points="64,2213 2540,2213" fill="none" stroke="#d3dce6" stroke-width="2"/>
+<text x="86" y="2255" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">字幕翻译</text>
+<text x="316" y="2255" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">自建兼容大模型服务*</text>
+<text x="316" y="2293" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">使用与云端相同的接口协议。</text>
+<text x="1046" y="2255" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">大模型 / Bing / Google；另有 DeepLX 适配</text>
+<text x="1841" y="2255" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Bing / Google 路径不需要 LLM Key。</text>
+<text x="1841" y="2294" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">免费入口仍依赖网络与服务可用性。</text>
+<polyline points="64,2323 2540,2323" fill="none" stroke="#d3dce6" stroke-width="2"/>
+<text x="86" y="2365" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">字幕配音</text>
+<text x="316" y="2365" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">当前配音主流程没有开箱即用的</text>
+<text x="316" y="2403" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">本地 TTS 模型运行选项。</text>
+<text x="1046" y="2364" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Edge TTS；SiliconFlow CosyVoice2；</text>
+<text x="1046" y="2402" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Gemini TTS</text>
+<text x="1841" y="2366" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Edge 无需 Key；其他服务需相应凭证。</text>
+<text x="1841" y="2404" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">SiliconFlow 可用参考音频 + 文本克隆音色。</text>
+<polyline points="64,2451 2540,2451" fill="none" stroke="#d3dce6" stroke-width="2"/>
+<text x="86" y="2493" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#182c43">字幕 / 音轨合成</text>
+<text x="316" y="2494" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">FFmpeg + 字幕渲染，本机执行。</text>
+<text x="1046" y="2493" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">这个环节不需要调用大模型。</text>
+<text x="1841" y="2494" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">需要媒体工具与可用字体；</text>
+<text x="1841" y="2531" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">编码速度取决于设备与输出设置。</text>
+<text x="78" y="2595" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="24" font-weight="400" fill="#4b6075">* 自建 LLM 接入是基于可配置接口地址的能力推断，需自行部署并验证接口、鉴权与输出格式；本次未做兼容性实测。</text>
+<rect x="64" y="2632" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="2657" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">05</text>
+<text x="128" y="2664" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">底层依赖：各个库和工具分别负责什么</text>
+<text x="1120" y="2662" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">模型能力来自所接引擎；本项目负责流程衔接</text>
+<rect x="64" y="2697" width="800" height="363" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="2722" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="110" y="2739" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">运行与界面</text>
+<text x="89" y="2794" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">Python + 桌面 GUI</text>
+<text x="89" y="2834" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="2844" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Python 3.10～3.12：运行程序与命令行。</text>
+<text x="89" y="2883" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="2894" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">PyQt5 / PyQt-Fluent-Widgets：桌面交互、任务与字幕编辑。</text>
+<text x="89" y="2932" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="2942" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">不要求你自行训练基础模型。</text>
+<rect x="900" y="2697" width="800" height="363" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="2722" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="946" y="2739" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">媒体与字幕</text>
+<text x="925" y="2794" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">FFmpeg / FFprobe + 渲染支持</text>
+<text x="925" y="2834" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="2844" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">FFmpeg：提取音轨、调语速、混音、烧录与合成；FFprobe：</text>
+<text x="944" y="2884" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">媒体信息。</text>
+<text x="925" y="2923" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="2934" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">pydub：音频操作；Pillow / fonttools：图像和字体支持。</text>
+<text x="925" y="2972" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="2983" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">中文样式需要可用的中文字体。</text>
+<rect x="1736" y="2697" width="800" height="363" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="2722" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="1782" y="2740" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">引擎与素材</text>
+<text x="1761" y="2794" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">识别程序 + 下载 / 配音支持</text>
+<text x="1761" y="2834" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="2845" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">本地 Whisper 引擎及模型文件：语音识别；modelscope：模</text>
+<text x="1780" y="2884" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">型相关支持。</text>
+<text x="1761" y="2923" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="2933" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">yt-dlp：获取支持平台的媒体。</text>
+<text x="1761" y="2972" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="2982" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">edge-tts：接入在线 Edge 语音服务。</text>
+<rect x="64" y="3082" width="800" height="363" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="3107" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="110" y="3124" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">模型连接</text>
+<text x="89" y="3178" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">openai / requests</text>
+<text x="89" y="3219" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3229" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">openai：连接 OpenAI 兼容模型接口；requests：HTTP 服务</text>
+<text x="108" y="3268" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">调用。</text>
+<text x="89" y="3308" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3319" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">并非安装 openai 包就拥有模型。</text>
+<text x="89" y="3357" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3367" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">云端凭证或本地服务需另行配置。</text>
+<rect x="900" y="3082" width="800" height="363" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="3107" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="946" y="3125" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">结果可靠性</text>
+<text x="925" y="3179" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">缓存、重试与文本解析</text>
+<text x="925" y="3219" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3230" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">diskcache：磁盘缓存；tenacity：重试。</text>
+<text x="925" y="3268" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3279" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">json-repair：修复模型返回的 JSON；langdetect：语言检测。</text>
+<text x="925" y="3317" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3327" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">程序校验编号、长度和返回结构；失败按模块回退。</text>
+<rect x="1736" y="3082" width="800" height="363" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="3107" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="1782" y="3124" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">环境支持</text>
+<text x="1761" y="3179" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">配置、资源监测与诊断</text>
+<text x="1761" y="3219" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3228" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">platformdirs：配置目录；tomli：Python 3.10 下解析 TOML。</text>
+<text x="1761" y="3268" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3278" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">psutil / GPUtil：系统与 GPU 信息。</text>
+<text x="1761" y="3317" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3328" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">doctor：检查环境与关键配置；安装成功不等于服务已可用。</text>
+<rect x="64" y="3470" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="3495" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">06</text>
+<text x="128" y="3501" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">直观效果：除了自动出字幕，还能怎样用</text>
+<text x="1120" y="3501" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">下列是已确认功能；效果质量尚未逐项实测</text>
+<rect x="64" y="3537" width="800" height="382" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="3562" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="3579" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">文字与阅读</text>
+<text x="89" y="3634" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">更易读、更方便校对</text>
+<text x="89" y="3674" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3685" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">原文 / 译文 / 双语；两种上下顺序。</text>
+<text x="89" y="3723" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3734" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">手动改原文与译文、合并或删除字幕条目、重译选中条目。</text>
+<text x="89" y="3772" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3782" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">术语提示与反思翻译辅助统一表达。</text>
+<text x="89" y="3821" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="3832" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">删字幕条目不会剪掉对应视频。</text>
+<rect x="900" y="3537" width="800" height="382" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="3562" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="946" y="3579" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">画面与批量</text>
+<text x="925" y="3634" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">统一样式，重复使用流程</text>
+<text x="925" y="3674" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3685" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">字体、字号、颜色、描边、阴影、圆角背景、边距；双语独立样</text>
+<text x="944" y="3723" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">式。</text>
+<text x="925" y="3763" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3774" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">预览字幕样式，导出软字幕或硬字幕。</text>
+<text x="925" y="3812" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3823" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">批量转录 / 字幕处理 / 字幕全流程。</text>
+<text x="925" y="3861" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="3871" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">GUI 逐条检查；CLI 组合步骤自动化。</text>
+<rect x="1736" y="3537" width="800" height="382" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="3562" width="6" height="30" rx="3" fill="#7551a6" stroke="#7551a6" stroke-width="2"/>
+<text x="1782" y="3579" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#7551a6">声音与交付</text>
+<text x="1761" y="3634" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">换语言，或重新配一个声音</text>
+<text x="1761" y="3674" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3685" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">同语言重配音或翻译后配音；按标签分配音色。</text>
+<text x="1761" y="3723" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3734" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">双语字幕可选择朗读其中一行。</text>
+<text x="1761" y="3772" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3783" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">时长策略：平衡、严格、自然、不适配。</text>
+<text x="1761" y="3821" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="3831" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">克隆音色限支持的服务，需参考材料；不保证自动识别人或复刻</text>
+<text x="1780" y="3870" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">情绪。</text>
+<rect x="64" y="3960" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="3985" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">07</text>
+<text x="128" y="3991" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">时间戳与声音：能解决什么，不能直接保证什么</text>
+<rect x="64" y="4027" width="800" height="383" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="4052" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="4069" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">可以优先使用</text>
+<text x="89" y="4124" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">生成时间、保留对应、适配配音</text>
+<text x="89" y="4164" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4174" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">识别讲话时生成句级或词级时间信息。</text>
+<text x="89" y="4213" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4224" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">断句后映射时间；校正和翻译维持条目编号与时间对应。</text>
+<text x="89" y="4262" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4272" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">新配音测时长、调整语速再拼回时间轴。</text>
+<text x="89" y="4311" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4321" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">例：10～13 秒的一句话，尝试让新配音适配该时段；自然度仍</text>
+<text x="108" y="4361" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">需检查。</text>
+<rect x="900" y="4027" width="800" height="383" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="4052" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="946" y="4069" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">需要具体排查</text>
+<text x="925" y="4125" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">已有字幕错位 / 越播越不同步</text>
+<text x="925" y="4164" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="4175" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">未确认通用的一键自动修复已有字幕时间漂移能力。</text>
+<text x="925" y="4213" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="4224" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">有时间戳，不等于每个字都精确对齐；不承诺人物口型同步。</text>
+<text x="925" y="4262" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="4273" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">剪辑差异、帧率、源文件变化等，应先判断原因再选方案。</text>
+<rect x="1736" y="4027" width="800" height="383" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="4052" width="6" height="30" rx="3" fill="#7551a6" stroke="#7551a6" stroke-width="2"/>
+<text x="1782" y="4069" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#7551a6">不要混淆</text>
+<text x="1761" y="4124" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">降噪预处理 ≠ 通用音频工作站</text>
+<text x="1761" y="4164" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="4175" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">部分 Faster-Whisper-XXL 路径提供 MDX-Net 人声分离 / 降噪</text>
+<text x="1780" y="4213" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">预处理。</text>
+<text x="1761" y="4253" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="4263" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">主要服务于识别，不能推断已支持通用人声 / 伴奏分轨交付。</text>
+<text x="1761" y="4302" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="4312" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">压低原声是降低音量，不等于自动去除讲话并完整保留背景音乐。</text>
+<rect x="64" y="4436" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="4461" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">08</text>
+<text x="128" y="4466" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">使用条件：入门不必先买显卡</text>
+<text x="1120" y="4467" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="25" font-weight="400" fill="#4b6075">性能取决于模型、视频长度、分辨率与并发量</text>
+<rect x="64" y="4503" width="800" height="336" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="4528" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="4545" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">轻量起步</text>
+<text x="89" y="4601" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">在线识别 / 翻译 / 配音</text>
+<text x="89" y="4640" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4651" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">本地处理文件，模型计算交给在线服务；不要求独立显卡。</text>
+<text x="89" y="4689" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4700" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">需要网络，部分服务需 API Key 和费用；免费入口也依赖可用</text>
+<text x="108" y="4738" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">性。</text>
+<text x="89" y="4778" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="4789" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">只改已有字幕可跳过识别；本地合成仍消耗计算与磁盘。</text>
+<rect x="900" y="4503" width="800" height="336" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="4528" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="946" y="4545" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">混合使用</text>
+<text x="925" y="4600" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">本地识别 + 在线语言服务</text>
+<text x="925" y="4640" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="4650" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">本地需引擎和模型；可用 CPU 或受支持的 GPU。</text>
+<text x="925" y="4689" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="4700" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">内存参考：普通 4GB+；本地 Whisper 8GB+。</text>
+<text x="925" y="4738" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="4749" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">只是入门参考，不保证所有模型都能流畅运行；长视频需预留磁</text>
+<text x="944" y="4789" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">盘。</text>
+<rect x="1736" y="4503" width="800" height="336" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="4528" width="6" height="30" rx="3" fill="#7551a6" stroke="#7551a6" stroke-width="2"/>
+<text x="1782" y="4545" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#7551a6">额外部署</text>
+<text x="1761" y="4601" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">全离线不是现成的完整流程</text>
+<text x="1761" y="4640" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="4651" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">本地 LLM 需自行部署兼容服务，并验证鉴权与输出格式。</text>
+<text x="1761" y="4689" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="4699" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">当前核查的配音主流程调用外部服务；本地 TTS 需另行方案。</text>
+<text x="1761" y="4738" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="4748" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">桌面打包版可带运行环境和 FFmpeg；模型、服务仍需按功能</text>
+<text x="1780" y="4786" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">配置。</text>
+<rect x="64" y="4880" width="48" height="43" rx="9" fill="#182c43" stroke="#182c43" stroke-width="2"/>
+<text x="75" y="4905" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#ffffff">09</text>
+<text x="128" y="4910" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">对我们的意义：以后遇到需求，就能定位要复用哪一步</text>
+<rect x="64" y="4947" width="800" height="330" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="88" y="4972" width="6" height="30" rx="3" fill="#167b62" stroke="#167b62" stroke-width="2"/>
+<text x="110" y="4989" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#167b62">直接使用</text>
+<text x="89" y="5044" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">已有视频的语言处理工具</text>
+<text x="89" y="5084" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="5095" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">演示、课程、访谈：补字幕、精修翻译、制作多语言配音版本。</text>
+<text x="89" y="5133" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="5144" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">会议或录音：获得带时间的文字，供阅读、搜索和后续整理。</text>
+<text x="89" y="5182" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="108" y="5193" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">价值是减少重复搭建识别、时间轴、字幕和媒体合成流程。</text>
+<rect x="900" y="4947" width="800" height="330" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="924" y="4972" width="6" height="30" rx="3" fill="#2364aa" stroke="#2364aa" stroke-width="2"/>
+<text x="946" y="4990" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#2364aa">接入我们的项目</text>
+<text x="925" y="5044" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">作为流程中的可替换环节</text>
+<text x="925" y="5084" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="5095" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">Shotcraft 成片后，补字幕与配音。</text>
+<text x="925" y="5133" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="5144" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">对比 Y2A-Auto 的字幕精修、配音质量与成本，再选择复用环</text>
+<text x="944" y="5183" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">节。</text>
+<text x="925" y="5222" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="944" y="5233" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">转录文字供 Blinko 等工具整理；总结与问答由后续工具承担。</text>
+<rect x="1736" y="4947" width="800" height="330" rx="18" fill="#ffffff" stroke="#d3dce6" stroke-width="2"/>
+<rect x="1760" y="4972" width="6" height="30" rx="3" fill="#7551a6" stroke="#7551a6" stroke-width="2"/>
+<text x="1782" y="4989" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="700" fill="#7551a6">怎样落地</text>
+<text x="1761" y="5045" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="35" font-weight="700" fill="#182c43">先用短样片验证，再扩大使用</text>
+<text x="1761" y="5084" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="5095" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">先确认语言、录音质量和交付格式，再选服务。</text>
+<text x="1761" y="5133" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="5144" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">人工核对术语、数字、同步与音质，再批量处理。</text>
+<text x="1761" y="5182" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="700" fill="#4b6075">·</text>
+<text x="1780" y="5192" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" font-weight="400" fill="#4b6075">项目间集成尚未验证；采用前核对 GPL-3.0 许可。</text>
+<rect x="64" y="5310" width="2476" height="134" rx="14" fill="#e4eee9" stroke="#b9d7cb" stroke-width="2"/>
+<text x="88" y="5356" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="30" font-weight="700" fill="#167b62">记住本质</text>
+<text x="340" y="5361" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" font-weight="400" fill="#182c43">声音 → 文字；文字 → 文字；文字 → 声音。视频通常保留画面，改变的是字幕和语言表达。</text>
+<text x="88" y="5411" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" font-weight="700" fill="#182c43">边界</text>
+<text x="340" y="5413" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="27" font-weight="400" fill="#4b6075">未确认：自动剪辑 / 新画面生成 / 口型同步 / 字幕 OCR / 擦除硬字幕 / 知识总结 / 自动发布。</text>
+<text x="66" y="5496" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="400" fill="#4b6075">依据：WEIFENG2333/VideoCaptioner · 95842ec · 2026-09-22 · README、pyproject.toml、docs 与 core / ui 源码</text>
+<text x="66" y="5535" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="400" fill="#4b6075">验证范围：已实测 38 秒硬字幕合成；ASR、LLM 翻译与 TTS 为源码能力整理，尚未做效果实测。网页是研究展台。</text>
+<text x="66" y="5572" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="400" fill="#4b6075">仓库：github.com/WEIFENG2333/VideoCaptioner   |   术语：ASR = 语音识别；LLM = 大语言模型；TTS = 文字生成语音。</text>
+</svg>
