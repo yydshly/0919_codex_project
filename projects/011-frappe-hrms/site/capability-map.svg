@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1140" viewBox="0 0 1600 1140" role="img" aria-labelledby="title desc">
+<title id="title">Frappe HR：业务能力、技术实现与学习价值全景图</title><desc id="desc">六组能力，24个学习维度。权限与流程约束协作，时间与规则决定计算，框架支撑界面、集成、任务和演进。</desc>
+<style>text{font-family:"Segoe UI","Microsoft YaHei","Noto Sans CJK SC",sans-serif}</style>
+<rect width="1600" height="1140" rx="0" fill="#f6f8fc"/>
+<rect x="0" y="0" width="1600" height="185" fill="#172942"/>
+<text x="52" y="40" fill="#afc6e5" font-size="17" font-weight="400"><tspan x="52" dy="0">FRAPPE HR / 能力与价值全景</tspan></text>
+<text x="52" y="89" fill="#ffffff" font-size="37" font-weight="600"><tspan x="52" dy="0">一套企业系统，值得学习的不只是页面。</tspan></text>
+<text x="54" y="126" fill="#ccdaec" font-size="20" font-weight="400"><tspan x="54" dy="0">6 组能力 · 24 个学习维度     业务解决问题 → 技术承载规则 → 我们复用设计</tspan></text>
+<text x="54" y="162" fill="#b3c8e3" font-size="19" font-weight="400"><tspan x="54" dy="0">招聘 · 入职 · 档案 · 请假 · 排班考勤 · 薪酬 · 报销 · 培训绩效 · 离职</tspan></text>
+<text x="66" y="220" fill="#647894" font-size="18" font-weight="400"><tspan x="66" dy="0">能力领域</tspan></text>
+<text x="275" y="220" fill="#295e4b" font-size="20" font-weight="600"><tspan x="275" dy="0">业务 / 能做什么</tspan></text><text x="707" y="220" fill="#2c528c" font-size="20" font-weight="600"><tspan x="707" dy="0">技术 / 如何实现</tspan></text><text x="1139" y="220" fill="#6e4f87" font-size="20" font-weight="600"><tspan x="1139" dy="0">价值 / 值得学习</tspan></text>
+<rect x="44" y="240" width="1512" height="110" rx="10" fill="#ffffff"/>
+<text x="66" y="268" fill="#7c93b0" font-size="16" font-weight="400"><tspan x="66" dy="0">01</tspan></text>
+<text x="66" y="298" fill="#263b55" font-size="22" font-weight="600"><tspan x="66" dy="0">业务与数据</tspan></text>
+<text x="66" y="331" fill="#70829a" font-size="15" font-weight="400"><tspan x="66" dy="0">覆盖员工全生命周期</tspan></text>
+<rect x="260" y="250" width="392" height="72" rx="7" fill="#edf6f1"/><text x="276" y="277" fill="#295e4b" font-size="21" font-weight="400"><tspan x="276" dy="0">招聘到离职；档案、考勤、薪酬、报销、</tspan><tspan x="276" dy="28">绩效协同</tspan></text><rect x="692" y="250" width="392" height="72" rx="7" fill="#edf3fc"/><text x="708" y="277" fill="#2c528c" font-size="21" font-weight="400"><tspan x="708" dy="0">关联数据模型、明细子表、模块分工与</tspan><tspan x="708" dy="28">事件钩子</tspan></text><rect x="1124" y="250" width="392" height="72" rx="7" fill="#f3eef8"/><text x="1140" y="277" fill="#6e4f87" font-size="21" font-weight="400"><tspan x="1140" dy="0">分清主体、规则、单据和结果，明确上</tspan><tspan x="1140" dy="28">下游责任</tspan></text>
+<text x="660" y="291" fill="#9caabd" font-size="23" font-weight="400"><tspan x="660" dy="0">→</tspan></text><text x="1092" y="291" fill="#9caabd" font-size="23" font-weight="400"><tspan x="1092" dy="0">→</tspan></text>
+<text x="276" y="341" fill="#6d7f98" font-size="15" font-weight="400"><tspan x="276" dy="0">员工全生命周期  /  组织与基础资料  /  业务对象与关系  /  跨模块业务联动</tspan></text><rect x="44" y="360" width="1512" height="110" rx="10" fill="#ffffff"/>
+<text x="66" y="388" fill="#7c93b0" font-size="16" font-weight="400"><tspan x="66" dy="0">02</tspan></text>
+<text x="66" y="418" fill="#263b55" font-size="22" font-weight="600"><tspan x="66" dy="0">身份与权限</tspan></text>
+<text x="66" y="451" fill="#70829a" font-size="15" font-weight="400"><tspan x="66" dy="0">谁能做什么、影响谁</tspan></text>
+<rect x="260" y="370" width="392" height="72" rx="7" fill="#edf6f1"/><text x="276" y="397" fill="#295e4b" font-size="21" font-weight="400"><tspan x="276" dy="0">员工自助、主管审批、HR 管人员、薪</tspan><tspan x="276" dy="28">酬人员算工资</tspan></text><rect x="692" y="370" width="392" height="72" rx="7" fill="#edf3fc"/><text x="708" y="397" fill="#2c528c" font-size="21" font-weight="400"><tspan x="708" dy="0">账号与角色、操作权限、数据范围、字</tspan><tspan x="708" dy="28">段与单据共享</tspan></text><rect x="1124" y="370" width="392" height="72" rx="7" fill="#f3eef8"/><text x="1140" y="397" fill="#6e4f87" font-size="21" font-weight="400"><tspan x="1140" dy="0">把“谁能做什么、能影响谁”做成后端</tspan><tspan x="1140" dy="28">规则</tspan></text>
+<text x="660" y="411" fill="#9caabd" font-size="23" font-weight="400"><tspan x="660" dy="0">→</tspan></text><text x="1092" y="411" fill="#9caabd" font-size="23" font-weight="400"><tspan x="1092" dy="0">→</tspan></text>
+<text x="276" y="461" fill="#6d7f98" font-size="15" font-weight="400"><tspan x="276" dy="0">账号、员工与角色  /  功能与操作权限  /  数据范围与访问校验  /  字段权限与单据共享</tspan></text><rect x="44" y="480" width="1512" height="110" rx="10" fill="#ffffff"/>
+<text x="66" y="508" fill="#7c93b0" font-size="16" font-weight="400"><tspan x="66" dy="0">03</tspan></text>
+<text x="66" y="538" fill="#263b55" font-size="22" font-weight="600"><tspan x="66" dy="0">流程与可信</tspan></text>
+<text x="66" y="571" fill="#70829a" font-size="15" font-weight="400"><tspan x="66" dy="0">能提交，也能正确纠错</tspan></text>
+<rect x="260" y="490" width="392" height="72" rx="7" fill="#edf6f1"/><text x="276" y="517" fill="#295e4b" font-size="21" font-weight="400"><tspan x="276" dy="0">申请、审批、生效、撤销；结果有依据、</tspan><tspan x="276" dy="28">责任可追踪</tspan></text><rect x="692" y="490" width="392" height="72" rx="7" fill="#edf3fc"/><text x="708" y="517" fill="#2c528c" font-size="21" font-weight="400"><tspan x="708" dy="0">单据生命周期、后端校验、关联取消、</tspan><tspan x="708" dy="28">台账与审计</tspan></text><rect x="1124" y="490" width="392" height="72" rx="7" fill="#f3eef8"/><text x="1140" y="517" fill="#6e4f87" font-size="21" font-weight="400"><tspan x="1140" dy="0">权限管资格，校验管条件，撤销管影响，</tspan><tspan x="1140" dy="28">记录管追溯</tspan></text>
+<text x="660" y="531" fill="#9caabd" font-size="23" font-weight="400"><tspan x="660" dy="0">→</tspan></text><text x="1092" y="531" fill="#9caabd" font-size="23" font-weight="400"><tspan x="1092" dy="0">→</tspan></text>
+<text x="276" y="581" fill="#6d7f98" font-size="15" font-weight="400"><tspan x="276" dy="0">单据状态与审批  /  约束与异常校验  /  撤销、修正与关联影响  /  台账、历史与来源追溯</tspan></text><rect x="44" y="600" width="1512" height="110" rx="10" fill="#ffffff"/>
+<text x="66" y="628" fill="#7c93b0" font-size="16" font-weight="400"><tspan x="66" dy="0">04</tspan></text>
+<text x="66" y="658" fill="#263b55" font-size="22" font-weight="600"><tspan x="66" dy="0">时间与规则</tspan></text>
+<text x="66" y="691" fill="#70829a" font-size="15" font-weight="400"><tspan x="66" dy="0">计算当时适用的规则</tspan></text>
+<rect x="260" y="610" width="392" height="72" rx="7" fill="#edf6f1"/><text x="276" y="637" fill="#295e4b" font-size="21" font-weight="400"><tspan x="276" dy="0">生效日期、计薪期间、假期到期；工资</tspan><tspan x="276" dy="28">与会计关联</tspan></text><rect x="692" y="610" width="392" height="72" rx="7" fill="#edf3fc"/><text x="708" y="637" fill="#2c528c" font-size="21" font-weight="400"><tspan x="708" dy="0">带日期的分配、日历计算、条件公式与</tspan><tspan x="708" dy="28">会计单据</tspan></text><rect x="1124" y="610" width="392" height="72" rx="7" fill="#f3eef8"/><text x="1140" y="637" fill="#6e4f87" font-size="21" font-weight="400"><tspan x="1140" dy="0">分开操作时间、生效时间与结算期间，</tspan><tspan x="1140" dy="28">让制度可配置</tspan></text>
+<text x="660" y="651" fill="#9caabd" font-size="23" font-weight="400"><tspan x="660" dy="0">→</tspan></text><text x="1092" y="651" fill="#9caabd" font-size="23" font-weight="400"><tspan x="1092" dy="0">→</tspan></text>
+<text x="276" y="701" fill="#6d7f98" font-size="15" font-weight="400"><tspan x="276" dy="0">生效时间与历史规则  /  期间、日历与到期  /  配置化薪酬计算  /  业务与财务衔接</tspan></text><rect x="44" y="720" width="1512" height="110" rx="10" fill="#ffffff"/>
+<text x="66" y="748" fill="#7c93b0" font-size="16" font-weight="400"><tspan x="66" dy="0">05</tspan></text>
+<text x="66" y="778" fill="#263b55" font-size="22" font-weight="600"><tspan x="66" dy="0">界面与连接</tspan></text>
+<text x="66" y="811" fill="#70829a" font-size="15" font-weight="400"><tspan x="66" dy="0">不同角色，共用数据</tspan></text>
+<rect x="260" y="730" width="392" height="72" rx="7" fill="#edf6f1"/><text x="276" y="757" fill="#295e4b" font-size="21" font-weight="400"><tspan x="276" dy="0">管理后台、员工自助、报表分析、导入</tspan><tspan x="276" dy="28">导出与打卡对接</tspan></text><rect x="692" y="730" width="392" height="72" rx="7" fill="#edf3fc"/><text x="708" y="757" fill="#2c528c" font-size="21" font-weight="400"><tspan x="708" dy="0">元数据界面、Vue 员工端、查询报表、</tspan><tspan x="708" dy="28">接口与打印模板</tspan></text><rect x="1124" y="730" width="392" height="72" rx="7" fill="#f3eef8"/><text x="1140" y="757" fill="#6e4f87" font-size="21" font-weight="400"><tspan x="1140" dy="0">复用通用后台，为角色任务定制体验，</tspan><tspan x="1140" dy="28">统一数据口径</tspan></text>
+<text x="660" y="771" fill="#9caabd" font-size="23" font-weight="400"><tspan x="660" dy="0">→</tspan></text><text x="1092" y="771" fill="#9caabd" font-size="23" font-weight="400"><tspan x="1092" dy="0">→</tspan></text>
+<text x="276" y="821" fill="#6d7f98" font-size="15" font-weight="400"><tspan x="276" dy="0">元数据驱动后台  /  多端与员工自助  /  报表与管理分析  /  接口、文件与外部集成</tspan></text><rect x="44" y="840" width="1512" height="110" rx="10" fill="#ffffff"/>
+<text x="66" y="868" fill="#7c93b0" font-size="16" font-weight="400"><tspan x="66" dy="0">06</tspan></text>
+<text x="66" y="898" fill="#263b55" font-size="22" font-weight="600"><tspan x="66" dy="0">运行与演进</tspan></text>
+<text x="66" y="931" fill="#70829a" font-size="15" font-weight="400"><tspan x="66" dy="0">从能运行到可维护</tspan></text>
+<rect x="260" y="850" width="392" height="72" rx="7" fill="#edf6f1"/><text x="276" y="877" fill="#295e4b" font-size="21" font-weight="400"><tspan x="276" dy="0">批量处理、提醒与自动考勤；故障恢复、</tspan><tspan x="276" dy="28">制度变化和升级</tspan></text><rect x="692" y="850" width="392" height="72" rx="7" fill="#edf3fc"/><text x="708" y="877" fill="#2c528c" font-size="21" font-weight="400"><tspan x="708" dy="0">队列与调度、事务和错误状态、hooks、</tspan><tspan x="708" dy="28">迁移补丁与测试</tspan></text><rect x="1124" y="850" width="392" height="72" rx="7" fill="#f3eef8"/><text x="1140" y="877" fill="#6e4f87" font-size="21" font-weight="400"><tspan x="1140" dy="0">一起考虑失败路径、扩展边界、升级和</tspan><tspan x="1140" dy="28">生产运维</tspan></text>
+<text x="660" y="891" fill="#9caabd" font-size="23" font-weight="400"><tspan x="660" dy="0">→</tspan></text><text x="1092" y="891" fill="#9caabd" font-size="23" font-weight="400"><tspan x="1092" dy="0">→</tspan></text>
+<text x="276" y="941" fill="#6d7f98" font-size="15" font-weight="400"><tspan x="276" dy="0">自动化、队列与通知  /  一致性与失败处理  /  扩展、迁移与业务测试  /  部署、维护与本地化</tspan></text>
+<rect x="44" y="970" width="1512" height="62" rx="9" fill="#e8eef7"/>
+<text x="66" y="1008" fill="#506887" font-size="18" font-weight="400"><tspan x="66" dy="0">技术底座</tspan></text>
+<text x="260" y="1008" fill="#263b55" font-size="20" font-weight="400"><tspan x="260" dy="0">HRMS · 人事与薪酬业务</tspan></text>
+<text x="692" y="1008" fill="#263b55" font-size="20" font-weight="400"><tspan x="692" dy="0">ERPNext · 企业基础与财务</tspan></text>
+<text x="1124" y="1008" fill="#263b55" font-size="20" font-weight="400"><tspan x="1124" dy="0">Frappe · 模型、权限、接口、任务</tspan></text>
+<text x="52" y="1070" fill="#263b55" font-size="23" font-weight="600"><tspan x="52" dy="0">核心价值：让不同角色在规则与权限内协作，得到可追溯的业务结果。</tspan></text>
+<text x="52" y="1109" fill="#72849d" font-size="16" font-weight="400"><tspan x="52" dy="0">源码研究 / v16  ·  角色范围需配置  ·  台账不等于防篡改  ·  工资单修正与重算需明确策略  ·  上线需验证并发、恢复与地区适配</tspan></text>
+</svg>

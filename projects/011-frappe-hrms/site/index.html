@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#245be8"><meta name="description" content="交互探索 Frappe HR：员工档案、请假审批、考勤、工资试算，以及实现原理与使用场景。">
+  <title>Frappe HR · 人事与薪酬能力实验室</title>
+  <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="knowledge.css">
+</head>
+<body>
+  <a href="#content" class="skip-link">跳到主要内容</a>
+  <aside class="sidebar">
+    <a class="brand" href="#map"><span class="brand-icon">h<span>r</span></span><span>Frappe HR<small>能力实验室 / 011</small></span></a>
+    <div class="workspace"><span class="company-icon">禾</span><div>禾序工作室<small>虚拟团队 · 6 位成员</small></div><span class="workspace-arrow">⌄</span></div>
+    <div class="nav-label">理解系统 / 体验流程</div>
+    <nav id="navigation" aria-label="主要导航"></nav>
+    <div class="sidebar-bottom"><div class="demo-pill">研究与教学</div><p>源码分析 + 本地流程模拟<br>官方实例在本机独立运行</p><a href="runtime/README.md" target="_blank" rel="noopener">查看官方实例运行说明 ↗</a><a href="../">← 返回项目研究集</a><a href="https://github.com/frappe/hrms" target="_blank" rel="noreferrer">查看开源仓库 ↗</a></div>
+  </aside>
+  <div class="main-shell">
+    <header class="topbar"><div><span class="breadcrumb">研究集</span><span class="slash">/</span><span id="page-label">工作台总览</span></div><div class="top-actions"><span class="period">2026 年 9 月</span><span class="role-pill">HR 管理员 · 演示角色</span><span class="avatar blue small-avatar">你</span></div></header>
+    <main id="content" tabindex="-1"></main>
+    <footer class="page-footer"><span>Frappe HR 能力研究 · 2026.09</span><span>研究页与流程模拟独立于官方实例 · 数据互不相通</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="dialog"><div id="dialog-content"></div></dialog>
+  <noscript><p>此交互演示需要启用 JavaScript。可阅读 <a href="research.md">项目研究说明</a>。</p></noscript>
+  <script type="module" src="app.mjs"></script>
+</body></html>

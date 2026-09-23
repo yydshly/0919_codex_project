@@ -1,0 +1,18 @@
+{
+  "id": "011",
+  "slug": "frappe-hrms",
+  "name": "Frappe HR · 人事与薪酬工作台",
+  "summary": "开源企业人事与薪酬系统，覆盖招聘入职、员工档案、请假考勤、绩效报销和工资；以 Frappe/ERPNext 实现权限、审批、规则计算与报表。对我们是业务建模、权限流程、时间规则和可扩展后台的实现参考。",
+  "source": "https://github.com/frappe/hrms",
+  "status": "已完成",
+  "tags": [
+    "人事管理",
+    "薪酬",
+    "流程联动",
+    "Frappe",
+    "ERPNext",
+    "交互演示"
+  ],
+  "demo": "https://yydshly.github.io/0919_codex_project/011-frappe-hrms/",
+  "cover": "assets/capability-map.png"
+}
