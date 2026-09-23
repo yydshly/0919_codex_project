@@ -2,7 +2,7 @@
   "id": "010",
   "slug": "ziwei-doushu",
   "name": "紫微斗数 · 源库实测与结论",
-  "summary": "原库排盘可运行，AI 解读接口缺失；展示真实截图、实现方式与停止深入研究的判断。",
+  "summary": "以前端排盘展示为主：浏览器端可按规则生成命盘，但缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限。",
   "source": "https://github.com/Renhuai123/ziwei-doushu",
   "status": "已完成",
   "tags": [

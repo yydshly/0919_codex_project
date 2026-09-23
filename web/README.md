@@ -43,4 +43,4 @@
 
 ## 010 · 紫微斗数源库实测与结论
 
-[在线展示页](https://yydshly.github.io/0919_codex_project/010-ziwei-doushu/)记录源库真实排盘效果、AI 接口缺失与停止深入研究的结论。静态展示不部署原库服务。构建：`python projects/010-ziwei-doushu/scripts/build_web.py`。
+[在线展示页](https://yydshly.github.io/0919_codex_project/010-ziwei-doushu/)记录源库真实排盘效果。原库以前端排盘展示为主，缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限，不再深入研究。构建：`python projects/010-ziwei-doushu/scripts/build_web.py`。
