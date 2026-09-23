@@ -18,7 +18,7 @@ def main():
         shutil.copytree(mail_trail, DESTINATION / "mail-trail", dirs_exist_ok=True)
     notes = DESTINATION / "notes"
     notes.mkdir(exist_ok=True)
-    for name in ("README.md", "source-audit.md", "verification.json", "web-verification.md", "mail-trail.md", "product-roadmap.md"):
+    for name in ("README.md", "source-audit.md", "verification.json", "web-verification.md", "mail-trail.md", "product-roadmap.md", "publication.md"):
         content = (PROJECT / "notes" / name).read_text(encoding="utf-8")
         if name.endswith(".md"):
             content = content.replace("(../README.md)", "(../research.md)")

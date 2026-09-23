@@ -6,6 +6,6 @@
   "source": "https://github.com/garinasset/leak-check",
   "status": "已完成",
   "tags": ["源码研究", "关联检索", "数据边界", "邮件盘点", "产品探索"],
-  "demo": "",
+  "demo": "https://yydshly.github.io/0919_codex_project/006-leak-check/",
   "cover": "assets/understanding-map.png"
 }
