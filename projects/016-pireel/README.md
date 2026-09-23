@@ -1,5 +1,7 @@
 # 016 · Pireel · AI 视频剪辑能力实验室
 
+[在线能力页](https://yydshly.github.io/0919_codex_project/016-pireel/) · [全景图](https://yydshly.github.io/0919_codex_project/016-pireel/pireel-overview.svg) · [发布验证记录](notes/publication.md)
+
 研究页以能力全景图为引导，整理 Pireel 的输入与输出、剪辑和动态图文效果、所需依赖、实现原理、使用场景与价值；再看一个具体案例：把 Blinko 产品介绍从 45 秒剪成 28 秒。
 
 ## 一张图理解 Pireel

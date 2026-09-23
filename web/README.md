@@ -44,3 +44,7 @@
 ## 010 · 紫微斗数源库实测与结论
 
 [在线展示页](https://yydshly.github.io/0919_codex_project/010-ziwei-doushu/)记录源库真实排盘效果。原库以前端排盘展示为主，缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限，不再深入研究。构建：`python projects/010-ziwei-doushu/scripts/build_web.py`。
+
+## 016 · Pireel 视频编辑能力全览
+
+源码在 `projects/016-pireel/`，执行 `npm ci` 和 `npm run build:web` 输出到 `web/016-pireel/`。[在线能力页](https://yydshly.github.io/0919_codex_project/016-pireel/)以全景图引导，说明素材与效果、依赖、原理和场景，附原版 45 秒剪成 28 秒的成片对照。另有浏览器内组件实验。完整原版工作台只在本机运行；AI 与云服务未配置。[发布记录](../projects/016-pireel/notes/publication.md)。
