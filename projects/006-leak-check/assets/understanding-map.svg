@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="3200" viewBox="0 0 1800 3200" role="img" aria-labelledby="title desc">
+<title id="title">从 Leak Check 到拾迹：我们的理解与产品方向全景图</title>
+<desc id="desc">包含原始目标、源码能力、探索转折、数据边界、邮件账号盘点流程、证据分级、对用户的意义、当前验证状态和暂停后的适配规划。</desc>
+<style>text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif}</style>
+<rect x="0" y="0" width="1800" height="3200" rx="0" fill="#F4F4ED"/>
+<rect x="0" y="0" width="1800" height="264" rx="0" fill="#244E40"/>
+<text x="72.00" y="59.50" font-size="24" fill="#BDD0BA" font-weight="400">006  /  开源研究 → 产品探索</text>
+<text x="72.00" y="148.00" font-size="61" fill="#FFFFFF" font-weight="700">从 Leak Check 到「拾迹」</text>
+<text x="74.00" y="200.00" font-size="27" fill="#E0EADC" font-weight="400">能力边界 · 探索转折 · 可继续验证的产品方向 · 对你的意义</text>
+<rect x="1457" y="43" width="166.0" height="38" rx="6" fill="#E7D8A7"/>
+<text x="1471.00" y="72.50" font-size="23" fill="#806425" font-weight="400">接入开发暂缓</text>
+<text x="1457.00" y="124.50" font-size="24" fill="#E0EADC" font-weight="400">研究与原型保留</text>
+<text x="74.00" y="248.50" font-size="25" fill="#D4E1C9" font-weight="400">核心判断：先找到可访问的数据，再决定产品能够承诺什么。</text>
+<text x="72.00" y="329.00" font-size="27" fill="#536A61" font-weight="400">01</text>
+<text x="132.00" y="335.50" font-size="36" fill="#203D34" font-weight="700">我们的探索，如何逐步收敛</text>
+<text x="1406.00" y="329.50" font-size="23" fill="#536A61" font-weight="400">保留原始目标与转向之间的区别</text>
+<rect x="72" y="366" width="312" height="198" rx="18" fill="#FFFFFF"/>
+<text x="94.00" y="407.50" font-size="22" fill="#536A61" font-weight="400">最初想要</text>
+<text x="94.00" y="454.00" font-size="26" fill="#203D34" font-weight="700">输入电话或邮箱</text>
+<text x="94.00" y="498.50" font-size="23" fill="#536A61" font-weight="400">查出所有注册平台，</text>
+<text x="94.00" y="532.54" font-size="23" fill="#536A61" font-weight="400">以及相关泄露情况。</text>
+<path d="M389 460 L403 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M395 454 L403 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M395 466 L403 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<rect x="408" y="366" width="312" height="198" rx="18" fill="#FFFFFF"/>
+<text x="430.00" y="407.50" font-size="22" fill="#536A61" font-weight="400">阅读源码</text>
+<text x="430.00" y="454.00" font-size="26" fill="#203D34" font-weight="700">发现查询的是已有库</text>
+<text x="430.00" y="498.50" font-size="23" fill="#536A61" font-weight="400">程序能做匹配与关联，</text>
+<text x="430.00" y="532.54" font-size="23" fill="#536A61" font-weight="400">真实数据需要另行接入。</text>
+<path d="M725 460 L739 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M731 454 L739 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M731 466 L739 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<rect x="744" y="366" width="312" height="198" rx="18" fill="#FFFFFF"/>
+<text x="766.00" y="407.50" font-size="22" fill="#536A61" font-weight="400">追问数据来源</text>
+<text x="766.00" y="454.00" font-size="26" fill="#203D34" font-weight="700">内部账号表并不开放</text>
+<text x="766.00" y="498.50" font-size="23" fill="#536A61" font-weight="400">知道邮箱地址，不能直接</text>
+<text x="766.00" y="532.54" font-size="23" fill="#536A61" font-weight="400">读取各平台内部账号。</text>
+<path d="M1061 460 L1075 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M1067 454 L1075 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M1067 466 L1075 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<rect x="1080" y="366" width="312" height="198" rx="18" fill="#FFFFFF"/>
+<text x="1102.00" y="407.50" font-size="22" fill="#536A61" font-weight="400">寻找可用证据</text>
+<text x="1102.00" y="454.00" font-size="26" fill="#203D34" font-weight="700">用户自己的历史邮件</text>
+<text x="1102.00" y="498.50" font-size="23" fill="#536A61" font-weight="400">授权读注册、登录通知</text>
+<text x="1102.00" y="532.54" font-size="23" fill="#536A61" font-weight="400">但邮件仍可能缺失。</text>
+<path d="M1397 460 L1411 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M1403 454 L1411 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<path d="M1403 466 L1411 460" stroke="#8BA18A" stroke-width="2" fill="none"/>
+<rect x="1416" y="366" width="312" height="198" rx="18" fill="#244E40"/>
+<text x="1438.00" y="407.50" font-size="22" fill="#CADAAC" font-weight="400">保留方向</text>
+<text x="1438.00" y="454.00" font-size="26" fill="#FFFFFF" font-weight="700">邮件驱动的账号盘点</text>
+<text x="1438.00" y="498.50" font-size="23" fill="#E0EADC" font-weight="400">自动整理线索与证据</text>
+<text x="1438.00" y="532.54" font-size="23" fill="#E0EADC" font-weight="400">用户确认、排除与导出。</text>
+<rect x="72" y="587" width="1656" height="66" rx="9" fill="#E9E6D7"/>
+<text x="96.00" y="631.50" font-size="25" fill="#806425" font-weight="700">关键转折</text>
+<text x="243.00" y="633.50" font-size="25" fill="#203D34" font-weight="400">原始的“只输入标识、查全平台”尚未实现；新方向增加了用户授权读信这一必要条件。</text>
+<text x="72.00" y="717.00" font-size="27" fill="#536A61" font-weight="400">02</text>
+<text x="132.00" y="723.50" font-size="36" fill="#203D34" font-weight="700">这个库实际做了什么</text>
+<text x="1366.53" y="717.50" font-size="23" fill="#536A61" font-weight="400">源码版本 3.0.0 · 固定提交 7e3a113</text>
+<rect x="72" y="754" width="806" height="506" rx="18" fill="#FFFFFF" stroke="#D2DDD2"/>
+<rect x="902" y="754" width="826" height="506" rx="18" fill="#FFFFFF" stroke="#D2DDD2"/>
+<text x="100.00" y="810.00" font-size="31" fill="#203D34" font-weight="700">已有数据库的查询、关联与脱敏</text>
+<text x="100.00" y="851.50" font-size="23" fill="#536A61" font-weight="400">FastAPI + SQLite · 主要提供后端 HTTP 查询接口</text>
+<rect x="100" y="883" width="235" height="104" rx="9" fill="#E6ECE0"/>
+<text x="115.00" y="925.00" font-size="26" fill="#244E40" font-weight="700">输入标识</text>
+<text x="115.00" y="963.00" font-size="17.5" fill="#536A61" font-weight="400">电话 / 邮箱 / 身份证 / QQ</text>
+<path d="M338 935 L348 935" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M340 929 L348 935" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M340 941 L348 935" stroke="#536A61" stroke-width="2" fill="none"/>
+<rect x="351" y="883" width="235" height="104" rx="9" fill="#E6ECE0"/>
+<text x="366.00" y="925.00" font-size="26" fill="#244E40" font-weight="700">精确匹配</text>
+<text x="366.00" y="963.00" font-size="17.5" fill="#536A61" font-weight="400">按字段查询 person 表</text>
+<path d="M589 935 L599 935" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M591 929 L599 935" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M591 941 L599 935" stroke="#536A61" stroke-width="2" fill="none"/>
+<rect x="602" y="883" width="235" height="104" rx="9" fill="#E6ECE0"/>
+<text x="617.00" y="925.00" font-size="26" fill="#244E40" font-weight="700">发现关联</text>
+<text x="617.00" y="963.00" font-size="17.5" fill="#536A61" font-weight="400">提取命中记录的其他标识</text>
+<rect x="100" y="1007" width="750" height="58" rx="8" fill="#244E40"/>
+<text x="120.00" y="1045.50" font-size="23" fill="#FFFFFF" font-weight="400">用新标识重复查表 → 默认两轮 → 字段聚合、打码输出</text>
+<text x="100.00" y="1109.50" font-size="24" fill="#536A61" font-weight="400">本质是应用程序分轮查询同一张表；来源表补充来源信息。共享标识能</text>
+<text x="100.00" y="1145.50" font-size="24" fill="#536A61" font-weight="400">串起线索，但不证明一定是同一人。</text>
+<path d="M100 1177 L850 1177" stroke="#D2DDD2" stroke-width="2" fill="none"/>
+<text x="100.00" y="1220.50" font-size="24" fill="#244E40" font-weight="700">可借鉴：查询流程、有限轮次关联、脱敏与接口组织。</text>
+<text x="932.00" y="810.00" font-size="31" fill="#203D34" font-weight="700">能力上限，由数据来源决定</text>
+<text x="932.00" y="861.50" font-size="24" fill="#203D34" font-weight="700">开源仓库</text>
+<text x="1080.00" y="860.50" font-size="23" fill="#536A61" font-weight="400">只有小型示例库：8 条个人记录；真实数据需自备。</text>
+<path d="M932 899 L1698 899" stroke="#D2DDD2" stroke-width="2" fill="none"/>
+<text x="932.00" y="933.50" font-size="24" fill="#203D34" font-weight="700">作者服务</text>
+<text x="1080.00" y="932.50" font-size="23" fill="#536A61" font-weight="400">可能连接作者的数据；其数据和实际效果本次未验证。</text>
+<path d="M932 971 L1698 971" stroke="#D2DDD2" stroke-width="2" fill="none"/>
+<text x="932.00" y="1005.50" font-size="24" fill="#203D34" font-weight="700">公开网页</text>
+<text x="1080.00" y="1004.50" font-size="23" fill="#536A61" font-weight="400">能提供公开出现的线索，无法读取平台内部账号表。</text>
+<path d="M932 1043 L1698 1043" stroke="#D2DDD2" stroke-width="2" fill="none"/>
+<text x="932.00" y="1077.50" font-size="24" fill="#203D34" font-weight="700">已知泄露库</text>
+<text x="1080.00" y="1076.50" font-size="23" fill="#536A61" font-weight="400">只能覆盖已收录事件；无命中不代表没有泄露。</text>
+<text x="932.00" y="1161.50" font-size="24" fill="#806425" font-weight="700">仓库不含：实时全网搜索、作者数据同步、平台内部数据访问、历史邮</text>
+<text x="932.00" y="1197.50" font-size="24" fill="#806425" font-weight="700">件分析。</text>
+<text x="932.00" y="1246.50" font-size="22" fill="#536A61" font-weight="400">描述易造成误解，不足以证明作者有意误导。</text>
+<rect x="72" y="1300" width="1656" height="770" rx="22" fill="#244E40"/>
+<text x="105.00" y="1354.50" font-size="25" fill="#CAD9B5" font-weight="400">03  /  最终保留的产品方向</text>
+<text x="105.00" y="1422.00" font-size="44" fill="#FFFFFF" font-weight="700">拾迹 · 有邮件证据的账号盘点</text>
+<text x="105.00" y="1467.50" font-size="25" fill="#DBE7D5" font-weight="400">面向个人用户；独立开发的原型，未直接复用 Leak Check 查询代码。</text>
+<rect x="1454" y="1340" width="160.0" height="38" rx="6" fill="#E7D8A7"/>
+<text x="1468.00" y="1368.50" font-size="22" fill="#806425" font-weight="400">价值仍待验证</text>
+<rect x="105" y="1508" width="248" height="133" rx="10" fill="#36604E"/>
+<text x="121.00" y="1543.50" font-size="21" fill="#BBD19E" font-weight="400">01</text>
+<text x="121.00" y="1582.50" font-size="25" fill="#FFFFFF" font-weight="700">连接自己的邮箱</text>
+<text x="121.00" y="1622.50" font-size="18" fill="#DCE7D7" font-weight="400">输入地址，识别服务商</text>
+<path d="M357 1575 L369 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M361 1569 L369 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M361 1581 L369 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<rect x="373" y="1508" width="248" height="133" rx="10" fill="#36604E"/>
+<text x="389.00" y="1543.50" font-size="21" fill="#BBD19E" font-weight="400">02</text>
+<text x="389.00" y="1582.50" font-size="25" fill="#FFFFFF" font-weight="700">完成读信授权</text>
+<text x="389.00" y="1622.50" font-size="18" fill="#DCE7D7" font-weight="400">官方授权 / 客户端授权码</text>
+<path d="M625 1575 L637 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M629 1569 L637 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M629 1581 L637 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<rect x="641" y="1508" width="248" height="133" rx="10" fill="#36604E"/>
+<text x="657.00" y="1543.50" font-size="21" fill="#BBD19E" font-weight="400">03</text>
+<text x="657.00" y="1582.50" font-size="25" fill="#FFFFFF" font-weight="700">自动读取邮件</text>
+<text x="657.00" y="1622.50" font-size="18" fill="#DCE7D7" font-weight="400">展示实际范围与进度</text>
+<path d="M893 1575 L905 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M897 1569 L905 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M897 1581 L905 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<rect x="909" y="1508" width="248" height="133" rx="10" fill="#36604E"/>
+<text x="925.00" y="1543.50" font-size="21" fill="#BBD19E" font-weight="400">04</text>
+<text x="925.00" y="1582.50" font-size="25" fill="#FFFFFF" font-weight="700">分析与归组</text>
+<text x="925.00" y="1622.50" font-size="18" fill="#DCE7D7" font-weight="400">解析、去重、提取线索</text>
+<path d="M1161 1575 L1173 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M1165 1569 L1173 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M1165 1581 L1173 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<rect x="1177" y="1508" width="248" height="133" rx="10" fill="#36604E"/>
+<text x="1193.00" y="1543.50" font-size="21" fill="#BBD19E" font-weight="400">05</text>
+<text x="1193.00" y="1582.50" font-size="25" fill="#FFFFFF" font-weight="700">查看平台证据</text>
+<text x="1193.00" y="1622.50" font-size="18" fill="#DCE7D7" font-weight="400">线索类型、时间、原邮件</text>
+<path d="M1429 1575 L1441 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M1433 1569 L1441 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<path d="M1433 1581 L1441 1575" stroke="#C1D0B7" stroke-width="2" fill="none"/>
+<rect x="1445" y="1508" width="248" height="133" rx="10" fill="#36604E"/>
+<text x="1461.00" y="1543.50" font-size="21" fill="#BBD19E" font-weight="400">06</text>
+<text x="1461.00" y="1582.50" font-size="25" fill="#FFFFFF" font-weight="700">确认并导出</text>
+<text x="1461.00" y="1622.50" font-size="18" fill="#DCE7D7" font-weight="400">排除误判，保留清单</text>
+<text x="107.00" y="1688.50" font-size="24" fill="#E0EADC" font-weight="400">主入口是授权后自动分析；.eml / .mbox 文件导入仅为备用。验证邮箱归属，不等于授权读取邮件。</text>
+<path d="M105 1720 L1695 1720" stroke="#65806B" stroke-width="2" fill="none"/>
+<text x="105.00" y="1769.00" font-size="27" fill="#FFFFFF" font-weight="700">线索如何解释</text>
+<text x="401.00" y="1770.50" font-size="24" fill="#DDE9D5" font-weight="400">交付：平台 + 线索类型 + 证据邮件 + 相关时间 + 用户确认状态</text>
+<rect x="105" y="1803" width="379" height="139" rx="10" fill="#F0F3E8"/>
+<text x="127.00" y="1846.50" font-size="25" fill="#244E40" font-weight="700">注册成功通知</text>
+<text x="127.00" y="1890.50" font-size="25" fill="#203D34" font-weight="400">支持历史注册判断</text>
+<text x="127.00" y="1927.50" font-size="22" fill="#536A61" font-weight="400">仍需核对是否属于本人</text>
+<rect x="509" y="1803" width="379" height="139" rx="10" fill="#F0F3E8"/>
+<text x="531.00" y="1846.50" font-size="25" fill="#244E40" font-weight="700">登录 / 订阅状态</text>
+<text x="531.00" y="1890.50" font-size="25" fill="#203D34" font-weight="400">支持历史使用判断</text>
+<text x="531.00" y="1927.50" font-size="22" fill="#536A61" font-weight="400">不据此认定注册时间</text>
+<rect x="913" y="1803" width="379" height="139" rx="10" fill="#F0F3E8"/>
+<text x="935.00" y="1846.50" font-size="25" fill="#244E40" font-weight="700">验证码 / 重置请求</text>
+<text x="935.00" y="1890.50" font-size="25" fill="#203D34" font-weight="400">仅说明发生过请求</text>
+<text x="935.00" y="1927.50" font-size="22" fill="#536A61" font-weight="400">不证明操作已成功完成</text>
+<rect x="1317" y="1803" width="379" height="139" rx="10" fill="#F0F3E8"/>
+<text x="1339.00" y="1846.50" font-size="25" fill="#244E40" font-weight="700">推广 / 普通收据</text>
+<text x="1339.00" y="1890.50" font-size="25" fill="#203D34" font-weight="400">不能单独证明注册</text>
+<text x="1339.00" y="1927.50" font-size="22" fill="#536A61" font-weight="400">可能是营销或访客购买</text>
+<text x="105.00" y="1992.50" font-size="24" fill="#E7D8A7" font-weight="700">结果边界</text>
+<text x="249.00" y="1995.50" font-size="25" fill="#FFFFFF" font-weight="400">历史邮件 ≠ 完整注册清单    最早邮件 ≠ 注册日期    平台数 ≠ 账号数</text>
+<text x="249.00" y="2039.50" font-size="24" fill="#D9E4D2" font-weight="400">遗漏邮件就可能遗漏账号；历史线索不证明账号今天仍有效，也不能当作泄露检测。</text>
+<text x="72.00" y="2133.00" font-size="27" fill="#536A61" font-weight="400">04</text>
+<text x="132.00" y="2139.50" font-size="36" fill="#203D34" font-weight="700">对你有什么意义</text>
+<text x="1268.00" y="2133.50" font-size="23" fill="#536A61" font-weight="400">真实价值应通过使用验证，而非平台数量证明</text>
+<rect x="72" y="2170" width="806" height="232" rx="18" fill="#FFFFFF" stroke="#D2DDD2"/>
+<rect x="902" y="2170" width="826" height="232" rx="18" fill="#E7ECDD"/>
+<text x="101.00" y="2223.00" font-size="30" fill="#203D34" font-weight="700">对个人使用者：减少翻信与遗忘</text>
+<text x="101.00" y="2270.50" font-size="25" fill="#536A61" font-weight="400">找回曾使用的平台，看到可核对的原邮件；把分散在历史邮件中的</text>
+<text x="101.00" y="2308.00" font-size="25" fill="#536A61" font-weight="400">线索整理成清单，便于确认、排除和后续整理。</text>
+<text x="101.00" y="2380.50" font-size="23" fill="#244E40" font-weight="400">直接收益假设：节省时间、减少遗漏、降低判断成本。</text>
+<text x="932.00" y="2223.00" font-size="30" fill="#203D34" font-weight="700">对你做产品：明确投入方向</text>
+<text x="932.00" y="2270.50" font-size="25" fill="#536A61" font-weight="400">把资源投入邮箱接入、证据质量与账号整理体验。原库适合作为实现</text>
+<text x="932.00" y="2308.00" font-size="25" fill="#536A61" font-weight="400">参考，无法补齐关键数据；单纯列出平台是否值得付费仍待验证。</text>
+<text x="932.00" y="2380.50" font-size="23" fill="#244E40" font-weight="400">后续探索：订阅线索、闲置账号整理、注销入口指引。</text>
+<text x="72.00" y="2453.00" font-size="27" fill="#536A61" font-weight="400">05</text>
+<text x="132.00" y="2459.50" font-size="36" fill="#203D34" font-weight="700">现在做到哪一步，之后如何推进</text>
+<text x="1376.09" y="2453.50" font-size="23" fill="#536A61" font-weight="400">截至 2026.09.22 · 无上线日期承诺</text>
+<rect x="72" y="2489" width="806" height="277" rx="18" fill="#FFFFFF" stroke="#D2DDD2"/>
+<rect x="902" y="2489" width="826" height="277" rx="18" fill="#FFFFFF" stroke="#D2DDD2"/>
+<text x="101.00" y="2540.00" font-size="29" fill="#203D34" font-weight="700">保留现有原型，真实效果尚未验证</text>
+<text x="101.00" y="2585.50" font-size="24" fill="#536A61" font-weight="400">已做：解析、分类、平台聚合、证据、确认、CSV 导出；20 项解析测</text>
+<text x="101.00" y="2621.50" font-size="24" fill="#536A61" font-weight="400">试、21 项服务离线测试及浏览器流程验证通过。</text>
+<text x="101.00" y="2665.50" font-size="24" fill="#536A61" font-weight="400">未做：真实账号授权读取、真实准确率与遗漏评估。当前仅设计读取收</text>
+<text x="101.00" y="2701.50" font-size="24" fill="#536A61" font-weight="400">件箱最近 100–3,000 封，另有大小上限。</text>
+<text x="101.00" y="2748.50" font-size="22" fill="#806425" font-weight="400">自动读取需本机服务；静态页仅支持示例与文件导入。</text>
+<text x="932.00" y="2540.00" font-size="29" fill="#203D34" font-weight="700">差异在授权与读取，邮件分析可以复用</text>
+<text x="932.00" y="2588.50" font-size="25" fill="#244E40" font-weight="700">QQ / Foxmail · 163 / 126 / Yeah</text>
+<text x="932.00" y="2630.50" font-size="23" fill="#536A61" font-weight="400">已有 IMAP 连接代码与模拟验证；真实兼容性待验证。</text>
+<text x="932.00" y="2679.50" font-size="25" fill="#244E40" font-weight="700">Gmail / Workspace · Outlook / Hotmail</text>
+<text x="932.00" y="2721.50" font-size="23" fill="#536A61" font-weight="400">尚未接入：后期规划 OAuth + Gmail API / Graph。</text>
+<text x="932.00" y="2751.50" font-size="22" fill="#806425" font-weight="400">Gmail 本身支持 IMAP；当前缺的是产品适配。</text>
+<rect x="72" y="2803" width="312" height="157" rx="11" fill="#244E40"/>
+<text x="92.00" y="2842.50" font-size="21" fill="#D8E4CA" font-weight="400">现在</text>
+<text x="92.00" y="2890.00" font-size="27" fill="#FFFFFF" font-weight="700">暂停新增接入</text>
+<text x="92.00" y="2931.50" font-size="21" fill="#DFE9D6" font-weight="400">保留研究与原型</text>
+<path d="M388 2880 L403 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M395 2874 L403 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M395 2886 L403 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<rect x="408" y="2803" width="312" height="157" rx="11" fill="#E6ECE0"/>
+<text x="428.00" y="2842.50" font-size="21" fill="#536A61" font-weight="400">恢复后 01</text>
+<text x="428.00" y="2890.00" font-size="27" fill="#203D34" font-weight="700">单一邮箱真实验证</text>
+<text x="428.00" y="2931.50" font-size="21" fill="#536A61" font-weight="400">小范围授权、核对证据</text>
+<path d="M724 2880 L739 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M731 2874 L739 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M731 2886 L739 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<rect x="744" y="2803" width="312" height="157" rx="11" fill="#E6ECE0"/>
+<text x="764.00" y="2842.50" font-size="21" fill="#536A61" font-weight="400">02</text>
+<text x="764.00" y="2890.00" font-size="27" fill="#203D34" font-weight="700">扩大邮箱支持</text>
+<text x="764.00" y="2931.50" font-size="21" fill="#536A61" font-weight="400">优先 Gmail，再 Outlook</text>
+<path d="M1060 2880 L1075 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M1067 2874 L1075 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M1067 2886 L1075 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<rect x="1080" y="2803" width="312" height="157" rx="11" fill="#E6ECE0"/>
+<text x="1100.00" y="2842.50" font-size="21" fill="#536A61" font-weight="400">03</text>
+<text x="1100.00" y="2890.00" font-size="27" fill="#203D34" font-weight="700">完善覆盖与质量</text>
+<text x="1100.00" y="2931.50" font-size="21" fill="#536A61" font-weight="400">多文件夹、增量、多账号</text>
+<path d="M1396 2880 L1411 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M1403 2874 L1411 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<path d="M1403 2886 L1411 2880" stroke="#536A61" stroke-width="2" fill="none"/>
+<rect x="1416" y="2803" width="312" height="157" rx="11" fill="#E6ECE0"/>
+<text x="1436.00" y="2842.50" font-size="21" fill="#536A61" font-weight="400">04</text>
+<text x="1436.00" y="2890.00" font-size="27" fill="#203D34" font-weight="700">验证整理价值</text>
+<text x="1436.00" y="2931.50" font-size="21" fill="#536A61" font-weight="400">订阅 / 注销指引再评估</text>
+<text x="73.00" y="3010.50" font-size="25" fill="#244E40" font-weight="700">继续投入的条件：真实读取成功 → 误报与遗漏可解释 → 用户能完成具体整理任务，并认可节省的时间。</text>
+<path d="M72 3048 L1728 3048" stroke="#B7C6B4" stroke-width="2" fill="none"/>
+<text x="73.00" y="3091.50" font-size="25" fill="#203D34" font-weight="700">当前决定：暂停新增适配与真实邮箱验证。保留原型，不承诺查全网、查全账号或自动注销。</text>
+<text x="73.00" y="3135.50" font-size="22" fill="#536A61" font-weight="400">依据：Leak Check 固定版本源码审查 · 本地原型及离线验证记录 · product-roadmap.md</text>
+<text x="73.00" y="3171.50" font-size="20" fill="#536A61" font-weight="400">github.com/garinasset/leak-check  ·  Google / Microsoft 官方接入文档  ·  研究日期 2026-09-22</text>
+</svg>

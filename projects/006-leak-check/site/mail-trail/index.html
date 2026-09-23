@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="连接自己的邮箱，授权后自动读取历史邮件，整理注册与使用平台的线索，查看证据并导出清单。">
+  <meta name="theme-color" content="#172746"><title>拾迹 · 邮箱账号盘点</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'self'">
+  <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到账号盘点</a>
+<aside class="sidebar">
+  <a class="brand" href="./" aria-label="拾迹首页"><span class="brand-icon" aria-hidden="true">拾</span><span>拾迹<small>MAIL TRAIL</small></span></a>
+  <div class="sidebar-label">我的数字足迹</div>
+  <nav aria-label="工作台导航"><a class="nav-item active" href="#main" aria-current="page"><span aria-hidden="true">▦</span>账号盘点</a><button class="nav-item" id="help-button"><span aria-hidden="true">↥</span>连接与导入说明</button><button class="nav-item" id="rules-button"><span aria-hidden="true">≋</span>识别依据</button></nav>
+  <div class="sidebar-note"><span class="local-mark" aria-hidden="true">◇</span><strong>在你的电脑上处理</strong><p>由本机连接你的邮箱。<br>不发送或修改邮件。</p></div>
+  <a class="back-link" href="../">← 查看 Leak Check 研究</a><div class="version">产品原型 · 02</div>
+</aside>
+<main id="main" class="workspace">
+  <header class="topbar"><span>个人空间 <span class="slash">/</span> <strong>邮箱账号盘点</strong></span><span class="privacy-badge"><span aria-hidden="true">◇</span> 本机处理</span></header>
+  <div class="archive-notice"><strong>已保留的产品原型</strong><span>后续邮箱适配与真实账号验证暂缓。</span><a href="../#roadmap">查看理解与后期规划 →</a></div>
+  <section class="heading"><div><div class="eyebrow">每段账号足迹，都有一封邮件作证</div><h1>找回你用过的平台。</h1><p>从历史邮件整理注册与使用线索，逐一核对自己的账号。</p></div><button class="button secondary" id="export-button"><span aria-hidden="true">↓</span> 导出清单</button></section>
+  <section class="connect-zone" aria-labelledby="connect-title">
+    <div class="connect-heading"><span class="connect-icon" aria-hidden="true">@</span><div><h2 id="connect-title">连接邮箱，自动盘点历史邮件</h2><p>输入邮箱 → 授权读取 → 自动整理平台与证据</p></div><span class="connection-version">无需逐封导入</span></div>
+    <form id="email-form" class="email-form"><label class="sr-only" for="mailbox-email">邮箱地址</label><input type="email" id="mailbox-email" placeholder="输入你的邮箱，例如 name@qq.com" autocomplete="email" maxlength="254" required><button class="button primary" id="connect-button" type="submit">连接我的邮箱 <span aria-hidden="true">→</span></button></form>
+    <div class="connect-bottom"><p id="connection-status" role="status">正在检查邮箱连接服务…</p><button class="text-button" id="demo-button" type="button">先体验示例</button></div>
+    <p class="connect-scope">当前支持 QQ / 163 / 126 / yeah 邮箱。授权后读取收件箱，可选择最近 100–3,000 封；不含其他文件夹。</p>
+  </section>
+  <details class="fallback-import"><summary>其他方式：导入已经导出的邮件文件</summary><section id="drop-zone" class="import-zone" aria-label="导入邮件区域"><div class="import-symbol" aria-hidden="true">↥</div><div class="import-copy"><h2>选择或拖入邮件归档</h2><p>支持 .eml、.mbox · 每批最多 25 MB / 3,000 封 · 不分析附件</p><p>新的分析会替换当前结果；分批处理请分别导出。</p></div><div class="import-actions"><button class="button secondary" id="import-button">选择邮件文件</button></div><input type="file" id="file-input" accept=".eml,.mbox" multiple hidden></section></details>
+  <div id="progress" class="progress-bar" hidden><span id="progress-text" role="status">正在读取邮件…</span><button id="cancel-button" class="text-button">取消</button></div>
+  <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+  <div class="dataset-line"><div><span id="dataset-badge" class="mode-badge">尚未连接</span><span id="dataset-description">连接你的邮箱后，这里会显示真实分析结果。</span></div><button id="clear-button" class="text-button">清空本次数据</button></div>
+  <section class="metrics" aria-label="盘点概览"><article><span>已分析邮件</span><strong id="metric-mails">—</strong><small id="metric-mails-note">去重后</small></article><article><span>发现的平台线索</span><strong id="metric-platforms">—</strong><small>按发件域名归组</small></article><article><span>含注册成功线索</span><strong id="metric-registration">—</strong><small>不代表账号仍然有效</small></article><article><span>你已确认使用过</span><strong id="metric-confirmed">0</strong><small>根据你的核对更新</small></article></section>
+  <section class="results" aria-labelledby="results-title"><div class="results-heading"><div><h2 id="results-title">发现的平台</h2><span id="result-count"></span></div><label class="search"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="搜索平台、域名或邮箱" aria-label="搜索平台、域名或邮箱"></label></div>
+    <div class="filter-row"><div class="filters" role="group" aria-label="按邮件线索筛选"><button data-filter="all" aria-pressed="true">全部 <span>0</span></button><button data-filter="registration" aria-pressed="false">注册线索 <span>0</span></button><button data-filter="usage" aria-pressed="false">使用记录 <span>0</span></button><button data-filter="verification" aria-pressed="false">仅验证请求 <span>0</span></button></div><label class="review-filter"><span class="sr-only">按确认状态筛选</span><select id="review-filter"><option value="all">全部确认状态</option><option value="pending">待确认</option><option value="confirmed">确认使用过</option><option value="excluded">与我无关</option></select></label></div>
+    <div class="results-layout"><div class="platform-list" id="platform-list" aria-label="平台线索列表"></div><aside id="detail-panel" class="detail-panel" aria-label="平台邮件证据"></aside></div>
+    <div class="results-foot"><span id="coverage-summary"></span><button class="text-button" id="download-example">下载示例邮件</button></div>
+  </section>
+  <footer class="workspace-foot">结果仅来自本次邮件。最早邮件时间不等于注册时间，未发现线索不代表没有账号。</footer>
+  <noscript><p class="notice">请启用 JavaScript 以连接邮箱并分析邮件。连接由本机服务完成。</p></noscript>
+</main>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title">连接邮箱，或导入邮件归档</h2><button class="icon-button" data-close="help-dialog" aria-label="关闭导入说明">×</button></div><p>在首页输入 QQ 或网易邮箱，使用邮箱提供的授权码连接，即可自动读取收件箱。请在产品页面填写授权码，无需逐封导出。以下文件导入方式作为备用。</p><ol class="guide-steps"><li><strong>准备邮件文件</strong><p>从邮箱或邮件客户端保存原始邮件（.eml），或导出邮件归档（.mbox）。也可以先下载下面的虚构示例，试一次完整流程。</p></li><li><strong>导入并查看线索</strong><p>选择一个或多个文件，或直接拖入页面。每批最多 25 MB、3,000 封；建议先选择一部分历史邮件。每次导入会替换当前结果与确认状态，分批处理请分别导出。</p></li><li><strong>核对后导出</strong><p>点击平台查看主题、发件地址、时间和正文摘录；确认是否使用过，再导出清单留存。</p></li></ol><div class="dialog-note">支持常见文本、HTML 与 MIME 编码邮件；不分析附件、加密邮件、.pst 或压缩包。刷新会清除分析结果与确认状态。</div><button id="help-import" class="button primary">选择邮件文件</button></dialog>
+<dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-heading"><h2 id="rules-title">每一个判断，都回到邮件证据</h2><button class="icon-button" data-close="rules-dialog" aria-label="关闭识别说明">×</button></div><dl class="rules-list"><div><dt>注册线索</dt><dd>邮件明确提到注册成功或账号创建。仍需你确认归属，不代表账号现在仍存在。</dd></div><div><dt>使用记录</dt><dd>邮件提到登录或账号相关服务使用。订单收据本身不认定为注册。</dd></div><div><dt>仅验证请求</dt><dd>验证码、邮箱验证或密码重置请求。不能证明操作成功。</dd></div><div><dt>平台归组</dt><dd>已知发件域名映射到平台；其余按完整域名展示。发件人信息未经真实性核验，转发、伪造及共享发信服务可能造成误判。</dd></div><div><dt>覆盖范围</dt><dd>按中英文关键词识别常见邮件。推广和普通订单不会单独生成平台线索；其他语言或模板可能漏识别。多收件地址在同一平台合并，不代表同一个账号。</dd></div></dl><p class="dialog-note">当前为基于规则的产品原型，通过你的授权读取邮箱，不访问其他平台内部数据，也不是 Leak Check 原库已有的能力。</p></dialog>
+<dialog id="connect-dialog" aria-labelledby="connect-dialog-title"><div class="dialog-heading"><h2 id="connect-dialog-title">授权读取你的邮箱</h2><button class="icon-button" data-close="connect-dialog" aria-label="关闭邮箱连接">×</button></div>
+  <p id="connect-account" class="connect-account"></p>
+  <form id="authorization-form"><label class="field-label" for="authorization-code">邮箱授权码</label><input type="password" id="authorization-code" class="form-field" autocomplete="off" spellcheck="false" maxlength="256" required placeholder="填写邮箱提供的客户端授权码"><p class="field-hint">使用邮箱设置中生成的授权码，请勿填写网页登录密码。</p>
+  <label class="field-label" for="scan-limit">本次读取范围</label><select id="scan-limit" class="form-field"><option value="100">收件箱最近 100 封 · 快速体验</option><option value="500">收件箱最近 500 封</option><option value="1000" selected>收件箱最近 1,000 封</option><option value="3000">收件箱最近 3,000 封</option></select>
+  <details class="authorization-guide"><summary>在哪里获取授权码？</summary><ol><li>打开邮箱网页中的设置，找到 IMAP 或客户端服务。</li><li>开启 IMAP 服务，并按邮箱提示生成客户端授权码。</li><li>将授权码填在上方，点击“授权并开始盘点”。</li></ol><a id="provider-help" href="https://help.mail.qq.com/detail/106/985" target="_blank" rel="noopener noreferrer">打开邮箱官方帮助 ↗</a></details>
+  <div class="dialog-note">仅在你的电脑上连接邮箱。授权码不写入文件；读取结束后断开连接。程序不发送邮件、不删除邮件、不标为已读。本次分析会替换之前的结果。</div>
+  <p id="connect-error" class="form-error" role="alert" hidden></p><button class="button primary" id="authorize-button" type="submit">授权并开始盘点</button></form>
+</dialog>
+</body>
+</html>

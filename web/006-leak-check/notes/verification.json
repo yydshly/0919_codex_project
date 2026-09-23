@@ -1,0 +1,91 @@
+{
+  "commit": "7e3a113b9cf616b142ad5236c547c2c9a9246607",
+  "verified_at_utc": "2026-09-22T07:54:46.948543+00:00",
+  "python": "3.10.11",
+  "scope": "Read-only example schema/counts; isolated validator; route AST inspection. No live personal-data query or full app execution.",
+  "files": {
+    "main.py": {
+      "url": "https://raw.githubusercontent.com/garinasset/leak-check/7e3a113b9cf616b142ad5236c547c2c9a9246607/main.py",
+      "bytes": 3833,
+      "sha256": "a8dcb2b96396085afcefd53d8fcdf49d5f479510599996e5e1ddd7bfa255f0ce"
+    },
+    "db/crud.py": {
+      "url": "https://raw.githubusercontent.com/garinasset/leak-check/7e3a113b9cf616b142ad5236c547c2c9a9246607/db/crud.py",
+      "bytes": 6863,
+      "sha256": "bde8c926ce0b5e62478ec7dc1d633f5403fab5fb016b3495eb25c40379c39696"
+    },
+    "models/request.py": {
+      "url": "https://raw.githubusercontent.com/garinasset/leak-check/7e3a113b9cf616b142ad5236c547c2c9a9246607/models/request.py",
+      "bytes": 1547,
+      "sha256": "d7c1436c5397016b483ee0b1ee99f291b22369d8e15d9532a82649ff10f3beb1"
+    },
+    "lib/masking.py": {
+      "url": "https://raw.githubusercontent.com/garinasset/leak-check/7e3a113b9cf616b142ad5236c547c2c9a9246607/lib/masking.py",
+      "bytes": 2034,
+      "sha256": "f86c9347d6ed2657231fecc362028ab23f092affd77d2760ac2634edc4426935"
+    },
+    "example.db": {
+      "url": "https://raw.githubusercontent.com/garinasset/leak-check/7e3a113b9cf616b142ad5236c547c2c9a9246607/example.db",
+      "bytes": 12288,
+      "sha256": "524e09c2633e286da86aa1208a63d0513b3ff9d1cdd57c550a89b50812c1f98e"
+    }
+  },
+  "database": {
+    "schema": [
+      {
+        "type": "table",
+        "name": "person",
+        "sql": "CREATE TABLE person(\n    id TEXT DEFAULT NULL,\n    name TEXT DEFAULT NULL,\n    receiver TEXT DEFAULT NULL,\n    nickname TEXT DEFAULT NULL,\n    phone TEXT DEFAULT NULL,\n    address TEXT DEFAULT NULL,\n    car TEXT DEFAULT NULL,\n    email TEXT DEFAULT NULL,\n    qq INTEGER DEFAULT NULL,\n    weibo INTEGER DEFAULT NULL,\n    contact TEXT DEFAULT NULL,\n    company TEXT DEFAULT NULL,\n    source_id INTEGER DEFAULT 0,\n\n    FOREIGN KEY (source_id) REFERENCES source(id)\n)"
+      },
+      {
+        "type": "table",
+        "name": "source",
+        "sql": "CREATE TABLE source (\n    id INTEGER PRIMARY KEY,\n    source TEXT DEFAULT NULL\n)"
+      }
+    ],
+    "row_counts": {
+      "person": 8,
+      "source": 4
+    },
+    "indexes": {
+      "person": [],
+      "source": []
+    }
+  },
+  "synthetic_email_checks": [
+    {
+      "synthetic_input": "alice-test@example.com",
+      "result": {
+        "q": "alicetest@example.com",
+        "type": "email"
+      },
+      "input_changed": true
+    },
+    {
+      "synthetic_input": "alice@example-domain.com",
+      "result": {
+        "q": "alice@exampledomain.com",
+        "type": "email"
+      },
+      "input_changed": true
+    }
+  ],
+  "explicit_routes": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "root"
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "function": "get_counts"
+    },
+    {
+      "method": "POST",
+      "path": "/dig/masking",
+      "function": "get_person_by_dig"
+    }
+  ],
+  "result": "All research observations reproduced for the pinned commit"
+}
