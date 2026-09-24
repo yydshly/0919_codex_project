@@ -1,0 +1,108 @@
+{
+  "suite": "真实浏览器 / 备份恢复 / 独立演示 / 版本冲突",
+  "completedAt": "2026-09-22T11:10:38.502Z",
+  "checks": [
+    {
+      "id": "SETUP",
+      "title": "真实独立服务启动，A版由API导出后再修改为B版",
+      "status": "passed"
+    },
+    {
+      "id": "CURRENT",
+      "title": "恢复页真实显示当前B版并标明独立演示空间",
+      "status": "passed"
+    },
+    {
+      "id": "PREVIEW",
+      "title": "加载真实A版备份并预览，数据库仍为B版且文字不执行脚本",
+      "status": "passed"
+    },
+    {
+      "id": "TRUSTED-PROJECT",
+      "title": "伪造其他项目名称不能冒充预览中的Spec Kit个人结论",
+      "status": "passed"
+    },
+    {
+      "id": "CONFIRM",
+      "title": "确认复选框控制提交，键盘可勾选和取消且尚未写入",
+      "status": "passed"
+    },
+    {
+      "id": "LAYOUT",
+      "title": "1440px桌面与390px手机预览均无整页横向溢出",
+      "status": "passed"
+    },
+    {
+      "id": "CANCEL",
+      "title": "取消预览清除确认状态且不改变当前B版",
+      "status": "passed"
+    },
+    {
+      "id": "RESTORE",
+      "title": "明确确认后真实恢复A版，替换任务并保留全部目录事实",
+      "status": "passed"
+    },
+    {
+      "id": "UNDO",
+      "title": "撤销弹窗可取消，确认后真实回到B版且不可重复撤销",
+      "status": "passed"
+    },
+    {
+      "id": "HTTP-SIZE",
+      "title": "精确5MiB备份连同请求信封可预览恢复撤销，多1字节返回413",
+      "status": "passed",
+      "evidence": {
+        "backupBytes": 5242880,
+        "previewRequestBytes": 5242891,
+        "applyRequestBytes": 5242998,
+        "oversizedBackupBytes": 5242881,
+        "previewStatus": 200,
+        "applyStatus": 200,
+        "undoStatus": 200,
+        "oversizedStatus": 413
+      }
+    },
+    {
+      "id": "CONFLICT",
+      "title": "预览后另一次API编辑触发真实409，保留新数据与所选备份",
+      "status": "passed"
+    },
+    {
+      "id": "FILE-CHANGE",
+      "title": "更换文件清除旧预览与已勾选确认，合法文件仍可重新预览",
+      "status": "passed"
+    },
+    {
+      "id": "INVALID-FILE",
+      "title": "损坏JSON文件和错误版本文件明确拒绝，不改数据",
+      "status": "passed"
+    },
+    {
+      "id": "INVALID-REQUEST",
+      "title": "非法恢复请求、畸形JSON和缺少确认返回400且不写入",
+      "status": "passed"
+    },
+    {
+      "id": "UNDO-CONFLICT",
+      "title": "恢复后出现新任务时真实撤销409，保护新增任务",
+      "status": "passed"
+    },
+    {
+      "id": "BUILD-RECORD",
+      "title": "开发记录五个步骤展示可与磁盘原文件核对的真实产物",
+      "status": "passed"
+    },
+    {
+      "id": "NO-SCRIPT-ERRORS",
+      "title": "整个真实操作流程没有未处理的浏览器脚本异常",
+      "status": "passed"
+    }
+  ],
+  "passed": 17,
+  "failed": 0,
+  "screenshots": [
+    "evidence/restore/restore-desktop.png",
+    "evidence/restore/restore-mobile.png"
+  ],
+  "scope": "真实server.py子进程与临时SQLite；样本通过真实导出API生成；不读取或修改个人空间"
+}

@@ -1,0 +1,24 @@
+{
+  "startedAt": "2026-09-22T08:27:35.994Z",
+  "url": "http://127.0.0.1:5214/014-spec-kit/app/",
+  "runner": "Playwright / Chromium",
+  "scope": "独立测试浏览器；未操作用户收藏",
+  "checks": [
+    {
+      "id": "US1-01",
+      "requirements": [
+        "FR-001",
+        "FR-003",
+        "FR-009"
+      ],
+      "title": "添加、刷新后字段完整保留",
+      "status": "failed",
+      "error": "收藏页必须真实存在并可访问\n\n404 !== 200\n",
+      "durationMs": 34
+    }
+  ],
+  "finishedAt": "2026-09-22T08:27:36.316Z",
+  "passed": 0,
+  "failed": 1,
+  "status": "failed"
+}

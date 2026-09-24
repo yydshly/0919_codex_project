@@ -1,0 +1,2 @@
+Copied plan template to F:\codex_project\0919_codex_project\projects\014-spec-kit\practice\resource-shelf\specs\001-resource-shelf\plan.md
+{"FEATURE_SPEC":"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\resource-shelf\\specs\\001-resource-shelf\\spec.md","IMPL_PLAN":"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\resource-shelf\\specs\\001-resource-shelf\\plan.md","FEATURE_DIR":"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\resource-shelf\\specs\\001-resource-shelf","BRANCH":"001-resource-shelf"}
