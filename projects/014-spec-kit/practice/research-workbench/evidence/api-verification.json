@@ -1,0 +1,7 @@
+{
+  "suite": "API / SQLite / restart",
+  "tests": 8,
+  "passed": 8,
+  "failures": [],
+  "completedAt": "2026-09-22T19:09:51+0800"
+}

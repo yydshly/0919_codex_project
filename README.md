@@ -26,6 +26,7 @@
 | 011 | [Frappe HR · 人事与薪酬工作台](projects/011-frappe-hrms/README.md) | 开源企业人事与薪酬系统，覆盖招聘入职、员工档案、请假考勤、绩效报销和工资；以 Frappe/ERPNext 实现权限、审批、规则计算与报表。对我们是业务建模、权限流程、时间规则和可扩展后台的实现参考。 | 已完成 | 人事管理、薪酬、流程联动、Frappe、ERPNext、交互演示 | [hrms](https://github.com/frappe/hrms) | [演示](https://yydshly.github.io/0919_codex_project/011-frappe-hrms/) |
 | 012 | [TREK · 旅行管理与城市导览研究](projects/012-trek/README.md) | TREK 以地点、地图、行程、费用和协作组织旅行，React/NestJS/SQLite 串起业务与外部地点、道路服务。我们实测原版，完成西安 V1 与地理布局、素材实验；其价值是复用旅行基础，继续探索可信的图像选点和出行引导。 | 已完成 | 旅行管理、地图地点、原版实测、图像导览、技术探索 | [TREK](https://github.com/liketrek/TREK) | [演示](https://yydshly.github.io/0919_codex_project/012-trek/) |
 | 013 | [Shadowrocket Rules · 分流与广告过滤](projects/013-shadowrocket-rules/README.md) | 把广告名单、代理黑名单与直连白名单整理成 Shadowrocket 配置：按域名或 IP 决定直连、代理、拒绝，并持续生成更新；价值在于减少手工维护，其他客户端需适配格式。 | 已完成 | Shadowrocket、网络分流、广告过滤、Python、源码研究 | [Shadowrocket-ADBlock-Rules-Forever](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever) | [演示](https://yydshly.github.io/0919_codex_project/013-shadowrocket-rules/) |
+| 014 | [Spec Kit · 看懂 AI 开发流程](projects/014-spec-kit/README.md) | Spec Kit 用 Skills、模板和辅助工具组织需求、方案、任务、实现与验收；附十个 Skill 的使用时机、交互边界及真实功能验证。 | 已复现 | AI 编程、规格驱动开发、交互说明、源码研究 | [spec-kit](https://github.com/github/spec-kit) | [演示](https://yydshly.github.io/0919_codex_project/014-spec-kit/) |
 | 015 | [Watermark Removal · 图像修复原理实验室](projects/015-watermark-removal/README.md) | 本地加载预训练神经网络，按图片与遮罩补画指定区域，可尝试去水印、杂物和划痕；两阶段网络先粗修再精修。我们的扩展方向是图片清理、批处理及结合额外模块的自动选区与视频处理，网页展示原理和公开样例，尚未运行模型。 | 已完成 | 图像修复、门控卷积、上下文注意力、TensorFlow、源码研究 | [watermark-removal](https://github.com/zuruoke/watermark-removal) | [演示](https://yydshly.github.io/0919_codex_project/015-watermark-removal/) |
 | 016 | [Pireel · AI 视频剪辑能力实验室](projects/016-pireel/README.md) | Pireel 把视频、图片、音频和动态图文组织为可编辑时间线，完成裁切、叠加、混音与导出；工程记录编辑决定，浏览器绘制并编码成片。接入 Agent 后，AI 也能修改同一工程。对我们既是剪辑工具候选，也是开发 AI 视频编辑产品的实现参考。 | 已复现 | 视频剪辑、MCP、动态图形、浏览器导出 | [pireel](https://github.com/pireel/pireel) · [pireel-agent](https://github.com/pireel/pireel-agent) | [演示](https://yydshly.github.io/0919_codex_project/016-pireel/) |
 | 017 | [VoxCPM2 · 本地语音生成模型研究](projects/017-voxcpm/README.md) | 可自部署的语音生成模型，支持多语言配音、声音设计与参考录音克隆。以连续声音特征、自回归语言建模和局部流匹配生成语音；依赖 Python、PyTorch 与模型权重，GPU 可加速。对我们是按需接入的配音组件与语音模型实现参考；暂不需要为它单独建设产品。 | 已完成 | 语音合成、声音克隆、本地部署、PyTorch、模型研究 | [VoxCPM](https://github.com/OpenBMB/VoxCPM) | [演示](https://yydshly.github.io/0919_codex_project/017-voxcpm/) |
@@ -124,6 +125,12 @@ TREK 以地点、地图、行程、费用和协作组织旅行，React/NestJS/SQ
 把广告名单、代理黑名单与直连白名单整理成 Shadowrocket 配置：按域名或 IP 决定直连、代理、拒绝，并持续生成更新；价值在于减少手工维护，其他客户端需适配格式。
 
 [![Shadowrocket Rules · 分流与广告过滤 项目截图](projects/013-shadowrocket-rules/assets/cover.png)](projects/013-shadowrocket-rules/README.md)
+
+### 014 · [Spec Kit · 看懂 AI 开发流程](projects/014-spec-kit/README.md)
+
+Spec Kit 用 Skills、模板和辅助工具组织需求、方案、任务、实现与验收；附十个 Skill 的使用时机、交互边界及真实功能验证。
+
+[![Spec Kit · 看懂 AI 开发流程 项目截图](projects/014-spec-kit/assets/understanding-map.png)](projects/014-spec-kit/README.md)
 
 ### 015 · [Watermark Removal · 图像修复原理实验室](projects/015-watermark-removal/README.md)
 

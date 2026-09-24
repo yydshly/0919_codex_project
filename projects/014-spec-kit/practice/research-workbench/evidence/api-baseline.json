@@ -1,0 +1,40 @@
+{
+  "suite": "API / SQLite / restart",
+  "tests": 8,
+  "passed": 0,
+  "failures": [
+    {
+      "test": "test_01_real_catalog (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_02_customization_restart (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_03_validation_preserves_state (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_04_project_and_settings_conflicts (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_05_task_lifecycle_conflict (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_06_export_complete (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_07_private_files_and_origin (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    },
+    {
+      "test": "test_08_evidence_is_real (__main__.WorkbenchAPI)",
+      "error": "Traceback (most recent call last):\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 19, in setUp\n    self.start()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_api.py\", line 29, in start\n    raise RuntimeError(self.proc.stderr.read().decode(errors='replace'))\nRuntimeError: D:\\software\\python310\\python.exe: can't open file 'F:\\\\codex_project\\\\0919_codex_project\\\\projects\\\\014-spec-kit\\\\practice\\\\research-workbench\\\\app\\\\server.py': [Errno 2] No such file or directory\r\n\n"
+    }
+  ],
+  "completedAt": "2026-09-22T18:08:19+0800"
+}

@@ -1,0 +1,15 @@
+{
+  "completedAt": "2026-09-22T10:36:46.335Z",
+  "phase": "before-fix",
+  "checks": [
+    {
+      "id": "FR008-FIRST-SETUP",
+      "title": "两个真实页面首次定制：冲突后保留草稿并提供重新读取",
+      "status": "failed",
+      "error": "规格FR-008要求重新读取，但首次定制冲突时入口仍隐藏\n\nfalse !== true\n"
+    }
+  ],
+  "passed": 0,
+  "failed": 1,
+  "scope": "独立临时数据库；两个真实浏览器页面；不使用个人空间"
+}

@@ -1,0 +1,24 @@
+{
+  "completedAt": "2026-09-22T11:10:13.265Z",
+  "phase": "after-fix",
+  "checks": [
+    {
+      "id": "FR008-FIRST-SETUP",
+      "title": "两个真实页面首次定制：冲突后保留草稿并提供重新读取",
+      "status": "passed"
+    },
+    {
+      "id": "FR011-TRACE",
+      "title": "3个场景×6个步骤均显示实际Skill与产物片段",
+      "status": "passed"
+    },
+    {
+      "id": "SC004-KEYBOARD",
+      "title": "键盘完成设置、访问项目详情并保存研究记录",
+      "status": "passed"
+    }
+  ],
+  "passed": 3,
+  "failed": 0,
+  "scope": "独立临时数据库；两个真实浏览器页面；不使用个人空间"
+}

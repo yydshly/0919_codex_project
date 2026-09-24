@@ -1,0 +1,29 @@
+{
+  "completedAt": "2026-09-22T10:18:15.492Z",
+  "checks": [
+    {
+      "id": "US1",
+      "title": "真实定制、进入与刷新保存",
+      "status": "passed"
+    },
+    {
+      "id": "US2-A",
+      "title": "真实目录搜索与清除筛选",
+      "status": "passed"
+    },
+    {
+      "id": "US2-B",
+      "title": "三项比较与第四项上限",
+      "status": "passed"
+    },
+    {
+      "id": "US3-A",
+      "title": "个人结论与待办持久化、完成和重开",
+      "status": "failed",
+      "error": "locator.selectOption: Error: strict mode violation: getByLabel('跟进状态') resolved to 2 elements:\n    1) <select id=\"status-filter\" aria-label=\"筛选跟进状态\">…</select> aka getByLabel('筛选跟进状态')\n    2) <select name=\"status\" aria-label=\"跟进状态\">…</select> aka getByLabel('跟进状态', { exact: true })\n\nCall log:\n\u001b[2m  - waiting for getByLabel('跟进状态')\u001b[22m\n"
+    }
+  ],
+  "passed": 3,
+  "failed": 1,
+  "scope": "独立服务与临时SQLite，不操作用户数据"
+}

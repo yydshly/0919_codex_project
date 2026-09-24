@@ -1,0 +1,1 @@
+{"FEATURE_DIR":"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\resource-shelf\\specs\\001-resource-shelf","AVAILABLE_DOCS":["research.md","data-model.md","contracts/","quickstart.md","tasks.md"]}

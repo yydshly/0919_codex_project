@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="3520" viewBox="0 0 1680 3520" role="img" aria-labelledby="title desc">
+<title id="title">Spec Kit：我们的完整理解与接入方式</title><desc id="desc">图解能力、三方职责、五步流程、Skills与脚本和工作流原理、用户参与、目标、价值场景、项目接入、真实验证与边界。此次22项存储和17项浏览器检查通过；先前自主选择需求不等于默认无需用户参与。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L7 4 L0 8" fill="none" stroke="#668579" stroke-width="1.5"/></marker></defs><g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif">
+<rect x="0" y="0" width="1680" height="3520" rx="0" fill="#f3f3ed"/>
+<rect x="0" y="0" width="1680" height="244" rx="0" fill="#193c32"/>
+<text x="64" y="53" font-size="20" fill="#bed4c5" font-weight="400" data-max-right="1616">014 / GITHUB 研究集                         OUR UNDERSTANDING · 修订于 2026.09.22</text>
+<text x="64" y="119" font-size="47" fill="#fff" font-weight="700" data-max-right="1616">Spec Kit：从一个想法，到可验收的产品</text>
+<text x="64" y="166" font-size="26" fill="#e0eddf" font-weight="400" data-max-right="1616">你决定目标与关键取舍  ·  Spec Kit 提供规程与编排能力  ·  编码 AI 和工具实际执行</text>
+<text x="64" y="210" font-size="24" fill="#bed4c5" font-weight="400" data-max-right="1616">可以从一句想法开始；自动推进多少，取决于授权、需求清晰度、所用流程与执行环境。</text>
+<rect x="64" y="270" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="297" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">01</text>
+<text x="128" y="299" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">先分清：谁在做什么？</text>
+<text x="1038" y="298" font-size="19" fill="#4d6259" font-weight="400" data-max-right="1616">流程工具包，不是独立的大模型</text>
+<rect x="64" y="325" width="502" height="185" rx="16" fill="#fff"/>
+<text x="88" y="366" font-size="27" fill="#193c32" font-weight="650" data-max-right="542">你 · 产品目标与判断</text>
+<text x="88" y="405" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">提出用户、问题、范围与限制</text>
+<text x="88" y="439" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">决定重要取舍，审阅阶段结果</text>
+<text x="88" y="473" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">验收做出的产品是否符合需要</text>
+<rect x="589" y="325" width="502" height="185" rx="16" fill="#dcebdc"/>
+<text x="613" y="366" font-size="27" fill="#193c32" font-weight="650" data-max-right="1067">Spec Kit · 开发过程的支撑</text>
+<text x="613" y="405" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">用 Skills 说明各阶段怎么做</text>
+<text x="613" y="439" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">用模板、文件衔接输入与产物</text>
+<text x="613" y="473" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">用脚本及可选工作流组织执行</text>
+<rect x="1114" y="325" width="502" height="185" rx="16" fill="#fff"/>
+<text x="1138" y="366" font-size="27" fill="#193c32" font-weight="650" data-max-right="1592">编码 AI + 工具 · 执行者</text>
+<text x="1138" y="405" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">理解需求，研究并作出设计</text>
+<text x="1138" y="439" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">写文档与代码、运行测试</text>
+<text x="1138" y="473" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">依据结果修复和继续迭代</text>
+<text x="82" y="550" font-size="24" fill="#193c32" font-weight="400" data-max-right="1616">流程提示不能替代产品判断；脚本能检查前置条件，业务是否正确仍需要真实验证。</text>
+<rect x="64" y="581" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="608" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">02</text>
+<text x="128" y="610" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">能力主线：把想法连接到实现与验收</text>
+<rect x="64" y="637" width="1552" height="48" rx="10" fill="#e2e9df"/>
+<text x="84" y="669" font-size="23" fill="#193c32" font-weight="400" data-max-right="1616">先约定项目原则 constitution：质量、测试、已有架构与边界；每个功能再走下面的流程。</text>
+<rect x="64" y="705" width="292" height="162" rx="16" fill="#fff"/>
+<text x="83" y="744" font-size="26" fill="#193c32" font-weight="650" data-max-right="342">1  明确需求</text>
+<text x="83" y="778" font-size="20" fill="#4d6259" font-weight="400" data-max-right="342">specify · 按需 clarify</text>
+<text x="83" y="815" font-size="21" fill="#4d6259" font-weight="400" data-max-right="342">用户行为、范围、验收</text>
+<text x="83" y="846" font-size="21" fill="#4d6259" font-weight="400" data-max-right="342">产物：spec.md</text>
+<path d="M360 792 L373 792" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="379" y="705" width="292" height="162" rx="16" fill="#fff"/>
+<text x="398" y="744" font-size="26" fill="#193c32" font-weight="650" data-max-right="657">2  制定方案</text>
+<text x="398" y="778" font-size="20" fill="#4d6259" font-weight="400" data-max-right="657">plan</text>
+<text x="398" y="815" font-size="21" fill="#4d6259" font-weight="400" data-max-right="657">技术选择、数据与接口</text>
+<text x="398" y="846" font-size="21" fill="#4d6259" font-weight="400" data-max-right="657">产物：plan.md 等</text>
+<path d="M675 792 L688 792" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="694" y="705" width="292" height="162" rx="16" fill="#fff"/>
+<text x="713" y="744" font-size="26" fill="#193c32" font-weight="650" data-max-right="972">3  拆分任务</text>
+<text x="713" y="778" font-size="20" fill="#4d6259" font-weight="400" data-max-right="972">tasks</text>
+<text x="713" y="815" font-size="21" fill="#4d6259" font-weight="400" data-max-right="972">工作顺序、依赖、交付</text>
+<text x="713" y="846" font-size="21" fill="#4d6259" font-weight="400" data-max-right="972">产物：tasks.md</text>
+<path d="M990 792 L1003 792" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1009" y="705" width="292" height="162" rx="16" fill="#fff"/>
+<text x="1028" y="744" font-size="26" fill="#193c32" font-weight="650" data-max-right="1287">4  实际开发</text>
+<text x="1028" y="778" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1287">implement</text>
+<text x="1028" y="815" font-size="21" fill="#4d6259" font-weight="400" data-max-right="1287">AI 按任务实现并验证</text>
+<text x="1028" y="846" font-size="21" fill="#4d6259" font-weight="400" data-max-right="1287">产物：代码与检查结果</text>
+<path d="M1305 792 L1318 792" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1324" y="705" width="292" height="162" rx="16" fill="#fff"/>
+<text x="1343" y="744" font-size="26" fill="#193c32" font-weight="650" data-max-right="1602">5  核对完成</text>
+<text x="1343" y="778" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1602">converge</text>
+<text x="1343" y="815" font-size="21" fill="#4d6259" font-weight="400" data-max-right="1602">对照规格找未完成项</text>
+<text x="1343" y="846" font-size="21" fill="#4d6259" font-weight="400" data-max-right="1602">产物：缺口与追加任务</text>
+<path d="M1455 882 L1455 905" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1455 905 L1147 905" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1147 905 L1147 882" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="83" y="909" font-size="22" fill="#193c32" font-weight="400" data-max-right="1616">发现缺口 → 回到 implement 补齐 → 再检查；converge 本身不负责改业务代码。</text>
+<text x="83" y="949" font-size="23" fill="#193c32" font-weight="600" data-max-right="1616">可达目标：可运行原型、约定范围内的产品或新功能、可继续迭代的代码与文档。</text>
+<text x="83" y="984" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1616">可选扩展：bug 故障修复、assess 想法评估；是独立入口，不是每次都必走。</text>
+<rect x="64" y="1012" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="1039" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">03</text>
+<text x="128" y="1041" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">底层原理：Skills 是核心载体，但不是全部</text>
+<rect x="64" y="1069" width="370" height="186" rx="16" fill="#dcebdc"/>
+<text x="88" y="1110" font-size="27" fill="#193c32" font-weight="650" data-max-right="410">指令 / Skills</text>
+<text x="88" y="1149" font-size="22" fill="#4d6259" font-weight="400" data-max-right="410">读哪些项目材料</text>
+<text x="88" y="1183" font-size="22" fill="#4d6259" font-weight="400" data-max-right="410">按什么步骤开展工作</text>
+<text x="88" y="1217" font-size="22" fill="#4d6259" font-weight="400" data-max-right="410">交什么产物、怎样核对</text>
+<rect x="458" y="1069" width="370" height="186" rx="16" fill="#fff"/>
+<text x="482" y="1110" font-size="27" fill="#193c32" font-weight="650" data-max-right="804">模板 / 持久文档</text>
+<text x="482" y="1149" font-size="22" fill="#4d6259" font-weight="400" data-max-right="804">规定规格与任务的结构</text>
+<text x="482" y="1183" font-size="22" fill="#4d6259" font-weight="400" data-max-right="804">下一阶段读上一阶段产物</text>
+<text x="482" y="1217" font-size="22" fill="#4d6259" font-weight="400" data-max-right="804">把依据留在项目中</text>
+<rect x="852" y="1069" width="370" height="186" rx="16" fill="#fff"/>
+<text x="876" y="1110" font-size="27" fill="#193c32" font-weight="650" data-max-right="1198">CLI / 辅助脚本</text>
+<text x="876" y="1149" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1198">安装、初始化、管理接入</text>
+<text x="876" y="1183" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1198">准备目录、定位当前功能</text>
+<text x="876" y="1217" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1198">执行部分确定性检查</text>
+<rect x="1246" y="1069" width="370" height="186" rx="16" fill="#e9e4f3"/>
+<text x="1270" y="1110" font-size="27" fill="#193c32" font-weight="650" data-max-right="1592">可选 Workflow</text>
+<text x="1270" y="1149" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">调用命令、AI 与脚本</text>
+<text x="1270" y="1183" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">串联步骤、循环与分支</text>
+<text x="1270" y="1217" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">暂停恢复、人工审核节点</text>
+<text x="84" y="1296" font-size="23" fill="#193c32" font-weight="400" data-max-right="1616">原理链：AI 读取指令和项目文件 → 调用工具执行 → 保存产物 → 下阶段读取 → 按要求复核。</text>
+<text x="84" y="1333" font-size="23" fill="#193c32" font-weight="400" data-max-right="1616">Skill 的核心价值是“输入、动作、产物、检查”的约定；不是换了一个更强的大模型。</text>
+<rect x="64" y="1361" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="1388" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">04</text>
+<text x="128" y="1390" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">何时需要你参与？能否自动连续做？</text>
+<text x="1038" y="1389" font-size="19" fill="#4d6259" font-weight="400" data-max-right="1616">交互来自需求、授权和具体工作流</text>
+<rect x="64" y="1418" width="502" height="216" rx="16" fill="#fff"/>
+<text x="88" y="1459" font-size="27" fill="#193c32" font-weight="650" data-max-right="542">需求已清楚 / 有合理默认</text>
+<text x="88" y="1498" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">AI 可以记录假设后继续</text>
+<text x="88" y="1532" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">不必每个小细节都询问</text>
+<text x="88" y="1566" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">你仍可纠正范围与默认选择</text>
+<text x="88" y="1600" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">适合已明确、可验证的工作</text>
+<rect x="589" y="1418" width="502" height="216" rx="16" fill="#f7ebd0"/>
+<text x="613" y="1459" font-size="27" fill="#193c32" font-weight="650" data-max-right="1067">重要分歧 / 没有合理默认</text>
+<text x="613" y="1498" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">应把问题与选择交给你</text>
+<text x="613" y="1532" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">你的回答进入需求文档</text>
+<text x="613" y="1566" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">后续方案、任务随之改变</text>
+<text x="613" y="1600" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">例如：恢复要覆盖还是合并？</text>
+<rect x="1114" y="1418" width="502" height="216" rx="16" fill="#e9e4f3"/>
+<text x="1138" y="1459" font-size="27" fill="#193c32" font-weight="650" data-max-right="1592">授权连续推进 / 可选编排</text>
+<text x="1138" y="1498" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">AI 可按约定连续执行多个阶段</text>
+<text x="1138" y="1532" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">Workflow 也能自动串联步骤</text>
+<text x="1138" y="1566" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">内置示例有需求、方案审核点</text>
+<text x="1138" y="1600" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">需核对版本与支持的 AI 接入</text>
+<rect x="64" y="1651" width="1552" height="80" rx="10" fill="#e8ece4"/>
+<text x="83" y="1684" font-size="23" fill="#193c32" font-weight="400" data-max-right="1616">这次为什么没有充分问你？我自行选了“备份恢复、全量替换、撤销规则”，然后连续实施。</text>
+<text x="83" y="1716" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1616">这是本次演示的自主取舍；没有模拟你的回答，也不能证明所有产品都不需要人参与。</text>
+<rect x="64" y="1760" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="1787" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">05</text>
+<text x="128" y="1789" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">对你的价值：让想法落地有依据，让结果可以检查</text>
+<rect x="64" y="1817" width="502" height="217" rx="16" fill="#dcebdc"/>
+<text x="88" y="1858" font-size="27" fill="#193c32" font-weight="650" data-max-right="542">开发前 · 把想法讲具体</text>
+<text x="88" y="1897" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">把“我想要……”变成用户行为</text>
+<text x="88" y="1931" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">暴露范围、取舍和遗漏条件</text>
+<text x="88" y="1965" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">先约定“怎样才算做完”</text>
+<text x="88" y="1999" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">避免只靠 AI 猜你的意思</text>
+<rect x="589" y="1817" width="502" height="217" rx="16" fill="#fff"/>
+<text x="613" y="1858" font-size="27" fill="#193c32" font-weight="650" data-max-right="1067">开发中 · 有依据地推进</text>
+<text x="613" y="1897" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">拆分复杂工作，保留决策理由</text>
+<text x="613" y="1931" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">让任务与需求前后对应</text>
+<text x="613" y="1965" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">换会话、换人时有文档可读</text>
+<text x="613" y="1999" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">降低遗漏与反复解释的可能</text>
+<rect x="1114" y="1817" width="502" height="217" rx="16" fill="#fff"/>
+<text x="1138" y="1858" font-size="27" fill="#193c32" font-weight="650" data-max-right="1592">开发后 · 查漏与持续迭代</text>
+<text x="1138" y="1897" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">检查约定功能是否真正落实</text>
+<text x="1138" y="1931" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">用实际结果发现未完成的部分</text>
+<text x="1138" y="1965" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">保留代码、规格与验收记录</text>
+<text x="1138" y="1999" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1592">为后续修改提供明确起点</text>
+<text x="83" y="2073" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1616">这些是流程预期收益；本次没有做“使用 / 不使用 Spec Kit”的效率对照，不能量化提升。</text>
+<rect x="64" y="2102" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="2129" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">06</text>
+<text x="128" y="2131" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">什么时候值得用？与普通 Skill 有何差异？</text>
+<rect x="64" y="2159" width="502" height="201" rx="16" fill="#fff"/>
+<text x="88" y="2200" font-size="27" fill="#193c32" font-weight="650" data-max-right="542">适合完整使用</text>
+<text x="88" y="2239" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">规则多、步骤多的新功能</text>
+<text x="88" y="2273" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">持续迭代的产品与内部工具</text>
+<text x="88" y="2307" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">多人交接、需要追踪验收</text>
+<text x="88" y="2341" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">已有产品可从下一项改动开始</text>
+<rect x="589" y="2159" width="502" height="201" rx="16" fill="#dcebdc"/>
+<text x="613" y="2200" font-size="27" fill="#193c32" font-weight="650" data-max-right="1067">可以轻量使用</text>
+<text x="613" y="2239" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">已有流程，只补需求或验收</text>
+<text x="613" y="2273" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">简单改字、调色、小脚本</text>
+<text x="613" y="2307" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">完整流程可能增加文档负担</text>
+<text x="613" y="2341" font-size="23" fill="#4d6259" font-weight="400" data-max-right="1067">选用需要的阶段即可</text>
+<rect x="1114" y="2159" width="502" height="201" rx="16" fill="#fff"/>
+<text x="1138" y="2200" font-size="27" fill="#193c32" font-weight="650" data-max-right="1592">差异在组织内容</text>
+<text x="1138" y="2239" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">单项 Skill 常聚焦一类工作</text>
+<text x="1138" y="2273" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">Spec Kit 衔接定义到交付各阶段</text>
+<text x="1138" y="2307" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">其他 Skill 也能做类似流程</text>
+<text x="1138" y="2341" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">没有必然的技术代差</text>
+<rect x="64" y="2378" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="2405" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">07</text>
+<text x="128" y="2407" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">如何接入与使用？本项目已经接入到哪里？</text>
+<rect x="64" y="2435" width="502" height="218" rx="16" fill="#fff"/>
+<text x="88" y="2476" font-size="27" fill="#193c32" font-weight="650" data-max-right="542">1 / 接到编码 AI 的项目里</text>
+<text x="88" y="2515" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">安装 Specify CLI，初始化项目</text>
+<text x="88" y="2549" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">选择要使用的 AI 集成</text>
+<text x="88" y="2583" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">生成 .specify 与技能文件</text>
+<text x="88" y="2617" font-size="23" fill="#4d6259" font-weight="400" data-max-right="542">用扩展、预设定制组织规则</text>
+<rect x="589" y="2435" width="502" height="218" rx="16" fill="#dcebdc"/>
+<text x="613" y="2476" font-size="27" fill="#193c32" font-weight="650" data-max-right="1067">2 / 在 AI 对话里执行流程</text>
+<text x="613" y="2515" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1067">先说明目标、边界和验收</text>
+<text x="613" y="2549" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1067">调用 specify → plan → tasks</text>
+<text x="613" y="2583" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1067">再 implement ↔ converge</text>
+<text x="613" y="2617" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1067">重要决定是否先确认，要说清</text>
+<rect x="1114" y="2435" width="502" height="218" rx="16" fill="#e9e4f3"/>
+<text x="1138" y="2476" font-size="27" fill="#193c32" font-weight="650" data-max-right="1592">3 / 当前接入状态</text>
+<text x="1138" y="2515" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">研库：Spec Kit 1.0.9 已安装</text>
+<text x="1138" y="2549" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">已使用 Codex Skills 集成</text>
+<text x="1138" y="2583" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">本次由 AI 按技能连续推进</text>
+<text x="1138" y="2617" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1592">未运行 Workflow 自动编排</text>
+<rect x="64" y="2670" width="1552" height="100" rx="13" fill="#193c32"/>
+<text x="86" y="2706" font-size="21" fill="#bed4c5" font-weight="600" data-max-right="1616">给 AI 的使用指令示例</text>
+<text x="86" y="2746" font-size="24" fill="#fff" font-weight="400" data-max-right="1616">“用 Spec Kit 做这个功能。需求中重要的取舍先问我；其余记录假设，按规格实现并实际验收。”</text>
+<rect x="64" y="2800" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="2827" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">08</text>
+<text x="128" y="2829" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">这次真实演示：一条规则如何落到产品行为？</text>
+<rect x="64" y="2857" width="1552" height="178" rx="16" fill="#fff"/>
+<text x="89" y="2897" font-size="25" fill="#193c32" font-weight="650" data-max-right="434">需求</text>
+<text x="89" y="2938" font-size="22" fill="#4d6259" font-weight="400" data-max-right="434">“预览后若有新编辑，</text>
+<text x="89" y="2972" font-size="22" fill="#4d6259" font-weight="400" data-max-right="434">就不能覆盖新数据。”</text>
+<path d="M432 2944 L458 2944" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="479" y="2897" font-size="25" fill="#193c32" font-weight="650" data-max-right="824">方案</text>
+<text x="479" y="2938" font-size="22" fill="#4d6259" font-weight="400" data-max-right="824">保存持续递增的版本，</text>
+<text x="479" y="2972" font-size="22" fill="#4d6259" font-weight="400" data-max-right="824">确认恢复时重新检查。</text>
+<path d="M822 2944 L848 2944" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="869" y="2897" font-size="25" fill="#193c32" font-weight="650" data-max-right="1214">实现</text>
+<text x="869" y="2938" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1214">检测到旧预览就拒绝，</text>
+<text x="869" y="2972" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1214">提示重新读取与预览。</text>
+<path d="M1212 2944 L1238 2944" stroke="#668579" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="1259" y="2897" font-size="25" fill="#193c32" font-weight="650" data-max-right="1604">验证</text>
+<text x="1259" y="2938" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1604">先预览，再从别处修改，</text>
+<text x="1259" y="2972" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1604">实际确认：新数据仍保留。</text>
+<rect x="64" y="3051" width="1552" height="70" rx="12" fill="#dcebdc"/>
+<text x="84" y="3095" font-size="24" fill="#193c32" font-weight="600" data-max-right="1616">已实测：A 版备份 → B 版现状 → 恢复 A → 撤销回 B   ·   22 项存储 + 17 项浏览器检查通过</text>
+<rect x="64" y="3151" width="48" height="38" rx="8" fill="#193c32"/>
+<text x="76" y="3178" font-size="22" fill="#fff" font-weight="600" data-max-right="1616">09</text>
+<text x="128" y="3180" font-size="29" fill="#193c32" font-weight="650" data-max-right="1616">明确边界：怎样评价它，才不会高估或低估？</text>
+<rect x="64" y="3208" width="1552" height="129" rx="16" fill="#fff"/>
+<text x="86" y="3243" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1616">可支撑从想法到可用产品；不能保证任意想法一次成功、零缺陷、自动满足全部真实业务需求。</text>
+<text x="86" y="3277" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1616">需要编码 AI、可用工具和执行条件；文档与测试仍要维护，部署与外部资源也需要相应配置。</text>
+<text x="86" y="3311" font-size="22" fill="#4d6259" font-weight="400" data-max-right="1616">本图和研究网页是我们制作的说明界面；本次测试证明已测功能可用，不代表无人值守产品生成已获验证。</text>
+<text x="80" y="3381" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1616">核对依据：官方说明（2026-09-22）＋实际安装技能＋本地规格、代码与运行报告。点击矢量图中的来源可核对。</text>
+<a href="https://github.com/github/spec-kit" target="_blank">
+<text x="80" y="3420" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1616">官方总览 ↗</text>
+</a>
+<a href="https://github.github.io/spec-kit/quickstart.html" target="_blank">
+<text x="291" y="3420" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1616">开发流程 ↗</text>
+</a>
+<a href="https://github.github.io/spec-kit/reference/workflows.html" target="_blank">
+<text x="502" y="3420" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1616">工作流编排 ↗</text>
+</a>
+<a href="https://github.github.io/spec-kit/guides/existing-projects.html" target="_blank">
+<text x="760" y="3420" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1616">已有项目接入 ↗</text>
+</a>
+<a href="./evidence/restore/spec.md" target="_blank">
+<text x="1062" y="3420" font-size="20" fill="#4d6259" font-weight="400" data-max-right="1616">本轮真实证据 ↗</text>
+</a>
+<text x="80" y="3471" font-size="25" fill="#193c32" font-weight="650" data-max-right="1616">我们的采用方式：重要产品判断由你参与；让 AI 在明确的范围内，持续实现、验证并留下依据。</text>
+</g></svg>

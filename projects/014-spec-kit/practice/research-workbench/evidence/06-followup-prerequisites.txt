@@ -1,0 +1,1 @@
+{"FEATURE_DIR":"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\specs\\001-custom-workbench","AVAILABLE_DOCS":["research.md","data-model.md","contracts/","quickstart.md","tasks.md"]}

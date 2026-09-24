@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "exportedAt": "2026-09-22T11:09:00.792421+00:00",
+  "settings": {
+    "name": "A版 · 我保存的研究备份",
+    "goal": "了解 Spec Kit 怎样帮助 AI 按约定开发产品",
+    "focus": [],
+    "view": "all",
+    "configured": true,
+    "version": 2
+  },
+  "projects": [
+    {
+      "id": "001-video-shotcraft",
+      "name": "Video Shotcraft · Remotion 动效素材合集",
+      "summary": "基于 Remotion 实现的动效素材合集，附镜头配方与制作流程；与已研究的 TalkCraft、Vibe Motion 能力重叠，价值在补充镜头源码与调参经验，新增能力有限。",
+      "source": "https://github.com/Vincentwei1021/video-shotcraft",
+      "tags": [
+        "Remotion",
+        "素材复用",
+        "动效",
+        "交互展示"
+      ],
+      "originalStatus": "已复现",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/001-video-shotcraft/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "002-brightbean-studio",
+      "name": "BrightBean Studio · 多平台内容发布与运营后台",
+      "summary": "可自建的内容编辑、审核、定时发布、互动与统计后台，提供 REST/MCP；支持 Facebook、Instagram、Threads、LinkedIn、TikTok、YouTube、Pinterest、Bluesky、Mastodon、DEV.to 和 Google 商家资料（11 平台、13 种接入）。多数通过开发者应用凭证加账号授权接入；Bluesky 用应用密码，DEV.to 用个人 API key，Mastodon 由程序自动注册 OAuth 应用。",
+      "source": "https://github.com/brightbeanxyz/brightbean-studio",
+      "tags": [
+        "社交媒体",
+        "定时发布",
+        "Django",
+        "MCP",
+        "源码研究"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/002-brightbean-studio/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "003-llm-foundations-agent-kernel",
+      "name": "大模型教材与群体模拟 · Foundations & Agent-Kernel",
+      "summary": "Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词、微调、模型编辑和 RAG；Agent-Kernel：用 AI 模拟多角色交互的开发框架，用于群体行为观察、模拟实验与协作评测。",
+      "source": "https://github.com/ZJU-LLMs/Foundations-of-LLMs",
+      "tags": [
+        "大模型教材",
+        "多智能体",
+        "社会模拟",
+        "能力对比"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/003-llm-foundations-agent-kernel/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "004-blinko",
+      "name": "Blinko · Markdown 笔记记录软件",
+      "summary": "支持 Markdown 的笔记记录软件，可保存文字、链接、待办和附件，围绕记录提供整理、检索、总结与 AI 问答。与 ReflectFlow 在记录及基于记录的处理上有重叠；已本地部署并验证基础笔记功能，AI 尚未配置。",
+      "source": "https://github.com/blinkospace/blinko",
+      "tags": [
+        "个人笔记",
+        "RAG",
+        "AI",
+        "自部署",
+        "TypeScript"
+      ],
+      "originalStatus": "已复现",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/004-blinko/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "005-y2a-auto",
+      "name": "Y2A-Auto · YouTube 视频处理与 A/B 站发布",
+      "summary": "获取 YouTube 视频，经过字幕识别、翻译、烧录或转码等处理后，发布到 A 站（AcFun）或 B 站（bilibili）；支持单平台或双平台发布。",
+      "source": "https://github.com/fqscfqj/Y2A-Auto",
+      "tags": [
+        "视频搬运",
+        "YouTube",
+        "AcFun",
+        "bilibili",
+        "ASR",
+        "字幕翻译",
+        "自动化",
+        "自部署",
+        "Python",
+        "Flask",
+        "Docker",
+        "yt-dlp"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/005-y2a-auto/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "006-leak-check",
+      "name": "Leak Check · 个人信息泄漏数据查询与关联分析",
+      "summary": "基于已有数据库提供个人信息精确匹配、两轮关联检索与脱敏输出；源码不包含互联网采集或作者数据同步，重点评估在线自查、自部署前提与可复用设计。",
+      "source": "https://github.com/garinasset/leak-check",
+      "tags": [
+        "源码研究",
+        "个人信息",
+        "关联检索",
+        "脱敏",
+        "FastAPI",
+        "SQLite"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/006-leak-check/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "007-ebook-treasure-chest",
+      "name": "Ebook Treasure Chest · 电子书目录与搜索",
+      "summary": "汇集电子书书名、作者、分类和外部下载链接，提供浏览器关键词搜索及 Python 自动采集更新；整理内容范围、技术流程和个人使用价值。",
+      "source": "https://github.com/jbiaojerry/ebook-treasure-chest",
+      "tags": [
+        "电子书",
+        "资料目录",
+        "关键词搜索",
+        "Python",
+        "静态网站",
+        "源码研究"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/007-ebook-treasure-chest/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "008-videocaptioner",
+      "name": "VideoCaptioner · 字幕与配音工作台",
+      "summary": "围绕已有音视频提供识别、字幕断句校正、翻译、配音与合成；通过交互字幕对照、实际合成样片和上游界面说明能力与边界。",
+      "source": "https://github.com/WEIFENG2333/VideoCaptioner",
+      "tags": [
+        "视频字幕",
+        "语音识别",
+        "LLM",
+        "翻译",
+        "配音",
+        "Python",
+        "局部实测"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/008-videocaptioner/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "009-joyai-video-edit",
+      "name": "JoyAI-Video-Edit · 实时视频编辑效果展示",
+      "summary": "展示五组官方视频前后对比、机器人与卡通等五张实时截图，以及参考图换装视频；支持同步播放、滑动对比与截图放大，整理原理和使用门槛。",
+      "source": "https://github.com/jd-opensource/JoyAI-Video-Edit",
+      "tags": [
+        "视频编辑",
+        "官方效果展示",
+        "实时生成",
+        "扩散模型",
+        "交互对比"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/009-joyai-video-edit/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "010-ziwei-doushu",
+      "name": "紫微斗数 · 排盘引擎与知识库",
+      "summary": "从十二宫结构、规则计算到知识解读，交互展示排盘能力、应用场景、实现原理与开源边界。",
+      "source": "https://github.com/Renhuai123/ziwei-doushu",
+      "tags": [
+        "紫微斗数",
+        "排盘引擎",
+        "规则系统",
+        "知识库",
+        "交互展示"
+      ],
+      "originalStatus": "已复现",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/010-ziwei-doushu/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "011-frappe-hrms",
+      "name": "Frappe HR · 人事与薪酬工作台",
+      "summary": "通过虚拟员工、请假审批、考勤与工资试算的交互联动，展示 Frappe HR 的业务能力、底层实现和适用场景。",
+      "source": "https://github.com/frappe/hrms",
+      "tags": [
+        "人事管理",
+        "薪酬",
+        "流程联动",
+        "Frappe",
+        "ERPNext",
+        "交互演示"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/011-frappe-hrms/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "012-trek",
+      "name": "TREK · 原版旅行场景实测",
+      "summary": "长安初见：13 个西安精选地点、透明规则推荐、三日编排、真实地图与道路路线、高德导航入口，并保存到原版 TREK；保留京都旅行原版实测。",
+      "source": "https://github.com/liketrek/TREK",
+      "tags": [
+        "旅行规划",
+        "地图",
+        "原版实测",
+        "费用分摊",
+        "MCP"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/012-trek/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "013-shadowrocket-rules",
+      "name": "Shadowrocket Rules · 分流与广告过滤",
+      "summary": "汇总 Shadowrocket 规则的分流、广告过滤与策略组能力，解释规则生成流程、运行原理、适用场景和效果边界。",
+      "source": "https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever",
+      "tags": [
+        "Shadowrocket",
+        "网络分流",
+        "广告过滤",
+        "Python",
+        "源码研究"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/013-shadowrocket-rules/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "014-spec-kit",
+      "name": "Spec Kit · 看懂 AI 开发流程",
+      "summary": "已实际运行 Spec Kit 1.0.9，按其技能开发可用的开源项目收藏夹；附真实需求、方案、任务、修复记录与18项浏览器验收。",
+      "source": "https://github.com/github/spec-kit",
+      "tags": [
+        "AI 编程",
+        "规格驱动开发",
+        "交互说明",
+        "源码研究"
+      ],
+      "originalStatus": "已复现",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/014-spec-kit/project.json",
+      "note": "A版：准备试用 Spec Kit，用它约定需求、方案和验收。",
+      "status": "active",
+      "version": 2
+    },
+    {
+      "id": "015-watermark-removal",
+      "name": "Watermark Removal · 图像修复原理实验室",
+      "summary": "展示四组 DeepFill 官方真实修复样例，可拖动对照原图、遮罩输入与结果；拆解水印移除的能力、两阶段网络、上下文注意力与门控卷积。",
+      "source": "https://github.com/zuruoke/watermark-removal",
+      "tags": [
+        "图像修复",
+        "门控卷积",
+        "上下文注意力",
+        "TensorFlow",
+        "源码研究"
+      ],
+      "originalStatus": "已完成",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/015-watermark-removal/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    },
+    {
+      "id": "016-pireel",
+      "name": "Pireel · AI 视频剪辑能力实验室",
+      "summary": "用 Blinko 产品介绍实测原版 Pireel：45 秒剪成 28 秒，添加动态标题、保留中文声音，并提供原片成片对比。",
+      "source": "https://github.com/pireel/pireel",
+      "tags": [
+        "视频剪辑",
+        "MCP",
+        "动态图形",
+        "浏览器导出"
+      ],
+      "originalStatus": "已复现",
+      "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+      "metadataPath": "projects/016-pireel/project.json",
+      "note": "",
+      "status": "pending",
+      "version": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": "5aaa6d01-29f6-4cc1-ae10-6113ce6e217a",
+      "projectId": "014-spec-kit",
+      "title": "A版任务：跑通一次 Spec Kit 真实开发",
+      "due": "2026-09-30",
+      "done": false,
+      "version": 4
+    }
+  ],
+  "snapshotAt": "2026-09-22T10:08:02.681128+00:00",
+  "revision": 4,
+  "restoreEpoch": 0
+}

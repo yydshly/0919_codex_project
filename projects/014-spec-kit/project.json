@@ -1,0 +1,16 @@
+{
+  "id": "014",
+  "slug": "spec-kit",
+  "name": "Spec Kit · 看懂 AI 开发流程",
+  "summary": "Spec Kit 用 Skills、模板和辅助工具组织需求、方案、任务、实现与验收；附十个 Skill 的使用时机、交互边界及真实功能验证。",
+  "source": "https://github.com/github/spec-kit",
+  "status": "已复现",
+  "tags": [
+    "AI 编程",
+    "规格驱动开发",
+    "交互说明",
+    "源码研究"
+  ],
+  "demo": "https://yydshly.github.io/0919_codex_project/014-spec-kit/",
+  "cover": "assets/understanding-map.png"
+}

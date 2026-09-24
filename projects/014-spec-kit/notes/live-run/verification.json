@@ -1,0 +1,181 @@
+{
+  "startedAt": "2026-09-22T08:47:22.007Z",
+  "url": "http://127.0.0.1:5214/014-spec-kit/app/",
+  "runner": "Playwright / Chromium",
+  "scope": "独立测试浏览器；未操作用户收藏",
+  "checks": [
+    {
+      "id": "US1-01",
+      "requirements": [
+        "FR-001",
+        "FR-003",
+        "FR-009"
+      ],
+      "title": "添加、刷新后字段完整保留",
+      "status": "passed",
+      "durationMs": 470
+    },
+    {
+      "id": "US1-02",
+      "requirements": [
+        "FR-002"
+      ],
+      "title": "大小写、.git、尾斜杠和查询参数不造成重复",
+      "status": "passed",
+      "durationMs": 342
+    },
+    {
+      "id": "US1-03",
+      "requirements": [
+        "FR-001",
+        "FR-002"
+      ],
+      "title": "非法主机、脚本协议、子路径、账号信息与空名称被拒绝",
+      "status": "passed",
+      "durationMs": 707
+    },
+    {
+      "id": "US1-04",
+      "requirements": [
+        "FR-001"
+      ],
+      "title": "标签长度和数量限制",
+      "status": "passed",
+      "durationMs": 359
+    },
+    {
+      "id": "US1-05",
+      "requirements": [
+        "FR-008"
+      ],
+      "title": "写入失败保留输入与既有记录",
+      "status": "passed",
+      "durationMs": 313
+    },
+    {
+      "id": "US1-06",
+      "requirements": [
+        "FR-008"
+      ],
+      "title": "损坏存储不被覆盖，原始内容可下载",
+      "status": "passed",
+      "durationMs": 717
+    },
+    {
+      "id": "US1-07",
+      "requirements": [
+        "FR-008"
+      ],
+      "title": "浏览器禁止读取存储时明确提示",
+      "status": "passed",
+      "durationMs": 188
+    },
+    {
+      "id": "US1-08",
+      "requirements": [
+        "FR-001"
+      ],
+      "title": "输入的 HTML 按文字显示",
+      "status": "passed",
+      "durationMs": 310
+    },
+    {
+      "id": "US1-09",
+      "requirements": [
+        "FR-001"
+      ],
+      "title": "超长名称与备注明确报错，不悄悄截断后保存",
+      "status": "passed",
+      "durationMs": 437
+    },
+    {
+      "id": "US2-01",
+      "requirements": [
+        "FR-004",
+        "FR-005"
+      ],
+      "title": "名称、备注、标签搜索与状态筛选组合，修改状态可刷新保留",
+      "status": "passed",
+      "durationMs": 625
+    },
+    {
+      "id": "US2-02",
+      "requirements": [
+        "FR-004",
+        "FR-008"
+      ],
+      "title": "无匹配时可清除筛选",
+      "status": "passed",
+      "durationMs": 266
+    },
+    {
+      "id": "US2-03",
+      "requirements": [
+        "FR-012"
+      ],
+      "title": "其他标签页更新会同步，未提交输入保留",
+      "status": "passed",
+      "durationMs": 565
+    },
+    {
+      "id": "US3-01",
+      "requirements": [
+        "FR-006"
+      ],
+      "title": "筛选后导出仍包含所有记录和完整字段",
+      "status": "passed",
+      "durationMs": 702
+    },
+    {
+      "id": "US3-02",
+      "requirements": [
+        "FR-007"
+      ],
+      "title": "删除后新增再撤销，旧记录和新记录均保留",
+      "status": "passed",
+      "durationMs": 439
+    },
+    {
+      "id": "US3-03",
+      "requirements": [
+        "FR-008",
+        "FR-009"
+      ],
+      "title": "清空全部后刷新，不重新出现示例",
+      "status": "passed",
+      "durationMs": 406
+    },
+    {
+      "id": "US3-04",
+      "requirements": [
+        "FR-007",
+        "FR-008"
+      ],
+      "title": "移除保存失败不删除既有条目",
+      "status": "passed",
+      "durationMs": 260
+    },
+    {
+      "id": "UI-01",
+      "requirements": [
+        "FR-010"
+      ],
+      "title": "320/390/768/1440宽度无溢出，键盘操作可用",
+      "status": "passed",
+      "durationMs": 505
+    },
+    {
+      "id": "UI-02",
+      "requirements": [
+        "FR-011"
+      ],
+      "title": "实际流程页展示原文，所有产物链接可访问",
+      "status": "passed",
+      "durationMs": 2897
+    }
+  ],
+  "finishedAt": "2026-09-22T08:47:34.758Z",
+  "passed": 18,
+  "failed": 0,
+  "status": "passed"
+}

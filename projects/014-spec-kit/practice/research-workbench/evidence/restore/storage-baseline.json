@@ -1,0 +1,190 @@
+{
+  "suite": "Backup restore / SQLite / restart / conflict / atomic rollback",
+  "phase": "baseline",
+  "tests": 18,
+  "passed": 0,
+  "failed": 18,
+  "results": [
+    {
+      "test": "__main__.RestoreStorage.test_01_preview_has_no_writes",
+      "title": "预览返回摘要且不改变任何数据库记录或原备份对象",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_02_restore_restart_and_undo",
+      "title": "A导出→修改为B→恢复A→重启→撤销回B并保持任务顺序",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_03_bad_fields_are_rejected",
+      "title": "错误类型、字数、枚举、标签与日期一律拒绝且不写入",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_04_missing_fields_are_rejected",
+      "title": "缺少必需顶层或个人字段不能被当作空白覆盖",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_05_project_and_task_identity_validation",
+      "title": "未知、缺失、重复项目及重复任务和悬空任务引用整份拒绝",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_06_task_count_limit",
+      "title": "1000项任务边界可预览，1001项拒绝且不写入",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_07_catalog_metadata_is_preserved",
+      "title": "备份内伪造的目录事实与内部控制信息不能覆盖当前目录",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_08_empty_tasks_replace_all_tasks",
+      "title": "空任务备份清空当前任务，撤销可以恢复全部任务",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_09_confirmation_and_digest_are_required",
+      "title": "未明确确认或确认数据与预览不同不能恢复",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_10_every_write_invalidates_preview",
+      "title": "设置、项目、任务更新、新增和删除均使旧预览失效",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_11_undo_is_blocked_by_later_writes",
+      "title": "恢复后新增记录使撤销失效且不覆盖新数据",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_12_changed_back_data_still_invalidates_preview_and_undo",
+      "title": "个人数据改动再改回仍不可重新激活旧预览和撤销",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_13_restore_and_undo_invalidate_old_record_versions",
+      "title": "恢复和撤销后旧项目与任务版本均不能误写或删除",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_14_reintroduced_task_does_not_reuse_old_version",
+      "title": "删除后从备份重新出现的任务不能复用旧页面版本",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_15_failed_restore_rolls_back_and_keeps_previous_undo",
+      "title": "恢复中途任务写入失败时所有数据与原可用撤销记录一起回滚",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_16_failed_undo_rolls_back",
+      "title": "撤销中途失败时保留恢复后的全部数据及可用撤销记录",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_17_parallel_restore_and_undo_are_single_use",
+      "title": "同时确认相同预览和同时撤销时各只有一次成功",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    },
+    {
+      "test": "__main__.RestoreStorage.test_18_undo_requires_current_identifier_and_confirmation",
+      "title": "撤销必须明确确认且指向最近一次恢复",
+      "passed": false,
+      "errors": [
+        {
+          "error": "Traceback (most recent call last):\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 58, in testPartExecutor\n    yield\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 630, in run\n    self._callSetUp()\n  File \"C:\\Users\\yun68\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\unittest\\case.py\", line 586, in _callSetUp\n    self.setUp()\n  File \"F:\\codex_project\\0919_codex_project\\projects\\014-spec-kit\\practice\\research-workbench\\tests\\test_restore.py\", line 22, in setUp\n    from restore import RestoreService\nModuleNotFoundError: No module named 'restore'\n"
+        }
+      ]
+    }
+  ],
+  "completedAt": "2026-09-22T19:01:28+0800"
+}

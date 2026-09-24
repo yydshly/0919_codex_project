@@ -1,0 +1,63 @@
+{
+  "completedAt": "2026-09-22T11:10:08.753Z",
+  "checks": [
+    {
+      "id": "US1",
+      "title": "真实定制、进入与刷新保存",
+      "status": "passed"
+    },
+    {
+      "id": "US2-A",
+      "title": "真实目录搜索与清除筛选",
+      "status": "passed"
+    },
+    {
+      "id": "US2-B",
+      "title": "三项比较与第四项上限",
+      "status": "passed"
+    },
+    {
+      "id": "US3-A",
+      "title": "个人结论与待办持久化、完成和重开",
+      "status": "passed"
+    },
+    {
+      "id": "US4",
+      "title": "搜索后仍导出全部数据",
+      "status": "passed"
+    },
+    {
+      "id": "ERROR",
+      "title": "保存失败保留输入且可重试",
+      "status": "passed"
+    },
+    {
+      "id": "UI",
+      "title": "桌面与手机无整页溢出、键盘可用",
+      "status": "passed"
+    },
+    {
+      "id": "CUSTOM",
+      "title": "关注方向、默认视图与长名称校验真实生效",
+      "status": "passed"
+    },
+    {
+      "id": "CONFLICT",
+      "title": "真实旧版本冲突保留草稿并支持重新读取",
+      "status": "passed"
+    },
+    {
+      "id": "DELETE",
+      "title": "删除可取消、确认后持久移除",
+      "status": "passed"
+    },
+    {
+      "id": "PROCESS",
+      "title": "真实产物可读取且明确执行角色",
+      "status": "passed"
+    }
+  ],
+  "passed": 11,
+  "failed": 0,
+  "scope": "独立服务与临时SQLite，不操作用户数据"
+}

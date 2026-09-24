@@ -1,0 +1,20 @@
+{
+  "completedAt": "2026-09-22T10:38:39.121Z",
+  "phase": "after-fix",
+  "checks": [
+    {
+      "id": "FR008-FIRST-SETUP",
+      "title": "两个真实页面首次定制：冲突后保留草稿并提供重新读取",
+      "status": "passed"
+    },
+    {
+      "id": "FR011-TRACE",
+      "title": "3个场景×6个步骤均显示实际Skill与产物片段",
+      "status": "failed",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-case]').first() to be visible\u001b[22m\n"
+    }
+  ],
+  "passed": 1,
+  "failed": 1,
+  "scope": "独立临时数据库；两个真实浏览器页面；不使用个人空间"
+}

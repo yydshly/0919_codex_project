@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-09-22T08:50:07.754Z",
+  "url": "http://127.0.0.1:5214/014-spec-kit/app/",
+  "runner": "Playwright / Chromium",
+  "scope": "独立测试浏览器；未操作用户收藏",
+  "checks": [
+    {
+      "id": "UI-02",
+      "requirements": [
+        "FR-011"
+      ],
+      "title": "实际流程页展示原文，所有产物链接可访问",
+      "status": "passed",
+      "durationMs": 2888
+    }
+  ],
+  "finishedAt": "2026-09-22T08:50:11.161Z",
+  "passed": 1,
+  "failed": 0,
+  "status": "passed"
+}

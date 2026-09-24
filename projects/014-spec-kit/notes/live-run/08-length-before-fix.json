@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-09-22T08:46:35.228Z",
+  "url": "http://127.0.0.1:5214/014-spec-kit/app/",
+  "runner": "Playwright / Chromium",
+  "scope": "独立测试浏览器；未操作用户收藏",
+  "checks": [
+    {
+      "id": "US1-09",
+      "requirements": [
+        "FR-001"
+      ],
+      "title": "超长名称与备注明确报错，不悄悄截断后保存",
+      "status": "failed",
+      "error": "超长名称不得保存\n\n4 !== 3\n",
+      "durationMs": 284
+    }
+  ],
+  "finishedAt": "2026-09-22T08:46:35.793Z",
+  "passed": 0,
+  "failed": 1,
+  "status": "failed"
+}

@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:5214/014-spec-kit/",
+  "cases": 3,
+  "steps": 15,
+  "recommendations": 4,
+  "widths": [
+    1440,
+    1024,
+    768,
+    390,
+    320
+  ],
+  "errors": [],
+  "galleryNavigation": "passed",
+  "result": "passed"
+}

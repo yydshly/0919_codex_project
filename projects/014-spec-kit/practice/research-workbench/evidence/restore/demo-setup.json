@@ -1,0 +1,48 @@
+{
+  "createdAt": "2026-09-22T11:09:00.904551+00:00",
+  "sample": "明确标记的教学样本；目录来自真实研究快照，个人内容为本次构造。",
+  "database": "F:\\codex_project\\0919_codex_project\\.local\\research-restore-demo.sqlite3",
+  "backup": "evidence/restore/demo-backup.json",
+  "actions": [
+    {
+      "method": "GET",
+      "path": "/api/state"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/settings"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/014-spec-kit"
+    },
+    {
+      "method": "POST",
+      "path": "/api/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/export.json"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/settings"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/projects/014-spec-kit"
+    },
+    {
+      "method": "POST",
+      "path": "/api/tasks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/state"
+    }
+  ],
+  "backupName": "A版 · 我保存的研究备份",
+  "currentName": "B版 · 当前演示空间",
+  "backupTasks": 1,
+  "currentTasks": 2
+}

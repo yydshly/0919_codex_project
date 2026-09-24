@@ -1,0 +1,15 @@
+{
+  "completedAt": "2026-09-24T03:25:24.560Z",
+  "poster": {
+    "width": 3360,
+    "height": 7040
+  },
+  "textBounds": "passed",
+  "widths": [
+    1440,
+    390
+  ],
+  "zoom": "passed",
+  "sectionNavigation": "passed",
+  "browserErrors": []
+}
