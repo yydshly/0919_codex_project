@@ -1,0 +1,17 @@
+{
+  "id": "015",
+  "slug": "watermark-removal",
+  "name": "Watermark Removal · 图像修复原理实验室",
+  "summary": "本地加载预训练神经网络，按图片与遮罩补画指定区域，可尝试去水印、杂物和划痕；两阶段网络先粗修再精修。我们的扩展方向是图片清理、批处理及结合额外模块的自动选区与视频处理，网页展示原理和公开样例，尚未运行模型。",
+  "source": "https://github.com/zuruoke/watermark-removal",
+  "status": "已完成",
+  "tags": [
+    "图像修复",
+    "门控卷积",
+    "上下文注意力",
+    "TensorFlow",
+    "源码研究"
+  ],
+  "demo": "https://yydshly.github.io/0919_codex_project/015-watermark-removal/",
+  "cover": "site/understanding-summary.png"
+}

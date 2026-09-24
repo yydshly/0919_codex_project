@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="Watermark Removal 是可在本地运行的图像补全模型封装：输入图片与遮罩，补画指定区域，可尝试移除水印、杂物和划痕。了解两阶段神经网络原理、环境要求及我们的选区、批处理与视频扩展思路。">
+  <title>Watermark Removal — 图像修复原理实验室</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23dd572f'/%3E%3Cpath d='M10 12v16h20V12M15 8h10' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./knowledge.css">
+  <link rel="stylesheet" href="./overview.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳转到正文</a>
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><span class="brand-icon" aria-hidden="true">▧</span><span>开源观察室<small>OPEN SOURCE / FIELD NOTES</small></span></a>
+    <div class="side-project"><span class="micro">RESEARCH NOTE</span><strong>015<span> / 图像修复</span></strong></div>
+    <nav aria-label="章节导航">
+      <a class="active" href="#overview"><span>01</span> 项目概览 <b>↗</b></a>
+      <a href="#understanding"><span>↳</span> 一图理解全貌 <b>↗</b></a>
+      <a href="#examples"><span>02</span> 真实效果样例 <b>↗</b></a>
+      <a href="#capabilities"><span>03</span> 能力与场景 <b>↗</b></a>
+      <a href="#foundations"><span>04</span> 模型与工具是什么 <b>↗</b></a>
+      <a href="#pipeline"><span>05</span> 修复的全过程 <b>↗</b></a>
+      <a href="#mechanism"><span>06</span> 拆开神经网络 <b>↗</b></a>
+      <a href="#training"><span>07</span> 训练与推理 <b>↗</b></a>
+      <a href="#classical"><span>08</span> 与传统算法比较 <b>↗</b></a>
+      <a href="#runtime"><span>09</span> 本地运行与部署 <b>↗</b></a>
+      <a href="#extensions"><span>10</span> 可以怎样扩展 <b>↗</b></a>
+      <a href="#value"><span>11</span> 对我的意义 <b>↗</b></a>
+      <a href="#sources"><span>12</span> 源码与依据 <b>↗</b></a>
+    </nav>
+    <div class="side-bottom"><span class="status-dot"></span> 源码研究 · 教学交互<p>看懂一个项目，<br>再判断它能做什么。</p><a href="../">← 返回研究集</a></div>
+  </aside>
+  <main id="main">
+    <header class="topbar"><span>视觉智能 <i>/</i> IMAGE INPAINTING</span><a href="https://github.com/zuruoke/watermark-removal" target="_blank" rel="noreferrer">查看 GitHub 源库 ↗</a></header>
+    <section id="overview" class="hero">
+      <div class="eyebrow"><span></span> WATERMARK REMOVAL <em>源码解读 / 2026.09</em></div>
+      <div class="hero-heading"><div><h1>从去水印，<br>看懂一个<span>本地图像模型。</span></h1><p class="lead">这个库读取图片和指定修复区域的遮罩，在本机加载预训练神经网络，<br class="desktop-break">补画水印或杂物遮住的内容。网页展示研究成果，不在线运行模型。</p><div class="hero-links"><a class="primary" href="#understanding">先看能力引导图 <span>↓</span></a><a class="text-link" href="#examples">查看真实效果 ↗</a></div></div><div class="hero-note"><span class="micro">THE KEY IDEA</span><p>指定区域<br><strong>→ 预测内容</strong><br>→ 合成图像</p><span>基于遮罩的生成式修复</span></div></div>
+      <section class="understanding" id="understanding" aria-labelledby="understanding-heading">
+        <div class="section-heading"><div><span class="eyebrow">THE BIG PICTURE / 能力引导图</span><h2 id="understanding-heading">这个库做什么？怎样运行？我们能扩展什么？</h2></div><span class="section-aside">先看结论，再看证据与场景</span></div>
+        <div class="takeaway-grid">
+          <article><small>01 / 库的能力</small><h3>按遮罩补画图片</h3><p>给它图片和待修区域，就能用预训练网络补画。水印、划痕和杂物是同一补全能力的不同用途；仓库没有任意水印自动检测器。</p></article>
+          <article><small>02 / 原理与运行</small><h3>可本地运行的模型</h3><p>两阶段神经网络先粗修结构，再参考可见纹理精修。权重另行下载，由 TensorFlow 1.15.5 执行；当前网页只展示说明与公开样例。</p></article>
+          <article><small>03 / 我们的扩展</small><h3>从修复引擎做成工具</h3><p>可先做商品图、旧照、旅行照清理与批处理；自动选区、准确排字和视频一致性需要额外模块，并用真实样本验证。</p></article>
+        </div>
+        <div class="understanding-layout">
+          <figure class="poster-preview"><a href="./understanding-summary.png" target="_blank" rel="noreferrer" aria-label="查看图像修复能力引导图高清图"><img src="./understanding-summary.png" width="1600" height="2240" alt="图像修复能力引导图：库的能力、神经网络与权重、两阶段原理、训练与推理、传统算法、本地部署和扩展方向"></a><figcaption>我们整理的能力引导图 · 点击查看高清图</figcaption></figure>
+          <div class="understanding-copy"><span class="chapter-label">ONE PAGE / 从讨论到完整认识</span><h3>一个修复引擎，<br>怎样变成可用的能力？</h3><p>从“删掉水印”出发，区分模型本身、运行它的工具，以及需要额外搭建的产品流程。</p>
+            <div class="reading-map">
+              <a href="#foundations"><span>04</span><div><strong>先把概念放对位置</strong><small>算法、网络、权重、TensorFlow、neuralgym</small></div><b>↗</b></a>
+              <a href="#mechanism"><span>06</span><div><strong>看清模型如何补画</strong><small>粗修 → 精修；门控卷积与上下文注意力</small></div><b>↗</b></a>
+              <a href="#classical"><span>08</span><div><strong>判断何时需要模型</strong><small>传统修复能做什么，复杂场景难在哪里</small></div><b>↗</b></a>
+              <a href="#runtime"><span>09</span><div><strong>分清演示与实际运行</strong><small>文件体积、旧环境、样例来源与部署状态</small></div><b>↗</b></a>
+              <a href="#extensions"><span>10</span><div><strong>把技术接到具体需求</strong><small>图片清理、批处理、自动选区、视频链路</small></div><b>↗</b></a>
+            </div>
+            <div class="poster-actions"><a class="primary" href="./understanding-summary.png" download="图像修复-能力引导图.png">下载能力引导图 <span>↓</span></a><a class="text-link" href="./understanding-poster.html" target="_blank" rel="noreferrer">查看海报版 ↗</a></div>
+          </div>
+        </div>
+        <p class="source-separation"><strong>当前状态：</strong>网页展示原作者公开效果，交互插画用于讲解；本页未加载模型、未调用推理服务。总览图整理的是我们已经核对的理解。</p>
+      </section>
+      <section id="examples" class="sample-section" aria-labelledby="sample-heading">
+        <div class="section-heading"><div><span class="eyebrow">REAL EXAMPLES / 官方公开结果</span><h2 id="sample-heading">真实照片，实际修复结果。</h2></div><span class="pill">4 组 · 原图 / 遮罩 / 输出</span></div>
+        <p class="sample-intro">以下图片来自底层方法 <a href="https://github.com/JiahuiYu/generative_inpainting" target="_blank" rel="noreferrer">DeepFill 原作者的公开样例 ↗</a>，保留原始文件。<strong>它们不是 zuruoke/watermark-removal 的本地实测，也不代表自动识别水印。</strong>第一组包含文字水印清理，其余三组展示同一修复方法的物体移除能力。</p>
+        <div class="sample-tabs" role="group" aria-label="选择真实修复样例">
+          <button data-sample="1" class="selected" aria-pressed="true"><img src="./samples/case1_raw.png" alt="海边合影，带文字与栏杆" width="680" height="512"><span><small>CASE 01 / 水印与栏杆</small><strong>海边合影</strong></span></button>
+          <button data-sample="2" aria-pressed="false"><img src="./samples/case2_raw.png" alt="砖墙前的毕业照与背景路人" width="680" height="512" loading="lazy"><span><small>CASE 02 / 重复纹理</small><strong>毕业照路人</strong></span></button>
+          <button data-sample="3" aria-pressed="false"><img src="./samples/case3_raw.png" alt="沙滩步道上的多位行人" width="680" height="512" loading="lazy"><span><small>CASE 03 / 多个区域</small><strong>沙滩行人</strong></span></button>
+          <button data-sample="4" aria-pressed="false"><img src="./samples/case4_raw.png" alt="合影右侧闯入镜头的人物" width="680" height="512" loading="lazy"><span><small>CASE 04 / 大面积遮挡</small><strong>合影干扰人物</strong></span></button>
+        </div>
+        <div class="sample-workbench">
+          <div class="sample-viewer">
+            <div class="compare-toolbar"><div role="group" aria-label="选择对照内容"><button data-compare="raw" class="selected" aria-pressed="true">原图 vs 结果</button><button data-compare="input" aria-pressed="false">遮罩输入 vs 结果</button></div><span>左右拖动分界线</span></div>
+            <div class="photo-compare" id="photo-compare" style="--split:50%">
+              <img id="sample-output" src="./samples/case1_output.png" alt="官方结果：海边照片移除文字与栏杆" width="680" height="512">
+              <img id="sample-before" class="photo-before" src="./samples/case1_raw.png" alt="处理前：海边照片上的文字与栏杆" width="680" height="512">
+              <span class="photo-label before-label" id="before-label">原始照片</span><span class="photo-label after-label">官方修复结果</span>
+              <div class="compare-divider" aria-hidden="true"><span>‹ ›</span></div>
+              <input id="photo-slider" class="photo-slider" aria-label="调整原图与修复结果分界线" type="range" min="0" max="100" value="50" aria-valuetext="左侧原图 50%，右侧结果 50%">
+            </div>
+            <div class="compare-footer"><button data-split="100">只看处理前</button><button data-split="50" class="selected">对半比较</button><button data-split="0">只看修复后</button><span id="sample-resolution">680 × 512 · 原始 PNG</span></div>
+          </div>
+          <aside class="sample-analysis" aria-live="polite"><span class="chapter-label" id="sample-kicker">CASE 01 / 文字水印 + 栏杆</span><h3 id="sample-title">水印去掉了，背景怎么补？</h3><p id="sample-description">原图右上有黑色文字，人物周围有栏杆。作者用遮罩标出这些区域，再由模型补画海面、植被和局部衣物。</p><div class="sample-observation"><span>看哪里</span><p id="sample-observe">拖动分界线，观察右上角海面，以及画面下方栏杆原来的位置。</p></div><div class="sample-observation limitation"><span>也要看局限</span><p id="sample-limit">栏杆附近补画的海浪与边缘局部偏软。这张样例没有提供“同场景无水印真图”，不能据此认定恢复了真实像素。</p></div><a id="sample-source" href="https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case1_output.png" target="_blank" rel="noreferrer">核对这张官方输出 ↗</a></aside>
+        </div>
+        <details class="sample-evidence"><summary>展开查看：原图、遮罩输入与模型结果<span>+</span></summary><div class="sample-triptych"><figure><a id="raw-file" href="./samples/case1_raw.png" target="_blank" rel="noreferrer"><img id="evidence-raw" src="./samples/case1_raw.png" width="680" height="512" alt="原始照片" loading="lazy"></a><figcaption>01 原始照片 <small>含待移除内容</small></figcaption></figure><figure><a id="input-file" href="./samples/case1_input.png" target="_blank" rel="noreferrer"><img id="evidence-input" src="./samples/case1_input.png" width="680" height="512" alt="白色区域标记需要修复的位置" loading="lazy"></a><figcaption>02 遮罩输入 <small>白色区域需要补画</small></figcaption></figure><figure><a id="output-file" href="./samples/case1_output.png" target="_blank" rel="noreferrer"><img id="evidence-output" src="./samples/case1_output.png" width="680" height="512" alt="作者发布的模型修复结果" loading="lazy"></a><figcaption>03 模型结果 <small>作者发布的原始输出</small></figcaption></figure></div><p>点击图片可查看原尺寸文件。另可查看<a id="mask-file" href="./samples/case1_mask.png" target="_blank" rel="noreferrer">这组样例的独立遮罩 ↗</a>。从原图到遮罩的选区准备，不等于模型具备自动检测能力。</p></details>
+        <p class="sample-credit">来源：Jiahui Yu 等，<a href="https://github.com/JiahuiYu/generative_inpainting/tree/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2" target="_blank" rel="noreferrer">generative_inpainting / examples / places2 ↗</a>。按 <a href="./samples/LICENSE.txt" target="_blank" rel="noreferrer">CC BY-NC 4.0</a> 用于教学研究；图片未修改。<a href="./samples/manifest.json" target="_blank" rel="noreferrer">文件来源与校验记录 ↗</a></p>
+      </section>
+      <div class="facts-row"><div><strong>2 阶段</strong><span>先补结构，再完善纹理</span></div><div><strong>1 张遮罩</strong><span>明确告诉模型修哪里</span></div><div><strong>本地推理</strong><span>需另行下载预训练权重</span></div><div><strong>不保证还原</strong><span>补画合理内容，而非找回原像素</span></div></div>
+    </section>
+    <section id="capabilities" class="section">
+      <div class="section-heading"><div><span class="eyebrow">03 / CAPABILITIES</span><h2>能修什么，取决于你告诉它修哪里。</h2></div><span class="section-aside">能力 ≠ 开箱即用范围</span></div>
+      <div class="capability-grid"><article class="cap-card"><span class="cap-icon">▧</span><span class="tag green">已有入口</span><h3>单图与批量修复</h3><p>输入图片和指定区域，利用预训练模型补画；批处理脚本允许每张图片配一张遮罩。</p><small>适合：同样式、同位置的一批旧素材</small></article><article class="cap-card"><span class="cap-icon">⌖</span><span class="tag orange">需要准备遮罩</span><h3>文字与小物体清理</h3><p>底层是通用图像修复网络，提供适当遮罩后，可以尝试移除日期、覆盖文字或小物体。</p><small>属于能力延伸，效果需用样本验证</small></article><article class="cap-card"><span class="cap-icon">◫</span><span class="tag gray">仓库未提供</span><h3>任意水印自动识别</h3><p>没有通用检测器，没有完整视频处理链路，也没有可直接使用的上传式网页产品。</p><small>检测、交互界面与视频一致性要另外开发</small></article></div>
+      <div class="constraint"><span>!</span><div><strong>默认路径，比“任意去水印”窄得多。</strong><p>仓库只附带 iStock 横图遮罩。主入口要求图片宽高比与遮罩比例相差不超过约 5%；竖图分支指向的模板未附带。水印偏移、缩放或换样式，都可能导致遮罩不再对齐。</p></div><a data-source="preprocess_image.py" href="#sources">查看依据 ↗</a></div>
+    </section>
+    <section id="foundations" class="section knowledge-section" aria-labelledby="knowledge-foundations-title">
+      <div class="section-heading"><div><span class="eyebrow">FOUNDATIONS / 把概念串起来</span><h2 id="knowledge-foundations-title">核心是神经网络，能力来自训练后的权重。</h2></div><span class="section-aside">从“会用”到“看懂”</span></div>
+      <div class="knowledge-key"><span class="knowledge-kicker">先记住这一句</span><p>这个模型专门做<strong>“给定区域的图像补全”</strong>。去水印、去路人、去污点，是同一种底层能力在不同场景中的应用。</p></div>
+      <div class="knowledge-equation" role="group" aria-label="神经网络模型的组成">
+        <article><span>01 / 计算方法</span><h3>网络结构</h3><p>规定数据经过哪些运算、怎样连接。例如先提取轮廓，再参考纹理。</p><small>像一份计算流程图</small></article>
+        <b aria-hidden="true">＋</b>
+        <article><span>02 / 学到的参数</span><h3>训练权重</h3><p>训练反复调整的一组数值，决定每一步计算如何影响结果。</p><small>不是保存一整套原始照片</small></article>
+        <b aria-hidden="true">＝</b>
+        <article class="knowledge-equation-result"><span>03 / 可以用于推理</span><h3>训练好的模型</h3><p>把新图片送入网络，按固定权重进行运算，预测缺失的内容。</p><small>再配合图片处理程序，才能成为工具</small></article>
+      </div>
+      <p class="knowledge-note">“算法＋权重”是方便理解的说法；更准确地说，这里的神经网络模型由<strong>网络结构与学习得到的参数</strong>构成。“算法”还可以指训练方法、传统修复方法等。推理会经过多层运算，也有分支与信息融合，并非查出唯一的原图答案。</p>
+      <div class="knowledge-two-column">
+        <article class="knowledge-panel">
+          <span class="chapter-label">THE SOFTWARE / 各自负责什么</span><h3>装好工具，才有地方执行模型。</h3>
+          <dl class="knowledge-roles">
+            <div><dt>TensorFlow<small>计算引擎</small></dt><dd>执行网络的数值运算，支持 CPU / GPU；训练时还提供自动求导等能力，帮助计算如何调整参数。</dd></div>
+            <div><dt>neuralgym<small>辅助工具箱</small></dt><dd>面向深度学习实验的工具库。这个项目用它读取配置、组织模型等，减少重复代码。</dd></div>
+            <div><dt>模型代码＋权重<small>具体修复能力</small></dt><dd>规定修复网络的结构，加载已经学到的数值。只安装 TensorFlow，不会自动获得去水印能力。</dd></div>
+            <div><dt>项目程序<small>串联整个流程</small></dt><dd>读取图片和遮罩、调整尺寸、调用模型、合成结果并保存。网页和 API 则是需要另行建设的使用入口。</dd></div>
+          </dl>
+          <div class="knowledge-citations"><a href="https://www.tensorflow.org/guide/basics" target="_blank" rel="noreferrer">TensorFlow 官方说明 ↗</a><a href="https://github.com/JiahuiYu/neuralgym" target="_blank" rel="noreferrer">neuralgym 项目 ↗</a><a data-source="main.py" href="#sources">本库如何调用它们 ↗</a></div>
+        </article>
+        <article class="knowledge-panel knowledge-panel-green">
+          <span class="chapter-label">LEARNING / 为什么训练并不简单</span><h3>流程好理解，稳定的效果要反复验证。</h3>
+          <ol class="knowledge-learning"><li><span>出题</span><p>从完整街景照片遮住一块，让网络只能看到周围内容。</p></li><li><span>作答</span><p>网络预测缺口里的颜色、边缘和纹理。</p></li><li><span>比较</span><p>用完整照片与训练目标评价预测，计算哪里需要改善。</p></li><li><span>调整</span><p>更新权重，在许多不同照片和遮罩上重复练习。</p></li></ol>
+          <div class="knowledge-training-limit"><strong>难点在“没练过的图，也能补得好”。</strong><p>只练天空未必会补建筑；只练小缺口未必能处理大遮挡。数据覆盖、遮罩设计、评价方式与训练稳定性，都会影响最后的能力。</p></div>
+          <a class="knowledge-inline-link" href="#training">继续看训练与推理的交互演示 ↓</a>
+        </article>
+      </div>
+      <div class="knowledge-train-strip"><div><span>训练 / 改变能力</span><strong>反复更新权重</strong><p>需要数据、评价目标与计算资源。</p></div><div><span>推理 / 使用能力</span><strong>通常保持权重不变</strong><p>读取已有权重，计算新图片的结果。</p></div><div><span>做产品 / 交付能力</span><strong>可先用已有模型</strong><p>先验证真实场景，无须从零训练。</p></div></div>
+      <p class="knowledge-note">专门做一个任务，<strong>不代表任务简单，也不意味着模型必然很小</strong>。模型文件大小、推理显存和训练成本是不同指标；清晰度、图像结构与遮挡范围也会改变处理难度。</p>
+      <details class="knowledge-details"><summary>卷积、特征、注意力、损失，这些词怎样理解？<span>+</span></summary><div class="knowledge-details-grid"><p><strong>卷积与特征：</strong>在图像的小范围内做可学习的计算，得到数字表示；多层组合后可以表达边缘、纹理和更复杂的结构。这些表示称为特征，不是人为贴好的“天空”“砖墙”标签。</p><p><strong>空洞卷积：</strong>在采样点之间留出间隔，让一次计算能参考更大的范围。它扩大观察范围，帮助缺口内的预测利用较远处的信息。</p><p><strong>门控与 sigmoid：</strong>网络为特征算出接近 0 到 1 的门值，与特征相乘，调节信息传递强弱。推理时门值随图片变化，但计算门值所用的已训练权重保持不变。</p><p><strong>注意力与 softmax：</strong>比较参考块与待修区域的特征匹配程度，再把分数转成总和为 1 的权重，组合参考信息。这里的“注意力权重”随输入改变，与模型文件中保存的训练参数不是同一回事。</p><p><strong>损失与梯度：</strong>损失用数字衡量预测与训练目标的差距；梯度帮助判断参数应往哪个方向调整。评价目标设计得不好，即使误差下降，也未必能得到满意画质。</p><p><strong>GAN：</strong>训练时加入一个判断结果是否像真实图片的网络，为生成网络提供额外反馈。此项目推理时使用生成网络，不需要每张图都重新开展这种训练。</p></div></details>
+      <details class="knowledge-details"><summary>使用预训练、继续训练、从零训练，有什么区别？<span>+</span></summary><div class="knowledge-details-grid"><p><strong>使用预训练：</strong>拿已经训练好的网络和权重，直接处理新图片。主要工作是运行环境、准备遮罩与检查效果，是做原型的起点。</p><p><strong>继续训练 / 微调：</strong>在已有权重上，用自己的数据进一步调整参数。希望适应特定场景，但效果不保证一定改善，需要独立样本检验。</p><p><strong>从零训练：</strong>从初始化参数开始学习，需要训练代码、数据、计算资源和完整评估。这个封装库虽然含训练图与损失函数，但没有提供完整的训练启动流程。</p><p><strong>对这个项目的选择：</strong>先验证已有模型能否解决自己的问题。只有发现明确、可衡量的不足，并具备合适数据后，才有依据评估继续训练的投入。</p></div></details>
+    </section>
+    <section id="pipeline" class="section">
+      <div class="section-heading"><div><span class="eyebrow">05 / THE PIPELINE</span><h2>从输入到输出，六步发生了什么？</h2></div><a class="text-link" href="#teaching-lab">打开步骤演示 ↓</a></div>
+      <div class="hero-lab" id="teaching-lab">
+        <div class="lab-toolbar"><div><span class="live-dot"></span><strong>像素修复观察窗</strong><span class="muted"> / 点击步骤，查看变化</span></div><span class="pill">教学示意 · 非模型输出</span></div>
+        <div class="lab-body"><div class="canvas-wrap"><canvas id="scene" width="1000" height="550" role="img" aria-label="教学插画：山脉与湖泊上的水印，当前展示带水印的输入图片"></canvas><div class="image-tag" id="image-tag">INPUT IMAGE / 带水印的输入</div><span class="canvas-caption">程序绘制的场景 · 只用于解释流程</span></div><div class="lab-description"><span class="micro" id="stage-number">STEP 01 / 06</span><h2 id="stage-title">一张带水印的图片</h2><p id="stage-copy">输入图片中，水印覆盖了一部分山脉和湖面。模型需要图片之外的另一份信息：哪些位置需要修复。</p><div class="stage-fact"><span>这一刻，程序做什么？</span><p id="stage-detail">读取图片并转换为 RGB。默认入口不会自动识别水印的位置。</p></div><div class="stage-controls"><button id="previous" aria-label="上一步" disabled>←</button><span id="stage-progress">01 — 06</span><button id="next" aria-label="下一步">→</button></div></div></div>
+        <div class="step-strip" role="group" aria-label="选择修复步骤"><button class="selected" data-stage="0" aria-pressed="true"><span>01</span> 输入图片</button><button data-stage="1" aria-pressed="false"><span>02</span> 指定遮罩</button><button data-stage="2" aria-pressed="false"><span>03</span> 隐去区域</button><button data-stage="3" aria-pressed="false"><span>04</span> 粗略修复</button><button data-stage="4" aria-pressed="false"><span>05</span> 精细修复</button><button data-stage="5" aria-pressed="false"><span>06</span> 合成输出</button></div>
+      </div>
+      <div class="pipeline-grid">
+        <article><span>01</span><h3>读取与预处理</h3><p>转 RGB、调整模板尺寸，主入口把图片与遮罩裁到 8 的倍数。右侧和底部可能少几个像素。</p><code>preprocess_image()</code></article>
+        <article><span>02</span><h3>把遮罩变成 0 / 1</h3><p>遮罩值大于 127.5 的位置记为 1，即待修复区域；其他位置记为 0，保留原内容。</p><code>M ∈ {0, 1}</code></article>
+        <article><span>03</span><h3>隐藏被遮挡内容</h3><p>图片归一化到 [-1, 1]，遮罩内的输入乘以 0。网络看到的是有缺口的图片。</p><code>X = I × (1 − M)</code></article>
+        <article><span>04</span><h3>第一阶段：粗修</h3><p>下采样提取特征，空洞卷积扩大观察范围，再上采样，预测大致结构和颜色。</p><code>x_stage1</code></article>
+        <article><span>05</span><h3>第二阶段：精修</h3><p>粗修结果进入两个分支：一个生成结构，一个借用可见区域的纹理，最后融合。</p><code>contextual_attention()</code></article>
+        <article><span>06</span><h3>合成与保存</h3><p>只把预测结果填进遮罩，外部保留预处理后的原图。转换为 8 位像素并保存文件。</p><code>Y = P × M + I × (1 − M)</code></article>
+      </div>
+      <div class="formula-bar"><span>最终输出</span><strong><i>预测内容</i> × 修复区 <b>+</b> 原图 × 保留区</strong><small>遮罩准确，模型才会修在正确的位置。</small></div>
+    </section>
+    <section id="mechanism" class="section">
+      <div class="section-heading"><div><span class="eyebrow">06 / INSIDE THE NETWORK</span><h2>真正的核心，藏在这三个设计里。</h2></div></div>
+      <article class="network-card"><div class="network-intro"><span class="chapter-label">A / COARSE TO FINE</span><h3>两阶段网络<br>先构图，再补细节。</h3><p>粗修先给出一个整体预测。精修把结构生成与纹理参考合在一起，改善边缘和局部连续性。</p><a data-source="inpaint_model.py" href="#sources">build_inpaint_net ↗</a></div><div class="network-map" role="img" aria-label="缺损图进入粗修网络，粗修合成结果进入结构生成与上下文注意力两个分支，合并特征后输出精修预测"><div class="flow-node dark">缺损图 + 遮罩</div><div class="flow-arrow">↓</div><div class="flow-node">粗修网络 <small>下采样 → 空洞卷积 → 上采样</small></div><div class="flow-arrow">↓ <span>合成粗修结果</span></div><div class="branches"><div class="flow-node">结构生成分支<small>学习合理的布局与形状</small></div><div class="flow-node accent">上下文注意力分支<small>参考可见区域的纹理</small></div></div><div class="flow-arrow">↓ <span>特征拼接 · 解码</span></div><div class="flow-node dark">精修预测 P</div></div></article>
+      <div class="mechanism-grid">
+        <article class="mechanism-card"><span class="chapter-label">B / CONTEXTUAL ATTENTION</span><h3>让别处的纹理，成为修复的参考。</h3><p>在特征空间中比较小块的相似度，排除被遮挡的参考块，用 softmax 权重组合可见区域的信息。它能参考远处，不只看缺口旁边。</p><div class="attention-demo"><div class="patch-query"><span>待修区域需要的纹理</span><strong id="query-text">≈ 湖面</strong></div><div class="patches" role="group" aria-label="选择纹理教学示例"><button class="patch water selected" data-patch="water" aria-pressed="true"><span>湖面</span><b>0.82</b></button><button class="patch hill" data-patch="hill" aria-pressed="false"><span>山坡</span><b>0.12</b></button><button class="patch sky" data-patch="sky" aria-pressed="false"><span>天空</span><b>0.06</b></button></div><p id="attention-note" aria-live="polite">湖面特征获得较高权重，山坡和天空贡献较小。</p><small>点击切换目标纹理。数值为人工设定的教学示例，不是模型测量结果。</small></div><a data-source="inpaint_ops.py" href="#sources">查看 contextual_attention ↗</a></article>
+        <article class="mechanism-card"><span class="chapter-label">C / GATED CONVOLUTION</span><h3>给每一份特征，加上可学习的门。</h3><p>卷积结果分成两路：一路提取内容，另一路经 sigmoid 生成 0 到 1 的门值。逐元素相乘后，决定特征传递的强弱。</p><div class="gate-demo"><div class="gate-formula"><span>特征 <b>0.80</b></span><i>×</i><span>门值 <b id="gate-value">0.65</b></span><i>=</i><span class="gate-result">输出 <b id="gate-output">0.52</b></span></div><label for="gate-slider">调节门值，观察传递量 <output id="gate-percent" for="gate-slider">65%</output></label><input id="gate-slider" type="range" min="0" max="100" value="65"><div class="range-ends"><span>0 · 阻断</span><span>1 · 全部通过</span></div><div class="signal-track"><div id="signal-bar"></div></div><small>这里手动控制一个标量；真实网络为每个位置、每个通道学习门值，并非手工调参。</small></div><a data-source="inpaint_ops.py" href="#sources">查看 gen_conv ↗</a></article>
+      </div>
+      <div class="insight"><span>理解边界</span><p>模型会先隐藏遮罩中的输入，因此没有利用其中残留的半透明水印下的全部信息。被遮住的数字、商品纹理或人脸细节，可能被补成<strong>合理但不真实</strong>的内容。</p></div>
+    </section>
+    <section id="training" class="section">
+      <div class="section-heading"><div><span class="eyebrow">07 / LEARNING & INFERENCE</span><h2>模型如何学会补画？用的时候又做什么？</h2></div></div>
+      <div class="training-card"><div class="mode-switch" role="group" aria-label="选择模型阶段"><button data-mode="training" aria-pressed="true" class="selected">训练时 · 学会补画</button><button data-mode="inference" aria-pressed="false">使用时 · 加载已有能力</button></div><div id="mode-panel" aria-live="polite"></div></div>
+      <details><summary>为什么它不需要逐张标注“原水印”？<span>+</span></summary><p>训练代码从完整图片生成随机矩形与笔刷形状的遮罩，把对应内容隐藏，再让网络预测原图。因此，它学的是“缺损图像如何补全”。这不等于仓库训练了一个能定位任意水印的检测模型；下载权重的具体训练数据与效果也不能仅由这份代码推断。</p></details>
+      <details><summary>GAN 在哪里？是不是每处理一张图都要重新训练？<span>+</span></summary><p>GAN 的判别器用于训练：它通过图像局部块判断生成结果是否像真实图像。这里使用带谱归一化的 PatchGAN 和 hinge 对抗损失，并结合两阶段的 L1 重建损失。日常推理只运行生成网络，不为每张图片训练判别器。</p></details>
+    </section>
+    <section id="classical" class="section knowledge-section" aria-labelledby="knowledge-classical-title">
+      <div class="section-heading"><div><span class="eyebrow">CLASSICAL OR NEURAL / 怎样选择方法</span><h2 id="knowledge-classical-title">简单背景，传统算法也可能够用。</h2></div><span class="section-aside">先看任务，再选工具</span></div>
+      <p class="knowledge-intro">FFmpeg 是音视频工具，里面有传统去标记滤镜；OpenCV 也提供无需训练的修补算法。它们和神经网络都在做数值计算，区别在于怎样决定“缺口里该填什么”。</p>
+      <div class="knowledge-methods">
+        <article><span class="knowledge-method-label">FFMPEG / DELOGO</span><h3>框住矩形，参考周围像素。</h3><p>指定标记的位置和大小，用矩形周围的像素插值填补。小面积、颜色变化简单的区域可以先试。</p><a href="https://ffmpeg.org/ffmpeg-filters.html#delogo" target="_blank" rel="noreferrer">官方滤镜说明 ↗</a></article>
+        <article><span class="knowledge-method-label">FFMPEG / REMOVELOGO</span><h3>给出形状，填补标记区域。</h3><p>用黑白遮罩描述待处理的标记，依据邻近像素修补。遮罩选得过大，容易损失更多画面细节。</p><a href="https://ffmpeg.org/ffmpeg-filters.html#removelogo" target="_blank" rel="noreferrer">官方滤镜说明 ↗</a></article>
+        <article><span class="knowledge-method-label">OPENCV / INPAINT</span><h3>沿着缺口边缘，逐步修复。</h3><p>提供 Telea、Navier–Stokes 等传统方法，可参考周围颜色与结构，常用于细划痕、污点等缺损。</p><a href="https://docs.opencv.org/4.x/df/d3d/tutorial_py_inpainting.html" target="_blank" rel="noreferrer">官方修复教程 ↗</a></article>
+      </div>
+      <div class="knowledge-table-wrap"><table class="knowledge-table"><caption>场景判断参考 · 不是本页实测排名</caption><thead><tr><th scope="col">具体场景</th><th scope="col">传统方法可以先试什么</th><th scope="col">模型可能带来的帮助与限制</th></tr></thead><tbody>
+        <tr><th scope="row">蓝天上的小日期</th><td data-label="传统方法">周围颜色接近，插值或小区域修补可能已经自然。</td><td data-label="模型修复">未必有明显优势，应比较边缘、颜色与成本。</td></tr>
+        <tr><th scope="row">老照片上的细划痕</th><td data-label="传统方法">OpenCV inpaint 可作为起点，遮罩尽量贴合划痕。</td><td data-label="模型修复">破损跨越复杂纹理时值得比较，但可能改变细节。</td></tr>
+        <tr><th scope="row">挡住砖墙的路人</th><td data-label="传统方法">简单插值容易模糊；传统方法也有更复杂的纹理修复路线。</td><td data-label="模型修复">可能补出更连贯的砖块，但砖缝仍可能弯曲或重复错误。</td></tr>
+        <tr><th scope="row">文字压住眼睛或商品编号</th><td data-label="传统方法">缺失信息不足，难以准确恢复被遮住的真实内容。</td><td data-label="模型修复">看起来合理，也可能改了五官或数字；不能当成真实还原。</td></tr>
+      </tbody></table></div>
+      <div class="knowledge-callout"><strong>没有做同图对比，就不能判断“模型一定更好”。</strong><p>本页展示的是作者公开的模型样例，尚未在同一张图片、同一张遮罩上比较 FFmpeg、OpenCV 与该模型。这里给出选型思路，不提供成功率、速度或画质排名。</p></div>
+      <div class="knowledge-decision"><span>可采用的验证顺序</span><p><strong>真实样本与遮罩</strong><i aria-hidden="true">→</i><strong>传统方法做参照</strong><i aria-hidden="true">→</i><strong>模型修复作比较</strong><i aria-hidden="true">→</i><strong>按效果与成本选择</strong></p></div>
+      <p class="knowledge-note">两类工具可以组合：例如 FFmpeg 负责视频拆帧与合成，模型负责逐帧修复。但仅把图片修复重复运行，并不会自动解决视频里的位置变化和画面闪烁。</p>
+    </section>
+    <section id="runtime" class="section" aria-labelledby="runtime-heading">
+      <div class="section-heading"><div><span class="eyebrow">09 / MODEL & DEPLOYMENT</span><h2 id="runtime-heading">模型不大，环境仍需要准备。</h2></div><span class="section-aside">本机环境记录 · 2026-09-22</span></div>
+      <div class="runtime-banner"><div><strong>提供本地运行路径；当前展示页没有部署模型。</strong><p>官方样例文件已经保存在网页中。拖动分界线是在比较现成图片，不会触发模型计算，也不代表我们运行了远程服务器。</p></div><span class="runtime-badge">尚未本机推理</span></div>
+      <div class="runtime-grid">
+        <article><span class="micro">MODEL FILES / 文件体积</span><h3>这是一个专用图像修复模型。</h3><div class="model-numbers"><div><strong>≈ 120 MB</strong><small>模型数据文件</small></div><div><strong>≈ 186 MB</strong><small>整套检查点文件</small></div></div><p>来自仓库链接的模型分享页文件清单：数据、计算图、索引与检查点记录。采用十进制 MB；分享页分别显示约 114.4、62.9 MB，其换算采用二进制单位。</p><p><strong>文件体积 ≠ 显存需求。</strong>运行还要存放图片、中间特征和计算缓存；分辨率、网络结构和处理批量都会影响资源消耗。不能只凭“单一任务”判断模型大小。</p><p><a href="https://drive.google.com/drive/folders/1xRV4EdjJuAfsX9pQme6XeoFznKXG0ptJ" target="_blank" rel="noreferrer">查看上游模型目录 ↗</a></p></article>
+        <article><span class="micro">LOCAL READINESS / 实际运行条件</span><h3>当前障碍是旧环境适配。</h3><dl class="environment-list"><div><dt>本机硬件</dt><dd>RTX 4070 Laptop · 约 8 GB 显存</dd></div><div><dt>当前 Python</dt><dd>3.10.11；不是原项目所需的兼容环境</dd></div><div><dt>运行依赖</dt><dd>尚未安装 TensorFlow、neuralgym</dd></div><div><dt>模型状态</dt><dd>未下载权重，未验证加载、速度与画质</dd></div></dl><p>仓库固定 TensorFlow 1.15.5；官方该版本安装包面向 Python 3.6 / 3.7。需要隔离配置旧环境，或另行迁移实现。现代显卡能否顺利使用也要验证，8 GB 显存不是已经跑通的证明。</p><p><a href="https://pypi.org/project/tensorflow/1.15.5/#files" target="_blank" rel="noreferrer">TensorFlow 安装包依据 ↗</a></p></article>
+      </div>
+      <ol class="runtime-steps"><li>准备兼容环境与依赖，并下载完整的预训练文件。</li><li>先用一张图片和准确遮罩，验证权重能否加载、能否产生输出。</li><li>再测试复杂背景、大尺寸、批处理耗时与失败情况。</li><li>需要网页上传时，再开发后端接口、任务队列和结果下载。</li></ol>
+      <div class="runtime-notes">
+        <details><summary>需要服务器吗？有官方直接可用的服务吗？<span>+</span></summary><p>只在自己电脑上处理图片，可以本地执行，不必租服务器。给多人提供网页服务时，需要有运行模型的后端进程，可部署在自己的电脑或服务器上。仓库提供命令行与 Docker 说明，没有核实到可直接使用的官方上传服务；README 中 Colab 已明确标注 broken。Docker 是环境打包方式，不等于已有在线服务。<a href="https://github.com/zuruoke/watermark-removal#run" target="_blank" rel="noreferrer">查看运行说明 ↗</a></p></details>
+        <details><summary>TensorFlow、neuralgym 是模型本身吗？<span>+</span></summary><p>TensorFlow 是执行神经网络运算的框架；neuralgym 是作者使用的实验辅助工具箱，例如读取配置。网络代码规定结构，权重保存训练后的数值，项目程序串起读图、推理与保存。只安装两个软件库，还不会自动获得图像修复能力。<a href="#foundations">查看概念与职责对应 ↓</a></p></details>
+        <details><summary>我们现在证实了什么，还没有证实什么？<span>+</span></summary><p>已核对源码流程、依赖要求、模型分享页标注的文件大小与本机环境，并展示原作者公开样例。尚未下载权重或进行本机推理，也没有测试成功率、处理速度、显存占用，或同图比较 FFmpeg 与该模型。因此，网页展示不能作为本机部署成功或模型性能的证明。</p></details>
+      </div>
+    </section>
+    <section id="extensions" class="section knowledge-section" aria-labelledby="knowledge-extensions-title">
+      <div class="section-heading"><div><span class="eyebrow">EXTENSIONS / 能力怎样变成应用</span><h2 id="knowledge-extensions-title">扩展的起点，是找到值得修复的区域。</h2></div><span class="section-aside">6 个场景 · 明确额外工作</span></div>
+      <p class="knowledge-intro">以下是基于“图片＋遮罩 → 局部补全”的可参考方案，不是本库已经交付的完整功能。先验证样图，确认背景、边缘和主体能否达到你的要求，再投入开发。</p>
+      <div class="knowledge-group-heading"><span>A</span><div><h3>准备遮罩后，可以尝试同一种修复能力。</h3><p>共用图像补全模型，效果取决于遮挡范围、图像内容和遮罩质量。</p></div></div>
+      <div class="knowledge-extension-grid">
+        <article class="knowledge-extension"><div class="knowledge-extension-top"><span>01 / 商品拍摄</span><b>背景清理</b></div><h3>移除台面上的线头、支架或杂物。</h3><p>标出杂物，让模型补画周围台面。优先从纯色、简单纹理的摄影背景开始。</p><div class="knowledge-acceptance"><strong>验收重点</strong><span>商品轮廓不变，接触阴影自然，品牌文字与材质不被改写。</span></div></article>
+        <article class="knowledge-extension"><div class="knowledge-extension-top"><span>02 / 旧照整理</span><b>缺损修补</b></div><h3>清理扫描旧照片中的划痕与污点。</h3><p>用细遮罩覆盖损坏区域。传统修补与模型都可以试，原图保留用于对照。</p><div class="knowledge-acceptance"><strong>验收重点</strong><span>人脸与衣服细节是否改变；大面积缺失只能补出推测内容。</span></div></article>
+        <article class="knowledge-extension"><div class="knowledge-extension-top"><span>03 / 旅行记录</span><b>干扰物移除</b></div><h3>去掉沙滩上的小路人或地面杂物。</h3><p>逐个选区尝试，从遮挡少、可参考背景充分的照片开始，观察修复边缘。</p><div class="knowledge-acceptance"><strong>验收重点</strong><span>地平线、栏杆等是否连贯，是否出现重复纹理、模糊或残影。</span></div></article>
+      </div>
+      <div class="knowledge-group-heading knowledge-group-more"><span>B</span><div><h3>做成完整工具，需要增加处理环节。</h3><p>保留修复引擎，同时补上定位、编辑、任务管理或视频相关能力。</p></div></div>
+      <div class="knowledge-extension-grid">
+        <article class="knowledge-extension"><div class="knowledge-extension-top"><span>04 / 海报改版</span><b>另需文字排版</b></div><h3>清掉旧文案，再准确排入新文案。</h3><p>模型只补旧字下面的背景。新文字由排版程序写入，才能控制内容、字体、位置与清晰度。</p><div class="knowledge-acceptance"><strong>需要补充</strong><span>可手动选区；自动找文字需 OCR 或检测模块，本库未集成。</span></div></article>
+        <article class="knowledge-extension"><div class="knowledge-extension-top"><span>05 / 素材工作流</span><b>已有批处理入口</b></div><h3>把同一套处理规则用于一批图片。</h3><p>固定位置可复用遮罩；变化位置需逐图准备。仓库的批处理脚本可作为流程起点。</p><div class="knowledge-acceptance"><strong>需要补充</strong><span>任务队列、失败重试、前后对照与人工复核，不能默认每张都成功。</span></div></article>
+        <article class="knowledge-extension"><div class="knowledge-extension-top"><span>06 / 视频素材</span><b>另需视频方案</b></div><h3>处理会移动的标记、字幕或干扰物。</h3><p>除了逐帧修补，还要让遮罩跟随目标，并让相邻帧补出的内容保持连续。</p><div class="knowledge-acceptance"><strong>需要补充</strong><span>跟踪、遮罩传播、时序一致性与视频合成；本库未提供完整链路。</span></div></article>
+      </div>
+      <details class="knowledge-details"><summary>自动选区、扩图、按文字换物体，能直接得到吗？<span>+</span></summary><div class="knowledge-details-grid"><p><strong>自动选区：</strong>可另外研究文字检测、OCR 或 SAM 一类分割工具，用来提出候选区域。但“认出水印”和“把物体分出来”是不同问题，仍要检查选区；这里没有集成这些功能。</p><p><strong>扩图与指定内容：</strong>向画布外补画、把杯子换成花瓶、按文字指定风格，需要对应的模型和输入流程。这个库的入口没有文字提示控制，不能直接许诺这些效果。</p></div></details>
+      <article class="knowledge-business"><div><span class="chapter-label">ONE PRACTICAL IDEA / 一个可落地的起点</span><h3>做一个“商品背景清理台”。</h3><p>用户涂掉拍摄杂物，预览前后对比，满意后保存；再把通过验证的规则用于相似图片。</p></div><ol><li><strong>先选真实业务样本</strong><span>包含容易、困难和不应该自动修改的情况。</span></li><li><strong>做传统算法与模型对照</strong><span>同图、同遮罩，检查商品主体与背景质量。</span></li><li><strong>保留可修改与可退回的入口</strong><span>调整遮罩、重新处理、保留原图、确认后导出。</span></li><li><strong>记录实际节省的时间</strong><span>统计可接受结果、人工修正和处理成本。</span></li></ol></article>
+      <div class="knowledge-key knowledge-key-bottom"><span class="knowledge-kicker">真正可积累的价值</span><p><strong>选对场景、准备选区、稳定运行、检查结果。</strong>这些环节决定工具是否好用。可以先复用已有模型，不必为了做产品从头训练一个模型。</p></div>
+      <div class="knowledge-citations"><a data-source="batch_test.py" href="#sources">本库批处理入口 ↗</a><a href="https://github.com/facebookresearch/segment-anything" target="_blank" rel="noreferrer">SAM 分割工具参考 ↗</a><a href="https://huggingface.co/docs/diffusers/en/using-diffusers/inpaint" target="_blank" rel="noreferrer">文字控制修复的其他方案 ↗</a></div>
+    </section>
+    <section id="value" class="section">
+      <div class="section-heading"><div><span class="eyebrow">11 / IN PRACTICE</span><h2>对你而言，它更像哪一种工具？</h2></div></div>
+      <div class="value-grid"><article><span>01 / 素材处理</span><h3>固定模板，重复使用。</h3><p>如果你有一批水印位置统一的自有图片，可以制作一次遮罩，复用到批处理。先检查细小文字、边缘和重复纹理，再决定是否批量采用。</p><strong>价值来自节省重复修图时间</strong></article><article><span>02 / AI 学习</span><h3>把抽象概念，落到代码。</h3><p>从 main.py 开始，跟到预处理、网络和底层算子，能串起输入、特征、损失与输出之间的关系。</p><strong>适合作为图像修复的阅读样本</strong></article><article><span>03 / 产品开发</span><h3>有修复引擎，还缺完整体验。</h3><p>做成自己的工具，需要补充选区或水印检测、模型服务、批处理队列和结果检查。这个仓库提供其中的修复思路与推理入口。</p><strong>可用于原型验证，需额外工程投入</strong></article></div>
+      <div class="reality"><div><span class="micro">BEFORE YOU RUN</span><h3>运行成本，也要算进去。</h3></div><ul><li><strong>旧版依赖</strong><span>TensorFlow 1.15.5、neuralgym；现代环境需要适配。</span></li><li><strong>单独下载权重</strong><span>仓库提供外部链接；本研究未验证权重下载与模型推理。</span></li><li><strong>效果取决于样本</strong><span>本页没有提供速度、成功率或画质指标，示意不代表实测。</span></li></ul></div>
+      <div class="provenance-strip"><strong>个人项目封装，与底层研究成果分开判断。</strong><p>zuruoke / Chimzuruoke Okafor 维护的是个人账号下的项目，不能据此推定为某家公司的官方产品。它参考 Contextual Attention、Gated Convolution 等论文及实现；底层方法有论文依据，不等于这个封装库经过独立质量认证。<a href="https://github.com/JiahuiYu/generative_inpainting" target="_blank" rel="noreferrer">原论文作者实现 ↗</a> · <a href="https://github.com/zuruoke/watermark-removal" target="_blank" rel="noreferrer">当前封装库 ↗</a></p></div>
+      <div class="reading-recommendation"><strong>对自己的项目：先复用能力，把精力放在实际问题上。</strong><p>先用代表性样本比较传统算法和已有修复模型，再决定是否投入部署或训练。这个库适合学习工作原理、验证固定场景；业务价值还来自准确选区、批量处理、结果检查和方便的操作流程。接入预训练模型、继续训练、从零训练，是投入差异很大的三个选择。</p></div>
+    </section>
+    <section id="sources" class="section sources">
+      <div class="section-heading"><div><span class="eyebrow">12 / TRACEABLE SOURCES</span><h2>每一个原理，都能回到源码。</h2></div><span class="section-aside">源码核对 · 未运行模型</span></div>
+      <div class="source-list"><a data-source="main.py" href="#sources"><span>01</span><div><strong>main.py</strong><p>加载图片、配置、预训练权重与保存输出</p></div><b>↗</b></a><a data-source="preprocess_image.py" href="#sources"><span>02</span><div><strong>preprocess_image.py</strong><p>模板路径、宽高比检查与尺寸裁剪</p></div><b>↗</b></a><a data-source="inpaint_model.py" href="#sources"><span>03</span><div><strong>inpaint_model.py</strong><p>两阶段网络、遮罩合成、训练损失与推理图</p></div><b>↗</b></a><a data-source="inpaint_ops.py" href="#sources"><span>04</span><div><strong>inpaint_ops.py</strong><p>门控卷积、空洞卷积参数与上下文注意力</p></div><b>↗</b></a><a data-source="batch_test.py" href="#sources"><span>05</span><div><strong>batch_test.py</strong><p>逐张读取图片、遮罩和输出路径的批处理入口</p></div><b>↗</b></a><a data-source="Dockerfile" href="#sources"><span>06</span><div><strong>Dockerfile / 环境</strong><p>TensorFlow 1.15.5 与依赖安装方式</p></div><b>↗</b></a></div>
+      <div class="paper-links"><a href="https://arxiv.org/abs/1801.07892" target="_blank" rel="noreferrer">CVPR 2018 · Contextual Attention ↗</a><a href="https://arxiv.org/abs/1806.03589" target="_blank" rel="noreferrer">ICCV 2019 · Gated Convolution ↗</a></div>
+      <p class="source-note">原项目：Chimzuruoke Okafor / zuruoke。核对提交：<code>902dc1a268d2</code>。真实照片区采用 DeepFill 原作者公开样例，插画与注意力数值属于教学设计；本页未加载或调用模型。两个来源分别标注，DeepFill 样例按其 CC BY-NC 4.0 许可引用。watermark-removal 仓库未发现 LICENSE 文件，其代码与权重复用许可需另行确认。</p>
+    </section>
+    <footer><a class="brand footer-brand" href="#overview"><span class="brand-icon">▧</span>Watermark Removal</a><span>理解能力 · 看清原理 · 判断价值</span><a href="#overview">回到顶部 ↑</a></footer>
+  </main>
+  <noscript><p class="noscript">请启用 JavaScript 以使用步骤演示。能力、原理、应用与源码说明仍可直接阅读。</p></noscript>
+</body>
+</html>

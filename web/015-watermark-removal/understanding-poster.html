@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1600, initial-scale=1">
+  <title>一张图，读懂图像修复</title>
+  <style>
+    :root{--paper:#f6f5f0;--white:#fffefa;--ink:#242a27;--muted:#6c736c;--line:#dcdfd4;--orange:#c94b28;--green:#456754;--pale:#eeeae0}
+    *{box-sizing:border-box}html,body{margin:0;width:1600px;min-width:1600px;background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei","Segoe UI",sans-serif}a{color:inherit;text-decoration:none}h1,h2,h3,p,figure{margin:0}strong{font-weight:700}svg{display:block}
+    .poster{width:1600px;height:2240px;padding:72px;display:grid;grid-template-rows:208px 520px 342px 324px 392px 170px;gap:28px;overflow:hidden}
+    .eyebrow{display:flex;align-items:center;gap:13px;font-size:16px;letter-spacing:2px;color:var(--green)}.dot{width:12px;height:12px;border-radius:50%;background:var(--orange)}.eyebrow span:last-child{margin-left:auto;letter-spacing:1px;color:var(--muted);font-size:14px}
+    h1{font-size:76px;font-weight:700;letter-spacing:-3px;line-height:1.2;margin:18px 0 17px}h1 em{font-style:normal;color:var(--orange)}.hero-bottom{display:flex;align-items:center;gap:30px}.lead{font-size:28px;font-weight:600}.hero-tag{border-left:1px solid var(--line);padding-left:30px;color:var(--muted);font-size:20px;line-height:1.5}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:19px;padding:28px 30px;min-width:0}.section-title{display:flex;align-items:baseline;gap:13px;margin-bottom:21px}.section-title .number{color:var(--orange);font-size:16px;font-family:Consolas,monospace}.section-title h2{font-size:27px;line-height:1.2;letter-spacing:-.5px}.section-title small{font-size:17px;font-weight:400;color:var(--muted);margin-left:auto}.tag{display:inline-block;padding:5px 10px;border-radius:5px;font-size:15px;font-weight:500;background:#eaf0e5;color:var(--green)}.tag.orange{color:var(--orange);background:#f8ece1}.muted{color:var(--muted)}
+    .first-row{display:grid;grid-template-columns:565px 1fr;gap:28px}.facts{padding:31px 32px;background:#e9ede3;border-color:#d6dfcc}.facts h3{font-size:36px;line-height:1.5;margin:22px 0 16px}.facts h3 span{color:var(--green)}.facts .body{font-size:23px;line-height:1.8}.capability-tags{display:flex;gap:9px;flex-wrap:wrap;margin:19px 0 22px}.capability-tags span{font-size:18px;border:1px solid #c7d2bf;border-radius:40px;padding:7px 15px}.boundary{border-top:1px solid #ccd6c5;padding-top:18px;font-size:20px;color:#52634f;line-height:1.65}.boundary strong{color:var(--ink)}
+    .sample .section-title{margin-bottom:19px}.sample .section-title small{font-size:14px}.photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}.photos img{display:block;width:100%;aspect-ratio:680 / 512;object-fit:contain;border-radius:8px;background:#e6e8df}.photos figcaption{display:flex;justify-content:space-between;align-items:center;font-size:19px;margin-top:11px}.photos figcaption span{font-size:15px;color:var(--muted)}.sample .observation{font-size:19px;line-height:1.65;margin-top:17px;color:var(--muted)}.sample .observation strong{color:var(--ink)}
+    .structure{padding-top:25px}.structure .section-title{margin-bottom:17px}.ingredients{display:flex;align-items:center;font-size:22px;gap:22px;margin:0 0 20px}.ingredients .plus{color:#a8ae9e;font-size:25px}.ingredients small{font-size:17px;color:var(--muted);margin-left:7px}.network-flow{display:grid;grid-template-columns:210px 34px 282px 34px 455px 34px 1fr;align-items:center;gap:9px}.network-node{height:142px;border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:#f7f7f1}.network-node h3{font-size:22px;margin-bottom:10px}.network-node p{font-size:18px;line-height:1.6;color:var(--muted)}.network-node.input{border-style:dashed;background:#fffefa}.network-node.refine{background:#edf1e8;border-color:#cfdbc6}.network-node.output{background:#f7ebe0;border-color:#ebd5c2}.network-node.refine p strong{font-weight:600;color:var(--green)}.arrow{font-size:31px;color:#939d8e;text-align:center}.structure-note{margin-top:15px;font-size:16px;color:var(--muted)}
+    .middle-row{display:grid;grid-template-columns:1fr 1fr;gap:28px}.training .section-title,.runtime .section-title{margin-bottom:22px}.training-chain{display:flex;align-items:center;gap:10px;font-size:19px;padding:18px 16px;background:#f0f2e9;border-radius:8px;white-space:nowrap}.training-chain .arrow{font-size:22px;color:var(--green)}.train-notes{margin-top:18px;display:grid;gap:12px}.train-notes p{font-size:21px;line-height:1.55}.train-notes strong{color:var(--green)}.train-notes span{display:inline-block;width:62px;font-size:17px;color:var(--muted)}
+    .runtime-numbers{display:flex;gap:35px;align-items:baseline;margin-top:-3px}.runtime-numbers strong{font-size:44px;font-family:"Segoe UI",sans-serif;color:var(--orange);line-height:1.1}.runtime-numbers strong small{font-size:22px;margin-left:3px;font-weight:500}.runtime-numbers p{font-size:16px;color:var(--muted);margin-top:5px}.runtime-detail{font-size:18px;line-height:1.8;margin-top:17px}.runtime-detail b{font-weight:600}.runtime-status{border-top:1px solid var(--line);padding-top:13px;margin-top:12px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:16px}
+    .extension{padding-top:26px}.extension .section-title{margin-bottom:22px}.extensions-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px}.extension-item{border-left:3px solid #d0d9c7;padding-left:21px}.extension-item .tag{margin-bottom:14px}.extension-item h3{font-size:24px;line-height:1.5;margin-bottom:10px}.extension-item p{font-size:19px;line-height:1.7;color:var(--muted)}.extension-item.more{border-color:#e2bda6}.decision{margin-top:24px;border-top:1px solid var(--line);padding-top:19px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.decision h3{font-size:19px;color:var(--green);margin-bottom:5px}.decision p{font-size:17px;line-height:1.65;color:var(--muted)}
+    .footer{border-top:2px solid var(--ink);padding-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:40px}.footer h2{font-size:38px;line-height:1.35;letter-spacing:-1px}.footer h2 span{color:var(--orange)}.footer .takeaway{font-size:20px;color:var(--muted);margin-top:13px}.provenance{padding-top:5px}.provenance p{font-size:17px;line-height:1.65;color:var(--muted)}.provenance p strong{color:var(--ink)}.source-links{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;color:var(--green)}.source-links a{border-bottom:1px solid #c5d0be;padding-bottom:2px}.credit{margin-top:11px;font-size:13px;color:var(--muted)}
+    .export-controls{position:fixed;right:20px;bottom:20px;z-index:20;display:flex;align-items:center;gap:14px;max-width:680px;padding:14px 18px;background:#fffefa;border:1px solid var(--line);border-radius:12px;box-shadow:0 7px 28px #242a2720;font-size:14px}.export-controls button{border:0;border-radius:6px;background:var(--green);color:white;font:inherit;padding:10px 16px;cursor:pointer;white-space:nowrap}.export-controls button:disabled{opacity:.55;cursor:wait}.export-controls a{color:var(--orange);font-weight:600;white-space:nowrap}.export-controls [hidden]{display:none}.export-controls span{color:var(--muted);font-size:13px;max-width:300px}
+    @media print{@page{size:1600px 2240px;margin:0}html,body{print-color-adjust:exact;-webkit-print-color-adjust:exact}.poster{break-inside:avoid}.export-controls{display:none}}
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="图像修复能力、原理与扩展知识海报">
+    <header>
+      <div class="eyebrow"><i class="dot"></i> WATERMARK REMOVAL · 理解地图 <span>015 / KNOWLEDGE MAP</span></div>
+      <h1>一张图，读懂<em>图像修复</em></h1>
+      <div class="hero-bottom"><p class="lead">指定区域 → 神经网络补画 → 合成结果</p><p class="hero-tag">专用视觉模型<br>已有权重即可推理，无需重新训练</p></div>
+    </header>
+
+    <div class="first-row">
+      <section class="card facts">
+        <div class="section-title"><span class="number">01</span><h2>它真正会做什么</h2></div>
+        <h3>多个用途，<br><span>同一种局部补全能力。</span></h3>
+        <p class="body">指定待修区域，<br>参考周围信息补全。</p>
+        <div class="capability-tags"><span>去水印</span><span>去杂物</span><span>补划痕</span></div>
+        <p class="boundary"><strong>能力边界</strong>　需先指定区域；<br>不自带通用水印识别或文字指令编辑。</p>
+      </section>
+      <section class="card sample">
+        <div class="section-title"><span class="number">02</span><h2>真实样例，观察效果</h2><small>原作者公开样例｜非本机推理</small></div>
+        <div class="photos">
+          <figure><img src="./samples/case1_raw.png" alt="原作者样例原图，海滩照片带有文字和栏杆"><figcaption>处理前 <span>文字＋局部遮挡</span></figcaption></figure>
+          <figure><img src="./samples/case1_output.png" alt="原作者发布的修复输出，指定文字和栏杆区域被填补"><figcaption>官方输出 <span>重新生成局部内容</span></figcaption></figure>
+        </div>
+        <p class="observation"><strong>观察细节：</strong>海浪边缘可能变软。<br>效果展示不等于本地复现。</p>
+      </section>
+    </div>
+
+    <section class="card structure">
+      <div class="section-title"><span class="number">03</span><h2>神经网络怎样“补画”</h2><small>DeepFill 系列图像补全思路</small></div>
+      <div class="ingredients"><strong>网络结构</strong><small>计算步骤</small><b class="plus">＋</b><strong>预训练权重</strong><small>学到的数值</small><b class="plus">＋</b><strong>计算工具</strong><small>执行运算</small></div>
+      <div class="network-flow">
+        <div class="network-node input"><h3>图片＋区域图</h3><p>遮住待修部分<br>保留周围信息</p></div><span class="arrow">→</span>
+        <div class="network-node"><h3>① 粗修</h3><p>先生成大致布局<br>与颜色、结构</p></div><span class="arrow">→</span>
+        <div class="network-node refine"><h3>② 精修</h3><p><strong>门控卷积</strong>：学习筛选可用特征<br><strong>上下文注意力</strong>：参考可见纹理</p></div><span class="arrow">→</span>
+        <div class="network-node output"><h3>合成输出</h3><p>填入指定区域<br>保留其他像素</p></div>
+      </div>
+      <p class="structure-note">两阶段均采用门控卷积。TensorFlow 执行计算；neuralgym 提供配置等辅助功能。</p>
+    </section>
+
+    <div class="middle-row">
+      <section class="card training">
+        <div class="section-title"><span class="number">04</span><h2>训练 ≠ 推理</h2></div>
+        <div class="training-chain"><b>完整图片</b><span class="arrow">→</span><b>随机遮挡</b><span class="arrow">→</span><b>补画</b><span class="arrow">→</span><b>比较误差 ↺</b></div>
+        <div class="train-notes"><p><span>训练</span><strong>反复调整权重</strong>，学习补全规律。</p><p><span>推理</span><strong>固定已有权重</strong>，计算新图片结果。</p><p class="muted">流程易懂；数据、细节与泛化仍有难度。</p></div>
+      </section>
+      <section class="card runtime">
+        <div class="section-title"><span class="number">05</span><h2>环境仍需适配</h2></div>
+        <div class="runtime-numbers"><div><strong>≈120<small>MB</small></strong><p>模型数据文件</p></div><div><strong>≈186<small>MB</small></strong><p>整套 checkpoint 文件</p></div></div>
+        <p class="runtime-detail">文件体积<strong>不等于运行显存</strong>，分辨率影响资源需求。<br><b>TensorFlow 1.15.5</b> 属于旧环境，需隔离适配。</p>
+        <div class="runtime-status"><span>本地部署</span><span class="tag orange">尚未完成本机模型运行</span></div>
+      </section>
+    </div>
+
+    <section class="card extension">
+      <div class="section-title"><span class="number">06</span><h2>怎样变成自己的工具</h2><small>先验证业务图片，再决定是否训练</small></div>
+      <div class="extensions-grid">
+        <article class="extension-item"><span class="tag">同类能力 · 可尝试</span><h3>照片与商品图清理</h3><p>去路人、杂物、日期、划痕。<br>效果需逐图检查。</p></article>
+        <article class="extension-item"><span class="tag">组合模块 · 再扩展</span><h3>自动识别与批量工作流</h3><p>加检测 / OCR / 分割来找区域；<br>加队列、预览、人工修正做产品。</p></article>
+        <article class="extension-item more"><span class="tag orange">需要额外能力</span><h3>视频与文字指令编辑</h3><p>视频需跟踪与时序一致性；<br>按文字替换内容需合适的模型。</p></article>
+      </div>
+      <div class="decision"><div><h3>传统方法也有位置</h3><p>FFmpeg、OpenCV 可处理小缺口和简单背景。<br>插值与传统修复，并非只有模糊。</p></div><div><h3>这个库的参考价值</h3><p>学习模型接入、区域处理与结果合成；<br>从已有模型起步，做好使用流程。</p></div></div>
+    </section>
+
+    <footer class="footer">
+      <div><h2>视觉自然 <span>≠ 恢复真实像素</span></h2><p class="takeaway">它生成合理的内容，不保证还原被遮挡的事实。</p></div>
+      <div class="provenance"><p><strong>个人封装库 ≠ 原创论文官方项目</strong><br>zuruoke 的使用封装，参考 Jiahui Yu 等人的底层研究。</p><div class="source-links"><a href="https://github.com/zuruoke/watermark-removal">watermark-removal ↗</a><a href="https://github.com/JiahuiYu/generative_inpainting">DeepFill 代码与样例 ↗</a><a href="https://ffmpeg.org/ffmpeg-filters.html#delogo">FFmpeg ↗</a><a href="https://docs.opencv.org/4.x/df/d3d/tutorial_py_inpainting.html">OpenCV ↗</a></div><div class="credit">样例：Jiahui Yu 等 · CC BY-NC 4.0 · 教学整理 / 2026.09</div></div>
+    </footer>
+  </main>
+  <aside class="export-controls" aria-label="海报导出工具">
+    <button id="poster-export" type="button">生成高清 PNG</button>
+    <span id="poster-export-status" role="status" aria-live="polite">1600 × 2240 px · 保留文字和原图比例</span>
+    <a id="poster-download" download="watermark-removal-understanding.png" hidden>下载 PNG ↓</a>
+  </aside>
+  <script>
+    (() => {
+      const button = document.getElementById('poster-export');
+      const status = document.getElementById('poster-export-status');
+      const download = document.getElementById('poster-download');
+      const width = 1600;
+      const height = 2240;
+
+      button.addEventListener('click', async () => {
+        button.disabled = true;
+        download.hidden = true;
+        download.removeAttribute('href');
+        status.textContent = '正在生成高清海报…';
+        try {
+          await document.fonts.ready;
+          const poster = document.querySelector('.poster');
+          const originalImages = [...poster.querySelectorAll('img')];
+          await Promise.all(originalImages.map(image => image.decode()));
+          const clone = poster.cloneNode(true);
+          const clonedImages = [...clone.querySelectorAll('img')];
+
+          originalImages.forEach((original, index) => {
+            if (!original.naturalWidth || !original.naturalHeight) {
+              throw new Error('样例图片尚未加载完成，请刷新后重试。');
+            }
+            const imageCanvas = document.createElement('canvas');
+            imageCanvas.width = original.naturalWidth;
+            imageCanvas.height = original.naturalHeight;
+            const imageContext = imageCanvas.getContext('2d');
+            if (!imageContext) throw new Error('浏览器暂不支持图片导出。');
+            imageContext.drawImage(original, 0, 0);
+            clonedImages[index].setAttribute('src', imageCanvas.toDataURL('image/png'));
+            clonedImages[index].removeAttribute('srcset');
+            clonedImages[index].removeAttribute('loading');
+          });
+
+          const wrapper = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+          wrapper.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+          wrapper.setAttribute('class', 'poster-export-root');
+          const style = document.createElementNS('http://www.w3.org/1999/xhtml', 'style');
+          style.textContent = [...document.querySelectorAll('head style')]
+            .map(element => element.textContent).join('\n') + `
+              .poster-export-root {
+                --paper:#f6f5f0;--white:#fffefa;--ink:#242a27;--muted:#6c736c;
+                --line:#dcdfd4;--orange:#c94b28;--green:#456754;--pale:#eeeae0;
+                display:block;width:${width}px;height:${height}px;margin:0;padding:0;
+                background:var(--paper);color:var(--ink);overflow:visible;
+                font-family:"Microsoft YaHei","Segoe UI",sans-serif;
+              }
+            `;
+          wrapper.append(style, clone);
+          const markup = new XMLSerializer().serializeToString(wrapper);
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><foreignObject x="0" y="0" width="${width}" height="${height}">${markup}</foreignObject></svg>`;
+          const rendered = new Image();
+          await new Promise((resolve, reject) => {
+            rendered.onload = resolve;
+            rendered.onerror = () => reject(new Error('浏览器未能渲染海报，请重试。'));
+            rendered.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+          });
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const context = canvas.getContext('2d');
+          if (!context) throw new Error('浏览器暂不支持海报导出。');
+          context.fillStyle = '#f6f5f0';
+          context.fillRect(0, 0, width, height);
+          context.drawImage(rendered, 0, 0, width, height);
+          download.href = canvas.toDataURL('image/png');
+          download.hidden = false;
+          status.textContent = `生成成功 · ${width} × ${height} px`;
+        } catch (error) {
+          status.textContent = `生成失败：${error.message || '请稍后重试。'}`;
+        } finally {
+          button.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

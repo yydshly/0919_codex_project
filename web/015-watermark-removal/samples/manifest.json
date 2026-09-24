@@ -1,0 +1,154 @@
+{
+  "source_repository": "https://github.com/JiahuiYu/generative_inpainting",
+  "commit": "3a5324373ba52c68c79587ca183bc10b9e57b783",
+  "retrieved_on": "2026-09-22",
+  "provenance": "Official DeepFill v2 published examples. Not local inference with zuruoke/watermark-removal.",
+  "license": "CC BY-NC 4.0",
+  "modifications": "None. Original PNG bytes are preserved. Browser scales or clips for comparison.",
+  "files": [
+    {
+      "name": "case1_raw.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "da87f24efa71594f4aa899cefe354f0df16f38790c02c26f6eb2c4dc850d659c",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case1_raw.png"
+    },
+    {
+      "name": "case1_input.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "78fcc169cc6c004c947ebe0ecd4e6a4d5528b6ea731666cb47db1cf363a9bae7",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case1_input.png"
+    },
+    {
+      "name": "case1_mask.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "a1b2522bfc8956779d83db5962335e4a57e79831fa48553b68dfdd0a53c58408",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case1_mask.png"
+    },
+    {
+      "name": "case1_output.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "c734b95523696266516fd77655a98f7ebfa4d2c502dedd4d957884a1c1884943",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case1_output.png"
+    },
+    {
+      "name": "case2_raw.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "f77786d18bf4222601b8ec6be35af44ccc0a93346700a3c4c067f43d20356e34",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case2_raw.png"
+    },
+    {
+      "name": "case2_input.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "e6caeef5b722becb06f9b766c2901f37077254909711e2b8ad5a8fa212191097",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case2_input.png"
+    },
+    {
+      "name": "case2_mask.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "564ab8f21634ab9fa8b6213274f24e2e75247f639db2456135594f77eb50995d",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case2_mask.png"
+    },
+    {
+      "name": "case2_output.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "ca596711a175979b26b9f3eeaed91aebac88de5b312e1d481daa9c9747c58910",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case2_output.png"
+    },
+    {
+      "name": "case3_raw.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "9cd409a4abf767c8712ef9ed879134148f3bed8d45c042392c5ee1089fdada5d",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case3_raw.png"
+    },
+    {
+      "name": "case3_input.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "3b62117c5179bf21732a841d2ceea3b92c810ebc4db9b02053a3946ddd387b70",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case3_input.png"
+    },
+    {
+      "name": "case3_mask.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "dd599bc674a8d33ae31fb56311d56ba497b14332a96dad578d48afc86abcaee9",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case3_mask.png"
+    },
+    {
+      "name": "case3_output.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "3c595148b401df9843c39a54970895cb1a9d23fb366fac4f42d5b256956208aa",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case3_output.png"
+    },
+    {
+      "name": "case4_raw.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "59c19247be47745dc3845fed500880f917d336ee40a4bfb0c55287e5c5d193da",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case4_raw.png"
+    },
+    {
+      "name": "case4_input.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "cde133ee5e4c89fa8e0e0c2b39e2513a9b102cb4df63cbbce30e57076159f244",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case4_input.png"
+    },
+    {
+      "name": "case4_mask.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "d98d673a614e151d5c3247724cf5a6fd140ba164246593b041d261af56ac4eb3",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case4_mask.png"
+    },
+    {
+      "name": "case4_output.png",
+      "size": [
+        680,
+        512
+      ],
+      "sha256": "a35ab14c24843a08d969b3d0d5a6eb37c5e725d1d0fac578527fabde05dcdc92",
+      "source": "https://github.com/JiahuiYu/generative_inpainting/blob/3a5324373ba52c68c79587ca183bc10b9e57b783/examples/places2/case4_output.png"
+    }
+  ]
+}
