@@ -45,6 +45,10 @@
 
 [在线展示页](https://yydshly.github.io/0919_codex_project/010-ziwei-doushu/)记录源库真实排盘效果。原库以前端排盘展示为主，缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限，不再深入研究。构建：`python projects/010-ziwei-doushu/scripts/build_web.py`。
 
+## 012 · TREK 旅行管理与城市导览研究
+
+[研究总览](012-trek/)以专门生成的高清全景图作引导，解释 TREK 的地点、地图、行程、路线与费用协作，以及 React/NestJS/SQLite 和地点、道路服务的分工。页面汇集原版实测、V1 研究摘要、D0 设计讨论、E1 地理布局和 E2 素材合成实验。构建：`python projects/012-trek/scripts/build_web.py`。公开站点只提供静态研究效果；本机 TREK 服务、数据库、适配后端和旧城市插画不发布。
+
 ## 016 · Pireel 视频编辑能力全览
 
 源码在 `projects/016-pireel/`，执行 `npm ci` 和 `npm run build:web` 输出到 `web/016-pireel/`。[在线能力页](https://yydshly.github.io/0919_codex_project/016-pireel/)以全景图引导，说明素材与效果、依赖、原理和场景，附原版 45 秒剪成 28 秒的成片对照。另有浏览器内组件实验。完整原版工作台只在本机运行；AI 与云服务未配置。[发布记录](../projects/016-pireel/notes/publication.md)。

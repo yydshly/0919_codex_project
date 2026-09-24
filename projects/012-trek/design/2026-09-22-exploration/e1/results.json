@@ -1,0 +1,441 @@
+{
+  "experiment": "E1",
+  "checkedAt": "2026-09-22T11:44:52.651Z",
+  "status": "passed-for-layout-consistency-only",
+  "baseline": {
+    "path": "../data/baseline-places.json",
+    "sha256": "7b363a3a44d8dc94c75851683d82ae313216d889a9eaf71dd422052da4d94dd3"
+  },
+  "projectionBenchmarks": {
+    "bell-tower": {
+      "x": 215.224801077,
+      "y": 112.518301689
+    },
+    "drum-tower": {
+      "x": -106.431462542,
+      "y": 196.337153168
+    },
+    "pagoda": {
+      "x": 1785.274974694,
+      "y": -4470.398049645
+    },
+    "terracotta": {
+      "x": 31032.753001387,
+      "y": 14162.105645259
+    }
+  },
+  "independentDistanceReference": {
+    "method": "spherical haversine",
+    "radiusMeters": 6371008.8,
+    "distances": [
+      {
+        "from": "bell-tower",
+        "to": "drum-tower",
+        "meters": 332.393,
+        "bearingDegrees": 284.606832
+      },
+      {
+        "from": "bell-tower",
+        "to": "pagoda",
+        "meters": 4844.515,
+        "bearingDegrees": 161.08028
+      },
+      {
+        "from": "bell-tower",
+        "to": "terracotta",
+        "meters": 33847.587,
+        "bearingDegrees": 65.380946
+      }
+    ],
+    "limitation": "Straight-line reference from frozen coordinates; not a road route, travel time, or verified entrance."
+  },
+  "normal": {
+    "continuous": {
+      "pass": true,
+      "checks": [
+        {
+          "id": "input",
+          "label": "输入格式与来源记录",
+          "pass": true,
+          "detail": "四点坐标系和中心点含义已登记；外部事实未重新核实"
+        },
+        {
+          "id": "layout",
+          "label": "布局画布与方案",
+          "pass": true,
+          "detail": "画布 1200 × 720；只审计已定义的实验方案"
+        },
+        {
+          "id": "projection",
+          "label": "投影参数一致",
+          "pass": true,
+          "detail": "所有图幅共享输入声明的局部投影；每图幅独立等比缩放"
+        },
+        {
+          "id": "identity",
+          "label": "四点主图完整且唯一",
+          "pass": true,
+          "detail": "主图节点 4 个；定位小图的重复表达单独登记"
+        },
+        {
+          "id": "scale",
+          "label": "各图幅等比缩放",
+          "pass": true,
+          "detail": "X/Y 共用一个比例因子，剩余空间留白"
+        },
+        {
+          "id": "range",
+          "label": "坐标与图幅范围",
+          "pass": true,
+          "detail": "无丢点、越界、非有限值或静默裁切"
+        },
+        {
+          "id": "anchors",
+          "label": "投影锚点保持",
+          "pass": true,
+          "detail": "相对计算锚点最大偏移 0.000000 px；该结果只证明布局自洽"
+        },
+        {
+          "id": "directions",
+          "label": "约定方向关系",
+          "pass": true,
+          "detail": "每组只在同一图幅比较；分图中的全域关系使用定位小图"
+        }
+      ],
+      "minSeparationPx": 8.859269573635519,
+      "collisions": [
+        {
+          "frameId": "continuous",
+          "a": "bell-tower",
+          "b": "drum-tower"
+        }
+      ],
+      "maxAnchorErrorPx": 0,
+      "directions": [
+        {
+          "from": "bell-tower",
+          "to": "drum-tower",
+          "label": "鼓楼在钟楼西偏北",
+          "east": -1,
+          "north": 1,
+          "frameId": "continuous",
+          "pass": true,
+          "actual": {
+            "east": -1,
+            "north": 1
+          }
+        },
+        {
+          "from": "bell-tower",
+          "to": "pagoda",
+          "label": "大雁塔在钟楼南偏东",
+          "east": 1,
+          "north": -1,
+          "frameId": "continuous",
+          "pass": true,
+          "actual": {
+            "east": 1,
+            "north": -1
+          }
+        },
+        {
+          "from": "bell-tower",
+          "to": "terracotta",
+          "label": "兵马俑在钟楼东北",
+          "east": 1,
+          "north": 1,
+          "frameId": "continuous",
+          "pass": true,
+          "actual": {
+            "east": 1,
+            "north": 1
+          }
+        }
+      ]
+    },
+    "split": {
+      "pass": true,
+      "checks": [
+        {
+          "id": "input",
+          "label": "输入格式与来源记录",
+          "pass": true,
+          "detail": "四点坐标系和中心点含义已登记；外部事实未重新核实"
+        },
+        {
+          "id": "layout",
+          "label": "布局画布与方案",
+          "pass": true,
+          "detail": "画布 1200 × 720；只审计已定义的实验方案"
+        },
+        {
+          "id": "projection",
+          "label": "投影参数一致",
+          "pass": true,
+          "detail": "所有图幅共享输入声明的局部投影；每图幅独立等比缩放"
+        },
+        {
+          "id": "identity",
+          "label": "四点主图完整且唯一",
+          "pass": true,
+          "detail": "主图节点 4 个；定位小图的重复表达单独登记"
+        },
+        {
+          "id": "scale",
+          "label": "各图幅等比缩放",
+          "pass": true,
+          "detail": "X/Y 共用一个比例因子，剩余空间留白"
+        },
+        {
+          "id": "range",
+          "label": "坐标与图幅范围",
+          "pass": true,
+          "detail": "无丢点、越界、非有限值或静默裁切"
+        },
+        {
+          "id": "anchors",
+          "label": "投影锚点保持",
+          "pass": true,
+          "detail": "相对计算锚点最大偏移 0.000000 px；该结果只证明布局自洽"
+        },
+        {
+          "id": "directions",
+          "label": "约定方向关系",
+          "pass": true,
+          "detail": "每组只在同一图幅比较；分图中的全域关系使用定位小图"
+        }
+      ],
+      "minSeparationPx": 103.96667079024614,
+      "collisions": [],
+      "maxAnchorErrorPx": 0,
+      "directions": [
+        {
+          "from": "bell-tower",
+          "to": "drum-tower",
+          "label": "鼓楼在钟楼西偏北",
+          "east": -1,
+          "north": 1,
+          "frameId": "city",
+          "pass": true,
+          "actual": {
+            "east": -1,
+            "north": 1
+          }
+        },
+        {
+          "from": "bell-tower",
+          "to": "pagoda",
+          "label": "大雁塔在钟楼南偏东",
+          "east": 1,
+          "north": -1,
+          "frameId": "locator",
+          "pass": true,
+          "actual": {
+            "east": 1,
+            "north": -1
+          }
+        },
+        {
+          "from": "bell-tower",
+          "to": "terracotta",
+          "label": "兵马俑在钟楼东北",
+          "east": 1,
+          "north": 1,
+          "frameId": "locator",
+          "pass": true,
+          "actual": {
+            "east": 1,
+            "north": 1
+          }
+        }
+      ]
+    }
+  },
+  "enlargedFootprintDiagnostic": {
+    "footprint": 120,
+    "geographicConsistencyPass": true,
+    "collisions": [
+      {
+        "frameId": "city",
+        "a": "bell-tower",
+        "b": "drum-tower"
+      }
+    ]
+  },
+  "faultCases": [
+    {
+      "id": "flip-drum-continuous",
+      "detected": true,
+      "failedChecks": [
+        "anchors",
+        "directions"
+      ],
+      "maxAnchorErrorPx": 953.9701977955557
+    },
+    {
+      "id": "flip-drum-split",
+      "detected": true,
+      "failedChecks": [
+        "anchors",
+        "directions"
+      ],
+      "maxAnchorErrorPx": 379.30346567148734
+    },
+    {
+      "id": "scale-continuous",
+      "detected": true,
+      "failedChecks": [
+        "scale",
+        "anchors"
+      ]
+    },
+    {
+      "id": "scale-split",
+      "detected": true,
+      "failedChecks": [
+        "scale",
+        "anchors"
+      ]
+    }
+  ],
+  "rejectionCases": [
+    {
+      "id": "swapped-coordinates",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "missing-crs",
+      "rejected": true,
+      "codes": [
+        "CRS"
+      ]
+    },
+    {
+      "id": "mixed-gcj02",
+      "rejected": true,
+      "codes": [
+        "CRS"
+      ]
+    },
+    {
+      "id": "missing-id",
+      "rejected": true,
+      "codes": [
+        "ID",
+        "UNEXPECTED_ID",
+        "ROLE",
+        "MISSING_ID"
+      ]
+    },
+    {
+      "id": "missing-place",
+      "rejected": true,
+      "codes": [
+        "MISSING_ID",
+        "PLACE_COUNT"
+      ]
+    },
+    {
+      "id": "duplicate-id",
+      "rejected": true,
+      "codes": [
+        "DUPLICATE_ID",
+        "MISSING_ID"
+      ]
+    },
+    {
+      "id": "unknown-role",
+      "rejected": true,
+      "codes": [
+        "ROLE"
+      ]
+    },
+    {
+      "id": "center-as-entrance",
+      "rejected": true,
+      "codes": [
+        "ROLE"
+      ]
+    },
+    {
+      "id": "missing-source",
+      "rejected": true,
+      "codes": [
+        "SOURCE"
+      ]
+    },
+    {
+      "id": "null-latitude",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "string-longitude",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "empty-latitude",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "nan-coordinate",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "infinite-coordinate",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "boolean-coordinate",
+      "rejected": true,
+      "codes": [
+        "COORDINATE"
+      ]
+    },
+    {
+      "id": "outside-region",
+      "rejected": true,
+      "codes": [
+        "OUTSIDE_REGION"
+      ]
+    },
+    {
+      "id": "invalid-bounds",
+      "rejected": true,
+      "codes": [
+        "REGION"
+      ]
+    },
+    {
+      "id": "invalid-projection",
+      "rejected": true,
+      "codes": [
+        "PROJECTION"
+      ]
+    }
+  ],
+  "boundary": {
+    "externalGeographicFacts": "not-reverified",
+    "entranceCoordinates": "unknown",
+    "artworkAppearance": "not-tested",
+    "labelCollision": "browser-rendered labels need separate inspection; occupancy squares are not label boxes",
+    "roadRouting": "not-tested"
+  }
+}

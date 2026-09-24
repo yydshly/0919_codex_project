@@ -1,0 +1,61 @@
+{
+  "recordedAt": "2026-09-22",
+  "method": "built-in image_gen",
+  "model": null,
+  "modelNote": "工具未公开具体模型版本，未猜填。",
+  "prompts": [
+    {
+      "id": "bell-tower",
+      "prompt": "Use case: style-transfer. Asset type: a single landmark cutout for an experimental illustrated guide to Xi'an. Input image 1 is an architectural photo REFERENCE, not a style reference. Transform the photographed Xi'an Bell Tower into a faithful, elegant miniature architectural illustration on a genuinely transparent background. Keep the reference identity: compact approximately square grey brick podium with visible arched tunnel openings, red timber building above it, THREE clearly distinct sweeping green glazed roof/eave tiers, compact pyramidal top roof with central finial, pale stone balustrade. Preserve the proportions and recognizable roof silhouette of this specific building; do not replace it with a generic Chinese temple or elongate it into Xi'an Drum Tower. Style: refined hand-painted architectural travel-atlas miniature, softly textured gouache/watercolor, restrained jade green roofs, warm clay red columns, pale sandstone-grey masonry, crisp readable contours, soft neutral daylight. View: three-quarter elevated view consistent with the photo, entire isolated tower including base visible, centered occupying 78 percent of a square canvas with generous transparent margin, grounded miniature, slight soft contact shadow only. No skyline, roads, vehicles, people, landscaping, extra buildings, signs, calligraphy, labels, typography, map, borders or watermark. Do not draw a checkerboard transparency pattern. Intended for later deterministic map placement; do not make a city scene.",
+      "version": "v1-candidate",
+      "output": "assets/bell-tower.png",
+      "inputRoles": [
+        "真实建筑照片作为形态参考"
+      ]
+    },
+    {
+      "id": "drum-tower",
+      "prompt": "Use case: style-transfer. Create one isolated illustrated landmark asset for the same Xi'an guide series. Image 1 is the real subject photo and must govern identity and visible structural facts. Image 2 is the generated Bell Tower asset and is ONLY the style reference; never copy its architecture into this new subject. Match its refined hand-painted architectural miniature, softly textured gouache detail, crisp readable edges, neutral daylight and restrained warm stone / clay red / muted jade palette. Square canvas, full subject centered occupying about 78 percent with generous genuinely transparent margins. Keep real alpha transparency, no checkerboard. No words, signs, typography, logos, map roads, skyline, watermark, decorative border, unrelated buildings or people. This will be placed by a program; do not create a city scene. Subject: Xi'an Drum Tower exactly as photo reference. It is a broad horizontally elongated building on a substantial grey brick podium, with red timber galleries, several extended sweeping roof/eave tiers, a LONG main roof ridge and the triangular gable at the end visible in the photo. Preserve the long ridge and end gable, the wide rectangular silhouette, and a row of traditional large drums around the lower terrace. The top must NOT be the compact pyramidal roof/central finial of the Bell Tower style reference. Faithful three-quarter exterior view, include visible brick base and terrace stairs simplified. Remove surrounding street context; no fabricated inscriptions.",
+      "version": "v1-candidate",
+      "output": "assets/drum-tower.png",
+      "inputRoles": [
+        "同名地点真实照片作为内容参考",
+        "bell-tower.png 仅作为风格参考"
+      ]
+    },
+    {
+      "id": "pagoda",
+      "prompt": "Use case: style-transfer. Create one isolated illustrated landmark asset for the same Xi'an guide series. Image 1 is the real subject photo and must govern identity and visible structural facts. Image 2 is the generated Bell Tower asset and is ONLY the style reference; never copy its architecture into this new subject. Match its refined hand-painted architectural miniature, softly textured gouache detail, crisp readable edges, neutral daylight and restrained warm stone / clay red / muted jade palette. Square canvas, full subject centered occupying about 78 percent with generous genuinely transparent margins. Keep real alpha transparency, no checkerboard. No words, signs, typography, logos, map roads, skyline, watermark, decorative border, unrelated buildings or people. This will be placed by a program; do not create a city scene. Subject: Xi'an Giant Wild Goose Pagoda based on image 1. Exactly SEVEN distinct stacked brick storeys, square plan, each successive storey narrowing upwards, ochre and pale brown masonry, simple shallow projecting brick cornices and arched openings; a small simple finial on top. Preserve the plain geometric brick tower character, do not add green glazed temple roofs, ornamented curved eaves, timber columns, or an extra storey. Full tower in a faithful three-quarter view. Existing trees obscure its foot in the photo: use a minimal neutral cropped footing without inventing surrounding buildings, garden or an entrance courtyard. No trees.",
+      "version": "v1-rejected",
+      "output": "assets/pagoda-v1-rejected.png",
+      "inputRoles": [
+        "同名地点真实照片作为内容参考",
+        "bell-tower.png 仅作为风格参考"
+      ]
+    },
+    {
+      "id": "terracotta",
+      "prompt": "Use case: style-transfer. Create one isolated illustrated landmark asset for the same Xi'an guide series. Image 1 is the real subject photo and must govern identity and visible structural facts. Image 2 is the generated Bell Tower asset and is ONLY the style reference; never copy its architecture into this new subject. Match its refined hand-painted architectural miniature, softly textured gouache detail, crisp readable edges, neutral daylight and restrained warm stone / clay red / muted jade palette. Square canvas, full subject centered occupying about 78 percent with generous genuinely transparent margins. Keep real alpha transparency, no checkerboard. No words, signs, typography, logos, map roads, skyline, watermark, decorative border, unrelated buildings or people. This will be placed by a program; do not create a city scene. Subject: a cutaway miniature motif of the TERRACOTTA ARMY PIT INTERIOR shown in image 1. Three or four clearly defined parallel rows of weathered grey-beige earthen warriors, separated by rough tan rammed-earth trench walls and archaeological floor, viewed obliquely from above. Preserve the rows, soldier material and pit organization apparent in the historical photo; use simplified figures, no colorful armor, no living actors. A compact isolated rectangular cutaway interior vignette with a modest earthen base and thin ground shadow. No museum exterior, invented palace, entrance gate, roofs or entire archaeological park. This is explicitly an interior-themed illustrative symbol, NOT an accurate full-site plan. Keep the miniature tonal texture coherent with image2 while depicting warriors and trenches, not architecture.",
+      "version": "v1-candidate",
+      "output": "assets/terracotta.png",
+      "inputRoles": [
+        "同名地点真实照片作为内容参考",
+        "bell-tower.png 仅作为风格参考"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "pagoda",
+      "version": "v2-candidate",
+      "output": "assets/pagoda.png",
+      "rejectedOutput": "assets/pagoda-v1-rejected.png",
+      "reason": "首版只有六层可见拱窗，新增无参考支持的巨大砖台和栏杆",
+      "prompt": "Use case: precise-object-edit. Image 1 is the REAL Giant Wild Goose Pagoda photo and the structural authority. Image 2 is the FIRST GENERATED CANDIDATE to correct. The candidate is rejected because it appears to have SIX brick storeys, instead of the SEVEN visible in the real photo, and it invents a very large grey brick podium with ornate balustrade. Make a corrected isolated painted miniature: EXACTLY SEVEN distinct stacked tapered ochre-brick storeys between the ground and the small finial, with SEVEN clearly separate rows of arched window openings, one row per storey. Count bottom to top: storey 1 broad/tall, storey 2, storey 3, storey 4, storey 5, storey 6, storey 7 smallest, then the finial which does NOT count as a storey. Match the original photo's plain brick cornice proportions and taper, not generic temple roofs. REMOVE the entire invented high brick platform and all balustrades/stairs. End the first brick storey at a simple low neutral footing; the real photo's hidden base must not be confidently reconstructed. Keep the style, material texture, three-quarter camera, daylight, and the small muted finial from candidate 2. No vegetation, temple, decorative plinth, people, text, numbers or labels. Entire seven-storey tower visible, centered with at least 10 percent EMPTY TRANSPARENT margin on all four sides on a square canvas. Genuine alpha transparency; no checkerboard or flat background. This correction is for an evidence-backed atlas icon; architecture count and no fabricated podium are more important than embellishment.",
+      "references": [
+        "references/pagoda.jpg",
+        "assets/pagoda-v1-rejected.png"
+      ]
+    }
+  ]
+}

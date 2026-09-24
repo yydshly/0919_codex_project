@@ -1,0 +1,11 @@
+{
+  "id": "012",
+  "slug": "trek",
+  "name": "TREK · 旅行管理与城市导览研究",
+  "summary": "TREK 以地点、地图、行程、费用和协作组织旅行，React/NestJS/SQLite 串起业务与外部地点、道路服务。我们实测原版，完成西安 V1 与地理布局、素材实验；其价值是复用旅行基础，继续探索可信的图像选点和出行引导。",
+  "source": "https://github.com/liketrek/TREK",
+  "status": "已完成",
+  "tags": ["旅行管理", "地图地点", "原版实测", "图像导览", "技术探索"],
+  "demo": "https://yydshly.github.io/0919_codex_project/012-trek/",
+  "cover": "assets/trek-research-overview-2026-09-22.png"
+}

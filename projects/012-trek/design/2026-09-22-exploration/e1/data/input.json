@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "e1-input-v1",
+  "places": [
+    {
+      "id": "bell-tower",
+      "name": "西安钟楼",
+      "shortName": "钟楼",
+      "lon": 108.9423419,
+      "lat": 34.2610119,
+      "crs": "EPSG:4326",
+      "role": "building-center",
+      "sourceUrl": "https://www.openstreetmap.org/way/254488435",
+      "coordinateAccuracy": "WGS84；OSM建筑中心，非行人入口"
+    },
+    {
+      "id": "drum-tower",
+      "name": "西安鼓楼·北院门周边",
+      "shortName": "鼓楼",
+      "lon": 108.9388419,
+      "lat": 34.2617657,
+      "crs": "EPSG:4326",
+      "role": "building-center",
+      "sourceUrl": "https://www.openstreetmap.org/way/254488437",
+      "coordinateAccuracy": "WGS84；OSM鼓楼建筑中心，周边游览需步行"
+    },
+    {
+      "id": "pagoda",
+      "name": "大雁塔·大慈恩寺",
+      "shortName": "大雁塔",
+      "lon": 108.9594259,
+      "lat": 34.2197968,
+      "crs": "EPSG:4326",
+      "role": "building-center",
+      "sourceUrl": "https://www.openstreetmap.org/way/92223044",
+      "coordinateAccuracy": "WGS84；OSM塔身中心，非寺院入口"
+    },
+    {
+      "id": "terracotta",
+      "name": "秦始皇帝陵博物院·兵马俑",
+      "shortName": "兵马俑",
+      "lon": 109.277673,
+      "lat": 34.3873627,
+      "crs": "EPSG:4326",
+      "role": "site-center",
+      "sourceUrl": "https://www.openstreetmap.org/way/71235670",
+      "coordinateAccuracy": "WGS84；OSM景区范围中心，非检票入口"
+    }
+  ],
+  "projection": {
+    "name": "local-equirectangular",
+    "lon0": 108.94,
+    "lat0": 34.26,
+    "radius": 6371008.8
+  },
+  "region": {
+    "west": 108.5,
+    "east": 109.6,
+    "south": 34,
+    "north": 34.7
+  },
+  "provenance": {
+    "baseline": "../../data/baseline-places.json",
+    "baselineSha256": "7b363a3a44d8dc94c75851683d82ae313216d889a9eaf71dd422052da4d94dd3",
+    "recordedCheckDate": "2026-09-22",
+    "externalReverifiedForE1": false,
+    "note": "沿用 V1 冻结坐标；均非已核实入口"
+  }
+}

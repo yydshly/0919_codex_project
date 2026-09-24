@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>TREK 研究总览图 · 高清导出</title>
+<style>body{margin:24px;background:#e8e9eb;font:16px 'Microsoft YaHei',sans-serif;color:#192c42}a{display:inline-block;margin:0 24px 20px 0}canvas{display:block;width:100%;height:auto;background:#f5f2eb}</style>
+<p id="status">正在渲染矢量原稿…</p>
+<a id="png" download="trek-research-overview-2026-09-22.png">下载高清 PNG</a>
+<a href="../assets/trek-research-overview-vector.svg">矢量原稿</a>
+<canvas width="3840" height="2880" aria-label="TREK 研究总览图"></canvas>
+<script>
+const artwork = new Image();
+artwork.onload = async () => {
+  await document.fonts.ready;
+  const canvas = document.querySelector('canvas');
+  canvas.getContext('2d').drawImage(artwork,0,0,3840,2880);
+  document.querySelector('#png').href=canvas.toDataURL('image/png');
+  document.querySelector('#status').textContent='渲染完成 · 3840 × 2880 · 五大模块';
+};
+artwork.onerror=()=>document.querySelector('#status').textContent='矢量原稿未能加载';
+artwork.src='../assets/trek-research-overview-vector.svg';
+</script>
+</html>

@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "e2-composition-v1",
+  "width": 1200,
+  "height": 720,
+  "layoutMode": "split",
+  "projection": {
+    "name": "local-equirectangular",
+    "lon0": 108.94,
+    "lat0": 34.26,
+    "radius": 6371008.8
+  },
+  "frames": [
+    {
+      "id": "city",
+      "title": "钟鼓楼片区 · 局部放大",
+      "kind": "primary",
+      "x": 20,
+      "y": 45,
+      "width": 740,
+      "height": 635,
+      "bounds": {
+        "minX": -945.6033307323142,
+        "maxX": 1054.3966692676859,
+        "minY": -745.5722725715743,
+        "maxY": 1054.4277274284257
+      },
+      "padding": 36,
+      "scale": 0.31277777777777777,
+      "nodes": [
+        {
+          "id": "bell-tower",
+          "name": "西安钟楼",
+          "shortName": "钟楼",
+          "x": 440.3034656714873,
+          "y": 375.6083370508754,
+          "projected": {
+            "x": 215.22480107705908,
+            "y": 112.51830168850441
+          }
+        },
+        {
+          "id": "drum-tower",
+          "name": "西安鼓楼·北院门周边",
+          "shortName": "鼓楼",
+          "x": 339.69653432851266,
+          "y": 349.3916629491246,
+          "projected": {
+            "x": -106.43146254168755,
+            "y": 196.33715316834696
+          }
+        }
+      ]
+    },
+    {
+      "id": "locator",
+      "title": "全域定位 · 独立比例",
+      "kind": "locator",
+      "x": 790,
+      "y": 45,
+      "width": 390,
+      "height": 245,
+      "bounds": {
+        "minX": -1351.9988410988283,
+        "maxX": 32278.32037994397,
+        "minY": -5715.965428201972,
+        "maxY": 15407.673023816416
+      },
+      "padding": 36,
+      "scale": 0.008189876966175288,
+      "nodes": [
+        {
+          "id": "bell-tower",
+          "name": "西安钟楼",
+          "shortName": "钟楼",
+          "x": 860.1212804311315,
+          "y": 206.26543535284256,
+          "projected": {
+            "x": 215.22480107705908,
+            "y": 112.51830168850441
+          }
+        },
+        {
+          "id": "drum-tower",
+          "name": "西安鼓楼·北院门周边",
+          "shortName": "鼓楼",
+          "x": 857.4869552066942,
+          "y": 205.57896927177654,
+          "projected": {
+            "x": -106.43146254168755,
+            "y": 196.33715316834696
+          }
+        },
+        {
+          "id": "pagoda",
+          "name": "大雁塔·大慈恩寺",
+          "shortName": "大雁塔",
+          "x": 872.9797981837728,
+          "y": 243.79895641653553,
+          "projected": {
+            "x": 1785.2749746935658,
+            "y": -4470.398049644831
+          }
+        },
+        {
+          "id": "terracotta",
+          "name": "秦始皇帝陵博物院·兵马俑",
+          "shortName": "兵马俑",
+          "x": 1112.5130447933057,
+          "y": 91.20104358346445,
+          "projected": {
+            "x": 31032.753001386827,
+            "y": 14162.105645259275
+          }
+        }
+      ]
+    },
+    {
+      "id": "south",
+      "title": "城南 · 独立比例",
+      "kind": "primary",
+      "x": 790,
+      "y": 325,
+      "width": 180,
+      "height": 355,
+      "bounds": {
+        "minX": 785.2749746935658,
+        "maxX": 2785.274974693566,
+        "minY": -5470.398049644831,
+        "maxY": -3470.398049644831
+      },
+      "padding": 36,
+      "scale": 0.05399999999999999,
+      "nodes": [
+        {
+          "id": "pagoda",
+          "name": "大雁塔·大慈恩寺",
+          "shortName": "大雁塔",
+          "x": 880,
+          "y": 502.5,
+          "projected": {
+            "x": 1785.2749746935658,
+            "y": -4470.398049644831
+          }
+        }
+      ]
+    },
+    {
+      "id": "lintong",
+      "title": "临潼 · 独立比例",
+      "kind": "primary",
+      "x": 990,
+      "y": 325,
+      "width": 190,
+      "height": 355,
+      "bounds": {
+        "minX": 29032.753001386827,
+        "maxX": 33032.75300138682,
+        "minY": 12162.105645259275,
+        "maxY": 16162.105645259275
+      },
+      "padding": 36,
+      "scale": 0.029500000000000026,
+      "nodes": [
+        {
+          "id": "terracotta",
+          "name": "秦始皇帝陵博物院·兵马俑",
+          "shortName": "兵马俑",
+          "x": 1085,
+          "y": 502.5,
+          "projected": {
+            "x": 31032.753001386827,
+            "y": 14162.105645259275
+          }
+        }
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "id": "bell-tower",
+      "placeId": "bell-tower",
+      "frameId": "city",
+      "name": "西安钟楼",
+      "shortName": "钟楼",
+      "x": 440.3034656714873,
+      "y": 375.6083370508754,
+      "projected": {
+        "x": 215.22480107705908,
+        "y": 112.51830168850441
+      },
+      "coordinate": {
+        "lon": 108.9423419,
+        "lat": 34.2610119,
+        "crs": "EPSG:4326"
+      }
+    },
+    {
+      "id": "drum-tower",
+      "placeId": "drum-tower",
+      "frameId": "city",
+      "name": "西安鼓楼·北院门周边",
+      "shortName": "鼓楼",
+      "x": 339.69653432851266,
+      "y": 349.3916629491246,
+      "projected": {
+        "x": -106.43146254168755,
+        "y": 196.33715316834696
+      },
+      "coordinate": {
+        "lon": 108.9388419,
+        "lat": 34.2617657,
+        "crs": "EPSG:4326"
+      }
+    },
+    {
+      "id": "pagoda",
+      "placeId": "pagoda",
+      "frameId": "south",
+      "name": "大雁塔·大慈恩寺",
+      "shortName": "大雁塔",
+      "x": 880,
+      "y": 502.5,
+      "projected": {
+        "x": 1785.2749746935658,
+        "y": -4470.398049644831
+      },
+      "coordinate": {
+        "lon": 108.9594259,
+        "lat": 34.2197968,
+        "crs": "EPSG:4326"
+      }
+    },
+    {
+      "id": "terracotta",
+      "placeId": "terracotta",
+      "frameId": "lintong",
+      "name": "秦始皇帝陵博物院·兵马俑",
+      "shortName": "兵马俑",
+      "x": 1085,
+      "y": 502.5,
+      "projected": {
+        "x": 31032.753001386827,
+        "y": 14162.105645259275
+      },
+      "coordinate": {
+        "lon": 109.277673,
+        "lat": 34.3873627,
+        "crs": "EPSG:4326"
+      }
+    }
+  ],
+  "placements": [
+    {
+      "id": "bell-tower",
+      "placeId": "bell-tower",
+      "assetId": "bell-tower",
+      "src": "assets/bell-tower.png",
+      "frameId": "city",
+      "x": 398.3034656714873,
+      "y": 333.6083370508754,
+      "width": 84,
+      "height": 84,
+      "anchorOffset": {
+        "x": 42,
+        "y": 42
+      },
+      "center": {
+        "x": 440.3034656714873,
+        "y": 375.6083370508754
+      },
+      "transform": {
+        "rotation": 0,
+        "fit": "contain",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      }
+    },
+    {
+      "id": "drum-tower",
+      "placeId": "drum-tower",
+      "assetId": "drum-tower",
+      "src": "assets/drum-tower.png",
+      "frameId": "city",
+      "x": 297.69653432851266,
+      "y": 307.3916629491246,
+      "width": 84,
+      "height": 84,
+      "anchorOffset": {
+        "x": 42,
+        "y": 42
+      },
+      "center": {
+        "x": 339.69653432851266,
+        "y": 349.3916629491246
+      },
+      "transform": {
+        "rotation": 0,
+        "fit": "contain",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      }
+    },
+    {
+      "id": "pagoda",
+      "placeId": "pagoda",
+      "assetId": "pagoda",
+      "src": "assets/pagoda.png",
+      "frameId": "south",
+      "x": 838,
+      "y": 460.5,
+      "width": 84,
+      "height": 84,
+      "anchorOffset": {
+        "x": 42,
+        "y": 42
+      },
+      "center": {
+        "x": 880,
+        "y": 502.5
+      },
+      "transform": {
+        "rotation": 0,
+        "fit": "contain",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      }
+    },
+    {
+      "id": "terracotta",
+      "placeId": "terracotta",
+      "assetId": "terracotta",
+      "src": "assets/terracotta.png",
+      "frameId": "lintong",
+      "x": 1043,
+      "y": 460.5,
+      "width": 84,
+      "height": 84,
+      "anchorOffset": {
+        "x": 42,
+        "y": 42
+      },
+      "center": {
+        "x": 1085,
+        "y": 502.5
+      },
+      "transform": {
+        "rotation": 0,
+        "fit": "contain",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      }
+    }
+  ],
+  "assetManifest": {
+    "schemaVersion": "e2-assets-v1",
+    "createdAt": "2026-09-22",
+    "stage": "candidate",
+    "generation": {
+      "method": "built-in image_gen",
+      "model": null,
+      "modelNote": "工具未公开具体模型版本，未猜填",
+      "promptsFile": "data/prompts.json",
+      "fullLogFile": "data/generation-log.json",
+      "calls": 5
+    },
+    "assets": [
+      {
+        "id": "bell-tower",
+        "placeId": "bell-tower",
+        "src": "assets/bell-tower.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "ef0e9d55c34ae3515bceac9f6a0fb05bddedca52d60d2a817648b6a7bf6daaa1",
+        "bytes": 2220654,
+        "alpha": {
+          "hasTransparency": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "nonzeroBounds": [
+            0,
+            9,
+            1246,
+            1200
+          ],
+          "visibleBox": [
+            44,
+            64,
+            1217,
+            1154
+          ],
+          "note": "alpha >= 128 的边界仅描述像素，不代表自动识别建筑主体"
+        },
+        "referenceId": "bell-tower",
+        "referenceSrc": "references/bell-tower.jpg",
+        "referenceSha256": "bd507bf3acfa28a4915f3690b5adef801599b2d9f740278a3460f015a4301c27",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bell_Tower_of_Xi%27an.jpg",
+        "credit": "Matthew D. Jalovick / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "generation": {
+          "method": "built-in image_gen",
+          "model": null,
+          "outputFile": "exec-62d22daf-9e67-4ef3-b9e6-142efade3df3.png",
+          "version": "v1",
+          "pixelEditsAfterGeneration": false
+        },
+        "visualReview": {
+          "status": "候选 · 主要特征可辨",
+          "observations": [
+            "三道主要檐线、中央宝顶、紧凑楼身和砖台拱洞可辨。",
+            "以夜景照片转成日景插画，颜色与细部有生成补绘。"
+          ],
+          "limitations": [
+            "局部透明边缘存在彩色光边及淡残留，尚待清理。",
+            "未做测绘式比例、背面与建筑细部核验。"
+          ]
+        }
+      },
+      {
+        "id": "drum-tower",
+        "placeId": "drum-tower",
+        "src": "assets/drum-tower.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "9677f82acc9c0fc37dbb1a9cb4e127168e2f51542e67d8261475071a985ff254",
+        "bytes": 2251302,
+        "alpha": {
+          "hasTransparency": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "nonzeroBounds": [
+            0,
+            21,
+            1254,
+            1188
+          ],
+          "visibleBox": [
+            11,
+            161,
+            1248,
+            1131
+          ],
+          "note": "alpha >= 128 的边界仅描述像素，不代表自动识别建筑主体"
+        },
+        "referenceId": "drum-tower",
+        "referenceSrc": "references/drum-tower.jpg",
+        "referenceSha256": "2215b8a769252bee01b4df858b8c76eb5158032d80a7b559b42963c79b3d3b31",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Drum_Tower_of_Xi%27an.jpg",
+        "credit": "xiquinhosilva / Wikimedia Commons",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "generation": {
+          "method": "built-in image_gen",
+          "model": null,
+          "outputFile": "exec-2dd26dd5-24f4-4463-800d-b5eee5ac7a46.png",
+          "version": "v1",
+          "pixelEditsAfterGeneration": false
+        },
+        "visualReview": {
+          "status": "候选 · 主要特征可辨",
+          "observations": [
+            "长屋脊、端部山墙、横向楼身和一排鼓保留下来。",
+            "可与钟楼的中央宝顶轮廓区分。"
+          ],
+          "limitations": [
+            "鼓的数量、栏杆、台阶与装饰属于简化和补绘。",
+            "主体右侧留白较小，透明边缘杂色仍待处理。"
+          ]
+        }
+      },
+      {
+        "id": "pagoda",
+        "placeId": "pagoda",
+        "src": "assets/pagoda.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "7a7c71cd1ffb8ab8bcaac27e270e1137acaf6d4eec61ea1bf1c7d98ba7b481e4",
+        "bytes": 1343994,
+        "alpha": {
+          "hasTransparency": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "nonzeroBounds": [
+            57,
+            35,
+            1218,
+            1228
+          ],
+          "visibleBox": [
+            252,
+            40,
+            995,
+            1198
+          ],
+          "note": "alpha >= 128 的边界仅描述像素，不代表自动识别建筑主体"
+        },
+        "referenceId": "pagoda",
+        "referenceSrc": "references/pagoda.jpg",
+        "referenceSha256": "ce852412fec89b35a5f76b736f4e857701a54f8a408011fa68186d8bc6c3b089",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Giant_Wild_Goose_Pagoda.jpg",
+        "credit": "Alex Kwok / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "generation": {
+          "method": "built-in image_gen",
+          "model": null,
+          "outputFile": "exec-8f41fbc2-e67a-4ff2-8693-a745e1bbf84f.png",
+          "version": "v2",
+          "pixelEditsAfterGeneration": false
+        },
+        "visualReview": {
+          "status": "修正候选 · 七层可辨",
+          "observations": [
+            "首版错误为六层，并添加了缺乏证据的高砖台与栏杆。",
+            "二次生成后七层拱窗可辨，高台与栏杆已去除。"
+          ],
+          "limitations": [
+            "底部在原照片中被遮挡，当前低底缘不代表实测基础。",
+            "塔刹、砌体细部和透明边缘仍需进一步核验与修整。"
+          ]
+        }
+      },
+      {
+        "id": "terracotta",
+        "placeId": "terracotta",
+        "src": "assets/terracotta.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "8ff2efce787deea8ae04f77ded7819657f5ae3b52502cba1bf4de064f9d0b9d6",
+        "bytes": 2016184,
+        "alpha": {
+          "hasTransparency": true,
+          "extrema": [
+            0,
+            255
+          ],
+          "nonzeroBounds": [
+            0,
+            43,
+            1253,
+            1198
+          ],
+          "visibleBox": [
+            18,
+            214,
+            1238,
+            1139
+          ],
+          "note": "alpha >= 128 的边界仅描述像素，不代表自动识别建筑主体"
+        },
+        "referenceId": "terracotta",
+        "referenceSrc": "references/terracotta.jpg",
+        "referenceSha256": "617c1cb56ec8409a1c18037537828acc804a7bddb0d6b406defb3bfd8132f53c",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Terracotta_Army_Pit_1.JPG",
+        "credit": "BrokenSphere / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "generation": {
+          "method": "built-in image_gen",
+          "model": null,
+          "outputFile": "exec-293969e5-fd1f-47d7-8ea9-fb92313d9b24.png",
+          "version": "v1",
+          "pixelEditsAfterGeneration": false
+        },
+        "visualReview": {
+          "status": "候选 · 内部主题符号",
+          "observations": [
+            "陶俑军阵、夯土隔梁和坑内纵深关系可辨。",
+            "按历史内景生成了微缩剖块，而非景区建筑外观。"
+          ],
+          "limitations": [
+            "排列数量、陶俑细节、剖块形状经过重新组织。",
+            "不是一号坑真实平面、完整园区鸟瞰或实际导航范围。",
+            "透明边缘残留仍待处理。"
+          ]
+        }
+      }
+    ],
+    "rejectedCandidates": [
+      {
+        "placeId": "pagoda",
+        "src": "assets/pagoda-v1-rejected.png",
+        "reason": "只有六层可见拱窗，并新增无参考支持的高砖台及栏杆",
+        "replacement": "assets/pagoda.png",
+        "sha256": "77928e11a0a37bc9e349b9fd182304a01d00ac725a64290358326ecd488554d9"
+      }
+    ],
+    "reviewBoundary": "本轮为初步视觉对照，不等同建筑专家认证；透明边缘与整体审美尚待迭代。真实入口、票价、导航不在E2范围内。"
+  },
+  "size": 84,
+  "fault": "normal",
+  "layoutReference": "../e1/core.mjs:buildLayout(split)",
+  "semantics": {
+    "placement": "square contain box; center aligned to geographic anchor",
+    "geography": "building/site center, not verified entrance",
+    "visibility": "rectangle overlap only; no bitmap subject segmentation"
+  }
+}

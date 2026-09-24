@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "e2-verification-v1",
+  "generatedAt": "2026-09-22T12:02:54.693Z",
+  "input": {
+    "path": "../e1/data/input.json",
+    "sha256": "c0ac5804ab18560d0dab667b484d2fa9811cd4adf3d4c8df320f702305da5c43",
+    "externalGeographyReverified": false
+  },
+  "manifest": {
+    "path": "data/asset-manifest.json",
+    "sha256": "cdb0ad56313b1568a9cb1b05cb28edf49a5911b4109b9664c6633e7e193763fe"
+  },
+  "composition": {
+    "path": "normal-composition.json",
+    "sha256": "a9058057e3778ef189b156bf1bfa3d0e587ca44ebb48d7bd8a5a3a505bca0ec3",
+    "sizePx": 84,
+    "layout": "E1 split"
+  },
+  "actualFiles": [
+    {
+      "id": "bell-tower",
+      "placeId": "bell-tower",
+      "src": "assets/bell-tower.png",
+      "bytes": 2220654,
+      "sha256": "ef0e9d55c34ae3515bceac9f6a0fb05bddedca52d60d2a817648b6a7bf6daaa1",
+      "pass": true,
+      "png": {
+        "width": 1254,
+        "height": 1254,
+        "bitDepth": 8,
+        "colorType": 6,
+        "interlace": 0,
+        "alpha": {
+          "status": "decoded-alpha-channel",
+          "hasTransparency": true,
+          "visibleBoxThreshold": "alpha > 0",
+          "visibleBox": {
+            "x": 0,
+            "y": 9,
+            "width": 1246,
+            "height": 1191
+          }
+        },
+        "note": "Alpha means nontransparent pixels only; it is not a landmark subject segmentation."
+      }
+    },
+    {
+      "id": "drum-tower",
+      "placeId": "drum-tower",
+      "src": "assets/drum-tower.png",
+      "bytes": 2251302,
+      "sha256": "9677f82acc9c0fc37dbb1a9cb4e127168e2f51542e67d8261475071a985ff254",
+      "pass": true,
+      "png": {
+        "width": 1254,
+        "height": 1254,
+        "bitDepth": 8,
+        "colorType": 6,
+        "interlace": 0,
+        "alpha": {
+          "status": "decoded-alpha-channel",
+          "hasTransparency": true,
+          "visibleBoxThreshold": "alpha > 0",
+          "visibleBox": {
+            "x": 0,
+            "y": 21,
+            "width": 1254,
+            "height": 1167
+          }
+        },
+        "note": "Alpha means nontransparent pixels only; it is not a landmark subject segmentation."
+      }
+    },
+    {
+      "id": "pagoda",
+      "placeId": "pagoda",
+      "src": "assets/pagoda.png",
+      "bytes": 1343994,
+      "sha256": "7a7c71cd1ffb8ab8bcaac27e270e1137acaf6d4eec61ea1bf1c7d98ba7b481e4",
+      "pass": true,
+      "png": {
+        "width": 1254,
+        "height": 1254,
+        "bitDepth": 8,
+        "colorType": 6,
+        "interlace": 0,
+        "alpha": {
+          "status": "decoded-alpha-channel",
+          "hasTransparency": true,
+          "visibleBoxThreshold": "alpha > 0",
+          "visibleBox": {
+            "x": 57,
+            "y": 35,
+            "width": 1161,
+            "height": 1193
+          }
+        },
+        "note": "Alpha means nontransparent pixels only; it is not a landmark subject segmentation."
+      }
+    },
+    {
+      "id": "terracotta",
+      "placeId": "terracotta",
+      "src": "assets/terracotta.png",
+      "bytes": 2016184,
+      "sha256": "8ff2efce787deea8ae04f77ded7819657f5ae3b52502cba1bf4de064f9d0b9d6",
+      "pass": true,
+      "png": {
+        "width": 1254,
+        "height": 1254,
+        "bitDepth": 8,
+        "colorType": 6,
+        "interlace": 0,
+        "alpha": {
+          "status": "decoded-alpha-channel",
+          "hasTransparency": true,
+          "visibleBoxThreshold": "alpha > 0",
+          "visibleBox": {
+            "x": 0,
+            "y": 43,
+            "width": 1253,
+            "height": 1155
+          }
+        },
+        "note": "Alpha means nontransparent pixels only; it is not a landmark subject segmentation."
+      }
+    }
+  ],
+  "normal": {
+    "pass": true,
+    "scope": "declared-identity-and-layout-only",
+    "checks": [
+      {
+        "id": "input",
+        "label": "继承 E1 坐标合同",
+        "pass": true,
+        "detail": "来源、坐标系及中心点含义沿用 E1；未重新核实外部地理事实"
+      },
+      {
+        "id": "manifest",
+        "label": "素材清单完整且可追溯",
+        "pass": true,
+        "detail": "四个素材编号、地点绑定、文件路径、尺寸与哈希均已登记；浏览器未校验文件字节"
+      },
+      {
+        "id": "manifest-snapshot",
+        "label": "导出记录匹配本次素材清单",
+        "pass": true,
+        "detail": "导出记录必须保留相同素材编号、地点、文件路径、尺寸与哈希"
+      },
+      {
+        "id": "frames",
+        "label": "E1 分区图幅与定位小图保持",
+        "pass": true,
+        "detail": "重新计算 E1 原始图幅后比较；定位小图只放点，不铺素材"
+      },
+      {
+        "id": "identity",
+        "label": "四个地点素材完整且唯一",
+        "pass": true,
+        "detail": "主图中实际素材记录 4 个；不得遗漏或复用地点编号"
+      },
+      {
+        "id": "anchors",
+        "label": "原始四点地理锚点保持",
+        "pass": true,
+        "detail": "锚点同 E1 重新计算结果比较，防止素材与锚点被一起移动"
+      },
+      {
+        "id": "binding",
+        "label": "地点与素材编号绑定正确",
+        "pass": true,
+        "detail": "检查实际 placement 的 assetId、src 和声明绑定；不能识别图片是否画错建筑"
+      },
+      {
+        "id": "geometry",
+        "label": "素材中心对齐实际地理锚点",
+        "pass": true,
+        "detail": "最大偏移 0.000000 px；以实际图片矩形及中心偏移回算"
+      },
+      {
+        "id": "size",
+        "label": "遵守所选素材框尺寸",
+        "pass": true,
+        "detail": "素材矩形须与当前 60–140 px 设置一致；超大素材不得静默压住其他地点"
+      },
+      {
+        "id": "range",
+        "label": "素材矩形未超出所属图幅",
+        "pass": true,
+        "detail": "按完整方形素材框保守检查；不把透明区域解释为已分割主体"
+      },
+      {
+        "id": "overlap",
+        "label": "未出现素材框重叠候选",
+        "pass": true,
+        "detail": "矩形未重叠；这不能替代主体可见率测量和建筑外形审查"
+      }
+    ],
+    "maxAnchorErrorPx": 0,
+    "overlaps": [],
+    "visibleAssessment": {
+      "status": "not-measured",
+      "threshold": 0.9,
+      "pass": null,
+      "method": null
+    },
+    "appearanceAssessment": {
+      "status": "not-verified",
+      "pass": null
+    },
+    "fileIntegrity": {
+      "status": "node-verification-required",
+      "pass": null
+    },
+    "releaseReady": false,
+    "limitation": "本结果只验证登记关系与矩形布局；未验收建筑外形、审美、真实主体 90% 可见率和外部地理精度"
+  },
+  "faults": [
+    {
+      "fault": "shift",
+      "detected": true,
+      "failedChecks": [
+        "geometry",
+        "overlap"
+      ],
+      "maxAnchorErrorPx": 140,
+      "overlaps": [
+        {
+          "frameId": "city",
+          "a": "bell-tower",
+          "b": "drum-tower",
+          "areaPx": 2577.5368511119323,
+          "widthPx": 44.60693134297463,
+          "heightPx": 57.783325898249245,
+          "classification": "conservative-rectangle-overlap",
+          "actualSubjectOcclusion": null
+        }
+      ]
+    },
+    {
+      "fault": "swap",
+      "detected": true,
+      "failedChecks": [
+        "binding"
+      ],
+      "maxAnchorErrorPx": 0,
+      "overlaps": []
+    },
+    {
+      "fault": "missing",
+      "detected": true,
+      "failedChecks": [
+        "identity",
+        "binding",
+        "geometry",
+        "range"
+      ],
+      "maxAnchorErrorPx": 0,
+      "overlaps": []
+    },
+    {
+      "fault": "oversize",
+      "detected": true,
+      "failedChecks": [
+        "size",
+        "overlap"
+      ],
+      "maxAnchorErrorPx": 0,
+      "overlaps": [
+        {
+          "frameId": "city",
+          "a": "bell-tower",
+          "b": "drum-tower",
+          "areaPx": 5661.017767190131,
+          "widthPx": 67.39306865702537,
+          "heightPx": 84,
+          "classification": "conservative-rectangle-overlap",
+          "actualSubjectOcclusion": null
+        }
+      ]
+    }
+  ],
+  "unitTests": {
+    "count": 28,
+    "fixturesAreRealAssetEvidence": false,
+    "checks": [
+      {
+        "name": "composition preserves the recorded E1 layout artifact",
+        "pass": true
+      },
+      {
+        "name": "normal composition matches E1 and has no rectangle overlap at 84 px",
+        "pass": true
+      },
+      {
+        "name": "fault shift is detected by geometry",
+        "pass": true
+      },
+      {
+        "name": "fault swap is detected by binding",
+        "pass": true
+      },
+      {
+        "name": "fault missing is detected by identity",
+        "pass": true
+      },
+      {
+        "name": "fault oversize is detected by overlap",
+        "pass": true
+      },
+      {
+        "name": "move declared anchor with image cannot hide position error",
+        "pass": true
+      },
+      {
+        "name": "changed frame and locator are rejected against original E1 geometry",
+        "pass": true
+      },
+      {
+        "name": "duplicate placement ID is rejected",
+        "pass": true
+      },
+      {
+        "name": "wrong image URL cannot hide behind the right asset ID",
+        "pass": true
+      },
+      {
+        "name": "locator cannot receive a main image",
+        "pass": true
+      },
+      {
+        "name": "changed center offset is rejected",
+        "pass": true
+      },
+      {
+        "name": "exported manifest cannot change asset hashes independently",
+        "pass": true
+      },
+      {
+        "name": "malformed composition returns failed checks",
+        "pass": true
+      },
+      {
+        "name": "140 px honestly reports overlap rather than passing every slider value",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects missing asset",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects duplicate asset ID",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects reused image path",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects duplicate place mapping",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects missing SHA",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects invalid dimension",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects path traversal",
+        "pass": true
+      },
+      {
+        "name": "manifest rejects unknown place",
+        "pass": true
+      },
+      {
+        "name": "rejects size 0",
+        "pass": true
+      },
+      {
+        "name": "rejects size 59",
+        "pass": true
+      },
+      {
+        "name": "rejects size 141",
+        "pass": true
+      },
+      {
+        "name": "rejects size NaN",
+        "pass": true
+      },
+      {
+        "name": "unknown fault fails explicitly",
+        "pass": true
+      }
+    ]
+  },
+  "fileIntegrity": {
+    "pass": true,
+    "method": "SHA-256 over actual PNG bytes plus independent PNG header/alpha inspection"
+  },
+  "releaseReady": false,
+  "pending": [
+    "建筑身份与外形人工核验",
+    "整体美术质量评审",
+    "真实主体分割和 90% 可见率测量",
+    "更多地点密度与不同比例图幅测试"
+  ]
+}

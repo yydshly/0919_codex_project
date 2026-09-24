@@ -1,0 +1,110 @@
+Use case: infographic-diagram.
+Create ONE polished, high-resolution Chinese editorial research infographic, landscape 3:2, ideally 3840×2560 or larger readable equivalent. This is a comprehensive knowledge poster for a product owner, NOT an app mockup, not a slide collage and not a tourist map. Simplified Chinese must be crisp, accurate and fully readable. Use the exact supplied facts; do not invent statistics, capabilities, prices, routes or completion status. Show all content below; prioritize information hierarchy, not decorative art.
+
+Design: warm off-white paper, dark navy ink, restrained blue for TREK native capabilities, emerald for locally completed work, amber for exploratory candidates, neutral grey for future plans. Strong editorial grid, generous margins, large title, very clear numbered section headers, medium-sized body text, delicate dividers. Use very small tasteful line icons only (location, calendar, database, picture, compass), no photographs, no scenic illustration taking up space. Avoid tiny footnotes, overly dense nested cards, excessive arrows, unnecessary English filler, long gradients. Typography should feel like a professional Chinese technology research atlas. Key messages visible immediately at fit-to-screen; detail readable when opened at full resolution.
+
+LAYOUT:
+Top 18%: strong title, subtitle, current state label, and three horizontal key-takeaway blocks.
+Middle 47%: three aligned columns: 01 TREK capabilities (30%), 02 operating principles (35%), 03 our research evidence (35%). Every row clearly distinct.
+Bottom 30%: two sections side by side: 04 extensible product goal (60% width) and 05 personal value (40% width). Use a prominent user journey ribbon and a smaller production pipeline, distinct from each other.
+Footer 5%: key boundaries plus compact source/version note. No QR code.
+All section content belongs inside the image. Do not omit text to make room for decoration. No duplicated sections.
+
+EXACT CHINESE CONTENT:
+
+TITLE:
+TREK 研究全景图
+SUBTITLE:
+从旅行管理基础，到可信城市导览
+STATUS LABEL:
+当前：暂停产品实现 · 沉淀能力与研究
+
+THREE PROMINENT TAKEAWAYS:
+它是什么
+可自部署的旅行管理应用
+最值得复用
+地点 → 行程 → 路线 → 保存
+我们的机会
+看图认识城市，点开就能行动
+
+01 / TREK 原生能力
+小注：上游提供；不代表本地全部实测
+地点与地图
+搜索地点、周边分类探索、地图选点、照片与收藏
+行程与路线
+分日安排、住宿与交通、拖拽调整、顺序优化、道路路线
+旅途事务
+预订资料与附件、行李清单、待办任务
+费用与协作
+多币种分账、成员权限、实时协作、分享
+记录与输出
+旅行日记、到访统计、离线资料、PDF / GPX / ICS / CSV
+扩展入口
+插件、公共 API、MCP；AI 辅助导入需配置
+
+02 / 底层怎样工作
+业务主链
+React 界面 → NestJS 接口 → SQLite 保存
+WebSocket 同步旅行变更；权限控制读写
+地图与地点来自组合服务
+地点：TREK Places（Overture）＋ OSM
+可选 Google / 高德补充
+地图：Leaflet / MapLibre / Mapbox 接入
+路线分成三件事
+最近邻＋2-opt：排列地点顺序
+OSRM：计算道路、距离与估计时间
+外部地图：承接实际导航
+运行与外部依赖
+PWA 缓存＋部分离线编辑；AI / MCP 按配置启用
+照片、天气、汇率、预订解析各有服务依赖
+重点：旅行业务整合 ≠ 自研地图与导航引擎
+
+03 / 我们已探索到哪里
+原版实测［已完成］
+地图联动、道路、分账、清单与刷新保存
+西安 V1［定制并归档］
+13 个精选地点、7 个图上热点、真实地图
+规则推荐、三日安排、导航入口、保存到 TREK
+旧图仍有方位问题；热点为手工关联
+D0［设计］
+真实资料、图片、地图和出行信息用地点编号串联
+E1［布局验证］
+全域定位＋局部放大；保持输入坐标关系
+E2［素材候选］
+4 张实拍参考生成素材，程序按锚点放置
+大雁塔误画 6 层 → 修正为 7 层
+关键收获：位置正确 ≠ 建筑画对
+E3［未执行］
+完整出行链路、任意城市自动生成尚未实现
+
+04 / 可扩展目标：第一次到陌生城市
+标注：产品构想 · 待验证
+游客体验：
+看图认识片区 → 选景点与餐厅 → 看费用与预约 → 查入口与导航 → 收藏安排
+内容生产：
+真实地点与照片 → 地理布局 → 素材生成 → 受控合成 → 地点关联
+核心规则：
+同一地点编号连接插画、地图、详情与行程；票务资料独立更新
+可延伸：
+多城首访、街区与景区导览、亲子或轻体力路线
+需要补齐：
+入口核实、信息时效、图像质量、推荐依据、国内地图适配
+
+05 / 对你的意义
+工程价值
+复用旅行业务与保存接口，降低从零搭建成本
+产品价值
+把精力放在“帮人选去处＋提供可信行动信息”
+研究资产
+原版实测、V1 归档、数据、素材和失败案例可继续复用
+下一次决策
+先判断是否帮助用户选得更快、去得更明白，再决定继续投入
+
+BOTTOM BOUNDARIES:
+搜索 ≠ 个性化推荐 ｜ 地点中心 ≠ 已核实入口 ｜ 保存预订 ≠ 预约成功
+实时票务与交易需另接服务；E2 视觉质量未完成验收
+SOURCES:
+研究基准：TREK 4.3.0 / b98787f · 本地 V1、D0、E1、E2 记录 · 2026-09-22
+github.com/liketrek/TREK · AGPL-3.0
+
+Pay especially close attention to Chinese text correctness and status categories. Our Xi'an custom features and image generation must NEVER appear as native TREK functions. The poster should read as one coherent structured research map, with the five major questions answered clearly.

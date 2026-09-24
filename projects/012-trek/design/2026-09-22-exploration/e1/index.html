@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>真实坐标怎样变成一张图 · 长安初见 E1</title>
+  <link rel="stylesheet" href="e1.css">
+</head>
+<body>
+  <a class="skip" href="#experiment">跳至实验</a>
+  <header><a class="brand" href="../"><span class="seal">西安</span><span>长安初见<small>城市交互导览 · 技术探索</small></span></a><nav aria-label="实验导航"><a href="../#generation">← 返回设计讨论</a><a href="#evidence">实验依据</a><a href="http://127.0.0.1:15213/#atlas" target="_blank" rel="noopener">对照 V1 归档 ↗</a></nav><span class="edition">E1 / 地理布局</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">EXPERIMENT 01 · XI’AN · 4 PLACES</p><h1>真实的距离，<br>决定一张图的结构。</h1><p class="lead">钟鼓楼很近，兵马俑很远。<br>在不移动真实锚点的前提下，怎样让它们都看得清？</p></div><div class="brief"><p class="small-label">这次先验证位置</p><p>把 4 个已有地点的坐标变成可复算的图面，比较两种布局；再主动制造错误，检查能否发现。</p><div class="scope"><span>真实坐标样本</span><span>可操作实验</span><span>尚未生成插画</span></div><small>沿用 V1 冻结数据，未重新核实外部地点。方框只是素材占位；这里不表示道路、入口或建筑轮廓。</small></div></section>
+
+    <section id="experiment" aria-labelledby="experiment-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / COMPARE TWO LAYOUTS</p><h2 id="experiment-title">同一组坐标，两种表达。</h2></div><p class="hint">先看连续图，再切换分区图</p></div>
+      <div class="workspace">
+        <div class="canvas-column">
+          <div class="toolbar"><div class="segmented" role="group" aria-label="选择布局"><button type="button" data-mode="continuous" aria-pressed="true">A · 连续全域图</button><button type="button" data-mode="split" aria-pressed="false">B · 城区放大＋分区图</button></div><span class="canvas-size">基准画布 1200 × 720</span></div>
+          <div class="plot-wrap" id="plot-wrap"><div id="plot" aria-label="依据真实坐标计算的地理骨架">正在读取坐标…</div></div>
+          <div class="legend"><span><i class="anchor-dot"></i> 地理锚点</span><span><i class="box-symbol"></i> 素材占位</span><span><i class="conflict-symbol"></i> 占位重叠</span><span>北 ↑ · 同一图幅等比</span></div>
+          <p id="layout-note" class="layout-note"></p>
+        </div>
+        <aside class="inspector" aria-label="地点与图面设置">
+          <p class="eyebrow">查看一个真实锚点</p><div id="place-buttons" class="place-buttons"></div>
+          <div id="place-info" aria-live="polite"></div>
+          <div class="size-control"><label for="footprint">每处素材的占位尺寸 <output id="size-output" for="footprint">84 px</output></label><input id="footprint" type="range" min="48" max="160" step="4" value="84"><p>放大占位，观察密集地标何时互相遮挡。尺寸按基准画布计算。</p></div>
+          <button id="export-layout" class="button secondary" type="button">导出当前布局与检查记录 ↓</button><p id="export-status" class="tiny" role="status"></p>
+        </aside>
+      </div>
+      <div id="metrics" class="metrics" aria-live="polite"></div>
+      <div class="comparison"><div><h3>该如何选择？</h3><p>全域图适合解释“在哪里”；局部放大图适合承载可辨认、可点击的地标。分区后仍需保留全域定位图。</p></div><div class="table-scroll"><table><caption>相同 4 点、相同素材占位尺寸的即时对比</caption><thead><tr><th>方案</th><th>主图内最近锚点</th><th>占位重叠</th><th>投影一致性</th></tr></thead><tbody id="comparison-rows"></tbody></table></div></div>
+    </section>
+
+    <section id="faults" aria-labelledby="fault-title"><div class="section-heading"><div><p class="eyebrow">02 / MAKE ERRORS VISIBLE</p><h2 id="fault-title">位置错了，能发现吗？</h2></div><span class="hint">操作会同步改变上方图面</span></div><div class="fault-layout"><div><label for="fault">选择一个测试情形</label><select id="fault"><option value="normal">正常数据与正常布局</option><option value="swapped">故障：把鼓楼的经纬度颠倒</option><option value="missing-crs">故障：删掉鼓楼的坐标系</option><option value="gcj">故障：混入标为 GCJ-02 的鼓楼坐标</option><option value="flip-drum">故障：把鼓楼画到钟楼东侧</option></select><p id="fault-explanation">正常数据通过输入检查后，才进行布局。</p><button type="button" class="text-button" id="reset">恢复正常数据与默认尺寸 ↺</button></div><div><div id="audit-summary" role="status"></div><ul id="audit-checks" class="audit-checks"></ul></div></div></section>
+
+    <section id="evidence" aria-labelledby="evidence-title"><div class="section-heading"><div><p class="eyebrow">03 / DATA, METHOD & LIMITS</p><h2 id="evidence-title">哪些事实支持这个判断？</h2></div><a class="text-link" href="results.json" target="_blank">查看独立检查记录 ↗</a></div>
+      <div class="evidence-grid"><div class="fact-card"><span class="small-label">从钟楼看城市</span><dl id="distances"></dl><p class="tiny">由原始经纬度计算的球面距离，不是步行、驾车距离或预计耗时。</p></div><div class="method-card"><h3>坐标 → 投影 → 图幅 → 锚点</h3><p>输入明确为 WGS84 经纬度；先投到局部平面，再在各图幅内等比缩放。素材可以换，锚点和地点编号保持关联。</p><p>只检查布局与输入是否一致，不能证明地图来源精度，也不能证明建筑画对、插画好看或可以导航。</p><details><summary>展开计算与数据说明</summary><p>局部球面等距圆柱近似：标准纬线与纬度原点 34.26°，中央经线 108.94°，R = 6371008.8 m。经纬差先转弧度，X = R × Δ经度 × cos(34.26°)，Y = R × Δ纬度；屏幕纵轴反向。仅供本次布局诊断。</p><p>图幅内 X/Y 使用同一缩放系数并居中留白。分图的位置是排版关系；各片区相对方位查看“全域定位”。占位按轴对齐正方形相交计算，不代表实际透明素材的遮挡程度。</p><p><a href="https://proj.org/en/stable/operations/projections/eqc.html" target="_blank" rel="noopener">投影方法参考 · PROJ 官方说明 ↗</a></p><p>地点来源：OpenStreetMap，© OpenStreetMap contributors，<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">ODbL</a>。坐标由 V1 冻结样本提取，原记录核实日 2026-09-22；本实验没有重新查询源站。</p><p><a href="data/input.json" target="_blank">4 点输入数据 ↗</a> · <a href="REVIEW.md" target="_blank">检查方法与限制 ↗</a></p></details></div></div>
+    </section>
+
+    <section class="decision"><div><p class="eyebrow">WHAT THIS MEANS FOR THE PRODUCT</p><h2>先有地理结构，<br>再让景观长出来。</h2><p>本轮建议采用“全域定位＋局部放大”的组织方式，进入 4 地标素材实验。分图方案是当前小样的候选，还需要更多地点与手机端可读性验证。</p><p>E2 已有首轮结果：根据真实照片生成四处地标，按这些锚点放置；大雁塔错误首版与修正过程均可查看。</p><a class="text-link" href="../e2/">打开 E2 实拍、生成与合成对照 ↗</a><br><span class="pending">E2 已有候选 · 完整视觉验收待完成</span></div><a class="archive-preview" href="http://127.0.0.1:15213/#atlas" target="_blank" rel="noopener"><img src="../../../archives/2026-09-22-v1-185446/screenshots/01-atlas.png" alt="V1 归档中的城市插画和地点详情" loading="lazy"><span>回看 V1：保留交互方向，推进图稿的地理依据 ↗</span></a></section>
+    <footer><p>长安初见 · E1 地理布局实验<br><small>本页不写入旅行数据库，V1 原型与归档保持独立。</small></p><div><a href="../#experiments">回到实验计划</a><a href="README.md" target="_blank">实验说明</a><a href="data/input.json" download>下载地点样本</a></div></footer>
+  </main>
+  <dialog id="export-dialog" aria-labelledby="export-title"><div class="export-heading"><div><h2 id="export-title">当前布局与检查记录</h2><p id="export-description"></p></div><button id="close-export" type="button" aria-label="关闭导出预览">关闭 ×</button></div><div class="export-actions"><a id="download-json" class="text-link">下载 JSON 文件 ↓</a><span>可先检查下方记录，再保存到本地。</span></div><pre id="export-preview" tabindex="0"></pre></dialog>
+  <script type="module" src="e1.mjs"></script>
+</body>
+</html>

@@ -69,6 +69,12 @@ GitHub Pages 提供静态托管。需要服务端的子项目另行部署后端�
 线上入口：[官方效果对照与两张引导图](https://yydshly.github.io/0919_codex_project/009-joyai-video-edit/)。源码在 `projects/009-joyai-video-edit/site/`，发布文件在 `web/009-joyai-video-edit/`；工作流运行 `python projects/009-joyai-video-edit/scripts/build_web.py`，静态构建无需联网、GPU 或模型权重。公网只播放固定版本的官方样例，不能上传素材做模型推理。本地运行模型的显卡、CUDA 和约 51 GB 权重要求见项目研究页与上游部署指南。
 2026-09-23 已验证该页、两张引导图及 Pages 工作流上线成功；详情见[发布验证记录](../projects/009-joyai-video-edit/notes/publication.md)。
 
+## 012 · TREK 旅行管理与城市导览研究
+
+源码：`projects/012-trek/site/`、`design/`、`notes/`；构建：`python projects/012-trek/scripts/build_web.py`；输出：`web/012-trek/`。工作流在发布前重新构建。公开首页用本项目专门制作的总览图，汇总 TREK 原生能力、实现原理、原版实测、西安 V1、D0/E1/E2 与产品价值。
+
+线上范围为静态研究页和实验页面。原版 TREK 服务、旅行数据库、适配后端及旧城市插画不随站点发布；旧图的公开使用范围尚待核实，V1 在线提供研究摘要。D0/E1/E2 中引用旧图的画面在公开构建中替换为明确说明。原版实测截图与 E2 素材保留来源与状态，不将实验候选称为已完成产品。
+
 ## 016 · Pireel 视频编辑能力全览
 
 源码：`projects/016-pireel/site/`；构建：在 `projects/016-pireel/` 执行 `npm ci` 和 `npm run build:web`；输出：`web/016-pireel/`。工作流已加入构建步骤。

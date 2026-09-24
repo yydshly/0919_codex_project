@@ -42,6 +42,8 @@ jobs:
         run: python projects/010-ziwei-doushu/scripts/build_web.py
       - name: Build Frappe HR capability research page
         run: python projects/011-frappe-hrms/scripts/build_web.py
+      - name: Build TREK research collection
+        run: python projects/012-trek/scripts/build_web.py
       - name: Build VoxCPM2 research page
         run: python projects/017-voxcpm/scripts/build_web.py
       - name: Build Shadowrocket Rules research page

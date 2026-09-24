@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>长安初见 · 技术探索设计 D0</title>
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳至设计内容</a>
+  <header class="topbar">
+    <a class="brand" href="#overview"><span class="seal">西安</span><span>长安初见<small>城市交互导览 · 设计研究</small></span></a>
+    <nav aria-label="设计章节"><a href="#generation">生成设计</a><a href="#association">地点关联</a><a href="#baseline">归档对照</a><a href="#experiments">验证计划</a></nav>
+    <span class="stage-label"><i></i> 技术探索 · D0</span>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="overview">
+      <div class="hero-copy"><p class="eyebrow">DESIGN NOTE / 2026.09.22</p><h1>从真实城市，<br>到一张能出发的图。</h1><p class="lead">用地理数据确定位置，用景观资料生成图像。<br>让图中的每个地方，连接地图与出行指引。</p><div class="actions"><a class="primary" href="#generation">沿生成链路看设计 <span>↓</span></a><a class="text-link" href="../../v1.html" target="_blank" rel="noopener">查看 V1 公开摘要 ↗</a></div><p class="scope-note">本页是可讨论的设计说明。生成、双向地图联动和票务资料维护尚待验证。</p></div>
+      <figure class="hero-figure"><img src="../../assets/v1-public-placeholder.svg" alt="V1 旧图公开范围未核实的说明卡片" width="1265" height="720"><figcaption><span>作为设计起点的 V1</span><span>V1 旧图仅在本地归档 · 公开页展示研究摘要</span></figcaption></figure>
+    </section>
+
+    <section class="principles" aria-label="本轮设计原则"><p><span>01</span><strong>位置先于图像</strong>真实坐标进入生成约束</p><p><span>02</span><strong>一处地点，一个身份</strong>串起插画、地图与资料</p><p><span>03</span><strong>信息可以持续更新</strong>票价变化不必重新画图</p></section>
+
+    <section class="section" id="generation">
+      <div class="section-head"><div><p class="eyebrow">01 / HOW THE ATLAS IS MADE</p><h2>导览图，应该怎样产生？</h2></div><span class="annotation">拟议流程 · 尚未运行完整生成</span></div>
+      <p class="section-intro">逐步查看每个环节的输入、产出与验证要求。<a class="text-link" href="e1/">E1 地理布局对比 ↗</a> 已完成，<a class="text-link" href="e2/">E2 实拍、生成素材与合成效果 ↗</a> 已有首轮候选。</p>
+      <div class="pipeline" role="tablist" aria-label="生成流程步骤" id="pipeline"></div>
+      <div class="step-panel" role="tabpanel" id="step-panel" tabindex="0"></div>
+      <div class="user-path"><span class="path-title">游客看到的过程</span><p>看图认识城市 <b>→</b> 点开一个地方 <b>→</b> 了解费用与预约 <b>→</b> 确认入口和路线 <b>→</b> 收藏或安排</p><small>制作与校验过程保留在维护端；游客页面专注于认识和出发。</small></div>
+    </section>
+
+    <section class="section" id="association">
+      <div class="section-head"><div><p class="eyebrow">02 / ONE PLACE, CONNECTED VIEWS</p><h2>图上的地方，怎样连到真实世界？</h2></div><span class="annotation">数据关系设计</span></div>
+      <div class="association-layout">
+        <div class="place-explorer"><div class="place-picker"><label for="place-select">选一个 V1 地点查看</label><select id="place-select"><option value="wall">西安城墙 · 永宁门</option><option value="terracotta">兵马俑</option><option value="shaanxi-museum">陕西历史博物馆</option><option value="tongshengxiang">同盛祥 · 钟楼店</option></select></div><div id="place-record" aria-live="polite"><p>正在读取已归档的地点样本…</p></div></div>
+        <div class="connection-design"><p class="eyebrow">建议共用同一个地点编号</p><div class="connection-row"><span class="number">A</span><div><h3>插画上的位置</h3><p>关联图稿版本、图幅和点击区域。V1 是手工热点；新设计需记录从地理布局到画面锚点的过程。</p></div><span class="status research">待验证</span></div><div class="connection-row"><span class="number">B</span><div><h3>真实地图的位置</h3><p>保存真实坐标及其来源。景区中心与可进入的门点分别记录，路线从真实位置计算。</p></div><span class="status partial">已有基础</span></div><div class="connection-row"><span class="number">C</span><div><h3>可行动的地点资料</h3><p>实拍、看点、开放、票种、费用、官方预约和到达方式独立维护，附核实时间。</p></div><span class="status research">待补齐</span></div><p class="design-rule">画面坐标用于“点哪里”，真实坐标用于“去哪里”。两者通过地点编号关联。</p></div>
+      </div>
+      <div class="guide-spec"><div><p class="eyebrow">点开之后的引导卡 / 字段设计</p><h3>从“想去”，走到“知道怎么去”。</h3><p>现有详情是起点，下一阶段补齐可核实、可更新的行动资料。</p></div><dl><div><dt>去之前</dt><dd>开放时间 · 预约要求 · 官方入口</dd></div><div><dt>花多少</dt><dd>票种 · 适用人群 · 价格 · 有效期</dd></div><div><dt>怎么到</dt><dd>已核实入口 · 交通方式 · 真实路线</dd></div><div><dt>信息状态</dt><dd>来源 · 核实时间 · 过期或待确认</dd></div></dl><p class="inline-note">此处展示资料结构，不提供实时票价、余票或预约承诺。</p></div>
+    </section>
+
+    <section class="section" id="baseline">
+      <div class="section-head"><div><p class="eyebrow">03 / COMPARE WITH THE ARCHIVE</p><h2>每一步设计，都能回到已有网页。</h2></div><span class="annotation">V1 · 2026-09-22</span></div>
+      <div class="baseline-tabs" role="tablist" aria-label="归档页面" id="baseline-tabs"></div>
+      <div class="baseline-layout" id="baseline-panel" role="tabpanel" tabindex="0"></div>
+      <div id="embedded-archive" hidden><div class="embed-heading"><p>归档网页 · 独立只读服务</p><button id="close-embed" type="button">收起网页 ×</button></div><p class="embed-note">在下方操作的是 V1 归档。外链会打开对应服务；保存不会写入现有 TREK，实时路线查询也不在归档预览提供。若未加载，请使用上方“打开归档页面”。</p><iframe id="archive-frame" title="V1 归档网页效果" loading="lazy"></iframe></div>
+    </section>
+
+    <section class="section" id="experiments">
+      <div class="section-head"><div><p class="eyebrow">04 / WHAT WE NEED TO PROVE</p><h2>先回答三个技术问题。</h2></div><span class="annotation">E1 已验证 · E2 已有候选 · E3 待执行</span></div>
+      <div class="experiments">
+        <details open><summary><span class="experiment-id">E1</span><span>地理布局能否约束生成位置？<small>四点小样已执行 · 仅验证布局，不代表生成模型已服从约束</small></span><span class="detail-toggle">＋</span></summary><div class="experiment-body"><p><strong>实际结果：</strong>沿用钟楼、鼓楼、大雁塔、兵马俑的 V1 坐标。1200 × 720 画布中，钟鼓楼在连续图相隔约 8.9 px，局部放大后约 104 px；84 px 素材方框从重叠 1 对降为 0 对。</p><p><strong>检查结果：</strong>两种正常布局均与输入一致；18 个非法输入被拒绝，4 个输出故障被发现。入口、外部资料准确性、实际素材遮挡与建筑外形尚未验收。</p><p><strong>候选方向：</strong>全域定位图表达真实关系，局部放大图承载可辨认地标。分图间的位置不能视为地理关系。</p><a class="primary" href="e1/">打开可操作实验与证据 ↗</a></div></details>
+        <details><summary><span class="experiment-id">E2</span><span>景观能否可信、自然地合成？<small>4 张真实生成候选 · 已做程序放置 · 完整视觉验收待完成</small></span><span class="detail-toggle">＋</span></summary><div class="experiment-body"><p><strong>实际结果：</strong>以四张实拍为参考，5 次图像生成得到 4 张当前素材。大雁塔首版只有六层且多出高台，修正后为七层；失败样本与实际提示词保留。</p><p><strong>检查结果：</strong>4 份图片的哈希、尺寸、透明性均匹配记录，28 项条件检查与 4 类故障检测通过。默认尺寸保持 E1 锚点，未出现图片框重叠。</p><p><strong>尚待完成：</strong>透明边缘、建筑细部、图面自然程度、素材内容锚点，以及真实主体可见率。当前结果是技术探索候选，不能直接作为最终城市图发布。</p><a class="primary" href="e2/">打开实拍与生成效果对比 ↗</a></div></details>
+        <details><summary><span class="experiment-id">E3</span><span>点开一个地方，能否完成出行准备？<small>关联与资料更新实验</small></span><span class="detail-toggle">＋</span></summary><div class="experiment-body"><p><strong>设计：</strong>用同一地点编号连接图中热点、地图、资料与门点。用标明“测试样本”的价格变更、资料过期和入口缺失验证状态变化。</p><p><strong>通过条件：</strong>双向选择始终对应同一地点；资料变化不必重绘插画；未知入口和过期费用有明确提示。</p><p><strong>不通过时：</strong>保留待确认状态，提供资料来源，不自动冒称已预约或已核实入口。</p></div></details>
+      </div>
+      <div class="next-step"><div><span class="status research">下一步 · 完善素材与整体效果</span><h3>补齐图像质量，再进入从图到出行的验证。</h3><p>E2 已显示生成会补绘或画错结构，需保留独立视觉审核。素材内容锚点、透明边缘和整图自然程度仍待推进。</p></div><button class="primary" id="open-document" type="button">阅读完整技术设计 ↗</button></div>
+    </section>
+    <footer><p>长安初见 · 技术探索设计 D0<br><span>实验独立保存，V1 与归档完整保留；不写入旅行数据库。</span></p><div><a href="../../v1.html" target="_blank" rel="noopener">V1 公开摘要</a><a href="../../notes/xian-product-replan.md" target="_blank">产品规划</a><a href="../../archives/2026-09-22-v1-185446/README.md" target="_blank">存档说明</a><a href="TECHNICAL-DESIGN.md" download>下载技术设计</a></div></footer>
+  </main>
+  <dialog id="document-dialog" aria-labelledby="document-title"><div class="dialog-heading"><h2 id="document-title">技术探索设计 D0</h2><button id="close-document" type="button" aria-label="关闭技术设计文档">关闭 ×</button></div><pre id="document-text"></pre></dialog>
+  <script type="module" src="design.mjs"></script>
+</body>
+</html>

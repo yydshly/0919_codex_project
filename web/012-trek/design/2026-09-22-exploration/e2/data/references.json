@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "reviewedAt": "2026-09-22",
+  "reviewMethod": "人工逐张查看既有照片；来源与许可沿用冻结元数据，本轮未重新核验外部页面。",
+  "evidenceScope": "历史实拍可约束可见外形，不能证明入口、当前状态、完整平面或实际尺寸。模型生成的后续素材应标注为参考照片生成的插画，非实拍。",
+  "places": [
+    {
+      "id": "bell-tower",
+      "name": "西安钟楼",
+      "src": "references/bell-tower.jpg",
+      "alt": "西安钟楼夜景实拍",
+      "caption": "西安钟楼夜景实拍 · 2013年",
+      "credit": "Matthew D. Jalovick / Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bell_Tower_of_Xi%27an.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "kind": "place-photo",
+      "position": "50% 50%",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Bell_Tower_of_Xi%27an.jpg/960px-Bell_Tower_of_Xi%27an.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "bytes": 182171,
+      "changes": "Wikimedia服务缩略图；本项目未修改图像内容。",
+      "originalSrc": "photos/bell-tower.jpg",
+      "sha256": "bd507bf3acfa28a4915f3690b5adef801599b2d9f740278a3460f015a4301c27",
+      "observations": [
+        "三层外伸屋檐自下而上收分，屋顶中央有竖向宝顶。",
+        "楼身较紧凑；红色柱窗与灰绿屋面在夜间照明下清楚可见。",
+        "底部为高砖台，照片所见两个侧面都有拱形洞口。"
+      ],
+      "limits": [
+        "单张斜视夜景不能精确还原平面、尺寸、背面及白天真实颜色。",
+        "照片不能证明当前夜景照明状态、入口位置或周边道路布局。"
+      ],
+      "candidateChecks": [
+        "保留三层主要屋檐和中央宝顶；不可替换成长条鼓楼屋脊。",
+        "紧凑楼身置于高砖台上，至少显示可见侧面的拱洞。",
+        "若生成日景，颜色属于参考推定，不标注为照片复原。"
+      ]
+    },
+    {
+      "id": "drum-tower",
+      "name": "西安鼓楼",
+      "src": "references/drum-tower.jpg",
+      "alt": "西安鼓楼建筑实拍",
+      "caption": "西安鼓楼实拍 · 2024年",
+      "credit": "xiquinhosilva / Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Drum_Tower_of_Xi%27an.jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "kind": "place-photo",
+      "position": "50% 50%",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Drum_Tower_of_Xi%27an.jpg/960px-Drum_Tower_of_Xi%27an.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "bytes": 191715,
+      "changes": "Wikimedia服务缩略图；本项目未修改图像内容。",
+      "originalSrc": "photos/drum-tower.jpg",
+      "sha256": "2215b8a769252bee01b4df858b8c76eb5158032d80a7b559b42963c79b3d3b31",
+      "observations": [
+        "楼体横向舒展，屋顶沿长向延伸；近侧可见三角山墙和长屋脊。",
+        "可见三层主要外伸檐线，红色柱廊与密集木构细节。",
+        "高砖台上沿陈列一排鼓，近侧可见较大的鼓面。"
+      ],
+      "limits": [
+        "透视照片不能证明精确的长宽比例、背面形状或屋脊尺寸。",
+        "牌匾细字、鼓的数量和位置不能据此作测绘式复原。",
+        "照片不提供入口、台阶通行或周边实际平面信息。"
+      ],
+      "candidateChecks": [
+        "比钟楼更横向舒展，保留长屋脊与端部山墙特征。",
+        "底部保留高台与一排鼓的可辨符号，不变成钟楼中央宝顶。",
+        "不要生成可误认成真实内容的伪造牌匾文字。"
+      ]
+    },
+    {
+      "id": "pagoda",
+      "name": "大雁塔",
+      "src": "references/pagoda.jpg",
+      "alt": "西安大雁塔实拍",
+      "caption": "大雁塔与周边园林实拍 · 历史照片",
+      "credit": "Alex Kwok / Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Giant_Wild_Goose_Pagoda.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "kind": "place-photo",
+      "position": "45% 35%",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Giant_Wild_Goose_Pagoda.jpg/960px-Giant_Wild_Goose_Pagoda.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "bytes": 134168,
+      "changes": "Wikimedia服务缩略图；本项目未修改图像内容。",
+      "originalSrc": "photos/pagoda.jpg",
+      "sha256": "ce852412fec89b35a5f76b736f4e857701a54f8a408011fa68186d8bc6c3b089",
+      "observations": [
+        "照片可辨七层逐层收分的砖塔，层间有外挑檐口。",
+        "塔身呈土褐色，可见正侧两面，每层有拱形窗洞。",
+        "顶部有小型尖顶；树木遮住部分底部和周围建筑。"
+      ],
+      "limits": [
+        "底部受遮挡，不能确认入口细节、基座完整形状和院落布局。",
+        "斜视照片不能证明塔身尺寸、方位或各层高度。",
+        "历史照片不能证明当日开放、修缮或周边植被状态。"
+      ],
+      "candidateChecks": [
+        "主要塔身必须有七层，不增减层数；由下向上收分。",
+        "使用砖塔与拱窗特征，不画成木构层叠绿瓦塔。",
+        "底部用克制的图标底座处理，不虚构真实寺院总平面。"
+      ]
+    },
+    {
+      "id": "terracotta",
+      "name": "兵马俑一号坑",
+      "src": "references/terracotta.jpg",
+      "alt": "兵马俑一号坑军阵实拍",
+      "caption": "兵马俑一号坑实拍 · 历史照片",
+      "credit": "BrokenSphere / Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Terracotta_Army_Pit_1.JPG",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "kind": "place-photo",
+      "position": "50% 65%",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Terracotta_Army_Pit_1.JPG/960px-Terracotta_Army_Pit_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "bytes": 244353,
+      "changes": "Wikimedia服务缩略图；本项目未修改图像内容。",
+      "originalSrc": "photos/terracotta.jpg",
+      "sha256": "617c1cb56ec8409a1c18037537828acc804a7bddb0d6b406defb3bfd8132f53c",
+      "observations": [
+        "照片为室内考古坑视角，可见成排站立陶俑。",
+        "军阵之间有平行的土质隔梁和发掘坑道；陶俑与土层为灰褐色。",
+        "上方是大跨度展厅屋架，后方可见高处参观通道。"
+      ],
+      "limits": [
+        "这是坑内局部历史实拍，不是地表建筑外形或整个园区鸟瞰。",
+        "照片不能证明全部军阵、陶俑总数量、全坑尺度或入口位置。",
+        "不能据此生成具有真实平面含义的园区、停车场或导航路径。"
+      ],
+      "candidateChecks": [
+        "仅作为坑内军阵主题符号，显示陶俑列阵和土质隔梁。",
+        "不将陶俑变成园区外的巨型雕像；不虚构博物馆外立面。",
+        "页面必须明确标注“内部主题符号”，避免理解成真实建筑轮廓。"
+      ]
+    }
+  ]
+}

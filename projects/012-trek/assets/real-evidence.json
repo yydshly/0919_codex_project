@@ -1,0 +1,902 @@
+{
+  "commit": "b98787f83698f3beee1b9a8475121c52f0caf07c",
+  "trip_id": 2,
+  "days": [
+    {
+      "id": 4,
+      "trip_id": 2,
+      "day_number": 1,
+      "date": "2026-11-06",
+      "notes": null,
+      "title": null,
+      "default_transport_mode": null,
+      "assignments": [],
+      "notes_items": []
+    },
+    {
+      "id": 5,
+      "trip_id": 2,
+      "day_number": 2,
+      "date": "2026-11-07",
+      "notes": null,
+      "title": null,
+      "default_transport_mode": null,
+      "assignments": [],
+      "notes_items": []
+    },
+    {
+      "id": 6,
+      "trip_id": 2,
+      "day_number": 3,
+      "date": "2026-11-08",
+      "notes": null,
+      "title": null,
+      "default_transport_mode": null,
+      "assignments": [],
+      "notes_items": []
+    }
+  ],
+  "members": [
+    {
+      "id": 4,
+      "username": "阿青",
+      "email": "guest-b67d9d7a-cdf7-4d2b-8aaa-a3b7098462f8@guests.invalid",
+      "avatar": null,
+      "is_guest": true,
+      "role": "member",
+      "added_at": "2026-09-22 08:51:17",
+      "invited_by_username": "Lin",
+      "avatar_url": null
+    },
+    {
+      "id": 5,
+      "username": "小周",
+      "email": "guest-22d0396e-dea8-47c7-b0fa-a5292e99dcdb@guests.invalid",
+      "avatar": null,
+      "is_guest": true,
+      "role": "member",
+      "added_at": "2026-09-22 08:51:17",
+      "invited_by_username": "Lin",
+      "avatar_url": null
+    }
+  ],
+  "places": 11,
+  "assignments": [
+    {
+      "assignment": {
+        "id": 12,
+        "day_id": 4,
+        "place_id": 12,
+        "order_index": 0,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 12,
+          "name": "清水寺",
+          "description": null,
+          "lat": 34.9949,
+          "lng": 135.785,
+          "address": "京都市东山区清水1丁目294",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "09:00",
+          "end_time": "10:30",
+          "duration_minutes": 60,
+          "notes": "建议早到；从清水舞台俯瞰京都。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 13,
+        "day_id": 4,
+        "place_id": 13,
+        "order_index": 1,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 13,
+          "name": "二年坂・三年坂",
+          "description": null,
+          "lat": 34.9975,
+          "lng": 135.7808,
+          "address": "京都市东山区清水",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "10:45",
+          "end_time": "12:00",
+          "duration_minutes": 60,
+          "notes": "石板坡道慢行，途中午餐。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 14,
+        "day_id": 4,
+        "place_id": 14,
+        "order_index": 2,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 14,
+          "name": "八坂神社",
+          "description": null,
+          "lat": 35.0037,
+          "lng": 135.7785,
+          "address": "京都市东山区祇园町北侧625",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "14:00",
+          "end_time": "15:00",
+          "duration_minutes": 60,
+          "notes": "步行前往祇园，预留拍照时间。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 15,
+        "day_id": 4,
+        "place_id": 15,
+        "order_index": 3,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 15,
+          "name": "祇园・花见小路",
+          "description": null,
+          "lat": 35.0015,
+          "lng": 135.775,
+          "address": "京都市东山区祇园町南侧",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "16:00",
+          "end_time": "17:00",
+          "duration_minutes": 60,
+          "notes": "街区散步，请尊重当地摄影规则。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 16,
+        "day_id": 5,
+        "place_id": 16,
+        "order_index": 0,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 16,
+          "name": "岚山竹林小径",
+          "description": null,
+          "lat": 35.0176,
+          "lng": 135.6717,
+          "address": "京都市右京区嵯峨天龙寺",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "09:00",
+          "end_time": "10:00",
+          "duration_minutes": 60,
+          "notes": "早晨看竹林，下午回市区。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 17,
+        "day_id": 5,
+        "place_id": 17,
+        "order_index": 1,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 17,
+          "name": "天龙寺",
+          "description": null,
+          "lat": 35.0158,
+          "lng": 135.6737,
+          "address": "京都市右京区嵯峨天龙寺芒ノ马场町68",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "10:15",
+          "end_time": "11:30",
+          "duration_minutes": 60,
+          "notes": "庭园参观；票价仅在示例账单中假设。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 18,
+        "day_id": 5,
+        "place_id": 18,
+        "order_index": 2,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 18,
+          "name": "渡月桥",
+          "description": null,
+          "lat": 35.0095,
+          "lng": 135.677,
+          "address": "京都市右京区岚山",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "13:00",
+          "end_time": "14:00",
+          "duration_minutes": 60,
+          "notes": "沿桂川散步。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 19,
+        "day_id": 6,
+        "place_id": 19,
+        "order_index": 0,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 19,
+          "name": "伏见稻荷大社",
+          "description": null,
+          "lat": 34.9671,
+          "lng": 135.7727,
+          "address": "京都市伏见区深草薮之内町68",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "08:30",
+          "end_time": "10:30",
+          "duration_minutes": 60,
+          "notes": "穿过千本鸟居，按体力决定登山长度。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 20,
+        "day_id": 6,
+        "place_id": 20,
+        "order_index": 1,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 20,
+          "name": "锦市场",
+          "description": null,
+          "lat": 35.005,
+          "lng": 135.7649,
+          "address": "京都市中京区锦小路通",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "12:00",
+          "end_time": "13:30",
+          "duration_minutes": 60,
+          "notes": "三人分别付款，晚上统一分账。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    },
+    {
+      "assignment": {
+        "id": 21,
+        "day_id": 6,
+        "place_id": 21,
+        "order_index": 2,
+        "notes": null,
+        "assignment_time": null,
+        "assignment_end_time": null,
+        "end_day": false,
+        "leg_transport_mode": null,
+        "incoming_leg_transport_mode": null,
+        "accommodation_id": null,
+        "participants": [],
+        "created_at": "2026-09-22 08:51:17",
+        "place": {
+          "id": 21,
+          "name": "京都站",
+          "description": null,
+          "lat": 34.9858,
+          "lng": 135.7588,
+          "address": "京都市下京区东盐小路町",
+          "category_id": 3,
+          "price": null,
+          "currency": null,
+          "place_time": "16:00",
+          "end_time": "17:00",
+          "duration_minutes": 60,
+          "notes": "预留转车时间；演示不含真实车票。",
+          "image_url": null,
+          "transport_mode": "walking",
+          "google_place_id": null,
+          "google_ftid": null,
+          "osm_id": null,
+          "amap_poi_id": null,
+          "website": null,
+          "phone": null,
+          "stop_type": null,
+          "fill_percent": null,
+          "category": {
+            "id": 3,
+            "name": "Attraction",
+            "color": "#8b5cf6",
+            "icon": "🏛️"
+          },
+          "tags": []
+        }
+      }
+    }
+  ],
+  "budget": {
+    "items": [
+      {
+        "id": 3,
+        "trip_id": 2,
+        "category": "住宿",
+        "name": "两晚住宿（三人合计）",
+        "total_price": 36000,
+        "persons": 3,
+        "days": null,
+        "note": "假设支出，用于验证三人均分，不是实时价格。",
+        "sort_order": 0,
+        "created_at": "2026-09-22 08:51:17",
+        "paid_by_user_id": null,
+        "expense_date": null,
+        "reservation_id": null,
+        "currency": "JPY",
+        "exchange_rate": 1,
+        "ticket_json": null,
+        "place_id": null,
+        "members": [
+          {
+            "user_id": 1,
+            "paid": 0,
+            "username": "Lin",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 4,
+            "paid": 0,
+            "username": "阿青",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 5,
+            "paid": 0,
+            "username": "小周",
+            "avatar_url": null,
+            "amount": null
+          }
+        ],
+        "payers": [
+          {
+            "user_id": 1,
+            "amount": 36000,
+            "username": "Lin",
+            "avatar_url": null
+          }
+        ],
+        "receipts": []
+      },
+      {
+        "id": 4,
+        "trip_id": 2,
+        "category": "交通",
+        "name": "交通通票（三人合计）",
+        "total_price": 6000,
+        "persons": 3,
+        "days": null,
+        "note": "假设支出，用于验证三人均分，不是实时价格。",
+        "sort_order": 1,
+        "created_at": "2026-09-22 08:51:17",
+        "paid_by_user_id": null,
+        "expense_date": null,
+        "reservation_id": null,
+        "currency": "JPY",
+        "exchange_rate": 1,
+        "ticket_json": null,
+        "place_id": null,
+        "members": [
+          {
+            "user_id": 1,
+            "paid": 0,
+            "username": "Lin",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 4,
+            "paid": 0,
+            "username": "阿青",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 5,
+            "paid": 0,
+            "username": "小周",
+            "avatar_url": null,
+            "amount": null
+          }
+        ],
+        "payers": [
+          {
+            "user_id": 4,
+            "amount": 6000,
+            "username": "阿青",
+            "avatar_url": null
+          }
+        ],
+        "receipts": []
+      },
+      {
+        "id": 5,
+        "trip_id": 2,
+        "category": "餐饮",
+        "name": "第一日晚餐（三人合计）",
+        "total_price": 9000,
+        "persons": 3,
+        "days": null,
+        "note": "假设支出，用于验证三人均分，不是实时价格。",
+        "sort_order": 2,
+        "created_at": "2026-09-22 08:51:17",
+        "paid_by_user_id": null,
+        "expense_date": null,
+        "reservation_id": null,
+        "currency": "JPY",
+        "exchange_rate": 1,
+        "ticket_json": null,
+        "place_id": null,
+        "members": [
+          {
+            "user_id": 1,
+            "paid": 0,
+            "username": "Lin",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 4,
+            "paid": 0,
+            "username": "阿青",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 5,
+            "paid": 0,
+            "username": "小周",
+            "avatar_url": null,
+            "amount": null
+          }
+        ],
+        "payers": [
+          {
+            "user_id": 5,
+            "amount": 9000,
+            "username": "小周",
+            "avatar_url": null
+          }
+        ],
+        "receipts": []
+      },
+      {
+        "id": 6,
+        "trip_id": 2,
+        "category": "门票",
+        "name": "庭园门票（三人合计）",
+        "total_price": 1500,
+        "persons": 3,
+        "days": null,
+        "note": "假设支出，用于验证三人均分，不是实时价格。",
+        "sort_order": 3,
+        "created_at": "2026-09-22 08:51:17",
+        "paid_by_user_id": null,
+        "expense_date": null,
+        "reservation_id": null,
+        "currency": "JPY",
+        "exchange_rate": 1,
+        "ticket_json": null,
+        "place_id": null,
+        "members": [
+          {
+            "user_id": 1,
+            "paid": 0,
+            "username": "Lin",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 4,
+            "paid": 0,
+            "username": "阿青",
+            "avatar_url": null,
+            "amount": null
+          },
+          {
+            "user_id": 5,
+            "paid": 0,
+            "username": "小周",
+            "avatar_url": null,
+            "amount": null
+          }
+        ],
+        "payers": [
+          {
+            "user_id": 1,
+            "amount": 1500,
+            "username": "Lin",
+            "avatar_url": null
+          }
+        ],
+        "receipts": []
+      }
+    ]
+  },
+  "settlement": {
+    "balances": [
+      {
+        "user_id": 1,
+        "username": "Lin",
+        "avatar_url": null,
+        "balance": 20000
+      },
+      {
+        "user_id": 4,
+        "username": "阿青",
+        "avatar_url": null,
+        "balance": -11500
+      },
+      {
+        "user_id": 5,
+        "username": "小周",
+        "avatar_url": null,
+        "balance": -8500
+      }
+    ],
+    "flows": [
+      {
+        "from": {
+          "user_id": 4,
+          "username": "阿青",
+          "avatar_url": null
+        },
+        "to": {
+          "user_id": 1,
+          "username": "Lin",
+          "avatar_url": null
+        },
+        "amount": 11500
+      },
+      {
+        "from": {
+          "user_id": 5,
+          "username": "小周",
+          "avatar_url": null
+        },
+        "to": {
+          "user_id": 1,
+          "username": "Lin",
+          "avatar_url": null
+        },
+        "amount": 8500
+      }
+    ],
+    "settlements": [],
+    "finalBudgets": [
+      {
+        "user_id": 1,
+        "username": "Lin",
+        "avatar_url": null,
+        "expenses": 37500,
+        "reimbursed": 0,
+        "pending": 20000,
+        "final": 17500,
+        "sources": {
+          "fronted": [
+            {
+              "item_id": 3,
+              "cents": 3600000
+            },
+            {
+              "item_id": 6,
+              "cents": 150000
+            }
+          ],
+          "moved": [],
+          "outstanding": [
+            {
+              "from_user_id": 4,
+              "to_user_id": 1,
+              "cents": 1150000
+            },
+            {
+              "from_user_id": 5,
+              "to_user_id": 1,
+              "cents": 850000
+            }
+          ]
+        }
+      },
+      {
+        "user_id": 4,
+        "username": "阿青",
+        "avatar_url": null,
+        "expenses": 6000,
+        "reimbursed": 0,
+        "pending": -11500,
+        "final": 17500,
+        "sources": {
+          "fronted": [
+            {
+              "item_id": 4,
+              "cents": 600000
+            }
+          ],
+          "moved": [],
+          "outstanding": [
+            {
+              "from_user_id": 4,
+              "to_user_id": 1,
+              "cents": -1150000
+            }
+          ]
+        }
+      },
+      {
+        "user_id": 5,
+        "username": "小周",
+        "avatar_url": null,
+        "expenses": 9000,
+        "reimbursed": 0,
+        "pending": -8500,
+        "final": 17500,
+        "sources": {
+          "fronted": [
+            {
+              "item_id": 5,
+              "cents": 900000
+            }
+          ],
+          "moved": [],
+          "outstanding": [
+            {
+              "from_user_id": 5,
+              "to_user_id": 1,
+              "cents": -850000
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "scenario": "Synthetic transactions and people; real Kyoto coordinates; original TREK runtime."
+}

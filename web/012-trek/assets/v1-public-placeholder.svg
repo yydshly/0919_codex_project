@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1265" height="720" viewBox="0 0 1265 720" role="img" aria-labelledby="t d">
+  <title id="t">长安初见 V1 本地归档</title><desc id="d">旧城市插画的公开使用范围尚待核实，线上页面展示研究结论，完整原图保留在本地归档。</desc>
+  <rect width="1265" height="720" fill="#edf2ec"/><rect x="42" y="42" width="1181" height="636" rx="22" fill="#f8f6ef" stroke="#c5d5cd" stroke-width="2"/>
+  <path d="M118 520C286 382 367 442 516 330S789 229 898 328 1052 414 1145 276" fill="none" stroke="#b5caba" stroke-width="10" stroke-linecap="round" stroke-dasharray="20 28"/>
+  <g fill="#38735d"><circle cx="216" cy="450" r="15"/><circle cx="516" cy="330" r="15"/><circle cx="808" cy="267" r="15"/><circle cx="1053" cy="376" r="15"/></g>
+  <text x="118" y="177" font-size="27" fill="#3f735c" font-family="Microsoft YaHei,sans-serif" font-weight="700">V1 / 本地归档</text>
+  <text x="118" y="247" font-size="46" fill="#20364a" font-family="Microsoft YaHei,sans-serif" font-weight="700">旧城市插画未在公网展示</text>
+  <text x="118" y="302" font-size="24" fill="#667771" font-family="Microsoft YaHei,sans-serif">公开使用范围待核实；网页保留功能、实验过程与研究结论。</text>
+  <text x="118" y="603" font-size="22" fill="#3f735c" font-family="Microsoft YaHei,sans-serif">地点选择 → 地理布局 → 素材实验 → 可行动的导览</text>
+</svg>

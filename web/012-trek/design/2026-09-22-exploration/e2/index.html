@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>让景观在真实位置上长出来 · 长安初见 E2</title>
+  <link rel="stylesheet" href="e2.css">
+</head>
+<body>
+  <a class="skip" href="#reference">跳至素材对照</a>
+  <header><a class="brand" href="../"><span class="seal">西安</span><span>长安初见<small>城市交互导览 · 技术探索</small></span></a><nav aria-label="实验导航"><a href="../#generation">设计讨论</a><a href="../e1/">E1 地理骨架</a><a href="../../../v1.html" target="_blank" rel="noopener">V1 归档 ↗</a></nav><span class="edition">E2 / 参考与合成</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">EXPERIMENT 02 · FROM REFERENCE TO LANDMARK</p><h1>景观有真实参考，<br>位置有地理依据。</h1><p class="lead">先认得出钟楼，再把钟楼放在正确的位置。<br>让照片、生成素材与真实坐标，在同一页里接受检查。</p></div><div class="intro-note"><span class="candidate">4 地标 · 素材候选实验</span><ol class="flow"><li><b>01</b> 实拍约束外形</li><li><b>02</b> 生成独立素材</li><li><b>03</b> 对齐地理锚点</li></ol><p>这里展示有参考的生成插画与数据合成；城市插画、入口导航和票务引导仍待后续验证。</p></div></section>
+
+    <section id="reference" aria-labelledby="reference-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / SEE THE REFERENCE, REVIEW THE RESULT</p><h2 id="reference-title">这一处，画得像吗？</h2></div><div id="place-tabs" class="place-tabs" role="group" aria-label="选择要比较的地点"></div></div>
+      <div class="image-comparison">
+        <figure class="image-card"><figcaption><span><i class="number">A</i> 真实照片</span><span id="photo-era" class="figure-note"></span></figcaption><div class="photo-stage"><img id="reference-image" alt="" src="references/bell-tower.jpg"></div><div id="reference-credit" class="image-caption"></div></figure>
+        <figure class="image-card generated"><figcaption><span><i class="number">B</i> 生成素材</span><div class="background-controls" role="group" aria-label="素材预览背景"><button type="button" data-background="light" aria-pressed="true">浅底</button><button type="button" data-background="dark" aria-pressed="false">深底</button></div><span class="figure-note">插画候选 · 非实拍</span></figcaption><div class="asset-stage"><img id="asset-image" alt="" hidden><p id="asset-pending" class="pending-message">正在读取生成素材…</p><span class="alpha-label">透明素材预览底纹</span></div><div id="asset-caption" class="image-caption"></div></figure>
+      </div>
+      <div class="review-grid"><div><p class="small-label">从照片里确认的特征</p><h3 id="reference-name"></h3><ul id="reference-observations" class="observations"></ul><details><summary>照片不能证明什么？</summary><ul id="reference-limits"></ul></details></div><div id="visual-review" aria-live="polite"></div></div>
+    </section>
+
+    <section id="composition" aria-labelledby="composition-title"><div class="section-heading"><div><p class="eyebrow">02 / COMPOSE ON REAL COORDINATES</p><h2 id="composition-title">素材可以换，地点的锚点保持。</h2></div><p class="hint">点一下图里的景观，上方同步对应参考</p></div>
+      <div class="composition-workspace"><div class="canvas-column"><div class="canvas-toolbar"><div class="segmented" role="group" aria-label="选择画布显示方式"><button id="clean-mode" type="button" aria-pressed="true">看素材</button><button id="debug-mode" type="button" aria-pressed="false">看锚点与边框</button></div><div class="zoom-controls" role="group" aria-label="画布缩放"><button data-zoom="1" type="button" aria-pressed="true">适应画布</button><button data-zoom="2" type="button" aria-pressed="false">2× 放大</button></div></div><div id="plot-scroll" class="plot-scroll" tabindex="0" aria-label="地标合成画布，可横向滚动"><div id="plot" class="plot"><p class="pending-message">正在加载素材和地理骨架…</p></div></div><div class="canvas-bottom"><span>北 ↑ · 同一图幅等比</span><span>图幅之间是排版关系；实际方位查看全域定位。</span></div><p class="scroll-hint" id="scroll-hint">小屏可在画布内左右滑动，放大只改变显示尺寸。</p></div>
+        <aside class="inspector" aria-label="合成控制"><p class="eyebrow">让结果可检查</p><div id="selected-anchor"></div><div class="control"><label for="asset-size">素材框尺寸 <output id="size-output" for="asset-size">84 px</output></label><input id="asset-size" type="range" min="60" max="140" step="4" value="84"><p>原图等比放入方框，方框中心对齐地点中心。并非建筑真实尺寸。</p></div><div class="control"><label for="fault">主动制造一个错误</label><select id="fault"><option value="normal">正常合成</option><option value="shift">鼓楼偏离真实锚点</option><option value="swap">钟楼与鼓楼素材互换</option><option value="missing">漏掉鼓楼素材</option><option value="oversize">鼓楼素材意外放大 3 倍</option></select><p id="fault-note">查看正常素材绑定与矩形位置。</p></div><button id="reset" class="text-button" type="button">恢复默认设置 ↺</button><button id="export" class="button" type="button" disabled>预览并导出本次合成 ↓</button></aside>
+      </div>
+      <div id="metrics" class="metrics" aria-live="polite"></div><div class="audit-panel"><div><p class="small-label">程序能检查到哪里？</p><h3 id="audit-summary">等待素材记录</h3><p class="audit-limit">绑定与矩形位置通过，只说明登记关系和布局一致。建筑是否画对、主体是否清楚、画面是否好看，需要分别审查。</p><span class="unmeasured">90% 真实主体可见率 · 尚未实测</span></div><ul id="audit-checks" class="audit-checks"></ul></div>
+    </section>
+
+    <section id="records" aria-labelledby="records-title"><div class="section-heading"><div><p class="eyebrow">03 / KEEP THE EVIDENCE WITH THE IMAGE</p><h2 id="records-title">每张图，都留下生成依据。</h2></div><div class="review-links"><a href="REFERENCE-REVIEW.md" target="_blank" class="text-link">参考图审查 ↗</a><a href="VISUAL-REVIEW.md" target="_blank" class="text-link">生成图审查 ↗</a></div></div><div class="record-grid"><a class="record" id="generation-log-link" href="data/generation-log.json" target="_blank"><span>01 / GENERATION</span><h3>输入了什么</h3><p>全部生成与修订的提示、参考照片和外形约束。</p><b>查看完整生成日志 ↗</b></a><a class="record" href="data/asset-manifest.json" target="_blank"><span>02 / PROVENANCE</span><h3>得到了什么</h3><p>素材文件、地点绑定、尺寸、文件指纹与视觉审查。</p><b>查看素材清单 ↗</b></a><a class="record" href="results.json" target="_blank"><span>03 / VERIFICATION</span><h3>检查了什么</h3><p>正常合成和故障检测的独立检查记录。</p><b>查看验证结果 ↗</b></a></div><p id="generation-summary" class="provenance-note"></p><a href="data/prompts.json" target="_blank" class="text-link initial-prompts">查看首轮生成约束 ↗</a></section>
+
+    <section class="next-step"><div><p class="eyebrow">WHAT WE LEARN BEFORE A FULL CITY IMAGE</p><h2>一张可信的城市图，<br>从可追溯的每一处开始。</h2><p>本轮把四个独立景观放进 E1 的真实坐标骨架，观察外形、位置与尺度能否同时成立。分区图仍是候选表达，需要更多地点和真实用户阅读验证。</p><p>下一轮再把地点详情与票价来源、预约、入口和导航连接起来；这些信息需要独立核实。</p><div class="next-links"><a href="../#experiments">返回实验计划 →</a><a href="README.md" target="_blank">阅读本轮结论 ↗</a></div></div><a class="archive-preview" href="../../../v1.html" target="_blank" rel="noopener"><img src="../../../assets/v1-public-placeholder.svg" alt="V1 归档的城市插画导览界面" loading="lazy"><span>V1 原型完整保留，用作交互与视觉对照 ↗</span></a></section>
+    <footer><p>长安初见 · E2 参考生成与合成实验<small>V1 原型与冻结归档保持独立。</small></p><div><a href="../#generation">设计讨论</a><a href="../e1/">E1 地理实验</a><a href="data/references.json" target="_blank">照片来源与许可</a></div></footer>
+  </main>
+  <dialog id="export-dialog" aria-labelledby="export-title"><div class="export-heading"><div><h2 id="export-title">当前合成与检查记录</h2><p id="export-description"></p></div><button id="close-export" type="button" aria-label="关闭导出预览">关闭 ×</button></div><div class="export-actions"><a id="download-json" class="text-link">下载 JSON 文件 ↓</a><span>保留当前尺寸、故障情形和检查结果。</span></div><pre id="export-preview" tabindex="0"></pre></dialog>
+  <script type="module" src="e2.mjs"></script>
+</body>
+</html>

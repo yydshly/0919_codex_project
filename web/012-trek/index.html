@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f6ef">
+  <meta name="description" content="一图读懂 TREK 旅行管理能力、地图与路线原理，以及西安图像导览 V1、D0、E1、E2 探索和未来产品方向。">
+  <title>TREK 研究总览 · 从旅行管理到可信城市导览</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="research.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="header">
+    <a class="brand" href="../"><span class="brand-mark">012</span><span>项目研究集 <b>/ TREK</b></span></a>
+    <nav aria-label="本页章节"><a href="#overview">总览图</a><a href="#trek">原库能力</a><a href="#study">研究网页</a><a href="#future">后续方向</a></nav>
+    <a class="header-source" href="https://github.com/liketrek/TREK" target="_blank" rel="noreferrer">上游仓库 ↗</a>
+  </header>
+  <main id="main">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> RESEARCH 012 · TRAVEL &amp; PLACE</p>
+        <h1>从旅行管理基础，<br>走向<strong>可信的城市导览。</strong></h1>
+        <p class="lead">TREK 把地点、地图、行程和旅行事务连在一起。我们从原版实测出发，做了西安首访产品原型，并探索怎样用真实地理位置和参考照片生成可点击的城市图。</p>
+        <div class="hero-actions"><a class="button primary" href="#overview">先看研究全景图 <span>↓</span></a><a class="button plain" href="#study">浏览各阶段网页 <span>↗</span></a></div>
+        <p class="scope"><span class="scope-dot"></span> 当前阶段：整理已有能力与研究；更成熟的产品方向仍待验证。</p>
+      </div>
+      <aside class="hero-aside" aria-label="三项核心结论">
+        <div><span>01 / 它是什么</span><strong>可自行部署的旅行管理应用</strong><p>已经提供旅行业务与地点服务的整合入口。</p></div>
+        <div><span>02 / 最值得借鉴</span><strong>地点 → 行程 → 路线 → 保存</strong><p>可以复用数据模型与操作链路，减少后台重复建设。</p></div>
+        <div><span>03 / 我们的机会</span><strong>看图认识城市，点开就能行动</strong><p>图像帮助选择，地图和经过核实的资料帮助出发。</p></div>
+      </aside>
+    </section>
+
+    <section id="overview" class="overview wrap section-space" aria-labelledby="overview-title">
+      <div class="section-head"><div><p class="eyebrow">START HERE / 一图看全</p><h2 id="overview-title">一张图，串起能力、原理与下一步。</h2></div><p>这是本研究专门制作的总览引导图。图中用状态标记区分上游原生、已做实验、素材候选和未来目标。</p></div>
+      <a class="poster" href="assets/trek-research-overview-vector.svg" target="_blank" rel="noreferrer" aria-label="打开可放大的 TREK 研究全景矢量图"><img src="assets/trek-research-overview-2026-09-22.png" alt="TREK 研究全景图，含原生能力、底层原理、西安 V1 与 D0/E1/E2 探索、可扩展方向和对你的意义" width="3840" height="2880"><span>点击放大查看全部信息 <b>↗</b></span></a>
+      <div class="overview-links"><a href="assets/trek-research-overview-2026-09-22.png" download>下载高清图 PNG ↓</a><a href="assets/trek-research-overview-vector.svg" target="_blank" rel="noreferrer">打开可缩放 SVG ↗</a><a href="notes/trek-capability-overview.md" target="_blank">阅读完整研究说明 ↗</a></div>
+    </section>
+
+    <section id="trek" class="wrap section-space" aria-labelledby="trek-title">
+      <div class="section-head"><div><p class="eyebrow">01 / THE ORIGINAL PRODUCT</p><h2 id="trek-title">TREK 已经提供什么？</h2></div><p>它是一套完整的旅行管理产品。以下是上游固定版本的能力范围；并非所有模块都在本机逐项实测。</p></div>
+      <div class="capability-grid">
+        <article><span class="cap-no">01</span><h3>找地点、看地图</h3><p>名称搜索、周边分类、地图选点、地点照片与收藏，给行程一个可复用的地点基础。</p></article>
+        <article><span class="cap-no">02</span><h3>把旅行安排起来</h3><p>按天排列地点，管理住宿、交通、停留和备注；路线顺序与道路时长辅助决定怎么走。</p></article>
+        <article><span class="cap-no">03</span><h3>管理出行事务</h3><p>集中预订资料与附件，记录预算、多人分账、行李清单和待办；保存记录不等于实际购票。</p></article>
+        <article><span class="cap-no">04</span><h3>协作与扩展</h3><p>成员权限、共享、部分离线操作、日记与导出；还可借助公共 API、插件和 MCP 接入其他工具。</p></article>
+      </div>
+      <div class="mechanism" aria-labelledby="mechanism-title">
+        <div><p class="eyebrow">02 / HOW IT WORKS</p><h3 id="mechanism-title">地图、路线与业务保存，各有职责。</h3><p>React 界面连接 NestJS 接口，旅行资料存入 SQLite，WebSocket 同步变更。地点搜索整合 TREK Places 的 Overture 数据和 OSM，可按配置增加其他来源；地图由前端地图库呈现。</p></div>
+        <ol><li><b>排顺序</b><span>坐标距离的启发式优化</span></li><li><b>算道路</b><span>OSRM 等路线服务估算距离与时间</span></li><li><b>去现场</b><span>交给外部地图导航，入口仍需核实</span></li></ol>
+      </div>
+      <div class="fact-boundary"><b>判断边界</b><span>地点搜索不自动等于个性化推荐；地点中心不一定是可进入门点；已有预订记录也不代表购票成功。</span></div>
+    </section>
+
+    <section id="study" class="study-backdrop section-space" aria-labelledby="study-title"><div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">03 / OUR EXPLORATION</p><h2 id="study-title">把研究过的网页连成一条线。</h2></div><p>每个页面都保留当时的研究结论和可操作效果。线上展示为静态研究页；本机后端的保存和道路服务没有部署到公网。</p></div>
+      <div class="study-grid">
+        <a class="study-card" href="original.html"><span class="stage done">原版实测 · 已验证</span><h3>京都三日游：看见 TREK 原本的样子</h3><p>地图与行程联动，真实道路、费用分摊、行李和预订资料都来自运行过的原版场景。同行者及交易信息为演示数据。</p><span class="open">打开实测导览 ↗</span></a>
+        <a class="study-card" href="v1.html"><span class="stage archived">西安 V1 · 定制并归档</span><h3>长安初见：一张图选择景点与美食</h3><p>13 个精选地点、7 个图上热点、三日安排与地图联动。旧图的方位和文字仍有问题；公开页展示研究摘要，原交互保留在本机归档。</p><span class="open">查看 V1 研究摘要 ↗</span></a>
+        <a class="study-card" href="design/2026-09-22-exploration/"><span class="stage design">D0 · 技术设计</span><h3>从真实地点，到能点击的图</h3><p>明确地点资料、地理布局、素材生成、受控合成和行动信息的制作链路。同一地点编号连接图像、地图、详情和行程。</p><span class="open">打开设计讨论 ↗</span></a>
+        <a class="study-card" href="design/2026-09-22-exploration/e1/"><span class="stage tested">E1 · 四处地标验证</span><h3>先确定位置，再决定画面怎么排</h3><p>比较连续全域图与“全域定位＋局部放大”。小样验证的是相对输入坐标的计算一致性，不是整座城市的实地精度。</p><span class="open">操作地理布局实验 ↗</span></a>
+        <a class="study-card" href="design/2026-09-22-exploration/e2/"><span class="stage candidate">E2 · 素材候选</span><h3>实拍、生成地标与地理锚点对照</h3><p>四处地标有参考照片与生成素材；大雁塔六层误画后修为七层。位置检查与建筑真实性要分别审核，整体视觉质量未验收。</p><span class="open">查看素材合成实验 ↗</span></a>
+      </div>
+      <p class="study-footnote">V1 页面是历史原型；D0、E1、E2 是逐步形成的研究记录。它们还没有组成一条经过完整验收的游客出行流程。</p>
+    </div></section>
+
+    <section id="future" class="wrap section-space" aria-labelledby="future-title">
+      <div class="section-head"><div><p class="eyebrow">04 / A POSSIBLE PRODUCT</p><h2 id="future-title">未来可以成熟成什么产品？</h2></div><p>面向第一次到陌生城市的人，先帮助认识和选择，再提供可靠的出发信息。现阶段是产品方向，尚未决定继续开发。</p></div>
+      <div class="journey" aria-label="游客体验路径"><span>看图认识片区</span><i>→</i><span>选景点与餐厅</span><i>→</i><span>看实拍、费用与预约</span><i>→</i><span>核实入口与路线</span><i>→</i><span>收藏和安排</span></div>
+      <div class="future-grid"><article><span>生成一张可信的图</span><h3>真实数据先行</h3><p>以地点坐标和可追溯照片为约束，生成景观素材，再按地理骨架合成。图像需检查文字、方向、建筑外形和热点位置。</p></article><article><span>让图能带人出发</span><h3>图、地图、资料相连</h3><p>用地点编号连接图上位置、真实坐标、已核实入口、票价来源、开放与预约信息；动态资料可独立更新。</p></article><article><span>逐步扩展范围</span><h3>从一城、一条任务验证</h3><p>在西安验证是否选得更快、走得更清楚，再评估其他城市、景区、亲子或轻体力路线。任意城市自动生成仍是目标。</p></article></div>
+      <div class="value"><div><p class="eyebrow">05 / WHY IT MATTERS TO YOU</p><h2>你已经有了旅行产品的业务参考和一组真实的研究资产。</h2></div><p>TREK 的地点、行程与保存方式可以减少基础系统的重复建设；我们的差异机会是可信的图像选点与出行引导。原版实测、V1 归档、四点布局与生成素材的成功和失败都已记录，可用于下一次产品取舍。后续最需要核算的是地点信息维护、图像审核以及用户是否真的因此少走弯路。</p></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><p><b>TREK 研究总览</b><br>独立研究与产品探索 · 固定研究基准 TREK 4.3.0 / b98787f · 上游 AGPL-3.0</p><div><a href="notes/trek-capability-overview.md" target="_blank">完整说明</a><a href="notes/README.md" target="_blank">实测记录</a><a href="https://github.com/liketrek/TREK" target="_blank" rel="noreferrer">上游项目 ↗</a><a href="../">研究集首页 ↗</a></div></div></footer>
+</body>
+</html>
