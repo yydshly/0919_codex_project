@@ -25,7 +25,7 @@
 | 010 | [紫微斗数 · 源库实测与结论](projects/010-ziwei-doushu/README.md) | 以前端排盘展示为主：浏览器端可按规则生成命盘，但缺少可用的 AI 解读后端和完整业务逻辑；对我们的参考价值有限。 | 已完成 | 紫微斗数、真实运行、价值评估 | [ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) | [演示](https://yydshly.github.io/0919_codex_project/010-ziwei-doushu/) |
 | 011 | [Frappe HR · 人事与薪酬工作台](projects/011-frappe-hrms/README.md) | 开源企业人事与薪酬系统，覆盖招聘入职、员工档案、请假考勤、绩效报销和工资；以 Frappe/ERPNext 实现权限、审批、规则计算与报表。对我们是业务建模、权限流程、时间规则和可扩展后台的实现参考。 | 已完成 | 人事管理、薪酬、流程联动、Frappe、ERPNext、交互演示 | [hrms](https://github.com/frappe/hrms) | [演示](https://yydshly.github.io/0919_codex_project/011-frappe-hrms/) |
 | 013 | [Shadowrocket Rules · 分流与广告过滤](projects/013-shadowrocket-rules/README.md) | 把广告名单、代理黑名单与直连白名单整理成 Shadowrocket 配置：按域名或 IP 决定直连、代理、拒绝，并持续生成更新；价值在于减少手工维护，其他客户端需适配格式。 | 已完成 | Shadowrocket、网络分流、广告过滤、Python、源码研究 | [Shadowrocket-ADBlock-Rules-Forever](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever) | [演示](https://yydshly.github.io/0919_codex_project/013-shadowrocket-rules/) |
-| 016 | [Pireel · AI 视频剪辑能力实验室](projects/016-pireel/README.md) | Pireel 把视频、图片、声音和动态图文组织成可修改的时间线并导出成片；页面说明依赖、原理、场景，并展示原版 45 秒剪成 28 秒的实测。 | 已复现 | 视频剪辑、MCP、动态图形、浏览器导出 | [pireel](https://github.com/pireel/pireel) · [pireel-agent](https://github.com/pireel/pireel-agent) | [演示](https://yydshly.github.io/0919_codex_project/016-pireel/) |
+| 016 | [Pireel · AI 视频剪辑能力实验室](projects/016-pireel/README.md) | Pireel 把视频、图片、音频和动态图文组织为可编辑时间线，完成裁切、叠加、混音与导出；工程记录编辑决定，浏览器绘制并编码成片。接入 Agent 后，AI 也能修改同一工程。对我们既是剪辑工具候选，也是开发 AI 视频编辑产品的实现参考。 | 已复现 | 视频剪辑、MCP、动态图形、浏览器导出 | [pireel](https://github.com/pireel/pireel) · [pireel-agent](https://github.com/pireel/pireel-agent) | [演示](https://yydshly.github.io/0919_codex_project/016-pireel/) |
 | 017 | [VoxCPM2 · 本地语音生成模型研究](projects/017-voxcpm/README.md) | 可自部署的语音生成模型，支持多语言配音、声音设计与参考录音克隆。以连续声音特征、自回归语言建模和局部流匹配生成语音；依赖 Python、PyTorch 与模型权重，GPU 可加速。对我们是按需接入的配音组件与语音模型实现参考；暂不需要为它单独建设产品。 | 已完成 | 语音合成、声音克隆、本地部署、PyTorch、模型研究 | [VoxCPM](https://github.com/OpenBMB/VoxCPM) | [演示](https://yydshly.github.io/0919_codex_project/017-voxcpm/) |
 <!-- PROJECT_INDEX:END -->
 
@@ -119,7 +119,7 @@ Foundations-of-LLMs：大模型相关文档与教材，覆盖原理、提示词�
 
 ### 016 · [Pireel · AI 视频剪辑能力实验室](projects/016-pireel/README.md)
 
-Pireel 把视频、图片、声音和动态图文组织成可修改的时间线并导出成片；页面说明依赖、原理、场景，并展示原版 45 秒剪成 28 秒的实测。
+Pireel 把视频、图片、音频和动态图文组织为可编辑时间线，完成裁切、叠加、混音与导出；工程记录编辑决定，浏览器绘制并编码成片。接入 Agent 后，AI 也能修改同一工程。对我们既是剪辑工具候选，也是开发 AI 视频编辑产品的实现参考。
 
 [![Pireel · AI 视频剪辑能力实验室 项目截图](projects/016-pireel/assets/pireel-overview-preview.png)](projects/016-pireel/README.md)
 

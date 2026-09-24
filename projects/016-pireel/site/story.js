@@ -2,7 +2,7 @@ import './story.css';
 const section=document.createElement('section');
 section.className='story'; section.id='case';
 section.innerHTML=`
-<div class="story-heading"><div><span class="eyebrow">一个具体任务 / 一条真正导出的视频</span><h1>把啰嗦的介绍，剪成能发给同事的短片。</h1><p>场景：你发现了 Blinko 笔记软件，想用半分钟讲清楚它能做什么。</p><p class="overview-link"><a href="./pireel-overview.svg" target="_blank" rel="noreferrer">一张图看懂 Pireel：能力、原理与使用价值 ↗</a></p></div><span class="verified">✓ 原版 Pireel 实际剪辑并导出</span></div>
+<div class="story-heading"><div><span class="eyebrow">一个具体任务 / 一条真正导出的视频</span><h1>把啰嗦的介绍，剪成能发给同事的短片。</h1><p>场景：你发现了 Blinko 笔记软件，想用半分钟讲清楚它能做什么。本例验证裁切、动态图文和音画导出。</p><p class="overview-link"><a href="#summary">先看 Pireel 能力摘要 ↑</a> · <a href="./pireel-overview.svg" target="_blank" rel="noreferrer">查看完整全景图 ↗</a></p></div><span class="verified">✓ 原版 Pireel 实际剪辑并导出</span></div>
 <div class="story-layout"><div class="story-player">
 <div class="story-tabs" role="group" aria-label="选择对比视频"><button data-version="after" aria-pressed="true">剪后成片 <b>28 秒</b></button><button data-version="before" aria-pressed="false">剪前素材 <b>45 秒</b></button><span>有中文解说 · 请打开声音</span></div>
 <video id="story-video" controls playsinline preload="metadata" poster="./story/after-poster.png" src="./story/after.mp4" aria-label="Blinko 产品介绍剪辑前后对比"></video>

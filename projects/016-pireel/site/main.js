@@ -1,6 +1,7 @@
 import './story.js';
 import './style.css';
 import './guide.css';
+import './summary.css';
 import { gsap } from 'gsap';
 import { render, components } from '../vendor/studio-kit/index.ts';
 import { editedDuration, editedToSrc, spans, splitAtEdited, deleteAtEdited, removeSrcRanges } from '../vendor/studio-engine/trim.ts';

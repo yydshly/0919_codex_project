@@ -2,7 +2,7 @@
   "id": "016",
   "slug": "pireel",
   "name": "Pireel · AI 视频剪辑能力实验室",
-  "summary": "Pireel 把视频、图片、声音和动态图文组织成可修改的时间线并导出成片；页面说明依赖、原理、场景，并展示原版 45 秒剪成 28 秒的实测。",
+  "summary": "Pireel 把视频、图片、音频和动态图文组织为可编辑时间线，完成裁切、叠加、混音与导出；工程记录编辑决定，浏览器绘制并编码成片。接入 Agent 后，AI 也能修改同一工程。对我们既是剪辑工具候选，也是开发 AI 视频编辑产品的实现参考。",
   "source": "https://github.com/pireel/pireel",
   "related_sources": [
     "https://github.com/pireel/pireel-agent"

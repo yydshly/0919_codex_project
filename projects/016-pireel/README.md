@@ -2,7 +2,9 @@
 
 [在线能力页](https://yydshly.github.io/0919_codex_project/016-pireel/) · [全景图](https://yydshly.github.io/0919_codex_project/016-pireel/pireel-overview.svg) · [发布验证记录](notes/publication.md)
 
-研究页以能力全景图为引导，整理 Pireel 的输入与输出、剪辑和动态图文效果、所需依赖、实现原理、使用场景与价值；再看一个具体案例：把 Blinko 产品介绍从 45 秒剪成 28 秒。
+Pireel 把视频、图片、音频和动态图文组织为可编辑时间线，完成裁切、叠加、混音与导出；工程记录编辑决定，浏览器绘制并编码成片。接入 Agent 后，AI 也能修改同一工程。对我们既是剪辑工具候选，也是开发 AI 视频编辑产品的实现参考。
+
+研究页以能力摘要和全景图为引导，继续说明依赖、实现原理与使用场景；Blinko 的 45 秒剪成 28 秒案例用于验证原版的实际效果。
 
 ## 一张图理解 Pireel
 
